@@ -21,6 +21,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.field.PestGridCellData;
+	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.core.game.GridCell;
 	import ru.catAndBall.view.core.game.GridField;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
@@ -44,9 +45,13 @@ package ru.catAndBall.controller.screen {
 		//
 		//---------------------------------------------------------
 
-		public function BaseScreenFieldController(navigator:ScreenNavigator, settings:GridFieldSettings, screen:BaseScreenField, generator:IGridGenerator) {
+		public function BaseScreenFieldController(navigator:ScreenNavigator, screen:BaseScreenField, generator:IGridGenerator) {
 			super(navigator, screen);
-			_settings = settings;
+
+			_data = screen.screenData;
+			_fieldData = _data.gridData;
+			_settings = _fieldData.settings;
+
 			_view = screen;
 			_generator = generator;
 			_petRandom = new BooleanRandom(_settings.pestChance);
@@ -72,6 +77,8 @@ package ru.catAndBall.controller.screen {
 		protected var _view:BaseScreenField;
 
 		protected var _generator:IGridGenerator;
+
+		protected var _data:BaseScreenFieldData;
 
 		protected var _settings:GridFieldSettings;
 
@@ -106,16 +113,13 @@ package ru.catAndBall.controller.screen {
 		protected override function added():void {
 			super.added();
 
-			_fieldData = createGrid();
 			_fieldData.fullFill(_generator);
-			_view.fieldData = _fieldData;
 
 			view.addEventListener(GridField.EVENT_COLLECT_CELLS, handler_collectCells);
 		}
 
 		protected override function removed():void {
 			if (_fieldData) _fieldData.clear();
-			_fieldData = null;
 			_pestGenerationEnabledHash = {};
 			_pests = new Dictionary(true);
 			_petRandom.reset();
@@ -162,10 +166,6 @@ package ru.catAndBall.controller.screen {
 				TweenLite.delayedCall(0.3, jumpPests);
 				TweenLite.delayedCall(1, checkBombs);
 			}
-		}
-
-		protected function createGrid():GridData {
-			return new GridData(_settings);
 		}
 
 		protected function fieldComplete():void {

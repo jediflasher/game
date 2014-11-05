@@ -126,8 +126,9 @@ package ru.catAndBall.view.core.display {
 			var xStep:Number = _texture.width;
 			var yStep:Number = _texture.height;
 
-			while (y < _height) {
-				while (x < _width) {
+			while (y < _height - 1) {
+				x = 0;
+				while (x < _width - 1) {
 					var img:Image = new Image(_texture);
 					img.x = x;
 					img.y = y;

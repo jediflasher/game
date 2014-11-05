@@ -40,6 +40,16 @@ package ru.catAndBall.view.layout {
 		 */
 		public static const fieldCounterMilkScaleGridSizes:Array = AppProperties.getValue([26, 36], [21, 30]);
 
+		/**
+		 * Y координата поля
+		 */
+		public static const fieldFieldY:int = AppProperties.getValue(189, 120);
+
+		/**
+		 * Y координата счетчиков поля
+		 */
+		public static const fieldCountersY:int = AppProperties.getValue(1500, 1200);
+
 		public static const room:RoomLayout = new RoomLayout();
 
 		public static const preloaderLayout:PreloaderLayout = new PreloaderLayout();

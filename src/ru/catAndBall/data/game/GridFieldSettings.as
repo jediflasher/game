@@ -37,7 +37,7 @@ package ru.catAndBall.data.game {
 		public var baseUpgradeLimit:int = 7;
 
 		// минимальное количество айтемов для сбора 1 соответствущего ресурса
-		public var baseStackSize:int = 7;
+		public var baseStackSize:int = 8;
 
 		// минимальное количество айтемов для соединения
 		public var baseConnectCount:int = 3;

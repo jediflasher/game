@@ -32,7 +32,7 @@ package ru.catAndBall.view.screens {
 		//
 		//--------------------------------------------------------------------------
 
-		private static const DARKEN_TEXTURE:Texture = Texture.fromBitmapData(new BitmapData(1, 1, true, 0xCC000000));
+		public static const DARKEN_TEXTURE:Texture = Texture.fromBitmapData(new BitmapData(1, 1, true, 0xCC000000));
 
 		//--------------------------------------------------------------------------
 		//

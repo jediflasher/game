@@ -111,11 +111,11 @@ package ru.catAndBall {
 			item = new ScreenNavigatorItem(screen);
 			_view.addScreen(screen.data.type, item);
 
-			screen = new ScreenRugField(new BaseScreenFieldData(ScreenType.RUG_FIELD, GameData.player.rugField));
+			screen = new ScreenRugField();
 			item = new ScreenRugFieldController(_view, screen as ScreenRugField);
 			_view.addScreen(screen.data.type, item);
 
-			screen = new ScreenBallsField(new BaseScreenFieldData(ScreenType.BALLS_FIELD, GameData.player.ballsField));
+			screen = new ScreenBallsField();
 			item = new ScreenBallsFieldController(_view, screen as ScreenBallsField);
 			_view.addScreen(screen.data.type, item);
 

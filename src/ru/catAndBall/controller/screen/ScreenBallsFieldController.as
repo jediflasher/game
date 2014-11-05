@@ -10,10 +10,9 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.controller.generators.BaseGridGenerator;
 	import ru.catAndBall.controller.tools.ToolCollectCells;
 	import ru.catAndBall.data.GameData;
+	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.field.GridCellType;
-	import ru.catAndBall.data.game.field.GridData;
-	import ru.catAndBall.data.game.settings.BallsFieldSettings;
 	import ru.catAndBall.data.game.tools.ToolCollectCellsData;
 	import ru.catAndBall.view.core.game.FieldBottomPanel;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
@@ -36,10 +35,10 @@ package ru.catAndBall.controller.screen {
 		//---------------------------------------------------------
 
 		public function ScreenBallsFieldController(navigator:ScreenNavigator, screen:BaseScreenField) {
-			var settings:BallsFieldSettings = GameData.player.ballsFieldSettings;
+			var settings:GridFieldSettings = screen.screenData.gridData.settings;
 			var generator:BaseGridGenerator = new BaseGridGenerator(settings);
 
-			super(navigator, settings, screen, generator);
+			super(navigator, screen, generator);
 		}
 
 		//--------------------------------------------------------------------------
@@ -75,10 +74,6 @@ package ru.catAndBall.controller.screen {
 			super.removed();
 
 			view.addEventListener(FieldBottomPanel.EVENT_TOOLS_CLICK, handler_toolsClick);
-		}
-
-		protected override function createGrid():GridData {
-			return new GridData(_settings);
 		}
 
 		//--------------------------------------------------------------------------

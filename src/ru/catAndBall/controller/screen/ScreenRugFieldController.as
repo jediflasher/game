@@ -28,10 +28,10 @@ package ru.catAndBall.controller.screen {
 		//---------------------------------------------------------
 
 		public function ScreenRugFieldController(navigator:ScreenNavigator, screen:BaseScreenField) {
-			var settings:GridFieldSettings = GameData.player.rugFieldSettings;
+			var settings:GridFieldSettings = screen.screenData.gridData.settings;
 			var generator:BaseGridGenerator = new BaseGridGenerator(settings);
 
-			super(navigator, settings, screen, generator);
+			super(navigator, screen, generator);
 		}
 	}
 }

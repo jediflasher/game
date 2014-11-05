@@ -20,6 +20,7 @@ package ru.catAndBall.view.core.game.field {
 	import ru.catAndBall.view.core.game.FieldBottomPanel;
 	import ru.catAndBall.view.core.game.GridCell;
 	import ru.catAndBall.view.core.game.GridField;
+	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.BaseScreen;
 
 	import starling.display.Image;
@@ -64,6 +65,10 @@ package ru.catAndBall.view.core.game.field {
 			return _fieldView;
 		}
 
+		public function get screenData():BaseScreenFieldData {
+			return (data as BaseScreenFieldData);
+		}
+
 		//---------------------------------------------------------
 		//
 		// Variables
@@ -83,42 +88,49 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		protected override function initialize():void {
-			super.initialize();
-
 			backgroundSkin = getBackground();
 			headerClass = FieldProgressPanel;
 			footerClass = FieldBottomPanel;
 
-			_fieldView = new GridField();
-			_fieldView.data
+			super.initialize();
+
+			_fieldView = new GridField(screenData.gridData);
 			_fieldView.addEventListener(GridField.EVENT_HIGHLIGHT_START, handler_highlightStart);
 			_fieldView.addEventListener(GridField.EVENT_HIGHLIGHT_COMPLETE, handler_highlightComplete);
+			_fieldView.y = Layout.fieldFieldY;
 			addRawChild(_fieldView);
-
-			_counterContainer.touchable = false;
-			addRawChild(_counterContainer);
 
 			_progressPanel = new FieldProgressPanel();
 			addRawChild(_progressPanel);
 
-			const settings:GridFieldSettings = (data as BaseScreenFieldData).fieldData.settings;
+			_counterContainer.touchable = false;
+			addRawChild(_counterContainer);
 
+			const settings:GridFieldSettings = (data as BaseScreenFieldData).gridData.settings;
+
+			var x:int = 0;
 			for (var key:String in settings.upgradeHash) {
 				var resourceType:String = GridCellType.getResourceType(int(key));
-				addCounter(resourceType);
+
+				if (resourceType in _hashTypeToCounter) return;
+
+				var counter:ObjectsCounter = new ObjectsCounter(
+						resourceType,
+						screenData.gridData.collectedResourceSet,
+						screenData.gridData.settings.baseStackSize
+				);
+
+				counter.x = x;
+				x += counter.width + Layout.baseGap;
+
+				_counterContainer.addChild(counter);
+				_hashTypeToCounter[resourceType] = counter;
 			}
 
+			_counterContainer.x = AppProperties.appWidth / 2 - x / 2;
+			_counterContainer.y = Layout.fieldCountersY;
+
 			this.update();
-		}
-
-		public function addCounter(resourceType:String):void {
-			if (resourceType in _hashTypeToCounter) return;
-
-			var counter:ObjectsCounter = new ObjectsCounter(resourceType);
-			counter.x = _counterContainer.width;
-			_counterContainer.addChild(counter);
-
-			_hashTypeToCounter[resourceType] = counter;
 		}
 
 		//---------------------------------------------------------
@@ -128,13 +140,13 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		protected function update(event:* = null):void {
-			const fieldData:GridData = (data as BaseScreenFieldData).fieldData;
+			const fieldData:GridData = screenData.gridData;
 
 			fieldData.addEventListener(GridData.EVENT_UPDATE_FIELD, update);
 			fieldData.addEventListener(GridData.EVENT_TURN_UPDATE, updateTurn);
 
 			updateFieldPosition();
-			updateCountersPosition();
+			updateCounters();
 			updateTurn(event);
 		}
 
@@ -155,15 +167,15 @@ package ru.catAndBall.view.core.game.field {
 			_fieldView.y = AppProperties.appHeight * 0.14;
 		}
 
-		private function updateCountersPosition():void {
-			_counterContainer.x = AppProperties.appWidth / 2 - _counterContainer.width / 2;
-//			_counterContainer.y = _countsBg.y;
+		private function updateTurn(event:* = null):void {
+			_progressPanel.progress = screenData.gridData.currentTurn / screenData.gridData.maxTurns;
 		}
 
-		private function updateTurn(event:* = null):void {
-			if (!fieldData) return;
-
-			_progressPanel.progress = fieldData.currentTurn / fieldData.maxTurns;
+		private function updateCounters(event:* = null):void {
+			for (var resourceType:String in _hashTypeToCounter) {
+				var counter:ObjectsCounter = _hashTypeToCounter[resourceType] as ObjectsCounter;
+				counter.stack = screenData.gridData.getCollectedResource(resourceType);
+			}
 		}
 
 		//---------------------------------------------------------

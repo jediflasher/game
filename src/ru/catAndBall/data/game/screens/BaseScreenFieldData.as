@@ -18,7 +18,7 @@ package ru.catAndBall.data.game.screens {
 
 		public function BaseScreenFieldData(screenType:String, fieldData:GridData) {
 			super(screenType);
-			this.fieldData = fieldData;
+			this.gridData = fieldData;
 		}
 
 		//--------------------------------------------------------------------------
@@ -27,6 +27,6 @@ package ru.catAndBall.data.game.screens {
 		//
 		//--------------------------------------------------------------------------
 
-		public var fieldData:GridData;
+		public var gridData:GridData;
 	}
 }

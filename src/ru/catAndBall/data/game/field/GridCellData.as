@@ -48,8 +48,6 @@ package ru.catAndBall.data.game.field {
 
 		public var destroyed:Boolean;
 
-		public var resourceType:String = '';
-
 		public function get nextLevelCount():int {
 			if (type in _settings.customUpgradeLimits) return _settings.customUpgradeLimits[type];
 			return _settings.baseUpgradeLimit;

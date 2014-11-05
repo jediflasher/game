@@ -63,7 +63,6 @@ package ru.catAndBall.data.game.settings {
 			bombsResultHash[GridCellType.GRANNY] = GridCellType.SOCKS;
 
 			baseUpgradeLimit = 7;
-			baseStackSize = 7;
 			baseConnectCount = 3;
 
 			connectCounts = {};

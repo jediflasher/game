@@ -20,5 +20,15 @@ package ru.catAndBall.data.game.field {
 			super(gridCellType, column, row, settings);
 			family = GridCellFamily.RESOURCE;
 		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Properties
+		//
+		//--------------------------------------------------------------------------
+
+		public function get resourceType():String {
+			return GridCellType.getResourceType(type);
+		}
 	}
 }

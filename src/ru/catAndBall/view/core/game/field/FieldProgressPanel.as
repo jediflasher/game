@@ -5,6 +5,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
 
+	import feathers.core.FeathersControl;
+
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
@@ -20,7 +22,7 @@ package ru.catAndBall.view.core.game.field {
 	 * @langversion            3.0
 	 * @date                17.08.14 17:22
 	 */
-	public class FieldProgressPanel extends Sprite {
+	public class FieldProgressPanel extends FeathersControl {
 
 		//---------------------------------------------------------
 		//
@@ -73,13 +75,10 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		public override function render(support:RenderSupport, parentAlpha:Number):void {
-			super.render(support, parentAlpha);
+		protected override function initialize():void {
+			super.initialize();
 
-			if (_needUpdate) {
-				_needUpdate = false;
-				update();
-			}
+			update();
 		}
 
 		//---------------------------------------------------------
@@ -92,8 +91,8 @@ package ru.catAndBall.view.core.game.field {
 			if (!_cat) {
 				_cat = Assets.getImage(AssetList.Strip_moves_cat_for_strip);
 				_cat.y = 30 - _cat.height / 2;
+				addChild(_cat);
 			}
-			addChild(_cat);
 
 			var start:Number = AppProperties.appWidth * 0.1;
 			var totalPath:Number = AppProperties.appWidth - (start * 2 + _cat.width);

@@ -14,6 +14,7 @@ package ru.catAndBall.view.core.game {
 	import ru.catAndBall.data.game.field.PestGridCellData;
 	import ru.catAndBall.utils.Geometry;
 	import ru.catAndBall.view.core.text.TextFieldTest;
+	import ru.catAndBall.view.screens.BaseScreen;
 
 	import starling.animation.IAnimatable;
 	import starling.core.Starling;
@@ -75,6 +76,7 @@ package ru.catAndBall.view.core.game {
 			cell.updateExplode();
 			cell.$data = null;
 			cell.updateCount();
+			cell.undarken();
 			TweenNano.killTweensOf(cell);
 		}
 
@@ -99,6 +101,10 @@ package ru.catAndBall.view.core.game {
 			alignPivot(HAlign.CENTER, VAlign.CENTER);
 			width = height = SIZE;
 			_data = data;
+
+			_darkenImage.width = _darkenImage.height = SIZE;
+			_darkenImage.visible = false;
+			addChild(_darkenImage);
 		}
 
 		//--------------------------------------------------------------------------
@@ -108,6 +114,8 @@ package ru.catAndBall.view.core.game {
 		//--------------------------------------------------------------------------
 
 		private var _countTextField:TextFieldTest;
+
+		private var _darkenImage:Image = new Image(BaseScreen.DARKEN_TEXTURE);
 
 		//---------------------------------------------------------
 		//
@@ -163,6 +171,14 @@ package ru.catAndBall.view.core.game {
 
 		public function get size():int {
 			return SIZE;
+		}
+
+		public function darken():void {
+			_darkenImage.visible = true;
+		}
+
+		public function undarken():void {
+			_darkenImage.visible = false;
 		}
 
 		//--------------------------------------------------------------------------
@@ -237,6 +253,7 @@ package ru.catAndBall.view.core.game {
 			_countTextField.visible = true;
 
 			addChild(_countTextField);
+			addChild(_darkenImage);
 		}
 
 		//--------------------------------------------------------------------------

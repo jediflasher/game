@@ -31,10 +31,6 @@ package ru.catAndBall.data.game {
 					break;
 			}
 
-			if (GridCellType.hasResourceType(gridCellType)) {
-				result.resourceType = GridCellType.getResourceType(gridCellType);
-			}
-
 			return result;
 		}
 

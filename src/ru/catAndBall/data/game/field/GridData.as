@@ -49,10 +49,10 @@ package ru.catAndBall.data.game.field {
 			columns = settings.fieldHeight;
 			rows = settings.fieldWidth;
 
-			_cellsMatrix = new Vector.<Vector.<GridCellData>>(columns, true);
+			cellsMatrix = new Vector.<Vector.<GridCellData>>(columns, true);
 
 			for (var i:int = 0; i < columns; i++) {
-				_cellsMatrix[i] = new Vector.<GridCellData>(rows, true);
+				cellsMatrix[i] = new Vector.<GridCellData>(rows, true);
 			}
 		}
 
@@ -68,7 +68,7 @@ package ru.catAndBall.data.game.field {
 
 		public var rows:int;
 
-		public const collectedResources:ResourceSet = new ResourceSet();
+		public const collectedResourceSet:ResourceSet = new ResourceSet();
 
 		public function getCollectCount(type:int):int {
 			if (type in settings.connectCounts) return int(settings.connectCounts[type]);
@@ -107,7 +107,7 @@ package ru.catAndBall.data.game.field {
 		//
 		//---------------------------------------------------------
 
-		private var _cellsMatrix:Vector.<Vector.<GridCellData>>;
+		public var cellsMatrix:Vector.<Vector.<GridCellData>>;
 
 		private var _typesHash:Object = {};
 
@@ -144,12 +144,21 @@ package ru.catAndBall.data.game.field {
 		public function collectCells(cells:Vector.<GridCellData>, newCells:Vector.<GridCellData>):void {
 			var columns:Object = {};
 
-			for each(var cell:GridCellData in cells) {
-				_collectedResources[cell.resourceType] ||= 0;
-				_collectedResources[cell.resourceType]++;
+			var stackSize:int = settings.baseStackSize;
 
-				removeCell(cell);
-				columns[cell.column] = true;
+			for each(var cell:GridCellData in cells) {
+				if (cell is ResourceGridCellData) {
+					var resourceType:String = (cell as ResourceGridCellData).resourceType;
+					var newCount:int = (_collectedResources[resourceType] || 0);
+					_collectedResources[resourceType] = ++ newCount;
+
+					var oldValue:int = collectedResourceSet.get(resourceType);
+					var newValue:int = int(newCount / stackSize);
+					if (newValue > oldValue) collectedResourceSet.addType(resourceType, newValue - oldValue);
+
+					removeCell(cell);
+					columns[cell.column] = true;
+				}
 			}
 
 			for (var column:String in columns) {
@@ -170,7 +179,7 @@ package ru.catAndBall.data.game.field {
 		public function fullFill(generator:IGridGenerator):void {
 			for (var i:int = 0; i < columns; i++) {
 				for (var j:int = 0; j < rows; j++) {
-					if (!_cellsMatrix[i][j]) {
+					if (!cellsMatrix[i][j]) {
 						var cell:GridCellData = generator.getGridCell(i, j);
 						addCell(cell);
 					}
@@ -191,14 +200,14 @@ package ru.catAndBall.data.game.field {
 		public final function getColumn(index:int):Vector.<GridCellData> {
 			if (index < 0) return null;
 			if (index > columns - 1) return null;
-			return _cellsMatrix[index] as Vector.<GridCellData>;
+			return cellsMatrix[index] as Vector.<GridCellData>;
 		}
 
 		[Inline]
 		public final function clear():void {
 			for (var i:int = 0; i < columns; i++) {
 				for (var j:int = 0; j < rows; j++) {
-					_cellsMatrix[i][j] = null;
+					cellsMatrix[i][j] = null;
 				}
 			}
 
@@ -206,6 +215,7 @@ package ru.catAndBall.data.game.field {
 			_familyHash = {};
 			_collectedResources = {};
 			_currentTurn = 0;
+			collectedResourceSet.clear();
 			maxTurns = 0;
 		}
 
@@ -290,7 +300,7 @@ package ru.catAndBall.data.game.field {
 
 		[Inline]
 		private final function removeCell(cell:GridCellData):void {
-			_cellsMatrix[cell.column][cell.row] = null;
+			cellsMatrix[cell.column][cell.row] = null;
 
 			var typesList:Vector.<GridCellData> = (_typesHash[cell.type] as Vector.<GridCellData>);
 			if (typesList) {
@@ -310,12 +320,12 @@ package ru.catAndBall.data.game.field {
 
 		[Inline]
 		private final function moveCell(cell:GridCellData, column:int, row:int):void {
-			if (_cellsMatrix[column][row]) throw new Error('Can\'t move cell: place is not free');
+			if (cellsMatrix[column][row]) throw new Error('Can\'t move cell: place is not free');
 
-			_cellsMatrix[cell.column][cell.row] = null;
+			cellsMatrix[cell.column][cell.row] = null;
 			cell.column = column;
 			cell.row = row;
-			_cellsMatrix[column][row] = cell;
+			cellsMatrix[column][row] = cell;
 		}
 
 		private function getLine(startCell:GridCellData, result:Vector.<GridCellData>, excludes:Dictionary = null, includeCorners:Boolean = false):void {

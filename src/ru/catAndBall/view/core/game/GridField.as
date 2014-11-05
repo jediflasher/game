@@ -18,9 +18,13 @@ package ru.catAndBall.view.core.game {
 	import flash.utils.Dictionary;
 
 	import ru.catAndBall.data.game.field.GridCellData;
+
+	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.field.PestGridCellData;
+	import ru.catAndBall.view.core.display.BaseSprite;
 	import ru.catAndBall.view.core.game.GridCell;
+	import ru.catAndBall.view.screens.BaseScreen;
 
 	import starling.display.Image;
 
@@ -39,7 +43,7 @@ package ru.catAndBall.view.core.game {
 	 * @langversion            3.0
 	 * @date                24.06.14 12:02
 	 */
-	public class GridField extends Sprite {
+	public class GridField extends BaseSprite {
 
 		//--------------------------------------------------------------------------
 		//
@@ -67,9 +71,10 @@ package ru.catAndBall.view.core.game {
 		//
 		//---------------------------------------------------------
 
-		public function GridField() {
+		public function GridField(data:GridData) {
 			super();
-			this.init();
+
+			_data = data;
 		}
 
 		//--------------------------------------------------------------------------
@@ -87,20 +92,6 @@ package ru.catAndBall.view.core.game {
 			return _data;
 		}
 
-		public function set data(value:GridData):void {
-			if (_data === value) return;
-
-			if (_data) _data.removeEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
-			_data = value;
-
-			clear();
-
-			if (_data) {
-				_data.addEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
-				buildField();
-			}
-		}
-
 		//--------------------------------------------------------------------------
 		//
 		//  Variables
@@ -115,8 +106,6 @@ package ru.catAndBall.view.core.game {
 
 		private const _baseContainer:Sprite = new Sprite();
 
-		private const _selectedContainer:Sprite = new Sprite();
-
 		private const _lineLayer:LineLayer = new LineLayer();
 
 		private var _hashDataToView:Dictionary = new Dictionary();
@@ -125,32 +114,11 @@ package ru.catAndBall.view.core.game {
 
 		private var _clickDisabled:Boolean = false;
 
-		private var _selectedFilter:ColorMatrixFilter;
-
 		//--------------------------------------------------------------------------
 		//
 		//  Public methods
 		//
 		//--------------------------------------------------------------------------
-
-		public function clear():void {
-			_lineLayer.clear();
-			_baseContainer.removeChildren(0, -1, true);
-			_selectedContainer.removeChildren(0, -1, true);
-			_selectedQueue.length = 0;
-			_mouseDown = false;
-			_hashDataToView = new Dictionary();
-			if (_selectedFilter) _selectedFilter.dispose();
-			_selectedFilter = null;
-			if (_data) _data.removeEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
-			GridCell.disposePool();
-		}
-
-		public override function dispose():void {
-			clear();
-			removeEventListener(TouchEvent.TOUCH, handler_cellTouch);
-			super.dispose();
-		}
 
 		public function removeCells(cells:Vector.<GridCellData>):void {
 			for each(var cell:GridCellData in cells) {
@@ -183,21 +151,43 @@ package ru.catAndBall.view.core.game {
 
 		//--------------------------------------------------------------------------
 		//
-		//  Private methods
+		//  Protected methods
 		//
 		//--------------------------------------------------------------------------
 
-		private function init():void {
+		protected override function added(event:* = null):void {
 			addChild(_baseContainer);
-			addChild(_selectedContainer);
 			addChild(_lineLayer);
+
+			_data.addEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
+			buildField();
 
 			addEventListener(TouchEvent.TOUCH, handler_cellTouch);
 		}
 
+		protected override function removed(event:* = null):void {
+			_lineLayer.clear();
+			_baseContainer.removeChildren(0, -1, true);
+			_selectedQueue.length = 0;
+			_mouseDown = false;
+			_hashDataToView = new Dictionary();
+			if (_data) _data.removeEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
+
+			removeEventListener(TouchEvent.TOUCH, handler_cellTouch);
+
+			super.removed(event);
+		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Private methods
+		//
+		//--------------------------------------------------------------------------
+
 		private function buildField():void {
 			var columns:int = _data.columns;
 			var rows:int = _data.rows;
+
 			for (var i:int = 0; i < columns; i++) {
 				var column:Vector.<GridCellData> = _data.getColumn(i);
 				for (var j:int = 0; j < rows; j++) {
@@ -274,20 +264,13 @@ package ru.catAndBall.view.core.game {
 		}
 
 		private function highlightCellsByType(cellType:int):void {
-			var cells:Vector.<GridCellData> = _data.getCellsByType(cellType);
-			for each(var cell:GridCellData in cells) {
-				var view:GridCell = _hashDataToView[cell];
-				_selectedContainer.addChild(view);
+			for (var i:int = 0; i < _data.columns; i++) {
+				for (var j:int = 0; j < _data.rows; j++) {
+					var cellData:GridCellData = _data.cellsMatrix[i][j];
+					var view:GridCell = _hashDataToView[cellData];
+					view.darken();
+				}
 			}
-
-			if (!_selectedFilter) {
-				_selectedFilter = new ColorMatrixFilter();
-				_selectedFilter.adjustBrightness(-0.5);
-				_selectedFilter.adjustSaturation(-0.5);
-				_selectedFilter.adjustContrast(-0.5);
-			}
-
-			_baseContainer.filter = _selectedFilter;
 		}
 
 		[Inline]
@@ -350,19 +333,14 @@ package ru.catAndBall.view.core.game {
 		private function touchComplete():void {
 			if (!_mouseDown) return;
 
-			var numChildren:int = _selectedContainer.numChildren;
 			var len:int = _selectedQueue.length;
 			var success:Boolean = len > 0 ? len >= _data.getCollectCount(_selectedQueue[0].data.type) : false;
 
-			for (var i:int = numChildren - 1; i >= 0; i--) {
-				var cell:GridCell = _selectedContainer.getChildAt(i) as GridCell;
-				if (!cell) return;
-
+			for (var i:int = 0; i < len; i++) {
+				var cell:GridCell = _selectedQueue[i];
 				if (success && cell.selected) {
 					delete _hashDataToView[cell.data];
-				} else {
 					cell.selected = false;
-					_baseContainer.addChild(cell);
 				}
 			}
 
@@ -382,7 +360,6 @@ package ru.catAndBall.view.core.game {
 			_selectedQueue.length = 0;
 			_mouseDown = false;
 
-			_selectedContainer.removeChildren();
 			_baseContainer.filter = null;
 			_clickDisabled = false;
 

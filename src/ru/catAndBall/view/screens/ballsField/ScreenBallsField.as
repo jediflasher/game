@@ -6,12 +6,11 @@
 package ru.catAndBall.view.screens.ballsField {
 
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.game.ResourceSet;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
+	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.game.field.BaseScreenFieldBackground;
-	import ru.catAndBall.view.core.game.field.ObjectsCounter;
+	import ru.catAndBall.view.screens.ScreenType;
 
 	/**
 	 * @author                Obi
@@ -28,32 +27,15 @@ package ru.catAndBall.view.screens.ballsField {
 		//
 		//---------------------------------------------------------
 
-		public function ScreenBallsField(data:BaseScreenData) {
-			super(data);
+		public function ScreenBallsField() {
+			super(new BaseScreenFieldData(ScreenType.BALLS_FIELD, GameData.player.ballsField));
 		}
-
-		//---------------------------------------------------------
-		//
-		// Public methods
-		//
-		//---------------------------------------------------------
 
 		//---------------------------------------------------------
 		//
 		// Protected methods
 		//
-		//---------------------------------------------------------
-
-		protected override function initialize():void {
-
-
-			super.initialize();
-		}
-
-		protected override function update(event:* = null):void {
-			super.update();
-			updateCounters();
-		}
+		//---------------------------------------------------------		}
 
 		protected override function getBackground():BaseScreenFieldBackground {
 			return new BaseScreenFieldBackground(
@@ -73,33 +55,6 @@ package ru.catAndBall.view.screens.ballsField {
 		// Private methods
 		//
 		//---------------------------------------------------------
-
-		private function updateCounters(event:* = null):void {
-			if (!fieldData) return;
-
-			var socks:ObjectsCounter = getCounter(ResourceSet.BF_SOCKS);
-			var sweaters:ObjectsCounter = getCounter(ResourceSet.BF_SWEATERS);
-			var balls:ObjectsCounter = getCounter(ResourceSet.BF_BALLS);
-			var toys:ObjectsCounter = getCounter(ResourceSet.BF_TOYS);
-
-			var stackSize:int = 8;
-
-			var count:int = fieldData.getCollectedResource(ResourceSet.BF_BALLS);
-			balls.count = int(count / stackSize);
-			balls.progress = ((stackSize + count) % stackSize) / stackSize;
-
-			count = fieldData.getCollectedResource(ResourceSet.BF_SWEATERS);
-			sweaters.count = int(count / stackSize);
-			sweaters.progress = ((stackSize + count) % stackSize) / stackSize;
-
-			count = fieldData.getCollectedResource(ResourceSet.BF_SOCKS);
-			socks.count = int(count / stackSize);
-			socks.progress = ((stackSize + count) % stackSize) / stackSize;
-
-			count = fieldData.getCollectedResource(ResourceSet.BF_TOYS);
-			toys.count = int(count / stackSize);
-			toys.progress = ((stackSize + count) % stackSize) / stackSize;
-		}
 
 		//---------------------------------------------------------
 		//

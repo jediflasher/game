@@ -81,11 +81,11 @@ package ru.catAndBall.view.core.game.field {
 			_topBorder.y = nextY;
 			_topBorder.width = AppProperties.appWidth;
 
-			var h:Number = _sizeH * (_elementBg1.texture.height + Layout.fieldElementPadding) + (Layout.baseGap * 2);
+			var h:Number = AppProperties.appWidth;
 			_fieldBg.touchable = false;
 			_fieldBg.x = 0;
 			_fieldBg.y = nextY;
-			_fieldBg.setTo(h, h);
+			_fieldBg.setTo(h, Layout.fieldCountersY - Layout.fieldFieldY);
 
 			for (var i:int = 0; i < _sizeW; i++) {
 				for (var j:int = 0; j < _sizeH; j++) {
