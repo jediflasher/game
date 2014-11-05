@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:bdf4a8ee6b6dff0f8914d20401530747:91f9ff07256f3e5bb3268a4a568738b7:345d47aacc1ef2fb56af7e74b6fb1c17$ -->
+<TextureAtlas imagePath="atlas1.png">
+    <SubTexture name="Footer/settings" x="1505" y="1763" width="84" height="85" frameX="-36" frameY="-36" frameWidth="149" frameHeight="149"/>
+    <SubTexture name="Room/carpet" x="1092" y="1172" width="833" height="498"/>
+    <SubTexture name="Room/cat" x="1273" y="764" width="371" height="405" frameX="-2" frameY="0" frameWidth="374" frameHeight="405"/>
+    <SubTexture name="Room/cat_house_lvl1" x="1168" y="1672" width="335" height="180" frameX="-10" frameY="-3" frameWidth="350" frameHeight="185"/>
+    <SubTexture name="Room/regiment1Close" x="2" y="1856" width="106" height="184"/>
+    <SubTexture name="Room/regiment3Close" x="1646" y="759" width="112" height="228"/>
+    <SubTexture name="Room/vhod_pole_klubki" x="1615" y="1672" width="81" height="81"/>
+    <SubTexture name="Room/vhod_pole_kover" x="1807" y="1672" width="81" height="80" frameX="0" frameY="-1" frameWidth="81" frameHeight="81"/>
+    <SubTexture name="Room/window" x="1273" y="2" width="768" height="637"/>
+    <SubTexture name="Strip_moves/cat_for_strip" x="999" y="1586" width="90" height="95"/>
+    <SubTexture name="Tools/name_tools_active" x="999" y="1172" width="90" height="136"/>
+    <SubTexture name="Tools/name_tools_passive" x="999" y="1310" width="90" height="136"/>
+    <SubTexture name="Tools/name_tools_unavailable" x="999" y="1448" width="90" height="136"/>
+    <SubTexture name="fields/balls/bg3" x="360" y="1856" width="181" height="181"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_socksIcon" x="999" y="1683" width="167" height="171" frameX="-2" frameY="0" frameWidth="171" frameHeight="171"/>
+    <SubTexture name="fields/carpet/bg2" x="543" y="1856" width="181" height="181"/>
+    <SubTexture name="fields/carpet/bg3" x="726" y="1856" width="181" height="181"/>
+    <SubTexture name="fields/carpet/object_carpet/parrot" x="1646" y="1001" width="176" height="169" frameX="-2" frameY="-5" frameWidth="181" frameHeight="181"/>
+    <SubTexture name="fields/carpet/object_carpet/threads" x="1760" y="815" width="165" height="156" frameX="-8" frameY="-13" frameWidth="181" frameHeight="181"/>
+    <SubTexture name="fields/window/bg2" x="909" y="1856" width="181" height="181"/>
+    <SubTexture name="fields/window/bg3" x="1092" y="1856" width="181" height="181"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_hayIcon" x="1824" y="1001" width="174" height="169" frameX="0" frameY="-1" frameWidth="174" frameHeight="171"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_ragsIcon" x="1275" y="1854" width="167" height="176" frameX="-2" frameY="0" frameWidth="171" frameHeight="176"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_ragsIconDisabled" x="1444" y="1854" width="167" height="176" frameX="-2" frameY="0" frameWidth="171" frameHeight="176"/>
+    <SubTexture name="fields/window/object_window/rabbit" x="1760" y="641" width="165" height="172" frameX="-7" frameY="-3" frameWidth="181" frameHeight="181"/>
+    <SubTexture name="fields/window/object_window/violet" x="1906" y="1763" width="139" height="163" frameX="-21" frameY="-8" frameWidth="181" frameHeight="181"/>
+    <SubTexture name="header/band_experience_background" x="1591" y="1756" width="122" height="96" frameX="-1" frameY="0" frameWidth="124" frameHeight="96"/>
+    <SubTexture name="header/header_icon_ava" x="1927" y="641" width="118" height="121"/>
+    <SubTexture name="inventory/fon_pod_ikonki" x="2" y="1172" width="995" height="682"/>
+    <SubTexture name="inventory/grey_icon/balls_shadow" x="1927" y="1666" width="113" height="95" frameX="-2" frameY="-11" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/box_shadow" x="1927" y="1587" width="114" height="77" frameX="-1" frameY="-20" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/coffe_shadow" x="1698" y="1672" width="107" height="80" frameX="-5" frameY="-18" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/cookies_shadow" x="1927" y="1279" width="116" height="95" frameX="0" frameY="-10" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/dove_shadow" x="1927" y="1172" width="116" height="105" frameX="0" frameY="-5" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/hay_shadow" x="1273" y="641" width="122" height="119"/>
+    <SubTexture name="inventory/grey_icon/katushka_shadow" x="1613" y="1854" width="100" height="115" frameX="-8" frameY="0" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/kolbasa_shadow" x="1927" y="1376" width="115" height="109" frameX="-1" frameY="-3" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/konteiner_shadow" x="1505" y="1672" width="108" height="82" frameX="-4" frameY="-17" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/mouse_shadow" x="1927" y="1487" width="114" height="98" frameX="-1" frameY="-9" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/rabbit_fur_shadow" x="1516" y="641" width="120" height="117"/>
+    <SubTexture name="inventory/grey_icon/rag_shadow" x="1927" y="874" width="117" height="125"/>
+    <SubTexture name="inventory/grey_icon/socks_shadow" x="1397" y="641" width="117" height="119"/>
+    <SubTexture name="inventory/grey_icon/sweaters_shadow" x="1927" y="764" width="118" height="108" frameX="0" frameY="-4" frameWidth="118" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/toys_shadow" x="1906" y="1928" width="120" height="114" frameX="0" frameY="-1" frameWidth="120" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/wool_shadow" x="1638" y="641" width="120" height="116"/>
+    <SubTexture name="inventory/shcatulka" x="2" y="2" width="1269" height="1168" frameX="0" frameY="0" frameWidth="1269" frameHeight="1169"/>
+    <SubTexture name="panel_tools/coffee" x="110" y="1856" width="248" height="183" frameX="-3" frameY="-40" frameWidth="251" frameHeight="251"/>
+    <SubTexture name="panel_tools/strelka" x="1715" y="1754" width="189" height="287"/>
+    <SubTexture name="pause" x="1613" y="1971" width="60" height="71" frameX="-35" frameY="-35" frameWidth="122" frameHeight="136"/>
+    <SubTexture name="settings" x="1505" y="1763" width="84" height="85" frameX="-36" frameY="-36" frameWidth="149" frameHeight="149"/>
+</TextureAtlas>
