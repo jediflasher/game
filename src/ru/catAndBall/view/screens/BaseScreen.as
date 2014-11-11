@@ -11,10 +11,14 @@ package ru.catAndBall.view.screens {
 	import flash.display.BitmapData;
 
 	import ru.catAndBall.AppProperties;
+
+	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.assets.Assets;
+	import ru.catAndBall.view.core.ui.BasePopup;
 
 	import starling.display.Image;
+	import starling.events.Event;
 	import starling.textures.Texture;
 
 	/**
@@ -90,8 +94,9 @@ package ru.catAndBall.view.screens {
 		//
 		//--------------------------------------------------------------------------
 
-		public function darken():void {
+		public function darken(alpha:Number = 1):void {
 			addRawChild(_darkenImage);
+			_darkenImage.alpha = alpha;
 			_darkenImage.visible = true;
 		}
 
@@ -132,5 +137,11 @@ package ru.catAndBall.view.screens {
 		protected function customFooterFactory():IFeathersControl {
 			return IFeathersControl(new footerClass());
 		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Event handlers
+		//
+		//--------------------------------------------------------------------------
 	}
 }

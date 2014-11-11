@@ -5,26 +5,14 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
 
-	import flash.errors.IllegalOperationError;
-	import flash.geom.Rectangle;
-
-	import ru.catAndBall.AppProperties;
-	import ru.catAndBall.data.game.GridFieldSettings;
-	import ru.catAndBall.data.game.ResourceSet;
-	import ru.catAndBall.data.game.field.GridCellType;
 	import ru.catAndBall.data.game.field.GridData;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
-	import ru.catAndBall.view.assets.AssetList;
-	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.game.FieldBottomPanel;
-	import ru.catAndBall.view.core.game.GridCell;
-	import ru.catAndBall.view.core.game.GridField;
+	import ru.catAndBall.view.core.game.FieldFooterBar;
+	import ru.catAndBall.view.core.game.GridController;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.BaseScreen;
 
-	import starling.display.Image;
-	import starling.display.Sprite;
+	import starling.display.DisplayObject;
 	import starling.events.Event;
 
 	/**
@@ -59,10 +47,10 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		private var _fieldView:GridField;
+		private var _fieldController:GridController;
 
-		public function get fieldView():GridField {
-			return _fieldView;
+		public function get fieldController():GridController {
+			return _fieldController;
 		}
 
 		public function get screenData():BaseScreenFieldData {
@@ -75,11 +63,11 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
+		private var _bg:DisplayObject;
+
 		protected var _progressPanel:FieldProgressPanel;
 
-		private var _hashTypeToCounter:Object = {}; // type (String) -> ObjectsCounter
-
-		private var _counterContainer:Sprite = new Sprite();
+		private var _counterContainer:FieldCounters;
 
 		//---------------------------------------------------------
 		//
@@ -88,49 +76,34 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		protected override function initialize():void {
-			backgroundSkin = getBackground();
-			headerClass = FieldProgressPanel;
-			footerClass = FieldBottomPanel;
-
-			super.initialize();
-
-			_fieldView = new GridField(screenData.gridData);
-			_fieldView.addEventListener(GridField.EVENT_HIGHLIGHT_START, handler_highlightStart);
-			_fieldView.addEventListener(GridField.EVENT_HIGHLIGHT_COMPLETE, handler_highlightComplete);
-			_fieldView.y = Layout.fieldFieldY;
-			addRawChild(_fieldView);
+			footerClass = FieldFooterBar;
 
 			_progressPanel = new FieldProgressPanel();
 			addRawChild(_progressPanel);
 
+			_bg = getBackground();
+			_bg.y = Layout.field.fieldBgBounds.y;
+			addRawChild(_bg);
+
+			_fieldController = new GridController(screenData.gridData, this);
+			_fieldController.added();
+
+			_counterContainer = new FieldCounters((data as BaseScreenFieldData).gridData);
 			_counterContainer.touchable = false;
+			_counterContainer.y = Layout.field.countersY;
 			addRawChild(_counterContainer);
 
-			const settings:GridFieldSettings = (data as BaseScreenFieldData).gridData.settings;
+			_fieldController.added();
 
-			var x:int = 0;
-			for (var key:String in settings.upgradeHash) {
-				var resourceType:String = GridCellType.getResourceType(int(key));
+			super.initialize();
+		}
 
-				if (resourceType in _hashTypeToCounter) return;
-
-				var counter:ObjectsCounter = new ObjectsCounter(
-						resourceType,
-						screenData.gridData.collectedResourceSet,
-						screenData.gridData.settings.baseStackSize
-				);
-
-				counter.x = x;
-				x += counter.width + Layout.baseGap;
-
-				_counterContainer.addChild(counter);
-				_hashTypeToCounter[resourceType] = counter;
+		protected override function draw():void {
+			if (isInvalid(INVALIDATION_FLAG_DATA)) {
+				update();
 			}
 
-			_counterContainer.x = AppProperties.appWidth / 2 - x / 2;
-			_counterContainer.y = Layout.fieldCountersY;
-
-			this.update();
+			super.draw();
 		}
 
 		//---------------------------------------------------------
@@ -142,16 +115,18 @@ package ru.catAndBall.view.core.game.field {
 		protected function update(event:* = null):void {
 			const fieldData:GridData = screenData.gridData;
 
-			fieldData.addEventListener(GridData.EVENT_UPDATE_FIELD, update);
 			fieldData.addEventListener(GridData.EVENT_TURN_UPDATE, updateTurn);
-
-			updateFieldPosition();
-			updateCounters();
 			updateTurn(event);
 		}
 
-		protected function getBackground():BaseScreenFieldBackground {
+		protected function getBackground():GridBackground {
 			throw "must be implemented";
+		}
+
+		protected override function feathersControl_removedFromStageHandler(event:Event):void {
+			super.feathersControl_removedFromStageHandler(event);
+
+			_fieldController.removed();
 		}
 
 		//---------------------------------------------------------
@@ -160,37 +135,9 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		private function updateFieldPosition():void {
-			var bounds:Rectangle = _fieldView.getBounds(_fieldView);
-
-			_fieldView.x = AppProperties.appWidth / 2 - bounds.width / 2 + GridCell.SIZE / 2;
-			_fieldView.y = AppProperties.appHeight * 0.14;
-		}
-
 		private function updateTurn(event:* = null):void {
 			_progressPanel.progress = screenData.gridData.currentTurn / screenData.gridData.maxTurns;
-		}
-
-		private function updateCounters(event:* = null):void {
-			for (var resourceType:String in _hashTypeToCounter) {
-				var counter:ObjectsCounter = _hashTypeToCounter[resourceType] as ObjectsCounter;
-				counter.stack = screenData.gridData.getCollectedResource(resourceType);
-			}
-		}
-
-		//---------------------------------------------------------
-		//
-		// Event handlers
-		//
-		//---------------------------------------------------------
-
-		private function handler_highlightStart(event:Event):void {
-			darken();
-			addChild(_fieldView);
-		}
-
-		private function handler_highlightComplete(event:Event):void {
-			undarken();
+			_progressPanel.stepsLeft = screenData.gridData.maxTurns - screenData.gridData.currentTurn;
 		}
 	}
 }

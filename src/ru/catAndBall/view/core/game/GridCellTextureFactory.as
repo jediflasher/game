@@ -44,9 +44,9 @@ package ru.catAndBall.view.core.game {
 		MAP[GridCellType.SOCKS] = AssetList.fields_balls_object_balls_socks;
 		MAP[GridCellType.BALL_GOLD] = AssetList.fields_balls_object_balls_screenFieldBalls_ballGold;
 		MAP[GridCellType.BALL] = AssetList.fields_carpet_object_carpet_screenFieldCarpet_ball;
-		MAP[GridCellType.COOKIE] = AssetList.fields_carpet_object_carpet_screenFieldCarpet_cookie;
-		MAP[GridCellType.MOUSE] = AssetList.fields_carpet_object_carpet_screenFieldCarpet_mouse;
-		MAP[GridCellType.SAUSAGE] = AssetList.fields_carpet_object_carpet_sausage;
+		MAP[GridCellType.COOKIE] = AssetList.fields_carpet_object_carpet_cookie;
+		MAP[GridCellType.MOUSE] = AssetList.fields_carpet_object_carpet_mouse;
+		MAP[GridCellType.MILK] = AssetList.fields_carpet_object_carpet_milk;
 		MAP[GridCellType.PIGEON] = AssetList.fields_carpet_object_carpet_dove;
 		MAP[GridCellType.CONSERVE] = AssetList.fields_carpet_object_carpet_screenFieldCarpet_canned;
 		MAP[GridCellType.GOLD_FISH] = AssetList.fields_carpet_object_carpet_screenFieldCarpet_goldfish;

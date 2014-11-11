@@ -15,6 +15,7 @@ package ru.catAndBall.controller.screen {
 
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.IGridGenerator;
+	import ru.catAndBall.controller.screen.ScreenRoomController;
 	import ru.catAndBall.data.game.GridCellDataFactory;
 	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.field.BombGridCellData;
@@ -23,7 +24,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.data.game.field.PestGridCellData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.core.game.GridCell;
-	import ru.catAndBall.view.core.game.GridField;
+	import ru.catAndBall.view.core.game.GridController;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.utils.BooleanRandom;
 	import ru.catAndBall.view.screens.ScreenType;
@@ -115,7 +116,7 @@ package ru.catAndBall.controller.screen {
 
 			_fieldData.fullFill(_generator);
 
-			view.addEventListener(GridField.EVENT_COLLECT_CELLS, handler_collectCells);
+			view.addEventListener(GridController.EVENT_COLLECT_CELLS, handler_collectCells);
 		}
 
 		protected override function removed():void {
@@ -124,7 +125,7 @@ package ru.catAndBall.controller.screen {
 			_pests = new Dictionary(true);
 			_petRandom.reset();
 			_prevBombs = null;
-			view.removeEventListener(GridField.EVENT_COLLECT_CELLS, handler_collectCells);
+			view.removeEventListener(GridController.EVENT_COLLECT_CELLS, handler_collectCells);
 
 			super.removed();
 		}
@@ -169,7 +170,9 @@ package ru.catAndBall.controller.screen {
 		}
 
 		protected function fieldComplete():void {
+			var room:ScreenRoomController = navigator.getScreen(ScreenType.ROOM) as ScreenRoomController;
 			navigator.showScreen(ScreenType.ROOM);
+			room.fieldComplete(_fieldData);
 		}
 
 		//---------------------------------------------------------
@@ -261,7 +264,7 @@ package ru.catAndBall.controller.screen {
 
 						bomb = line[j] as BombGridCellData;
 						bomb.readyToBlow = false;
-						bombView = _view.fieldView.getCellByData(bomb);
+						bombView = _view.fieldController.getCellByData(bomb);
 						if (bombView) bombView.updateExplode();
 					}
 				}
@@ -277,7 +280,7 @@ package ru.catAndBall.controller.screen {
 					if (bomb.destroyed) continue;
 
 					bomb.readyToBlow = true;
-					bombView = _view.fieldView.getCellByData(bomb);
+					bombView = _view.fieldController.getCellByData(bomb);
 					if (bombView) bombView.updateExplode();
 				}
 			}
@@ -297,7 +300,7 @@ package ru.catAndBall.controller.screen {
 
 			hash[cell] = true;
 
-			var field:GridField = _view.fieldView;
+			var field:GridController = _view.fieldController;
 			var cellView:GridCell = field.getCellByData(cell);
 
 			if (cellView) {
@@ -320,9 +323,9 @@ package ru.catAndBall.controller.screen {
 
 			_fieldData.replaceCell(newCellData);
 
-			var cellView:GridCell = _view.fieldView.getCellByData(old);
+			var cellView:GridCell = _view.fieldController.getCellByData(old);
 			if (cellView) {
-				_view.fieldView.setNewData(cellView, newCellData);
+				_view.fieldController.setNewData(cellView, newCellData);
 			}
 		}
 

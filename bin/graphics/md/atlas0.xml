@@ -1,229 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:bdf4a8ee6b6dff0f8914d20401530747:91f9ff07256f3e5bb3268a4a568738b7:345d47aacc1ef2fb56af7e74b6fb1c17$ -->
+<!-- $TexturePacker:SmartUpdate:dcd02d5f6e78069bef3b56141f612e56:a50946d23dc408962485246760349d49:345d47aacc1ef2fb56af7e74b6fb1c17$ -->
 <TextureAtlas imagePath="atlas0.png">
-    <SubTexture name="Footer/bank" x="972" y="1820" width="68" height="67" frameX="-4" frameY="-4" frameWidth="76" frameHeight="76"/>
-    <SubTexture name="Footer/button" x="912" y="1671" width="75" height="75"/>
-    <SubTexture name="Footer/home" x="1014" y="1588" width="73" height="70" frameX="-1" frameY="-3" frameWidth="76" frameHeight="76"/>
-    <SubTexture name="Footer/inventar" x="210" y="1980" width="67" height="66" frameX="-4" frameY="-5" frameWidth="76" frameHeight="76"/>
-    <SubTexture name="Footer/mouse_worker" x="934" y="1905" width="74" height="71" frameX="-1" frameY="-3" frameWidth="76" frameHeight="76"/>
-    <SubTexture name="Footer/pannel_pattern" x="2020" y="1056" width="24" height="92"/>
-    <SubTexture name="Footer/settings" x="316" y="1461" width="43" height="43" frameX="-18" frameY="-18" frameWidth="75" frameHeight="75"/>
-    <SubTexture name="Panel_components/bg_for_components" x="772" y="272" width="767" height="287"/>
-    <SubTexture name="Panel_components/components_level_bg" x="1151" y="1571" width="68" height="54"/>
-    <SubTexture name="Panel_components/milk1" x="534" y="1035" width="201" height="78"/>
-    <SubTexture name="Panel_components/milk2" x="331" y="1170" width="201" height="34"/>
-    <SubTexture name="Preloader/band_experience_green" x="2" y="1484" width="28" height="24"/>
-    <SubTexture name="Preloader/band_experience_stroke" x="1888" y="1118" width="34" height="30"/>
-    <SubTexture name="Preloader/cat&amp;clew" x="766" y="561" width="558" height="111"/>
-    <SubTexture name="Preloader/green_button" x="1326" y="561" width="212" height="73"/>
-    <SubTexture name="Preloader/green_button_on" x="1326" y="636" width="212" height="73"/>
-    <SubTexture name="Room/carpet" x="1541" y="345" width="417" height="249"/>
-    <SubTexture name="Room/cat" x="2" y="1511" width="185" height="203" frameX="-1" frameY="0" frameWidth="187" frameHeight="203"/>
-    <SubTexture name="Room/cat_house_lvl1" x="258" y="942" width="168" height="91" frameX="-5" frameY="-1" frameWidth="175" frameHeight="93"/>
-    <SubTexture name="Room/chest" x="1308" y="711" width="228" height="329" frameX="-11" frameY="0" frameWidth="239" frameHeight="351"/>
-    <SubTexture name="Room/collect_exp_icon" x="62" y="1170" width="39" height="39"/>
-    <SubTexture name="Room/regiment1Close" x="2" y="1821" width="53" height="92"/>
-    <SubTexture name="Room/regiment1Open" x="176" y="1035" width="80" height="114"/>
-    <SubTexture name="Room/regiment2Close" x="2" y="1716" width="53" height="103"/>
-    <SubTexture name="Room/regiment2Open" x="1924" y="1056" width="94" height="128"/>
-    <SubTexture name="Room/regiment3Close" x="258" y="1035" width="56" height="114"/>
-    <SubTexture name="Room/regiment3Open" x="639" y="864" width="110" height="154"/>
-    <SubTexture name="Room/shirma_stroitelstvo" x="1540" y="596" width="403" height="199"/>
-    <SubTexture name="Room/tangles" x="1888" y="1286" width="136" height="103"/>
-    <SubTexture name="Room/vhod_pole_klubki" x="2" y="2005" width="41" height="41"/>
-    <SubTexture name="Room/vhod_pole_kover" x="45" y="2005" width="41" height="41"/>
-    <SubTexture name="Room/vhod_pole_okno" x="417" y="1457" width="41" height="41"/>
-    <SubTexture name="Room/window" x="1538" y="797" width="384" height="319"/>
-    <SubTexture name="Strip_moves/ball_for_strip" x="281" y="1861" width="29" height="29"/>
-    <SubTexture name="Strip_moves/cat_for_strip" x="269" y="1461" width="45" height="48"/>
-    <SubTexture name="Strip_moves/line_for_strip" x="767" y="356" width="3" height="3"/>
-    <SubTexture name="Strip_moves/strip_moves" x="2" y="272" width="768" height="82"/>
-    <SubTexture name="Tools/amount_components_off" x="2009" y="429" width="33" height="34"/>
-    <SubTexture name="Tools/amount_components_on" x="1888" y="1150" width="33" height="34"/>
-    <SubTexture name="Tools/button_buy" x="1888" y="1186" width="154" height="48"/>
-    <SubTexture name="Tools/name_tools_active" x="970" y="1978" width="45" height="68"/>
-    <SubTexture name="Tools/name_tools_background" x="1541" y="272" width="1" height="1"/>
-    <SubTexture name="Tools/name_tools_passive" x="1023" y="1511" width="45" height="68"/>
-    <SubTexture name="Tools/name_tools_unavailable" x="1070" y="1511" width="45" height="68"/>
-    <SubTexture name="Tools/spitsbl" x="639" y="444" width="125" height="112" frameX="-1" frameY="-7" frameWidth="126" frameHeight="126"/>
-    <SubTexture name="Tools/tool_background_1" x="2" y="2" width="769" height="268"/>
-    <SubTexture name="Tools/tool_background_2" x="773" y="2" width="769" height="268"/>
-    <SubTexture name="Tools/tool_icon_background" x="1981" y="1391" width="65" height="68"/>
-    <SubTexture name="ToolsOption/amount_components_off" x="2009" y="429" width="33" height="34"/>
-    <SubTexture name="ToolsOption/amount_components_on" x="1888" y="1150" width="33" height="34"/>
-    <SubTexture name="ToolsOption/bg" x="763" y="674" width="543" height="494" frameX="-4" frameY="-4" frameWidth="551" frameHeight="502"/>
-    <SubTexture name="ToolsOption/button" x="912" y="1671" width="75" height="75"/>
-    <SubTexture name="ToolsOption/button_buy" x="1888" y="1186" width="154" height="48"/>
-    <SubTexture name="ToolsOption/button_buy_on" x="1888" y="1236" width="154" height="48"/>
-    <SubTexture name="ToolsOption/close" x="259" y="1170" width="37" height="36" frameX="-18" frameY="-17" frameWidth="68" frameHeight="67"/>
-    <SubTexture name="ToolsOption/minus" x="83" y="1380" width="33" height="13" frameX="-21" frameY="-31" frameWidth="75" frameHeight="75"/>
-    <SubTexture name="ToolsOption/plus" x="728" y="1115" width="33" height="33" frameX="-21" frameY="-21" frameWidth="75" frameHeight="75"/>
-    <SubTexture name="back" x="492" y="1035" width="40" height="31" frameX="-18" frameY="-17" frameWidth="72" frameHeight="60"/>
-    <SubTexture name="button" x="912" y="1671" width="75" height="75"/>
-    <SubTexture name="button_off" x="937" y="1591" width="75" height="75"/>
-    <SubTexture name="button_on" x="946" y="1511" width="75" height="75"/>
-    <SubTexture name="close" x="259" y="1170" width="37" height="36" frameX="-18" frameY="-17" frameWidth="68" frameHeight="67"/>
-    <SubTexture name="connection_line_elements" x="1945" y="596" width="13" height="12"/>
-    <SubTexture name="fields/balls/bg1" x="534" y="1167" width="192" height="192"/>
-    <SubTexture name="fields/balls/bg2" x="1795" y="1118" width="91" height="91"/>
-    <SubTexture name="fields/balls/bg3" x="1795" y="1211" width="91" height="91"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_ballsIcon" x="511" y="1934" width="86" height="80" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_ballsIconDisabled" x="451" y="1374" width="86" height="81" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_socksIcon" x="88" y="1895" width="84" height="86" frameX="-1" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_socksIconDisabled" x="143" y="1716" width="84" height="86" frameX="-1" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_sweaterIcon" x="316" y="1035" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_sweaterIconDisabled" x="758" y="1924" width="86" height="79" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_toysIcon" x="345" y="1511" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/component/screenFieldBalls_toysIconDisabled" x="364" y="1769" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/balls/ebge_fieldballs" x="2" y="1380" width="79" height="14"/>
-    <SubTexture name="fields/balls/object_balls/frog" x="2" y="1397" width="87" height="85" frameX="-2" frameY="-3" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballBlue" x="573" y="1679" width="82" height="81" frameX="-4" frameY="-4" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballGold" x="657" y="1678" width="80" height="80" frameX="-5" frameY="-5" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballGreen" x="490" y="1679" width="81" height="82" frameX="-4" frameY="-4" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballPurple" x="516" y="1595" width="81" height="82" frameX="-4" frameY="-4" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballRed" x="1960" y="345" width="82" height="82" frameX="-3" frameY="-4" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballWhite" x="519" y="1511" width="81" height="82" frameX="-5" frameY="-4" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_granny" x="281" y="1774" width="81" height="85" frameX="-5" frameY="-2" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterBlue" x="174" y="942" width="82" height="76" frameX="-3" frameY="-7" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterGreen" x="89" y="942" width="83" height="76" frameX="-2" frameY="-7" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterPurple" x="430" y="1937" width="79" height="82" frameX="-6" frameY="-3" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterRed" x="865" y="1753" width="82" height="76" frameX="-3" frameY="-7" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterWhite" x="343" y="1597" width="83" height="83" frameX="-3" frameY="-3" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyBlue" x="539" y="1397" width="78" height="81" frameX="-7" frameY="-4" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyPurple" x="889" y="1831" width="81" height="72" frameX="-5" frameY="-8" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyRed" x="697" y="1760" width="78" height="80" frameX="-6" frameY="-6" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyWhite" x="455" y="1206" width="77" height="80" frameX="-6" frameY="-5" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/screenFieldBalls_wolf" x="257" y="1597" width="84" height="84" frameX="-4" frameY="-3" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/balls/object_balls/socks" x="453" y="1288" width="79" height="84" frameX="-6" frameY="-4" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/carpet/bg1" x="2" y="1211" width="167" height="167"/>
-    <SubTexture name="fields/carpet/bg2" x="1795" y="1304" width="91" height="91"/>
-    <SubTexture name="fields/carpet/bg3" x="1888" y="1391" width="91" height="91"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_ballIcon" x="953" y="1397" width="86" height="72" frameX="0" frameY="-7" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_ballIconDisabled" x="846" y="1913" width="86" height="72" frameX="0" frameY="-7" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_cannedIcon" x="680" y="1926" width="76" height="80" frameX="-5" frameY="-3" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_cannedIconDisabled" x="723" y="1842" width="76" height="80" frameX="-5" frameY="-3" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_cookieIcon" x="949" y="1748" width="86" height="70" frameX="0" frameY="-8" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_cookieIconDisabled" x="989" y="1668" width="86" height="70" frameX="0" frameY="-8" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_doveIcon" x="404" y="1035" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_doveIcon_Disabled" x="770" y="1511" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_mouseIcon" x="694" y="1397" width="86" height="74" frameX="0" frameY="-6" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_mouseIconDisabled" x="782" y="1397" width="86" height="74" frameX="0" frameY="-6" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_sausageIcon" x="402" y="1682" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_sausageIconDisabled" x="428" y="1595" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_threadIcon" x="554" y="1847" width="86" height="80" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_threadIconDisabled" x="609" y="1762" width="86" height="80" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_wrapperIcon" x="777" y="1754" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/components/screenFieldCarpet_wrapperIconDisabled" x="824" y="1673" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/carpet/object_carpet/dove" x="683" y="1511" width="85" height="79" frameX="-3" frameY="-6" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/carpet/object_carpet/parrot" x="362" y="1281" width="89" height="86" frameX="-1" frameY="-2" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/carpet/object_carpet/sausage" x="769" y="1592" width="78" height="79" frameX="-7" frameY="-7" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_ball" x="599" y="1595" width="82" height="81" frameX="-4" frameY="-5" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_canned" x="452" y="1766" width="82" height="82" frameX="-4" frameY="-5" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_cookie" x="473" y="1850" width="79" height="82" frameX="-6" frameY="-3" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_goldfish" x="2" y="942" width="85" height="76" frameX="-2" frameY="-4" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_mouse" x="433" y="1511" width="84" height="82" frameX="-4" frameY="-2" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_yorkshire" x="316" y="1683" width="84" height="84" frameX="-3" frameY="-2" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="fields/carpet/object_carpet/threads" x="739" y="1673" width="83" height="79" frameX="-4" frameY="-6" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/carpet/object_carpet/wrapper" x="599" y="1929" width="79" height="80" frameX="-6" frameY="-5" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/carpet/tangle_for_bg" x="1945" y="610" width="13" height="12"/>
-    <SubTexture name="fields/carpet/tangle_for_bg_down" x="1924" y="812" width="12" height="24"/>
-    <SubTexture name="fields/window/bg1" x="1534" y="1118" width="259" height="260"/>
-    <SubTexture name="fields/window/bg2" x="534" y="942" width="91" height="91"/>
-    <SubTexture name="fields/window/bg3" x="428" y="942" width="91" height="91"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_feathersIcon" x="849" y="1591" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_feathersIconDisabled" x="858" y="1511" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_furIcon" x="1960" y="466" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_furIconDisabled" x="1960" y="552" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_hayIcon" x="362" y="1369" width="87" height="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_hayIconDisabled" x="269" y="1373" width="87" height="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_paintblueIcon" x="189" y="1511" width="66" height="86" frameX="-10" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_paintblueIconDisabled" x="189" y="1599" width="66" height="86" frameX="-10" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_paintredIcon" x="143" y="1804" width="67" height="86" frameX="-9" frameY="0" frameWidth="86" frameHeight="87"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_paintredIconDisabled" x="174" y="1892" width="67" height="86" frameX="-9" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_paintwhiteIcon" x="212" y="1804" width="67" height="86" frameX="-9" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_paintwhiteIconDisabled" x="243" y="1892" width="67" height="86" frameX="-10" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_ragsIcon" x="2" y="1915" width="84" height="88" frameX="-1" frameY="0" frameWidth="86" frameHeight="88"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_ragsIconDisabled" x="57" y="1716" width="84" height="88" frameX="-1" frameY="0" frameWidth="86" frameHeight="88"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_woolIcon" x="342" y="1948" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/component/screenFieldCWindow_woolIconDisabled" x="257" y="1511" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="fields/window/object_window/camomile" x="619" y="1397" width="73" height="81" frameX="-9" frameY="-5" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/chiken" x="801" y="1834" width="86" height="77" frameX="-3" frameY="-7" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/dog" x="387" y="1853" width="84" height="82" frameX="-3" frameY="-4" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/gold_leaf" x="870" y="1397" width="81" height="74" frameX="-5" frameY="-9" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/grass" x="683" y="1592" width="84" height="79" frameX="-4" frameY="-6" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/rabbit" x="57" y="1806" width="84" height="87" frameX="-3" frameY="-1" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/rag" x="642" y="1844" width="79" height="80" frameX="-6" frameY="-6" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/rose" x="312" y="1861" width="73" height="85" frameX="-9" frameY="-3" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/sheep" x="229" y="1687" width="85" height="85" frameX="-3" frameY="-3" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/shmel" x="602" y="1511" width="79" height="81" frameX="-6" frameY="-5" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="fields/window/object_window/violet" x="536" y="1763" width="71" height="82" frameX="-10" frameY="-4" frameWidth="91" frameHeight="91"/>
-    <SubTexture name="header/band_experience_background" x="1981" y="1461" width="62" height="48"/>
-    <SubTexture name="header/band_experience_green" x="2" y="1484" width="28" height="24"/>
-    <SubTexture name="header/band_experience_stroke" x="1888" y="1118" width="34" height="30"/>
-    <SubTexture name="header/catmoneyIcon" x="1945" y="638" width="101" height="94" frameX="0" frameY="-3" frameWidth="101" frameHeight="101"/>
-    <SubTexture name="header/header_counter_background" x="1924" y="1001" width="102" height="53"/>
-    <SubTexture name="header/header_icon_ava" x="149" y="1983" width="59" height="61"/>
-    <SubTexture name="header/header_icon_lexp" x="728" y="1150" width="30" height="29"/>
-    <SubTexture name="header/header_lvlIcon" x="103" y="1170" width="38" height="38"/>
-    <SubTexture name="header/header_mouseIcon" x="221" y="1170" width="36" height="37" frameX="-1" frameY="0" frameWidth="38" frameHeight="38"/>
-    <SubTexture name="header/pannel_pattern" x="2020" y="1056" width="24" height="92"/>
-    <SubTexture name="hint/angle" x="1924" y="797" width="19" height="13"/>
-    <SubTexture name="hint/clock_icon" x="1308" y="690" width="15" height="16" frameX="0" frameY="0" frameWidth="16" frameHeight="16"/>
-    <SubTexture name="hint/hint_bg" x="91" y="1395" width="176" height="114"/>
-    <SubTexture name="hint/lvl_icon" x="1308" y="674" width="16" height="14" frameX="0" frameY="-1" frameWidth="16" frameHeight="16"/>
-    <SubTexture name="inventory/activ" x="1308" y="1127" width="223" height="82"/>
-    <SubTexture name="inventory/button" x="912" y="1671" width="75" height="75"/>
-    <SubTexture name="inventory/close" x="259" y="1170" width="37" height="36" frameX="-18" frameY="-17" frameWidth="68" frameHeight="67"/>
-    <SubTexture name="inventory/fon_pod_ikonki" x="1544" y="2" width="498" height="341"/>
-    <SubTexture name="inventory/grey_icon/balls_shadow" x="652" y="1115" width="57" height="48" frameX="-1" frameY="-5" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/box_shadow" x="2" y="1170" width="58" height="39" frameX="0" frameY="-10" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/coffe_shadow" x="460" y="1457" width="54" height="40" frameX="-2" frameY="-9" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/cookies_shadow" x="592" y="1115" width="58" height="48" frameX="0" frameY="-5" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/dove_shadow" x="316" y="1115" width="58" height="53" frameX="0" frameY="-2" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/feather_shadow" x="1169" y="1511" width="60" height="54" frameX="0" frameY="-2" frameWidth="60" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/hay_shadow" x="279" y="1980" width="61" height="60"/>
-    <SubTexture name="inventory/grey_icon/katushka_shadow" x="1117" y="1511" width="50" height="58" frameX="-4" frameY="0" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/kolbasa_shadow" x="1098" y="1722" width="58" height="55" frameX="0" frameY="-1" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/konservbl_shadow" x="1017" y="1947" width="51" height="54" frameX="-3" frameY="-2" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/konteiner_shadow" x="361" y="1457" width="54" height="42" frameX="-2" frameY="-8" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/mouse_shadow" x="532" y="1115" width="58" height="50" frameX="0" frameY="-4" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/nitki_shadow" x="376" y="1115" width="57" height="53" frameX="-1" frameY="-3" frameWidth="59" frameHeight="59"/>
-    <SubTexture name="inventory/grey_icon/paint_shadow" x="1077" y="1660" width="48" height="60" frameX="-5" frameY="0" frameWidth="58" frameHeight="60"/>
-    <SubTexture name="inventory/grey_icon/rabbit_fur_shadow" x="846" y="1987" width="60" height="59"/>
-    <SubTexture name="inventory/grey_icon/rag_shadow" x="88" y="1983" width="59" height="63"/>
-    <SubTexture name="inventory/grey_icon/socks_shadow" x="1037" y="1740" width="59" height="60"/>
-    <SubTexture name="inventory/grey_icon/spitsbl_shadow" x="435" y="1115" width="56" height="51" frameX="-1" frameY="-3" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/sweaters_shadow" x="1231" y="1170" width="59" height="54" frameX="0" frameY="-2" frameWidth="59" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/tangled_shadow" x="1010" y="1889" width="60" height="56" frameX="0" frameY="-1" frameWidth="60" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/toys_shadow" x="908" y="1987" width="60" height="58"/>
-    <SubTexture name="inventory/grey_icon/venik_shadow" x="1127" y="1641" width="54" height="55" frameX="-2" frameY="0" frameWidth="58" frameHeight="58"/>
-    <SubTexture name="inventory/grey_icon/wool_shadow" x="1089" y="1581" width="60" height="58"/>
-    <SubTexture name="inventory/grey_icon/wrappers_shadow" x="1042" y="1802" width="60" height="55" frameX="0" frameY="-2" frameWidth="60" frameHeight="58"/>
-    <SubTexture name="inventory/pasiv" x="1308" y="1042" width="224" height="83"/>
-    <SubTexture name="inventory/shcatulka" x="2" y="356" width="635" height="584" frameX="0" frameY="0" frameWidth="635" frameHeight="585"/>
-    <SubTexture name="melody" x="493" y="1112" width="37" height="40" frameX="-18" frameY="-18" frameWidth="69" frameHeight="71"/>
-    <SubTexture name="panel_tools/background" x="2044" y="2" width="1" height="317"/>
-    <SubTexture name="panel_tools/bg_pod_ikonki" x="2044" y="321" width="1" height="143"/>
-    <SubTexture name="panel_tools/coffee" x="639" y="558" width="125" height="92" frameX="-1" frameY="-20" frameWidth="126" frameHeight="126"/>
-    <SubTexture name="panel_tools/info_icon" x="143" y="1170" width="37" height="37" frameX="0" frameY="0" frameWidth="38" frameHeight="38"/>
-    <SubTexture name="panel_tools/info_icon_on" x="182" y="1170" width="37" height="37" frameX="0" frameY="0" frameWidth="38" frameHeight="38"/>
-    <SubTexture name="panel_tools/katyshka" x="1924" y="880" width="102" height="119" frameX="-12" frameY="-3" frameWidth="126" frameHeight="126"/>
-    <SubTexture name="panel_tools/kontener" x="639" y="652" width="122" height="92" frameX="-2" frameY="-17" frameWidth="126" frameHeight="126"/>
-    <SubTexture name="panel_tools/korobka" x="639" y="356" width="126" height="86" frameX="0" frameY="-20" frameWidth="126" frameHeight="126"/>
-    <SubTexture name="panel_tools/spitsbl" x="639" y="444" width="125" height="112" frameX="-1" frameY="-7" frameWidth="126" frameHeight="126"/>
-    <SubTexture name="panel_tools/strelka" x="1945" y="734" width="95" height="144"/>
-    <SubTexture name="panel_tools/tools_footer_icon" x="362" y="1206" width="91" height="73"/>
-    <SubTexture name="panel_tools/venik" x="639" y="746" width="114" height="116" frameX="-6" frameY="-5" frameWidth="126" frameHeight="126"/>
-    <SubTexture name="pause" x="298" y="1170" width="31" height="36" frameX="-17" frameY="-17" frameWidth="61" frameHeight="68"/>
-    <SubTexture name="repeat" x="492" y="1068" width="38" height="42" frameX="-18" frameY="-18" frameWidth="70" frameHeight="76"/>
-    <SubTexture name="settings" x="316" y="1461" width="43" height="43" frameX="-18" frameY="-18" frameWidth="75" frameHeight="75"/>
-    <SubTexture name="start_windows/X" x="259" y="1170" width="37" height="36" frameX="-18" frameY="-17" frameWidth="68" frameHeight="67"/>
-    <SubTexture name="start_windows/bg" x="763" y="674" width="543" height="494" frameX="-4" frameY="-4" frameWidth="551" frameHeight="502"/>
-    <SubTexture name="start_windows/button" x="912" y="1671" width="75" height="75"/>
-    <SubTexture name="start_windows/button_buy" x="1888" y="1186" width="154" height="48"/>
-    <SubTexture name="start_windows/button_buy_on" x="1888" y="1236" width="154" height="48"/>
-    <SubTexture name="start_windows/carpet_icon" x="171" y="1211" width="189" height="160"/>
-    <SubTexture name="start_windows/tangled_icon" x="2" y="1020" width="172" height="131"/>
-    <SubTexture name="volume" x="1960" y="429" width="47" height="34" frameX="-17" frameY="-18" frameWidth="77" frameHeight="65"/>
+    <SubTexture name="Footer/bank" x="374" y="1425" width="68" height="67" frameX="-4" frameY="-4" frameWidth="76" frameHeight="76"/>
+    <SubTexture name="Footer/home" x="1232" y="1658" width="73" height="70" frameX="-1" frameY="-3" frameWidth="76" frameHeight="76"/>
+    <SubTexture name="Footer/inventar" x="446" y="1424" width="67" height="66" frameX="-4" frameY="-5" frameWidth="76" frameHeight="76"/>
+    <SubTexture name="Footer/mouse_worker" x="1970" y="240" width="74" height="71" frameX="-1" frameY="-3" frameWidth="76" frameHeight="76"/>
+    <SubTexture name="Footer/pannel_pattern" x="732" y="1097" width="24" height="92"/>
+    <SubTexture name="Panel_components/bg_for_components" x="775" y="275" width="767" height="287"/>
+    <SubTexture name="Panel_components/components_level_bg" x="861" y="1505" width="68" height="54"/>
+    <SubTexture name="Panel_components/milk" x="1778" y="459" width="58" height="18"/>
+    <SubTexture name="Panel_components/milk2" x="1333" y="566" width="201" height="34"/>
+    <SubTexture name="Preloader/band_experience_green" x="1695" y="459" width="28" height="24"/>
+    <SubTexture name="Preloader/band_experience_stroke" x="1590" y="459" width="34" height="30"/>
+    <SubTexture name="Preloader/cat&amp;clew" x="771" y="566" width="558" height="111"/>
+    <SubTexture name="Room/carpet" x="1549" y="3" width="417" height="249"/>
+    <SubTexture name="Room/cat" x="1315" y="799" width="185" height="203" frameX="-1" frameY="0" frameWidth="187" frameHeight="203"/>
+    <SubTexture name="Room/cat_house_lvl1" x="365" y="949" width="168" height="91" frameX="-5" frameY="-1" frameWidth="175" frameHeight="93"/>
+    <SubTexture name="Room/chest" x="1805" y="1241" width="228" height="329" frameX="-11" frameY="0" frameWidth="239" frameHeight="351"/>
+    <SubTexture name="Room/collect_exp_icon" x="1362" y="1222" width="39" height="39"/>
+    <SubTexture name="Room/regiment1Close" x="60" y="1862" width="53" height="92"/>
+    <SubTexture name="Room/regiment1Open" x="281" y="949" width="80" height="114"/>
+    <SubTexture name="Room/regiment2Close" x="3" y="1862" width="53" height="103"/>
+    <SubTexture name="Room/regiment2Open" x="3" y="949" width="94" height="128"/>
+    <SubTexture name="Room/regiment3Close" x="3" y="1744" width="56" height="114"/>
+    <SubTexture name="Room/regiment3Open" x="1931" y="960" width="110" height="154"/>
+    <SubTexture name="Room/shirma_stroitelstvo" x="1549" y="256" width="403" height="199"/>
+    <SubTexture name="Room/tangles" x="336" y="1263" width="136" height="103"/>
+    <SubTexture name="Room/vhod_pole_klubki" x="600" y="2004" width="41" height="41"/>
+    <SubTexture name="Room/vhod_pole_kover" x="645" y="2004" width="41" height="41"/>
+    <SubTexture name="Room/vhod_pole_okno" x="1172" y="1505" width="41" height="41"/>
+    <SubTexture name="Room/window" x="1543" y="840" width="384" height="319"/>
+    <SubTexture name="Strip_moves/ball_for_strip" x="1662" y="459" width="29" height="29"/>
+    <SubTexture name="Strip_moves/cat_for_strip" x="474" y="1370" width="45" height="48"/>
+    <SubTexture name="Strip_moves/line_for_strip" x="1956" y="256" width="3" height="3"/>
+    <SubTexture name="Strip_moves/strip_moves" x="3" y="275" width="768" height="82"/>
+    <SubTexture name="Tools/amount_components_off" x="1504" y="935" width="33" height="34"/>
+    <SubTexture name="Tools/amount_components_on" x="1362" y="1347" width="33" height="34"/>
+    <SubTexture name="Tools/name_tools_active" x="276" y="1426" width="45" height="68"/>
+    <SubTexture name="Tools/name_tools_background" x="1963" y="256" width="1" height="1"/>
+    <SubTexture name="Tools/name_tools_passive" x="325" y="1426" width="45" height="68"/>
+    <SubTexture name="Tools/name_tools_unavailable" x="338" y="1498" width="45" height="68"/>
+    <SubTexture name="Tools/spitsbl" x="642" y="451" width="125" height="112" frameX="-1" frameY="-7" frameWidth="126" frameHeight="126"/>
+    <SubTexture name="Tools/tool_background_1" x="3" y="3" width="769" height="268"/>
+    <SubTexture name="Tools/tool_background_2" x="776" y="3" width="769" height="268"/>
+    <SubTexture name="Tools/tool_icon_background" x="1309" y="1658" width="65" height="68"/>
+    <SubTexture name="ToolsOption/amount_components_off" x="1504" y="935" width="33" height="34"/>
+    <SubTexture name="ToolsOption/amount_components_on" x="1362" y="1347" width="33" height="34"/>
+    <SubTexture name="ToolsOption/minus" x="1894" y="477" width="33" height="13" frameX="-21" frameY="-31" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="ToolsOption/plus" x="429" y="2012" width="33" height="33" frameX="-21" frameY="-21" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="building/progress_greenfill" x="1275" y="1505" width="42" height="40"/>
+    <SubTexture name="building/progress_stroke" x="288" y="1375" width="60" height="47"/>
+    <SubTexture name="building/speed" x="1743" y="459" width="31" height="21" frameX="-10" frameY="-15" frameWidth="51" frameHeight="51"/>
+    <SubTexture name="buttons/M_greenbutton" x="365" y="1044" width="162" height="69"/>
+    <SubTexture name="buttons/M_greenbutton_off" x="336" y="1190" width="161" height="69"/>
+    <SubTexture name="buttons/M_greenbutton_on" x="363" y="1117" width="162" height="69"/>
+    <SubTexture name="buttons/S_greenbutton" x="642" y="759" width="121" height="49"/>
+    <SubTexture name="buttons/S_greenbutton_off" x="642" y="865" width="120" height="49"/>
+    <SubTexture name="buttons/S_greenbutton_on" x="642" y="812" width="121" height="49"/>
+    <SubTexture name="buttons/XS_greenbutton" x="537" y="949" width="98" height="40"/>
+    <SubTexture name="buttons/XS_greenbutton_off" x="537" y="993" width="98" height="40"/>
+    <SubTexture name="buttons/XS_greenbutton_on" x="537" y="1037" width="98" height="40"/>
+    <SubTexture name="buttons/back" x="1546" y="459" width="40" height="31" frameX="-18" frameY="-23" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="buttons/button" x="1970" y="3" width="75" height="75"/>
+    <SubTexture name="buttons/button_off" x="1970" y="82" width="75" height="75"/>
+    <SubTexture name="buttons/button_on" x="1970" y="161" width="75" height="75"/>
+    <SubTexture name="buttons/close" x="509" y="2010" width="37" height="35" frameX="-18" frameY="-20" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="buttons/melody" x="1321" y="1505" width="37" height="40" frameX="-18" frameY="-18" frameWidth="69" frameHeight="71"/>
+    <SubTexture name="buttons/pause" x="1504" y="799" width="30" height="36" frameX="-21" frameY="-20" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="buttons/repeat" x="748" y="2001" width="37" height="42" frameX="-18" frameY="-16" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="buttons/settings" x="288" y="1328" width="43" height="43" frameX="-18" frameY="-18" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="buttons/volume" x="550" y="2010" width="46" height="34" frameX="-13" frameY="-20" frameWidth="75" frameHeight="75"/>
+    <SubTexture name="connection_line_elements" x="1840" y="479" width="13" height="12"/>
+    <SubTexture name="fields/balls/bg1" x="1333" y="604" width="191" height="191"/>
+    <SubTexture name="fields/balls/bg2" x="637" y="1097" width="91" height="91"/>
+    <SubTexture name="fields/balls/bg3" x="529" y="1138" width="91" height="91"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_ballsIcon" x="1027" y="1906" width="86" height="80" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_ballsIconDisabled" x="908" y="1574" width="86" height="81" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_socksIcon" x="173" y="1574" width="84" height="86" frameX="-1" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_socksIconDisabled" x="231" y="1744" width="84" height="86" frameX="-1" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_sweaterIcon" x="3" y="1097" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_sweaterIconDisabled" x="1199" y="1901" width="86" height="79" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_toysIcon" x="597" y="1918" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/component/screenFieldBalls_toysIconDisabled" x="627" y="1829" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/balls/ebge_fieldballs" x="1859" y="459" width="79" height="14"/>
+    <SubTexture name="fields/balls/object_balls/frog" x="371" y="1834" width="87" height="85" frameX="-2" frameY="-3" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballBlue" x="888" y="1822" width="82" height="81" frameX="-4" frameY="-4" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballGold" x="1051" y="1819" width="80" height="80" frameX="-5" frameY="-5" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballGreen" x="823" y="1574" width="81" height="82" frameX="-4" frameY="-4" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballPurple" x="777" y="1911" width="81" height="82" frameX="-4" frameY="-4" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballRed" x="717" y="1825" width="82" height="82" frameX="-3" frameY="-4" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_ballWhite" x="803" y="1824" width="81" height="82" frameX="-5" frameY="-4" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_granny" x="473" y="1574" width="81" height="85" frameX="-5" frameY="-2" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterBlue" x="260" y="1664" width="82" height="76" frameX="-3" frameY="-7" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterGreen" x="173" y="1664" width="83" height="76" frameX="-2" frameY="-7" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterPurple" x="862" y="1910" width="79" height="82" frameX="-6" frameY="-3" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterRed" x="346" y="1664" width="82" height="76" frameX="-3" frameY="-7" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_sweaterWhite" x="648" y="1574" width="83" height="83" frameX="-3" frameY="-3" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyBlue" x="945" y="1907" width="78" height="81" frameX="-7" frameY="-4" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyPurple" x="967" y="1659" width="81" height="72" frameX="-5" frameY="-8" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyRed" x="1117" y="1903" width="78" height="80" frameX="-6" frameY="-6" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_toyWhite" x="1135" y="1817" width="77" height="80" frameX="-6" frameY="-5" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/screenFieldBalls_wolf" x="509" y="1922" width="84" height="84" frameX="-4" frameY="-3" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/balls/object_balls/socks" x="569" y="1741" width="79" height="84" frameX="-6" frameY="-4" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/bg1" x="3" y="1574" width="166" height="166"/>
+    <SubTexture name="fields/carpet/bg2" x="624" y="1192" width="91" height="91"/>
+    <SubTexture name="fields/carpet/bg3" x="501" y="1233" width="91" height="91"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_ballIcon" x="787" y="1660" width="86" height="72" frameX="0" frameY="-7" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_ballIconDisabled" x="877" y="1660" width="86" height="72" frameX="0" frameY="-7" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_cannedIcon" x="1162" y="1732" width="76" height="80" frameX="-5" frameY="-3" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_cannedIconDisabled" x="1254" y="1574" width="76" height="80" frameX="-5" frameY="-3" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_cookieIcon" x="1052" y="1659" width="86" height="70" frameX="0" frameY="-8" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_cookieIconDisabled" x="1142" y="1658" width="86" height="70" frameX="0" frameY="-8" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_doveIcon" x="93" y="1097" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_doveIcon_Disabled" x="183" y="1097" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_mouseIcon" x="1805" y="1163" width="86" height="74" frameX="0" frameY="-6" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_mouseIconDisabled" x="432" y="1664" width="86" height="74" frameX="0" frameY="-6" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_sausageIcon" x="687" y="1915" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_sausageIconDisabled" x="652" y="1739" width="86" height="82" frameX="0" frameY="-2" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_threadIcon" x="989" y="1735" width="86" height="80" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_threadIconDisabled" x="1081" y="1574" width="86" height="80" frameX="0" frameY="-3" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_wrapperIcon" x="273" y="1097" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/components/screenFieldCarpet_wrapperIconDisabled" x="1334" y="1574" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/carpet/object_carpet/cookie" x="702" y="1661" width="81" height="73" frameX="-5" frameY="-9" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/object_carpet/dove" x="1216" y="1816" width="85" height="79" frameX="-3" frameY="-6" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/object_carpet/milk" x="158" y="1744" width="69" height="90" frameX="-11" frameY="-1" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/object_carpet/mouse" x="1424" y="1179" width="87" height="77" frameX="-2" frameY="-7" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/object_carpet/parrot" x="1956" y="315" width="89" height="86" frameX="-1" frameY="-2" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_ball" x="903" y="1736" width="82" height="81" frameX="-4" frameY="-5" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_canned" x="742" y="1738" width="82" height="82" frameX="-4" frameY="-5" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_goldfish" x="3" y="1969" width="85" height="76" frameX="-2" frameY="-4" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/carpet/object_carpet/screenFieldCarpet_yorkshire" x="539" y="1830" width="84" height="84" frameX="-3" frameY="-2" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="fields/carpet/object_carpet/threads" x="429" y="1923" width="76" height="85" frameX="-7" frameY="-4" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/object_carpet/wrapper" x="1079" y="1733" width="79" height="80" frameX="-6" frameY="-5" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/carpet/tangle_for_bg" x="1857" y="479" width="13" height="12"/>
+    <SubTexture name="fields/carpet/tangle_for_bg_down" x="1727" y="459" width="12" height="24"/>
+    <SubTexture name="fields/window/bg1" x="1542" y="1163" width="259" height="259"/>
+    <SubTexture name="fields/window/bg2" x="63" y="1744" width="91" height="91"/>
+    <SubTexture name="fields/window/bg3" x="117" y="1839" width="91" height="91"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_feathersIcon" x="1424" y="1260" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_feathersIconDisabled" x="1424" y="1342" width="86" height="78" frameX="0" frameY="-4" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_furIcon" x="3" y="1338" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_furIconDisabled" x="93" y="1338" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_hayIcon" x="1956" y="405" width="87" height="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_hayIconDisabled" x="268" y="1930" width="87" height="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_paintblueIcon" x="403" y="1574" width="66" height="86" frameX="-10" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_paintblueIconDisabled" x="359" y="1924" width="66" height="86" frameX="-10" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_paintredIcon" x="261" y="1574" width="67" height="86" frameX="-9" frameY="0" frameWidth="86" frameHeight="87"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_paintredIconDisabled" x="332" y="1574" width="67" height="86" frameX="-9" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_paintwhiteIcon" x="300" y="1834" width="67" height="86" frameX="-9" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_paintwhiteIconDisabled" x="319" y="1744" width="67" height="86" frameX="-10" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_ragsIcon" x="180" y="1934" width="84" height="88" frameX="-1" frameY="0" frameWidth="86" frameHeight="88"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_ragsIconDisabled" x="212" y="1838" width="84" height="88" frameX="-1" frameY="0" frameWidth="86" frameHeight="88"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_woolIcon" x="479" y="1742" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/component/screenFieldCWindow_woolIconDisabled" x="558" y="1574" width="86" height="84" frameX="0" frameY="-1" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="fields/window/object_window/camomile" x="974" y="1821" width="73" height="81" frameX="-9" frameY="-5" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/chiken" x="1424" y="1424" width="86" height="77" frameX="-3" frameY="-7" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/dog" x="735" y="1574" width="84" height="82" frameX="-3" frameY="-4" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/gold_leaf" x="522" y="1663" width="81" height="74" frameX="-5" frameY="-9" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/grass" x="1242" y="1732" width="84" height="79" frameX="-4" frameY="-6" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/rabbit" x="92" y="1958" width="84" height="87" frameX="-3" frameY="-1" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/rag" x="1171" y="1574" width="79" height="80" frameX="-6" frameY="-6" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/rose" x="462" y="1833" width="73" height="85" frameX="-9" frameY="-3" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/sheep" x="390" y="1744" width="85" height="85" frameX="-3" frameY="-3" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/shmel" x="998" y="1574" width="79" height="81" frameX="-6" frameY="-5" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="fields/window/object_window/violet" x="828" y="1736" width="71" height="82" frameX="-10" frameY="-4" frameWidth="91" frameHeight="91"/>
+    <SubTexture name="header/band_experience_background" x="789" y="1997" width="62" height="48"/>
+    <SubTexture name="header/band_experience_green" x="1695" y="459" width="28" height="24"/>
+    <SubTexture name="header/band_experience_stroke" x="1590" y="459" width="34" height="30"/>
+    <SubTexture name="header/catmoneyIcon" x="183" y="1328" width="101" height="94" frameX="0" frameY="-3" frameWidth="101" frameHeight="101"/>
+    <SubTexture name="header/header_counter_background" x="531" y="1081" width="102" height="53"/>
+    <SubTexture name="header/header_icon_ava" x="1226" y="1984" width="59" height="61"/>
+    <SubTexture name="header/header_icon_lexp" x="1628" y="459" width="30" height="29"/>
+    <SubTexture name="header/header_lvlIcon" x="476" y="1328" width="38" height="38"/>
+    <SubTexture name="header/header_mouseIcon" x="1362" y="1306" width="36" height="37" frameX="-1" frameY="0" frameWidth="38" frameHeight="38"/>
+    <SubTexture name="header/pannel_pattern" x="1504" y="839" width="25" height="92"/>
+    <SubTexture name="hint/angle" x="1931" y="477" width="19" height="13"/>
+    <SubTexture name="hint/clock_icon" x="1840" y="459" width="15" height="16" frameX="0" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="hint/hint_bg" x="101" y="949" width="176" height="114"/>
+    <SubTexture name="hint/lvl_icon" x="1874" y="477" width="16" height="14" frameX="0" frameY="-1" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="inventory/activ" x="1315" y="1093" width="223" height="82"/>
+    <SubTexture name="inventory/fon_pod_ikonki" x="1546" y="495" width="498" height="341"/>
+    <SubTexture name="inventory/grey_icon/balls_shadow" x="917" y="1996" width="57" height="48" frameX="-1" frameY="-5" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/box_shadow" x="1362" y="1179" width="58" height="39" frameX="0" frameY="-10" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/coffe_shadow" x="1217" y="1505" width="54" height="40" frameX="-2" frameY="-9" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/cookies_shadow" x="855" y="1997" width="58" height="48" frameX="0" frameY="-5" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/dove_shadow" x="978" y="1992" width="58" height="53" frameX="0" frameY="-2" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/feather_shadow" x="933" y="1505" width="58" height="54" frameX="0" frameY="-2" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/hay_shadow" x="1164" y="1987" width="58" height="58"/>
+    <SubTexture name="inventory/grey_icon/katushka_shadow" x="635" y="1505" width="50" height="58" frameX="-4" frameY="0" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/kolbasa_shadow" x="1040" y="1990" width="58" height="55" frameX="0" frameY="-1" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/konservbl_shadow" x="1117" y="1505" width="51" height="54" frameX="-3" frameY="-2" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/konteiner_shadow" x="690" y="2001" width="54" height="42" frameX="-2" frameY="-8" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/mouse_shadow" x="412" y="1370" width="58" height="50" frameX="0" frameY="-4" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/nitki_shadow" x="1057" y="1505" width="56" height="54" frameX="-1" frameY="-2" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/paint_shadow" x="689" y="1505" width="48" height="58" frameX="-5" frameY="0" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/rabbit_fur_shadow" x="276" y="1505" width="58" height="58"/>
+    <SubTexture name="inventory/grey_icon/rag_shadow" x="387" y="1505" width="58" height="58"/>
+    <SubTexture name="inventory/grey_icon/socks_shadow" x="449" y="1505" width="58" height="58"/>
+    <SubTexture name="inventory/grey_icon/spitsbl_shadow" x="352" y="1370" width="56" height="51" frameX="-1" frameY="-3" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/sweaters_shadow" x="995" y="1505" width="58" height="54" frameX="0" frameY="-2" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/tangled_shadow" x="741" y="1505" width="58" height="56" frameX="0" frameY="-1" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/toys_shadow" x="511" y="1505" width="58" height="58"/>
+    <SubTexture name="inventory/grey_icon/venik_shadow" x="803" y="1505" width="54" height="55" frameX="-2" frameY="0" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/grey_icon/wool_shadow" x="573" y="1505" width="58" height="58"/>
+    <SubTexture name="inventory/grey_icon/wrappers_shadow" x="1102" y="1990" width="58" height="55" frameX="0" frameY="-2" frameWidth="58" frameHeight="58"/>
+    <SubTexture name="inventory/pasiv" x="1315" y="1006" width="224" height="83"/>
+    <SubTexture name="inventory/shcatulka" x="3" y="361" width="635" height="584" frameX="0" frameY="0" frameWidth="635" frameHeight="585"/>
+    <SubTexture name="panel_tools/96x14x242" x="642" y="918" width="117" height="175" frameX="-2" frameY="-2" frameWidth="122" frameHeight="179"/>
+    <SubTexture name="panel_tools/background" x="1538" y="566" width="1" height="317"/>
+    <SubTexture name="panel_tools/bg_pod_ikonki" x="1528" y="604" width="1" height="143"/>
+    <SubTexture name="panel_tools/coffee" x="642" y="567" width="125" height="92" frameX="-1" frameY="-20" frameWidth="126" frameHeight="126"/>
+    <SubTexture name="panel_tools/info_icon" x="518" y="1328" width="37" height="37" frameX="0" frameY="0" frameWidth="38" frameHeight="38"/>
+    <SubTexture name="panel_tools/info_icon_on" x="1362" y="1265" width="37" height="37" frameX="0" frameY="0" frameWidth="38" frameHeight="38"/>
+    <SubTexture name="panel_tools/katyshka" x="1931" y="1118" width="102" height="119" frameX="-12" frameY="-3" frameWidth="126" frameHeight="126"/>
+    <SubTexture name="panel_tools/kontener" x="642" y="663" width="122" height="92" frameX="-2" frameY="-17" frameWidth="126" frameHeight="126"/>
+    <SubTexture name="panel_tools/korobka" x="642" y="361" width="126" height="86" frameX="0" frameY="-20" frameWidth="126" frameHeight="126"/>
+    <SubTexture name="panel_tools/spitsbl" x="642" y="451" width="125" height="112" frameX="-1" frameY="-7" frameWidth="126" frameHeight="126"/>
+    <SubTexture name="panel_tools/strelka" x="3" y="1426" width="95" height="144"/>
+    <SubTexture name="panel_tools/tools_footer_icon" x="607" y="1662" width="91" height="73"/>
+    <SubTexture name="panel_tools/venik" x="1931" y="840" width="114" height="116" frameX="-6" frameY="-5" frameWidth="126" frameHeight="126"/>
+    <SubTexture name="settings/settings_icon" x="3" y="1179" width="155" height="155" frameX="-2" frameY="-1" frameWidth="157" frameHeight="156"/>
+    <SubTexture name="start_windows/bg_start_window" x="768" y="681" width="543" height="494" frameX="-4" frameY="-4" frameWidth="551" frameHeight="502"/>
+    <SubTexture name="start_windows/carpet_icon" x="162" y="1179" width="170" height="145" frameX="0" frameY="-12" frameWidth="170" frameHeight="170"/>
+    <SubTexture name="start_windows/tangled_icon" x="102" y="1426" width="170" height="130" frameX="0" frameY="-20" frameWidth="170" frameHeight="170"/>
 </TextureAtlas>

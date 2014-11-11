@@ -8,6 +8,8 @@ package ru.catAndBall.view.core.text {
 	import feathers.controls.text.BitmapFontTextRenderer;
 	import feathers.text.BitmapFontTextFormat;
 
+	import flash.text.TextFormatAlign;
+
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -29,9 +31,9 @@ package ru.catAndBall.view.core.text {
 		//
 		//---------------------------------------------------------
 
-		public function BaseTextField(fontId:String) {
+		public function BaseTextField(fontId:String, align:String = TextFormatAlign.LEFT) {
 			super();
-			super.textFormat = new BitmapFontTextFormat(fontId);
+			super.textFormat = new BitmapFontTextFormat(fontId, NaN, 0xffffff, align);
 		}
 
 	}

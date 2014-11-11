@@ -33,32 +33,30 @@ package ru.catAndBall.view.core.text {
 		//
 		//--------------------------------------------------------------------------
 
-		public function TextFieldIcon(textField:BaseTextField, icon:Image = null, background:Image = null, fixedHeight:Number = 0) {
+		public function TextFieldIcon(textField:BaseTextField, icon:Image = null, background:Image = null, fixedHeight:Number = 0, fixedWidth:Number = 0) {
 			super();
 
 			this.textField = textField;
-			_background = background;
 			this.icon = icon;
+
+			_background = background;
 			_fixedHeight = fixedHeight;
+			_fixedWidth = fixedWidth;
 
-			if (_background) {
-				addChild(_background);
-			}
-
-			addChild(_layoutGroup);
-
-			var l:HorizontalLayout = new HorizontalLayout();
-			l.gap = 5;
-			l.verticalAlign = HorizontalLayout.VERTICAL_ALIGN_MIDDLE;
-			_layoutGroup.layout = l;
+			if (_background) addChild(_background);
 
 			if (this.icon) {
+				addChild(_layoutGroup);
+
+				var l:HorizontalLayout = new HorizontalLayout();
+				l.gap = 5;
+				l.verticalAlign = HorizontalLayout.VERTICAL_ALIGN_MIDDLE;
+				_layoutGroup.layout = l;
 				_layoutGroup.addChild(this.icon);
+				_layoutGroup.addChild(this.textField);
+			} else {
+				addChild(this.textField);
 			}
-
-			_layoutGroup.addChild(this.textField);
-
-			alignPivot();
 		}
 
 		//--------------------------------------------------------------------------
@@ -72,6 +70,8 @@ package ru.catAndBall.view.core.text {
 		private var _background:DisplayObject;
 
 		private var _fixedHeight:Number = 0;
+
+		private var _fixedWidth:Number = 0;
 
 		//--------------------------------------------------------------------------
 		//
@@ -101,13 +101,24 @@ package ru.catAndBall.view.core.text {
 		//--------------------------------------------------------------------------
 
 		protected override function draw():void {
-			_layoutGroup.validate();
+			if (_layoutGroup) _layoutGroup.validate();
+			textField.validate();
 
 			if (_background) {
-				_layoutGroup.x = PADDING_H;
-				_layoutGroup.y = PADDING_V;
-				_background.width = _layoutGroup.width + PADDING_H * 2;
-				_background.height = _fixedHeight ? _fixedHeight : _layoutGroup.height + PADDING_V * 2;
+				if (_layoutGroup) {
+					_layoutGroup.x = PADDING_H;
+					_layoutGroup.y = PADDING_V;
+				} else {
+
+				}
+
+				if (_fixedWidth >= 0) {
+					_background.width = _fixedWidth ? _fixedWidth : _layoutGroup.width + PADDING_H * 2;
+				}
+
+				if (_fixedHeight >= 0) {
+					_background.height = _fixedHeight ? _fixedHeight : _layoutGroup.height + PADDING_V * 2;
+				}
 			}
 
 			var resultWidth:Number = _background ? _background.width : _layoutGroup.width;

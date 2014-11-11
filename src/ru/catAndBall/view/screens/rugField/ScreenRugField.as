@@ -11,7 +11,7 @@ package ru.catAndBall.view.screens.rugField {
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
-	import ru.catAndBall.view.core.game.field.BaseScreenFieldBackground;
+	import ru.catAndBall.view.core.game.field.GridBackground;
 	import ru.catAndBall.view.core.game.field.ObjectsCounter;
 	import ru.catAndBall.view.screens.ScreenType;
 
@@ -46,18 +46,11 @@ package ru.catAndBall.view.screens.rugField {
 		//
 		//---------------------------------------------------------
 
-		protected override function update(event:* = null):void {
-			super.update();
-		}
-
-		protected override function getBackground():BaseScreenFieldBackground {
-			return new BaseScreenFieldBackground(
-					AssetList.Strip_moves_strip_moves,
+		protected override function getBackground():GridBackground {
+			return new GridBackground(
 					AssetList.fields_carpet_bg1,
 					AssetList.fields_carpet_bg2,
 					AssetList.fields_carpet_bg3,
-					AssetList.fields_carpet_tangle_for_bg,
-					AssetList.fields_carpet_tangle_for_bg_down,
 					screenData.gridData.columns,
 					screenData.gridData.rows
 			);

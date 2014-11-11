@@ -63,7 +63,7 @@ package ru.catAndBall.data.game.field {
 
 		public static const MOUSE:int = 23;
 
-		public static const SAUSAGE:int = 24;
+		public static const MILK:int = 24;
 
 		public static const PIGEON:int = 25;
 
@@ -120,8 +120,8 @@ package ru.catAndBall.data.game.field {
 				case GridCellType.BALL:
 					return ResourceSet.RF_BALL;
 					break;
-				case GridCellType.SAUSAGE:
-					return ResourceSet.RF_SAUSAGE;
+				case GridCellType.MILK:
+					return ResourceSet.RF_MILK;
 					break;
 				case GridCellType.MOUSE:
 					return ResourceSet.RF_MOUSE;

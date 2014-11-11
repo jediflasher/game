@@ -33,7 +33,7 @@ package ru.catAndBall.data.game.settings {
 				GridCellType.BALL,
 				GridCellType.COOKIE,
 				GridCellType.MOUSE,
-				GridCellType.SAUSAGE,
+				GridCellType.MILK,
 				GridCellType.PIGEON,
 				GridCellType.CONSERVE
 			];
@@ -43,7 +43,7 @@ package ru.catAndBall.data.game.settings {
 				GridCellType.BALL,
 				GridCellType.COOKIE,
 				GridCellType.MOUSE,
-				GridCellType.SAUSAGE,
+				GridCellType.MILK,
 				GridCellType.PIGEON,
 				GridCellType.CONSERVE
 			];
@@ -57,8 +57,8 @@ package ru.catAndBall.data.game.settings {
 			upgradeHash[GridCellType.MOUSE] = GridCellType.PIGEON;
 			upgradeHash[GridCellType.PIGEON] = GridCellType.GOLD_FISH;
 
-			upgradeHash[GridCellType.COOKIE] = GridCellType.SAUSAGE;
-			upgradeHash[GridCellType.SAUSAGE] = GridCellType.CONSERVE;
+			upgradeHash[GridCellType.COOKIE] = GridCellType.MILK;
+			upgradeHash[GridCellType.MILK] = GridCellType.CONSERVE;
 			upgradeHash[GridCellType.CONSERVE] = GridCellType.GOLD_FISH;
 
 			connectCounts = {};

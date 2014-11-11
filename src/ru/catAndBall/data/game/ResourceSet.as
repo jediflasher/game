@@ -23,7 +23,17 @@ package ru.catAndBall.data.game {
 
 		public static const MONEY:String = 'money';
 
-		public static const TOOL_COLLECT_SOCKS:String = 'toolCollectSocks';
+		public static const TOOL_SPOOL:String = 'toolSpool'; // катушка
+
+		public static const TOOL_BROOM:String = 'toolBroom'; // метла
+
+		public static const TOOL_TOY_BOX:String = 'toolToyBox'; // коробка для игрушек
+
+		public static const TOOL_BOWL:String = 'toolBowl'; // миска
+
+		public static const TOOL_SPOKES:String = 'toolSpokes'; // спицы
+
+		public static const TOOL_TEA:String = 'toolTea';
 
 		public static const BF_BALLS:String = 'bfBalls';
 
@@ -39,7 +49,7 @@ package ru.catAndBall.data.game {
 
 		public static const RF_MOUSE:String = 'rfMouse';
 
-		public static const RF_SAUSAGE:String = 'rfSausage';
+		public static const RF_MILK:String = 'rfMilk';
 
 		public static const RF_PIGEON:String = 'rfPigeon';
 
@@ -50,9 +60,44 @@ package ru.catAndBall.data.game {
 		public static const RF_THREAD:String = 'rfThread';
 
 		public static const TYPES:Vector.<String> = new <String>[
-			EXPERIENCE, MONEY, BF_BALLS, BF_SOCKS, BF_SWEATERS, BF_TOYS, RF_BALL, RF_COOKIE, RF_MOUSE, RF_SAUSAGE, RF_PIGEON,
-			RF_CONSERVE, RF_WRAPPER, RF_THREAD
+			EXPERIENCE, MONEY,
+			TOOL_BOWL, TOOL_BROOM, TOOL_SPOKES, TOOL_SPOOL, TOOL_TEA, TOOL_TOY_BOX,
+			BF_BALLS, BF_SOCKS, BF_SWEATERS, BF_TOYS, RF_BALL,
+			RF_COOKIE, RF_MOUSE, RF_MILK, RF_PIGEON, RF_CONSERVE, RF_WRAPPER, RF_THREAD
 		];
+
+		public static function isTool(resourceType:String):Boolean {
+			if (!(resourceType in _hashIsTool)) {
+				_hashIsTool[resourceType] = resourceType.indexOf('tool') == 0;
+			}
+			return _hashIsTool[resourceType];
+		}
+
+		public static function isComponent(resourceType:String):Boolean {
+			if (!(resourceType in _hashIsComponent)) {
+				_hashIsComponent[resourceType] = resourceType.indexOf('rf') == 0 || resourceType.indexOf('bf') == 0;
+			}
+			return _hashIsComponent[resourceType];
+		}
+
+		public static function isResource(resourceType:String):Boolean {
+			if (!(resourceType in _hashIsResouce)) {
+				_hashIsResouce[resourceType] = resourceType == EXPERIENCE || resourceType == MONEY;
+			}
+			return _hashIsResouce[resourceType];
+		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Class variables
+		//
+		//--------------------------------------------------------------------------
+
+		private static const _hashIsTool:Object = {};
+
+		private static const _hashIsComponent:Object = {};
+
+		private static const _hashIsResouce:Object = {};
 
 		//--------------------------------------------------------------------------
 		//
@@ -108,18 +153,22 @@ package ru.catAndBall.data.game {
 		public final function add(resourceSet:ResourceSet):void {
 			if (resourceSet.isEmpty) return;
 
-			for (var type:String in TYPES) {
+			for each(var type:String in TYPES) {
 				var value:Number = resourceSet._hash[type] || 0;
-				if (value) addType(type, value);
+				if (value) addTypeSilent(type, value);
 			}
+
+			if (hasEventListener(Event.CHANGE)) dispatchEvent(new Event(Event.CHANGE));
 		}
 
 		[Inline]
 		public final function substract(resourceSet:ResourceSet):void {
 			for (var type:String in TYPES) {
 				var value:Number = resourceSet._hash[type] || 0;
-				if (value) addType(type, -value);
+				if (value) addTypeSilent(type, -value);
 			}
+
+			if (hasEventListener(Event.CHANGE)) dispatchEvent(new Event(Event.CHANGE));
 		}
 
 		[Inline]
@@ -130,8 +179,7 @@ package ru.catAndBall.data.game {
 
 		[Inline]
 		public final function addType(type:String, count:int):void {
-			_hash[type] ||= 0;
-			_hash[type] += count;
+			addTypeSilent(type, count);
 			if (hasEventListener(Event.CHANGE)) dispatchEvent(new Event(Event.CHANGE));
 		}
 
@@ -165,6 +213,18 @@ package ru.catAndBall.data.game {
 
 		public function clear():void {
 			for (var key:String in _hash) _hash[key] = 0;
+			if (hasEventListener(Event.CHANGE)) dispatchEvent(new Event(Event.CHANGE));
+		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Private methods
+		//
+		//--------------------------------------------------------------------------
+
+		private final function addTypeSilent(type:String, count:int):void {
+			_hash[type] ||= 0;
+			_hash[type] += count;
 		}
 	}
 }

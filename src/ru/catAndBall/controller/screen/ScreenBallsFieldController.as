@@ -14,7 +14,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.field.GridCellType;
 	import ru.catAndBall.data.game.tools.ToolCollectCellsData;
-	import ru.catAndBall.view.core.game.FieldBottomPanel;
+	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 
 	import starling.events.Event;
@@ -63,17 +63,17 @@ package ru.catAndBall.controller.screen {
 				GridCellType.TOY_GREEN,
 				GridCellType.TOY_RED,
 				GridCellType.TOY_PURPLE
-			], ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources);
+			], ResourceSet.TOOL_SPOKES, GameData.player.resources);
 
 			_toolCollect = new ToolCollectCells(toolData);
 
-			view.addEventListener(FieldBottomPanel.EVENT_TOOLS_CLICK, handler_toolsClick);
+			view.addEventListener(FieldFooterBar.EVENT_TOOLS_CLICK, handler_toolsClick);
 		}
 
 		protected override function removed():void {
 			super.removed();
 
-			view.addEventListener(FieldBottomPanel.EVENT_TOOLS_CLICK, handler_toolsClick);
+			view.addEventListener(FieldFooterBar.EVENT_TOOLS_CLICK, handler_toolsClick);
 		}
 
 		//--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ package ru.catAndBall.controller.screen {
 		//--------------------------------------------------------------------------
 
 		private function handler_toolsClick(event:Event):void {
-			_toolCollect.apply(_fieldData, _view.fieldView, _settings);
+			_toolCollect.apply(_fieldData, _view.fieldController, _settings);
 		}
 	}
 }

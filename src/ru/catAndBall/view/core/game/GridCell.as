@@ -13,8 +13,10 @@ package ru.catAndBall.view.core.game {
 	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.PestGridCellData;
 	import ru.catAndBall.utils.Geometry;
-	import ru.catAndBall.view.core.text.TextFieldTest;
-	import ru.catAndBall.view.screens.BaseScreen;
+	import ru.catAndBall.view.assets.AssetList;
+	import ru.catAndBall.view.assets.Assets;
+	import ru.catAndBall.view.core.text.TextFieldBackground;
+	import ru.catAndBall.view.layout.Layout;
 
 	import starling.animation.IAnimatable;
 	import starling.core.Starling;
@@ -31,8 +33,6 @@ package ru.catAndBall.view.core.game {
 	 * @date                22.06.14 17:53
 	 */
 	public class GridCell extends Sprite implements IAnimatable {
-
-		public static const SIZE:int = 150;
 
 		//--------------------------------------------------------------------------
 		//
@@ -69,14 +69,13 @@ package ru.catAndBall.view.core.game {
 			cell.selected = false;
 			cell.x = 0;
 			cell.y = 0;
-			cell.width = GridCell.SIZE;
-			cell.height = GridCell.SIZE;
+			cell.width = Layout.field.elementSize;
+			cell.height = Layout.field.elementSize;
 			cell.alpha = 1;
 			cell.rotation = 0;
 			cell.updateExplode();
 			cell.$data = null;
 			cell.updateCount();
-			cell.undarken();
 			TweenNano.killTweensOf(cell);
 		}
 
@@ -99,12 +98,8 @@ package ru.catAndBall.view.core.game {
 			if (!privater) throw new IllegalOperationError('Use method GridCell.fromPool');
 
 			alignPivot(HAlign.CENTER, VAlign.CENTER);
-			width = height = SIZE;
+			width = height = Layout.field.elementSize;
 			_data = data;
-
-			_darkenImage.width = _darkenImage.height = SIZE;
-			_darkenImage.visible = false;
-			addChild(_darkenImage);
 		}
 
 		//--------------------------------------------------------------------------
@@ -113,9 +108,7 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _countTextField:TextFieldTest;
-
-		private var _darkenImage:Image = new Image(BaseScreen.DARKEN_TEXTURE);
+		private var _countTextField:TextFieldBackground;
 
 		//---------------------------------------------------------
 		//
@@ -160,25 +153,13 @@ package ru.catAndBall.view.core.game {
 			if (_selected == value) return;
 
 			_selected = value;
-			var val:Number = _selected ? SIZE * 0.8 : SIZE;
+			var val:Number = _selected ? Layout.field.elementSize * 0.8 : Layout.field.elementSize;
 
 			if (stage) {
 				TweenNano.to(this, 0.1, {width: val, height: val});
 			} else {
 				width = height = val;
 			}
-		}
-
-		public function get size():int {
-			return SIZE;
-		}
-
-		public function darken():void {
-			_darkenImage.visible = true;
-		}
-
-		public function undarken():void {
-			_darkenImage.visible = false;
 		}
 
 		//--------------------------------------------------------------------------
@@ -231,7 +212,7 @@ package ru.catAndBall.view.core.game {
 
 			_image.texture = GridCellTextureFactory.getTextureByType(data.type);
 			if (stage) {
-				TweenNano.to(this, 0.2, {width: SIZE, height: SIZE});
+				TweenNano.to(this, 0.2, {width: Layout.field.elementSize, height: Layout.field.elementSize});
 			}
 		}
 
@@ -245,15 +226,17 @@ package ru.catAndBall.view.core.game {
 			}
 			if (!p) return;
 
-			if (!_countTextField) _countTextField = new TextFieldTest();
+			if (!_countTextField) {
+				const bg:Image = Assets.getImage(AssetList.Tools_amount_components_on);
+				_countTextField = new TextFieldBackground(AssetList.font_xsmall_milk_bold, bg, true, true);
+				_countTextField.x = Layout.field.elementSize - bg.width;
+				_countTextField.y = Layout.field.elementSize - bg.height;
+			}
 
 			_countTextField.text = String(p.turnsLeft);
-			//_countTextField.x = width / 2;
-			//_countTextField.y = height / 2;
 			_countTextField.visible = true;
 
 			addChild(_countTextField);
-			addChild(_darkenImage);
 		}
 
 		//--------------------------------------------------------------------------

@@ -32,7 +32,7 @@ package ru.catAndBall.data.game.buildings {
 			st.price.set(ResourceSet.BF_SOCKS, 3);           // и три носка
 			st.speedUpPrice.set(ResourceSet.MONEY, 4);       // ускорить можно за 4 денег
 			st.bonusPeriod = TimeInterval.SECOND * 10;       // дает бонус раз в N
-			st.bonus.set(ResourceSet.TOOL_COLLECT_SOCKS, 3); // дает 3 собиратора носков
+			st.bonus.set(ResourceSet.TOOL_SPOKES, 3); // дает 3 собиратора носков
 			st.bonus.set(ResourceSet.EXPERIENCE, 10);        // и 10 опыта
 
 			dict.states.push(st);

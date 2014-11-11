@@ -30,6 +30,8 @@ package ru.catAndBall.data.game.field {
 		//
 		//--------------------------------------------------------------------------
 
+		public static const EVENT_FILL_FIELD:String = 'eventFillField';
+
 		public static const EVENT_UPDATE_FIELD:String = 'eventGridUpdate';
 
 		public static const EVENT_TURN_UPDATE:String = 'eventTurnUpdate';
@@ -113,7 +115,7 @@ package ru.catAndBall.data.game.field {
 
 		private var _familyHash:Object = {};
 
-		private var _collectedResources:Object = {}; // ResourceType -> count
+		private var _collectedResourceElements:Object = {}; // ResourceType -> count
 
 		//---------------------------------------------------------
 		//
@@ -149,8 +151,8 @@ package ru.catAndBall.data.game.field {
 			for each(var cell:GridCellData in cells) {
 				if (cell is ResourceGridCellData) {
 					var resourceType:String = (cell as ResourceGridCellData).resourceType;
-					var newCount:int = (_collectedResources[resourceType] || 0);
-					_collectedResources[resourceType] = ++ newCount;
+					var newCount:int = (_collectedResourceElements[resourceType] || 0);
+					_collectedResourceElements[resourceType] = ++ newCount;
 
 					var oldValue:int = collectedResourceSet.get(resourceType);
 					var newValue:int = int(newCount / stackSize);
@@ -173,10 +175,12 @@ package ru.catAndBall.data.game.field {
 		}
 
 		public function getCollectedResource(resourceType:String):int {
-			return _collectedResources[resourceType];
+			return _collectedResourceElements[resourceType];
 		}
 
 		public function fullFill(generator:IGridGenerator):void {
+			collectedResourceSet.clear();
+
 			for (var i:int = 0; i < columns; i++) {
 				for (var j:int = 0; j < rows; j++) {
 					if (!cellsMatrix[i][j]) {
@@ -185,6 +189,8 @@ package ru.catAndBall.data.game.field {
 					}
 				}
 			}
+
+			if (hasEventListener(EVENT_FILL_FIELD)) dispatchEvent(new DataEvent(EVENT_FILL_FIELD));
 		}
 
 		[Inline]
@@ -213,9 +219,8 @@ package ru.catAndBall.data.game.field {
 
 			_typesHash = {};
 			_familyHash = {};
-			_collectedResources = {};
+			_collectedResourceElements = {};
 			_currentTurn = 0;
-			collectedResourceSet.clear();
 			maxTurns = 0;
 		}
 

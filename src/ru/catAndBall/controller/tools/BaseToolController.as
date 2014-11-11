@@ -10,7 +10,7 @@ package ru.catAndBall.controller.tools {
 	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.tools.BaseToolData;
-	import ru.catAndBall.view.core.game.GridField;
+	import ru.catAndBall.view.core.game.GridController;
 
 	/**
 	 * @author                Obi
@@ -44,7 +44,7 @@ package ru.catAndBall.controller.tools {
 		//
 		//--------------------------------------------------------------------------
 
-		public function apply(fieldData:GridData, fieldView:GridField, settings:GridFieldSettings):void {
+		public function apply(fieldData:GridData, fieldView:GridController, settings:GridFieldSettings):void {
 			if (_data.availableCount <= 0) throw new IllegalOperationError('no turns');
 
 			_data.resourceSet.substractType(_data.resourceType, 1);

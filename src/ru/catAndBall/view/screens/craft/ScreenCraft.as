@@ -2,25 +2,28 @@ package ru.catAndBall.view.screens.craft {
 	import feathers.controls.Button;
 	import feathers.controls.List;
 	import feathers.controls.ScrollContainer;
-	import feathers.controls.TabBar;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.core.FeathersControl;
 	import feathers.data.ListCollection;
 	import feathers.layout.VerticalLayout;
+	import feathers.text.BitmapFontTextFormat;
 
 	import flash.geom.Rectangle;
 
 	import ru.catAndBall.AppProperties;
-	import ru.catAndBall.data.GameData;
+	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.data.game.tools.BaseToolData;
 	import ru.catAndBall.view.assets.AssetList;
+	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.*;
+	import ru.catAndBall.view.screens.room.RoomFooterBar;
+	import ru.catAndBall.view.screens.room.RoomHeaderBar;
 
 	import starling.display.Image;
+	import starling.events.Event;
 	import starling.textures.TextureSmoothing;
 
 	/**
@@ -48,9 +51,31 @@ package ru.catAndBall.view.screens.craft {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _tabBar:TabBar;
+		private var _tabRug:Button;
 
-		private var _craftsArea:List;
+		private var _tabRolls:Button;
+
+		private var _tabWindow:Button;
+
+		private var _rollArea:List;
+
+		private var _rugArea:List;
+
+		private var _rollDataProvider:ListCollection = new ListCollection([
+			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_BOWL),
+			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_BROOM),
+			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_SPOKES)
+		]);
+
+		private var _rugDataProvider:ListCollection = new ListCollection([
+			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_SPOOL),
+			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_TEA),
+			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_TOY_BOX)
+		]);
+
+		private var _selectedTab:Button;
+
+		private var _newSelectedTab:Button;
 
 		//--------------------------------------------------------------------------
 		//
@@ -59,60 +84,119 @@ package ru.catAndBall.view.screens.craft {
 		//--------------------------------------------------------------------------
 
 		protected override function initialize():void {
+			headerClass = RoomHeaderBar;
+			footerClass = CraftFooterBar;
+
 			super.initialize();
+
 			(_backgroundSkin as Image).smoothing = TextureSmoothing.NONE;
 
-			_tabBar = new TabBar();
-			var r:Rectangle = AppProperties.viewRect;
-			_tabBar.x = r.x;
-			_tabBar.width = r.width;
-			_tabBar.tabProperties.gap = Layout.baseGap;
-			_tabBar.gap = Layout.baseGap;
-			_tabBar.paddingTop = Layout.baseGap;
-			_tabBar.tabFactory = function ():Button {
-				return new CraftTab();
-			};
-			_tabBar.dataProvider = new ListCollection([
-				{label: L.get('Pan 1')},
-				{label: L.get('Pan 2')},
-				{label: L.get('Pan 3')}
-			]);
-			addChild(_tabBar);
+			_tabRolls = tabFactory(L.get('screen.craft.tabRolls.title'));
+			addChild(_tabRolls);
 
-			_craftsArea = new List();
+			_tabRug = tabFactory(L.get('screen.craft.tabRug.title'));
+			addChild(_tabRug);
+
+			_tabWindow = tabFactory(L.get('screen.craft.tabWindow.title'));
+			_tabWindow.isEnabled = false;
+			addChild(_tabWindow);
+
+			_rollArea = new List();
 			var l:VerticalLayout = new VerticalLayout();
-			l.paddingTop = Layout.baseGap;
 			l.gap = Layout.baseGap;
-			_craftsArea.layout = l;
+			_rollArea.layout = l;
 
-			_craftsArea.x = r.x;
-			_craftsArea.width = r.width;
-			_craftsArea.itemRendererFactory = function ():IListItemRenderer {
-				return new CraftItem();
-			};
-			_craftsArea.dataProvider = new ListCollection([
-				new BaseToolData(ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources),
-				new BaseToolData(ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources),
-				new BaseToolData(ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources),
-				new BaseToolData(ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources),
-				new BaseToolData(ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources),
-				new BaseToolData(ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources),
-				new BaseToolData(ResourceSet.TOOL_COLLECT_SOCKS, GameData.player.resources)
-			]);
-			addChild(_craftsArea);
+			_rollArea.x = 0;
+			_rollArea.width = AppProperties.appWidth;
+			_rollArea.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
+			_rollArea.scrollBarDisplayMode = ScrollContainer.SCROLL_BAR_DISPLAY_MODE_NONE;
+			_rollArea.itemRendererFactory = itemFactory;
+			_rollArea.visible = false;
+			_rollArea.dataProvider = _rollDataProvider;
+
+			_rugArea = new List();
+			l = new VerticalLayout();
+			l.gap = Layout.baseGap;
+
+			_rugArea.layout = l;
+			_rugArea.x = 0;
+			_rugArea.width = AppProperties.appWidth;
+			_rugArea.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
+			_rugArea.scrollBarDisplayMode = ScrollContainer.SCROLL_BAR_DISPLAY_MODE_NONE;
+			_rugArea.itemRendererFactory = itemFactory;
+			_rugArea.visible = false;
+			_rugArea.dataProvider = _rugDataProvider;
+
+			selectTab(_tabRolls);
+			addChild(_rollArea);
+			addChild(_rugArea);
 		}
 
 		protected override function draw():void {
-			if (isInvalid(FeathersControl.INVALIDATION_FLAG_SIZE)) {
-				_tabBar.validate();
+			super.draw();
 
-				_craftsArea.y = _tabBar.y + _tabBar.height;
-				_craftsArea.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
-				_craftsArea.scrollBarDisplayMode = ScrollContainer.SCROLL_BAR_DISPLAY_MODE_FLOAT;
-				_craftsArea.height = AppProperties.viewRect.height - _tabBar.height;
+			if (isInvalid(FeathersControl.INVALIDATION_FLAG_LAYOUT)) {
+				_tabRolls.validate();
+				_tabRug.validate();
+				_tabWindow.validate();
+
+				_tabRolls.x = AppProperties.viewRect.x + Layout.craft.tabGap;
+				_tabRug.x = _tabRolls.x + _tabRolls.width + Layout.craft.tabGap;
+				_tabWindow.x = _tabRug.x + _tabRug.width + Layout.craft.tabGap;
+				_rollArea.y = _tabRolls.y + _tabRolls.height;
+				_rugArea.y = _rollArea.y;
+
+				const height:Number = AppProperties.viewRect.height - _tabRolls.height - header.height - footer.height;
+				_rollArea.height = height;
+				_rugArea.height = height;
 			}
 
-			super.draw();
+			if (isInvalid(INVALIDATION_FLAG_DATA)) {
+				if (_newSelectedTab) {
+					if (_selectedTab) {
+						_selectedTab.isSelected = false;
+						_selectedTab = null;
+					}
+
+					_selectedTab = _newSelectedTab;
+					_selectedTab.isSelected = true;
+					_newSelectedTab = null;
+				}
+			}
+		}
+
+		private function tabFactory(label:String):Button {
+			const result:Button = new CraftTab(label);
+			result.width = (AppProperties.viewRect.width - (Layout.craft.tabGap * 4)) / 3;
+			result.addEventListener(Event.TRIGGERED, handler_tabClick);
+			return result;
+		}
+
+		private function itemFactory():IListItemRenderer {
+			return new CraftItem();
+		};
+
+		private function selectTab(tab:Button):void {
+			_newSelectedTab = tab;
+			if (_newSelectedTab == _tabRolls) {
+				_rollArea.visible = true;
+				_rugArea.visible = false;
+			} else if (_newSelectedTab == _tabRug) {
+				_rollArea.visible = false;
+				_rugArea.visible = true;
+			}
+
+			invalidate(INVALIDATION_FLAG_DATA);
+		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Event handlers
+		//
+		//--------------------------------------------------------------------------
+
+		private function handler_tabClick(event:Event):void {
+			selectTab(event.target as Button);
 		}
 	}
 }

@@ -10,7 +10,7 @@ package ru.catAndBall.controller.tools {
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.tools.BaseToolData;
 	import ru.catAndBall.data.game.tools.ToolCollectCellsData;
-	import ru.catAndBall.view.core.game.GridField;
+	import ru.catAndBall.view.core.game.GridController;
 
 	/**
 	 * @author                Obi
@@ -51,7 +51,7 @@ package ru.catAndBall.controller.tools {
 		//
 		//---------------------------------------------------------
 
-		public override function apply(fieldData:GridData, fieldView:GridField, settings:GridFieldSettings):void {
+		public override function apply(fieldData:GridData, fieldView:GridController, settings:GridFieldSettings):void {
 			super.apply(fieldData, fieldView, settings);
 
 			var types:Vector.<int> = (data as ToolCollectCellsData).types;

@@ -11,7 +11,7 @@ package ru.catAndBall.view.screens.room {
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.game.FieldBottomPanel;
+	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.layout.room.RoomLayout;
 	import ru.catAndBall.view.screens.BaseScreen;
@@ -47,15 +47,11 @@ package ru.catAndBall.view.screens.room {
 
 		public static const EVENT_WINDOW_CLICK:String = 'windowClick';
 
-		public static const EVENT_CAT_CLICK:String = 'catClick';
-
 		public static const EVENT_RUG_CLICK:String = 'rugClick';
 
 		public static const EVENT_BALLS_CLICK:String = 'ballsClick';
 
 		public static const EVENT_COMMODE_CLICK:String = 'commodeClick';
-
-		public static const EVENT_BOWL_CLICK:String = 'bowlClick';
 
 		//---------------------------------------------------------
 		//
@@ -112,7 +108,7 @@ package ru.catAndBall.view.screens.room {
 
 		protected override function initialize():void {
 			headerClass = RoomHeaderBar;
-			footerClass = FieldBottomPanel;
+			footerClass = RoomFooterBar;
 
 			_catHouse = new CatHouse();
 			_granny = new Granny();
@@ -167,6 +163,7 @@ package ru.catAndBall.view.screens.room {
 			for each (var child:DisplayObject in _childrenToAdd) {
 				addRawChild(child);
 			}
+
 		}
 
 		public function drop(resources:ResourceSet, fromX:int, fromY:int):void {

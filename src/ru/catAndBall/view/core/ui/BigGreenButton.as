@@ -33,13 +33,19 @@ package ru.catAndBall.view.core.ui {
 				return new BaseTextField(AssetList.font_large_white_greenstroke_bold);
 			};
 
-			var texture:Texture = Assets.getTexture(AssetList.Preloader_green_button);
-			upSkin = new Scale3Image(new Scale3Textures(texture, Layout.bigButtonScaleGridSizes[0], Layout.bigButtonScaleGridSizes[1]));
+			const left:Number =  Layout.bigButtonScaleGridSizes[0];
+			const center:Number =  Layout.bigButtonScaleGridSizes[1];
+
+			var texture:Texture = Assets.getTexture(AssetList.buttons_M_greenbutton);
+			upSkin = new Scale3Image(new Scale3Textures(texture, left, center));
 
 			hoverSkin = upSkin;
 
-			texture = Assets.getTexture(AssetList.Preloader_green_button_on);
-			downSkin = new Scale3Image(new Scale3Textures(texture, Layout.bigButtonScaleGridSizes[0], Layout.bigButtonScaleGridSizes[1]));
+			texture = Assets.getTexture(AssetList.buttons_M_greenbutton_on);
+			downSkin = new Scale3Image(new Scale3Textures(texture, left, center));
+
+			texture = Assets.getTexture(AssetList.buttons_M_greenbutton_off);
+			disabledSkin = new Scale3Image(new Scale3Textures(texture, left, center));
 
 			paddingRight = paddingLeft = Layout.baseGap;
 

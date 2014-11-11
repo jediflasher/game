@@ -8,11 +8,24 @@ package ru.catAndBall {
 	import dragonBones.animation.WorldClock;
 
 	import feathers.controls.ScreenNavigatorItem;
+	import feathers.core.IPopUpManager;
+	import feathers.core.PopUpManager;
 	import feathers.motion.transitions.ScreenFadeTransitionManager;
 	import feathers.motion.transitions.ScreenSlidingStackTransitionManager;
 
+	import flash.desktop.NativeApplication;
+	import flash.events.Event;
+
+	import flash.filesystem.File;
+	import flash.filesystem.FileMode;
+	import flash.filesystem.FileStream;
+
+	import flash.net.SharedObject;
+	import flash.utils.setInterval;
+
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.screen.ScreenBallsFieldController;
+	import ru.catAndBall.controller.screen.ScreenCraftController;
 	import ru.catAndBall.controller.screen.ScreenMenuController;
 	import ru.catAndBall.controller.screen.ScreenRoomController;
 	import ru.catAndBall.controller.screen.ScreenRugFieldController;
@@ -20,6 +33,8 @@ package ru.catAndBall {
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
+	import ru.catAndBall.utils.TimeInterval;
+	import ru.catAndBall.view.core.ui.CatPopupManager;
 	import ru.catAndBall.view.core.ui.Hint;
 	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
@@ -95,6 +110,10 @@ package ru.catAndBall {
 
 			Starling.juggler.add(new DragonBonesEnterFramer());
 
+			PopUpManager.popUpManagerFactory = function():IPopUpManager {
+				return new CatPopupManager();
+			};
+
 			var screen:BaseScreen = new ScreenPreloader(new BaseScreenData(ScreenType.PRELOADER));
 			var item:ScreenNavigatorItem = new BaseScreenController(_view, screen);
 			_view.addScreen(screen.data.type, item);
@@ -108,7 +127,7 @@ package ru.catAndBall {
 			_view.addScreen(screen.data.type, item);
 
 			screen = new ScreenCraft(new BaseScreenData(ScreenType.COMMODE_CRAFT));
-			item = new ScreenNavigatorItem(screen);
+			item = new ScreenCraftController(_view, screen as ScreenCraft);
 			_view.addScreen(screen.data.type, item);
 
 			screen = new ScreenRugField();
@@ -123,8 +142,56 @@ package ru.catAndBall {
 		}
 
 		private function loadComplete():void {
-			GameData.deserialize(new DefaultUserState());
+			try {
+				var so:SharedObject = SharedObject.getLocal('game');
+				var data:Object = so.data['game'];
+				if (data) {
+					GameData.deserialize(data);
+				} else {
+					GameData.deserialize(new DefaultUserState());
+				}
+			} catch (error:Error) {
+				trace('Wtf error!');
+				GameData.deserialize(new DefaultUserState());
+			}
+
+			NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE, saveData);
+			NativeApplication.nativeApplication.addEventListener(Event.EXITING, saveData);
+			setInterval(saveData, TimeInterval.MINUTE * 3000);
+
 			_view.showScreen(ScreenType.MAIN_MENU);
+		}
+
+		private function saveData(event:* = null):void {
+			var f:File = File.applicationStorageDirectory.resolvePath("game.dat");
+
+			if (!f.exists) {
+				this.saveInSharedObject();
+			} else {
+				var fs:FileStream = new FileStream();
+				try {
+					fs.openAsync(f, FileMode.WRITE);
+					fs.position = 0;
+					fs.writeObject(GameData.serialize());
+					fs.close();
+					trace('Data saved to game.dat! Horray');
+				} catch (error:Error) {
+					trace(error);
+					saveInSharedObject();
+				}
+			}
+		}
+
+		private function saveInSharedObject():void {
+			try {
+				var so:SharedObject = SharedObject.getLocal('game');
+				so.data['game'] = GameData.serialize();
+				so.flush();
+				trace('Data saved to Shared Object! Horray!');
+			} catch (error:Error) {
+				trace(error);
+				trace('Data dont saved!Wtf!');
+			}
 		}
 
 		//--------------------------------------------------------------------------

@@ -101,13 +101,7 @@ package ru.catAndBall {
 
 			AppProperties.viewRect.setTo(-deltaX, -deltaY, AppProperties.appWidth + deltaX * 2, AppProperties.appHeight + deltaY * 2);
 
-			//NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
-//			NativeApplication.nativeApplication.addEventListener(Event.ACTIVATE, activate);
-			NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE, saveData);
-			NativeApplication.nativeApplication.addEventListener(Event.EXITING, saveData);
-			setInterval(saveData, TimeInterval.MINUTE * 1000);
-
-			var folderName:String = AppProperties.isHD ? 'hd' : 'hd';//'ld';
+			var folderName:String = AppProperties.isHD ? 'hd' : 'ld';
 
 			var appDir:File = File.applicationDirectory;
 			_assetManager = new AssetManager();
@@ -152,38 +146,6 @@ package ru.catAndBall {
 				TweenNano.delayedCall(1, function ():void {
 					while (numChildren) removeChildAt(0);
 				})
-			}
-		}
-
-		private function saveData(event:Event = null):void {
-			var f:File = File.applicationStorageDirectory.resolvePath("game.dat");
-
-			if (!f.exists) {
-				this.saveInSharedObject();
-			} else {
-				var fs:FileStream = new FileStream();
-				try {
-					fs.openAsync(f, FileMode.WRITE);
-					fs.position = 0;
-					fs.writeObject(GameData.serialize());
-					fs.close();
-					trace('Data saved to game.dat! Horray');
-				} catch (error:Error) {
-					trace(error);
-					saveInSharedObject();
-				}
-			}
-		}
-
-		private function saveInSharedObject():void {
-			try {
-				var so:SharedObject = SharedObject.getLocal('game');
-				so.data['game'] = GameData.serialize();
-				so.flush();
-				trace('Data saved to Shared Object! Horray!');
-			} catch (error:Error) {
-				trace(error);
-				trace('Data dont saved!Wtf!');
 			}
 		}
 	}

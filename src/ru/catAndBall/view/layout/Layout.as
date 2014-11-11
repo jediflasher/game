@@ -1,5 +1,8 @@
 package ru.catAndBall.view.layout {
 	import ru.catAndBall.AppProperties;
+	import ru.catAndBall.view.layout.field.FieldLayout;
+	import ru.catAndBall.view.layout.popup.InventoryLayout;
+	import ru.catAndBall.view.layout.popup.PopupLayout;
 	import ru.catAndBall.view.layout.preloader.PreloaderLayout;
 	import ru.catAndBall.view.layout.room.RoomLayout;
 
@@ -18,43 +21,27 @@ package ru.catAndBall.view.layout {
 		//
 		//--------------------------------------------------------------------------
 
-		public static const baseGap:Number = AppProperties.getValue(100, 70);
+		public static const baseGap:int = AppProperties.getValue(50, 30);
 
-		/**
-		 * Расстояние между элементами на поле
-		 */
-		public static const fieldElementPadding:int = AppProperties.getValue(5, 3);
+		public static const baseResourceiconSize:int = AppProperties.getValue(125, 90);
 
-		/**
-		 * Высота подложки счетчика компонентов на поле
-		 */
-		public static const fieldCounterBgHeight:int = AppProperties.getValue(83, 50);
-
-		/**
-		 * Размеры scale3Grid фона счетчика компонентов на поле
-		 */
-		public static const fieldCounterBgScaleGridSizes:Array = AppProperties.getValue([33, 46], [23, 27]);
-
-		/**
-		 * Размеры scale3Grid прогрессбара счетчика компонентов на поле
-		 */
-		public static const fieldCounterMilkScaleGridSizes:Array = AppProperties.getValue([26, 36], [21, 30]);
-
-		/**
-		 * Y координата поля
-		 */
-		public static const fieldFieldY:int = AppProperties.getValue(189, 120);
-
-		/**
-		 * Y координата счетчиков поля
-		 */
-		public static const fieldCountersY:int = AppProperties.getValue(1500, 1200);
+		public static const popup:PopupLayout = new PopupLayout();
 
 		public static const room:RoomLayout = new RoomLayout();
 
+		public static const field:FieldLayout = new FieldLayout();
+
 		public static const preloaderLayout:PreloaderLayout = new PreloaderLayout();
 
-		public static const bigButtonScaleGridSizes:Array = AppProperties.getValue([70, 150], [50, 100]);
+		public static const inventory:InventoryLayout = new InventoryLayout();
+
+		public static const craft:CraftLayout = new CraftLayout();
+
+		public static const bigButtonScaleGridSizes:Array = AppProperties.getValue([70, 176], [50, 100]);
+
+		public static const mediumButtonScaleGridSizes:Array = AppProperties.getValue([50, 135], [50, 100]);
+
+		public static const smallButtonScaleGridSizes:Array = AppProperties.getValue([40, 112], [50, 100]);
 
 		//--------------------------------------------------------------------------
 		//

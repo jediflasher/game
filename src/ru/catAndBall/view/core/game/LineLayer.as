@@ -36,7 +36,7 @@ package ru.catAndBall.view.core.game {
 		//--------------------------------------------------------------------------
 
 		public function lineTo(fromX:int, fromY:int, toX:int, toY:int):void {
-			var line:Line = new Line(0xFFAA0000, AppProperties.appWidth / 100);
+			var line:Line = new Line();
 			addChild(line);
 			line.draw(fromX, fromY, toX, toY);
 		}

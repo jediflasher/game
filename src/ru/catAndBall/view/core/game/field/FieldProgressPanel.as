@@ -5,15 +5,25 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
 
+	import com.greensock.TweenNano;
+	import com.greensock.easing.Linear;
+
 	import feathers.core.FeathersControl;
+
+	import flash.display3D.textures.Texture;
 
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.AssetList;
+	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
+	import ru.catAndBall.view.core.text.BaseTextField;
+	import ru.catAndBall.view.core.text.TextFieldBackground;
+	import ru.catAndBall.view.core.text.TextFieldIcon;
+	import ru.catAndBall.view.core.text.TextFieldIcon;
+	import ru.catAndBall.view.layout.Layout;
 
-	import starling.core.RenderSupport;
 	import starling.display.Image;
-	import starling.display.Sprite;
+	import starling.textures.TextureSmoothing;
 
 	/**
 	 * @author                Obi
@@ -23,6 +33,12 @@ package ru.catAndBall.view.core.game.field {
 	 * @date                17.08.14 17:22
 	 */
 	public class FieldProgressPanel extends FeathersControl {
+
+		//--------------------------------------------------------------------------
+		//
+		//  Class constants
+		//
+		//--------------------------------------------------------------------------
 
 		//---------------------------------------------------------
 		//
@@ -34,7 +50,6 @@ package ru.catAndBall.view.core.game.field {
 			super();
 
 			touchable = false;
-			update();
 		}
 
 		//---------------------------------------------------------
@@ -53,7 +68,20 @@ package ru.catAndBall.view.core.game.field {
 			if (_progress == value) return;
 
 			_progress = value;
-			_needUpdate = true;
+			this.invalidate(FeathersControl.INVALIDATION_FLAG_DATA);
+		}
+
+		private var _stepsLeft:int;
+
+		public function get stepsLeft():int {
+			return _stepsLeft;
+		}
+
+		public function set stepsLeft(value:int):void {
+			if (_stepsLeft == value) return;
+
+			_stepsLeft = value;
+			this.invalidate(FeathersControl.INVALIDATION_FLAG_DATA);
 		}
 
 		//---------------------------------------------------------
@@ -62,12 +90,13 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		/**
-		 * @private
-		 */
-		private var _needUpdate:Boolean = true;
+		private var _bg:Image;
 
 		private var _cat:Image;
+
+		private var _ball:TextFieldBackground;
+
+		private var _line:Image;
 
 		//---------------------------------------------------------
 		//
@@ -78,7 +107,29 @@ package ru.catAndBall.view.core.game.field {
 		protected override function initialize():void {
 			super.initialize();
 
-			update();
+			_bg = Assets.getImage(AssetList.Strip_moves_strip_moves);
+			addChild(_bg);
+
+			_cat = Assets.getImage(AssetList.Strip_moves_cat_for_strip);
+			_cat.y = Layout.field.progressCatY;
+			addChild(_cat);
+
+			const ballBg:Image = Assets.getImage(AssetList.Strip_moves_ball_for_strip);
+			_ball = new TextFieldBackground(AssetList.font_xsmall_milk_bold, ballBg, true, true);
+			_ball.y = Layout.field.progressBallY;
+			addChild(_ball);
+
+			_line = Assets.getImage(AssetList.Strip_moves_line_for_strip);
+			_line.y = Layout.field.progresslineY;
+			addChild(_line);
+		}
+
+		protected override function draw():void {
+			if (isInvalid(FeathersControl.INVALIDATION_FLAG_DATA)) {
+				this.update();
+			}
+
+			super.draw();
 		}
 
 		//---------------------------------------------------------
@@ -88,16 +139,17 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		private function update():void {
-			if (!_cat) {
-				_cat = Assets.getImage(AssetList.Strip_moves_cat_for_strip);
-				_cat.y = 30 - _cat.height / 2;
-				addChild(_cat);
-			}
+			var start:Number = AppProperties.viewRect.x;
+			var totalPath:Number = AppProperties.appWidth - (start * 2 + _cat.texture.width);
 
-			var start:Number = AppProperties.appWidth * 0.1;
-			var totalPath:Number = AppProperties.appWidth - (start * 2 + _cat.width);
+			_ball.text = String(_stepsLeft);
 
-			_cat.x = start + totalPath * _progress;
+			const catX:int = start + totalPath * _progress;
+			const ballX:int = catX + _cat.texture.width + Layout.baseGap / 4;
+			const lineX:int = ballX + Layout.baseGap / 2;
+			TweenNano.to(_cat, 0.3, {x:catX, delay:0.2, ease:Linear.easeNone});
+			TweenNano.to(_ball, 0.3, {x: ballX, ease:Linear.easeNone});
+			TweenNano.to(_line, 0.3, {x: lineX, width: AppProperties.appWidth - lineX, ease:Linear.easeNone});
 		}
 
 		//---------------------------------------------------------

@@ -19,7 +19,6 @@
             <entry key="compiler.debug.swf" value="true" />
           </map>
           <option name="resourceFilesMode" value="ResourcePatterns" />
-          <option name="additionalOptions" value="-advanced-telemetry" />
         </compiler-options>
         <packaging-air-desktop />
         <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/CatAndBall-app.xml" package-file-name="Catandball">

@@ -14,10 +14,6 @@ package ru.catAndBall.view.screens {
 	 */
 	public class ScreenType {
 
-		public static const APPLICATON:String = '$application$';
-
-		public static const ROOM_CONTAINER:String = '$game_container$';
-
 		public static const PRELOADER:String = 'screenPreloader';
 
 		public static const MAIN_MENU:String = 'screenMenu';

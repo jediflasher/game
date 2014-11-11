@@ -35,7 +35,7 @@ package feathers.controls
 	 *     {
 	 *         public function CustomScreen()
 	 *         {
-	 *             this.addEventListener( FeathersEventType.INITIALIZE, initializeHandler );
+	 *             this.addEventListener( FeathersEventType.INITIALIZE, lalizeHandler );
 	 *         }
 	 *
 	 *         private function initializeHandler( event:Event ):void

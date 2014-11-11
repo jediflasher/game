@@ -6,6 +6,8 @@
 package ru.catAndBall.view.core.game.field {
 
 	import com.greensock.TweenNano;
+	import com.greensock.easing.Linear;
+	import com.greensock.easing.Quart;
 
 	import feathers.display.Scale3Image;
 	import feathers.textures.Scale3Textures;
@@ -20,6 +22,7 @@ package ru.catAndBall.view.core.game.field {
 	import ru.catAndBall.view.layout.Layout;
 
 	import starling.textures.Texture;
+	import starling.textures.TextureSmoothing;
 
 	/**
 	 * @author                Obi
@@ -69,21 +72,39 @@ package ru.catAndBall.view.core.game.field {
 			updateProgress();
 		}
 
+		private var _totalHeight:Number;
+
+		public function get totalHeight():Number {
+			return _totalHeight;
+		}
+
 		//---------------------------------------------------------
 		//
 		// Variables
 		//
 		//---------------------------------------------------------
 
+		private var _progressBar:Scale3Image;
+
+		private var _icon:ResourceCounter;
+
 		private var _resourseType:String;
 
 		private var _stackSize:int;
 
-		private var _maxHeight:Number;
+		private var _startY:int;
 
-		private var _progressBar:Scale3Image;
+		private var _vPadding:int;
 
-		private var _icon:ResourceCounter;
+		private var _minHeight:int;
+
+		private var _maxHeight:int;
+
+		private var _bgHeight:int;
+
+		private var _overLoad:Boolean = false;
+
+		private const _helperVector:Vector.<int> = new Vector.<int>(2, true);
 
 		//---------------------------------------------------------
 		//
@@ -93,31 +114,42 @@ package ru.catAndBall.view.core.game.field {
 
 		protected override function added(event:* = null):void {
 			if (!_progressBar) {
+				_startY = Layout.baseResourceiconSize * 0.75;
+
 				var t:Texture = Assets.getTexture(AssetList.Panel_components_components_level_bg);
-				var a:Array = Layout.fieldCounterBgScaleGridSizes;
+				var a:Array = Layout.field.counterBgScaleGridSizes;
 				var bg:Scale3Image = new Scale3Image(new Scale3Textures(t, a[0], a[1], Scale3Textures.DIRECTION_VERTICAL));
+				bg.smoothing = TextureSmoothing.NONE;
 				bg.x = 0;
-				bg.y = 0;
-				bg.height = Layout.fieldCounterBgHeight;
+				bg.y = _startY;
+				bg.height = Layout.field.counterBgHeight;
 				addChild(bg);
 
 				const bgWidth:Number = bg.textures.texture.width;
-				const bgHeight:Number = bg.textures.texture.height;
-				_maxHeight = bgHeight * 0.9;
+				_bgHeight = Layout.field.counterBgHeight;
 
-				t = Assets.getTexture(AssetList.Panel_components_milk2);
-				a = Layout.fieldCounterMilkScaleGridSizes;
+				t = Assets.getTexture(AssetList.Panel_components_milk);
+				a = Layout.field.counterMilkScaleGridSizes;
 				_progressBar = new Scale3Image(new Scale3Textures(t, a[0], a[1], Scale3Textures.DIRECTION_VERTICAL));
-				_progressBar.pivotY = _progressBar.textures.texture.height;
-				_progressBar.x = (bgWidth - _progressBar.textures.texture.width) / 2;
-				_progressBar.y = _maxHeight;
+				_progressBar.smoothing = TextureSmoothing.NONE;
 				addChild(_progressBar);
 
-				_icon = new ResourceCounter(_resourseType);
+				_vPadding = (_bgHeight - Layout.field.counterProgressMaxHeight) / 2;
+				_minHeight = _progressBar.textures.texture.height;
+				_maxHeight = Layout.field.counterProgressMaxHeight - _minHeight;
+
+				getValuesByProgress(0);
+				_progressBar.x = (bgWidth - _progressBar.textures.texture.width) / 2;
+				_progressBar.y = _helperVector[0];
+				_progressBar.height = _helperVector[1];
+
+				_icon = new ResourceCounter(_resourseType, _resourceSet);
 				addChild(_icon);
+
+				_totalHeight = Layout.baseResourceiconSize + Layout.field.counterBgHeight - _startY;
 			}
 
-			_resourceSet.addEventListener(Event.CHANGE, updateProgress);
+			_resourceSet.addEventListener(Event.CHANGE, handler_countChange);
 
 			updateProgress();
 		}
@@ -137,7 +169,29 @@ package ru.catAndBall.view.core.game.field {
 			if (!stage) return;
 
 			const progress:Number = ((_stackSize + _stack) % _stackSize) / _stackSize;
-			TweenNano.to(_progressBar, 0.2, {height: _maxHeight * progress});
+
+			if (_overLoad && progress >= 0 && progress < 1) {
+				// сначала прогрессбар доедет до полного значения,затем сбросится в 0 и поедет к текущему
+				getValuesByProgress(1);
+				TweenNano.to(_progressBar, 0.3, {height: _helperVector[1], y:_helperVector[0], ease:Linear.easeNone, onComplete:overloadComplete });
+				_overLoad = false;
+			} else {
+				getValuesByProgress(progress);
+				TweenNano.to(_progressBar, 0.3, {height: _helperVector[1], y:_helperVector[0], ease:Linear.easeNone});
+			}
+		}
+
+		private function overloadComplete():void {
+			getValuesByProgress(0);
+			_progressBar.y = _helperVector[0];
+			_progressBar.height = _helperVector[1];
+			updateProgress();
+		}
+
+		private function getValuesByProgress(progress:Number):Vector.<int> {
+			_helperVector[1] = _maxHeight * progress + _minHeight; // height;
+			_helperVector[0] = _startY + _bgHeight - _vPadding - _helperVector[1]; // y
+			return _helperVector;
 		}
 
 		//---------------------------------------------------------
@@ -145,5 +199,9 @@ package ru.catAndBall.view.core.game.field {
 		// Event handlers
 		//
 		//---------------------------------------------------------
+
+		private function handler_countChange(event:Event):void {
+			_overLoad = true;
+		}
 	}
 }

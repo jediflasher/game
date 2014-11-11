@@ -24,14 +24,17 @@ package ru.catAndBall.view.core.ui {
 		public function YellowButton(icon:String) {
 			super();
 
-			var img:Image = Assets.getImage(AssetList.button);
+			var img:Image = Assets.getImage(AssetList.buttons_button);
 			hoverSkin = img;
-			defaultSkin = Assets.getImage(AssetList.button_on);
-			disabledSkin = Assets.getImage(AssetList.button_off);
+			defaultSkin = Assets.getImage(AssetList.buttons_button_on);
+			disabledSkin = Assets.getImage(AssetList.buttons_button_off);
 
 			_icon = Assets.getImage(icon);
-			_icon.x = img.texture.width / 2 - _icon.texture.width / 2;
-			_icon.y = img.texture.height / 2 - _icon.texture.height / 2;
+			//_icon.x = img.texture.width / 2;
+			//_icon.y = img.texture.height / 2;
+
+			_w = Math.max(img.texture.width, _icon.texture.width);
+			_h = Math.max(img.texture.height, _icon.texture.height);
 		}
 
 		//--------------------------------------------------------------------------
@@ -41,6 +44,24 @@ package ru.catAndBall.view.core.ui {
 		//--------------------------------------------------------------------------
 
 		private var _icon:Image;
+
+		//--------------------------------------------------------------------------
+		//
+		//  Properties
+		//
+		//--------------------------------------------------------------------------
+
+		private var _w:Number;
+
+		public override function get width():Number {
+			return _w;
+		}
+
+		private var _h:Number;
+
+		public override function get height():Number {
+			return _h;
+		}
 
 		//--------------------------------------------------------------------------
 		//

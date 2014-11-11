@@ -1,4 +1,6 @@
 package ru.catAndBall.data.dict {
+	import ru.catAndBall.data.dict.tools.ToolsDict;
+
 	/**
 	 * @author              Obi
 	 * @version             1.0
@@ -15,7 +17,9 @@ package ru.catAndBall.data.dict {
 		//--------------------------------------------------------------------------
 
 		public function Dictionaries() {
-
+			super();
 		}
+
+		public static const tools:ToolsDict = new ToolsDict();
 	}
 }

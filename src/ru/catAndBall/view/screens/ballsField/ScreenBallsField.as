@@ -9,7 +9,7 @@ package ru.catAndBall.view.screens.ballsField {
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
-	import ru.catAndBall.view.core.game.field.BaseScreenFieldBackground;
+	import ru.catAndBall.view.core.game.field.GridBackground;
 	import ru.catAndBall.view.screens.ScreenType;
 
 	/**
@@ -37,14 +37,11 @@ package ru.catAndBall.view.screens.ballsField {
 		//
 		//---------------------------------------------------------		}
 
-		protected override function getBackground():BaseScreenFieldBackground {
-			return new BaseScreenFieldBackground(
-					AssetList.Strip_moves_strip_moves,
+		protected override function getBackground():GridBackground {
+			return new GridBackground(
 					AssetList.fields_balls_bg1,
 					AssetList.fields_balls_bg2,
 					AssetList.fields_balls_bg3,
-					AssetList.fields_balls_ebge_fieldballs,
-					AssetList.fields_balls_ebge_fieldballs,
 					GameData.player.ballsField.columns,
 					GameData.player.ballsField.rows
 			);
@@ -53,12 +50,6 @@ package ru.catAndBall.view.screens.ballsField {
 		//---------------------------------------------------------
 		//
 		// Private methods
-		//
-		//---------------------------------------------------------
-
-		//---------------------------------------------------------
-		//
-		// Event handlers
 		//
 		//---------------------------------------------------------
 	}

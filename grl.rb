@@ -32,10 +32,10 @@ File.open(@output_directory + @file_name + '.as', 'w+') { |file|
     end
   }
 
+  file.puts "\n\n"
+
   #generating fonts list
   Dir.foreach(@input_directory + 'fonts') { |filename|
-    file.puts "\n\n"
-
     if filename =~ /^[a-zA-Z_]+/
       val = "\t\tpublic static const font_#{filename}:String = '#{filename}';\n"
       file.puts val
