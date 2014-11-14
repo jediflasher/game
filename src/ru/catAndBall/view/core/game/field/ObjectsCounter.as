@@ -114,7 +114,7 @@ package ru.catAndBall.view.core.game.field {
 
 		protected override function added(event:* = null):void {
 			if (!_progressBar) {
-				_startY = Layout.baseResourceiconSize * 0.75;
+				_startY = Layout.baseResourceIconSize * 0.75;
 
 				var t:Texture = Assets.getTexture(AssetList.Panel_components_components_level_bg);
 				var a:Array = Layout.field.counterBgScaleGridSizes;
@@ -146,7 +146,7 @@ package ru.catAndBall.view.core.game.field {
 				_icon = new ResourceCounter(_resourseType, _resourceSet);
 				addChild(_icon);
 
-				_totalHeight = Layout.baseResourceiconSize + Layout.field.counterBgHeight - _startY;
+				_totalHeight = Layout.baseResourceIconSize + Layout.field.counterBgHeight - _startY;
 			}
 
 			_resourceSet.addEventListener(Event.CHANGE, handler_countChange);

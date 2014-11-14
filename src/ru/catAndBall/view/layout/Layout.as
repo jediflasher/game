@@ -23,7 +23,7 @@ package ru.catAndBall.view.layout {
 
 		public static const baseGap:int = AppProperties.getValue(50, 30);
 
-		public static const baseResourceiconSize:int = AppProperties.getValue(125, 90);
+		public static const baseResourceIconSize:int = AppProperties.getValue(125, 90);
 
 		public static const popup:PopupLayout = new PopupLayout();
 

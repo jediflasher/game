@@ -134,8 +134,8 @@ package ru.catAndBall.view.core.game {
 		public function ResourceImage(resourceSetType:String, size:int = 0) {
 			_resourceType = resourceSetType;
 			super(getTexture());
-			width = size || Layout.baseResourceiconSize;
-			height = size || Layout.baseResourceiconSize;
+			width = size || Layout.baseResourceIconSize;
+			height = size || Layout.baseResourceIconSize;
 		}
 
 		//--------------------------------------------------------------------------

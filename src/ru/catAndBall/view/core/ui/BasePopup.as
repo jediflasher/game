@@ -10,9 +10,11 @@ package ru.catAndBall.view.core.ui {
 
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
+	import ru.catAndBall.view.core.display.GridLayoutContainer;
 	import ru.catAndBall.view.layout.Layout;
 
 	import starling.display.DisplayObject;
+	import starling.display.DisplayObjectContainer;
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.textures.Texture;
@@ -129,6 +131,7 @@ package ru.catAndBall.view.core.ui {
 			addChild(_bg);
 
 			_w = _bg.textures.texture.width;
+			updateCloseButton();
 		}
 
 		protected override function draw():void {
@@ -148,17 +151,30 @@ package ru.catAndBall.view.core.ui {
 				if (_content) {
 					for each (var obj:DisplayObject in _content) {
 						addChild(obj);
+
 						if (obj is BitmapFontTextRenderer) {
 							(obj as BitmapFontTextRenderer).wordWrap = true;
 							(obj as BitmapFontTextRenderer).maxWidth = Layout.popup.contentWidth;
 						}
+
 						if (obj is IFeathersControl) (obj as IFeathersControl).validate();
 
-						obj.getBounds(obj, HELPER_RECT);
-						obj.x = _w / 2 - HELPER_RECT.width / 2;
+						var w:Number = 0;
+						var h:Number = 0;
+
+						if (obj is GridLayoutContainer) {
+							w = obj.width;
+							h = obj.height;
+						} else {
+							obj.getBounds(obj, HELPER_RECT);
+							w = HELPER_RECT.width;
+							h = HELPER_RECT.height;
+						}
+
+						obj.x = _w / 2 - w / 2;
 						obj.y = nextY;
 
-						nextY += HELPER_RECT.height + Layout.popup.contentGap;
+						nextY += h + Layout.popup.contentGap;
 					}
 				}
 
@@ -194,6 +210,12 @@ package ru.catAndBall.view.core.ui {
 				_closeButton.y = Layout.popup.closeButtonPosition.y - _closeButton.height / 2;
 				_closeButton.addEventListener(Event.TRIGGERED, handler_closeClick);
 				addChild(_closeButton);
+			}
+		}
+
+		private function invalidateContainer(container:DisplayObjectContainer):void {
+			if (container is IFeathersControl) {
+
 			}
 		}
 

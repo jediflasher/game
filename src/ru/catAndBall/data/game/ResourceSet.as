@@ -163,9 +163,11 @@ package ru.catAndBall.data.game {
 
 		[Inline]
 		public final function substract(resourceSet:ResourceSet):void {
-			for (var type:String in TYPES) {
+			for each (var type:String in TYPES) {
 				var value:Number = resourceSet._hash[type] || 0;
-				if (value) addTypeSilent(type, -value);
+				if (value) {
+					addTypeSilent(type, -value);
+				}
 			}
 
 			if (hasEventListener(Event.CHANGE)) dispatchEvent(new Event(Event.CHANGE));
@@ -174,7 +176,6 @@ package ru.catAndBall.data.game {
 		[Inline]
 		public final function substractType(type:String, count:int):void {
 			addType(type, -count);
-			if (_hash[type] < 0) throw new IllegalOperationError('Cant substract more than have');
 		}
 
 		[Inline]
@@ -184,7 +185,7 @@ package ru.catAndBall.data.game {
 		}
 
 		public function hasEnough(resourceSet:ResourceSet):Boolean {
-			for (var type:String in TYPES) {
+			for each (var type:String in TYPES) {
 				var subValue:Number = resourceSet._hash[type] || 0;
 				var oldValue:Number = _hash[type] || 0;
 				if (subValue > oldValue) return false;
@@ -222,7 +223,7 @@ package ru.catAndBall.data.game {
 		//
 		//--------------------------------------------------------------------------
 
-		private final function addTypeSilent(type:String, count:int):void {
+		public final function addTypeSilent(type:String, count:int):void {
 			_hash[type] ||= 0;
 			_hash[type] += count;
 		}

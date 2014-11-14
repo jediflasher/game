@@ -38,5 +38,11 @@ package ru.catAndBall.view.layout {
 		public const priceIconGaps:Point = AppProperties.getValue(new Point(60, 15), new Point(30, 7));
 
 		public const priceX:int = AppProperties.getValue(1010, 160);
+
+		public const popupPlusMinusButtonSize:int = AppProperties.getValue(100, 50);
+
+		public const popupCounterBgSize:int = AppProperties.getValue(335, 165);
+
+		public const popupCounterBgScaleGridSizes:Array = AppProperties.getValue([53, 10], [25, 5]);
 	}
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:dcd02d5f6e78069bef3b56141f612e56:a50946d23dc408962485246760349d49:345d47aacc1ef2fb56af7e74b6fb1c17$ -->
+<!-- $TexturePacker:SmartUpdate:c5db4cdcae8dffaa586989d8ad2f7c56:9c6ba5199e493d88733f1ffb6f5ad261:345d47aacc1ef2fb56af7e74b6fb1c17$ -->
 <TextureAtlas imagePath="atlas1.png">
-    <SubTexture name="Panel_components/milk" x="1924" y="1968" width="116" height="35"/>
     <SubTexture name="Room/carpet" x="1165" y="1175" width="833" height="498"/>
     <SubTexture name="Room/cat_house_lvl1" x="1002" y="1677" width="335" height="180" frameX="-10" frameY="-3" frameWidth="350" frameHeight="185"/>
     <SubTexture name="Room/regiment1Close" x="3" y="1861" width="106" height="184"/>
@@ -25,11 +24,12 @@
     <SubTexture name="fields/window/component/screenFieldCWindow_paintwhiteIconDisabled" x="1613" y="1677" width="132" height="171" frameX="-20" frameY="0" frameWidth="171" frameHeight="171"/>
     <SubTexture name="fields/window/object_window/gold_leaf" x="1002" y="1407" width="159" height="146" frameX="-11" frameY="-18" frameWidth="181" frameHeight="181"/>
     <SubTexture name="header/catmoneyIcon" x="1350" y="1852" width="200" height="186" frameX="0" frameY="-7" frameWidth="201" frameHeight="201"/>
-    <SubTexture name="header/header_icon_ava" x="1924" y="1843" width="118" height="121"/>
     <SubTexture name="inventory/fon_pod_ikonki" x="3" y="1175" width="995" height="682"/>
     <SubTexture name="inventory/grey_icon/balls_shadow" x="1917" y="1075" width="113" height="95" frameX="-2" frameY="-11" frameWidth="116" frameHeight="116"/>
     <SubTexture name="inventory/grey_icon/cookies_shadow" x="1797" y="1075" width="116" height="95" frameX="0" frameY="-10" frameWidth="116" frameHeight="116"/>
     <SubTexture name="inventory/grey_icon/hay_shadow" x="1002" y="1557" width="116" height="116"/>
+    <SubTexture name="inventory/grey_icon/konteiner_shadow" x="1924" y="1963" width="108" height="82" frameX="-4" frameY="-17" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="inventory/grey_icon/rabbit_fur_shadow" x="1924" y="1843" width="116" height="116"/>
     <SubTexture name="inventory/shcatulka" x="3" y="3" width="1269" height="1168" frameX="0" frameY="0" frameWidth="1269" frameHeight="1169"/>
     <SubTexture name="panel_tools/coffee" x="113" y="1861" width="248" height="183" frameX="-3" frameY="-40" frameWidth="251" frameHeight="251"/>
     <SubTexture name="panel_tools/kontener" x="365" y="1861" width="241" height="181" frameX="-5" frameY="-35" frameWidth="251" frameHeight="251"/>

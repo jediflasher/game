@@ -6,20 +6,15 @@ package ru.catAndBall.view.screens.craft {
 	import feathers.core.FeathersControl;
 	import feathers.data.ListCollection;
 	import feathers.layout.VerticalLayout;
-	import feathers.text.BitmapFontTextFormat;
-
-	import flash.geom.Rectangle;
 
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.assets.AssetList;
-	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.*;
-	import ru.catAndBall.view.screens.room.RoomFooterBar;
 	import ru.catAndBall.view.screens.room.RoomHeaderBar;
 
 	import starling.display.Image;
@@ -34,6 +29,12 @@ package ru.catAndBall.view.screens.craft {
 	 * @date                12.10.14 16:41
 	 */
 	public class ScreenCraft extends BaseScreen {
+
+		//--------------------------------------------------------------------------
+		//
+		//  Class constants
+		//
+		//--------------------------------------------------------------------------
 
 		//--------------------------------------------------------------------------
 		//

@@ -2,12 +2,7 @@ package ru.catAndBall.view.core.display {
 	import flash.errors.IllegalOperationError;
 	import flash.geom.Point;
 
-	import ru.catAndBall.view.core.game.ResourceCounter;
-
-	import ru.catAndBall.view.layout.Layout;
-
 	import starling.display.DisplayObject;
-
 	import starling.display.Sprite;
 
 	/**
@@ -60,6 +55,24 @@ package ru.catAndBall.view.core.display {
 
 		private var _numChildren:int;
 
+		private var _maxW:Number = 0;
+
+		private var _maxH:Number = 0;
+
+		//--------------------------------------------------------------------------
+		//
+		//  Properties
+		//
+		//--------------------------------------------------------------------------
+
+		public override function get width():Number {
+			return _maxW;
+		}
+
+		public override function get height():Number {
+			return _maxH;
+		}
+
 		//--------------------------------------------------------------------------
 		//
 		//  Public methods
@@ -72,6 +85,10 @@ package ru.catAndBall.view.core.display {
 			child.y = pos.y;
 			super.addChild(child);
 			_numChildren++;
+
+			_maxW = Math.max(_maxW, pos.x + _elementWidth);
+			_maxH = Math.max(_maxH, pos.y + _elementHeight);
+
 			return child;
 		}
 
@@ -79,12 +96,14 @@ package ru.catAndBall.view.core.display {
 			throw new IllegalOperationError('Cant remove from GridLayout');
 		}
 
-		public override function removeChildren(beginIndex:int=0, endIndex:int=-1, dispose:Boolean=false):void {
+		public override function removeChildren(beginIndex:int = 0, endIndex:int = -1, dispose:Boolean = false):void {
 			throw new IllegalOperationError('Use clear method');
 		}
 
 		public function clear():void {
 			_numChildren = 0;
+			_maxH = 0;
+			_maxW = 0;
 			super.removeChildren();
 		}
 

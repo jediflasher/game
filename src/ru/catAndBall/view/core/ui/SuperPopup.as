@@ -159,7 +159,7 @@ package ru.catAndBall.view.core.ui {
 
 			if (_resourceSet) {
 				if (!_resContainer) {
-					_resContainer = new GridLayoutContainer(4, Layout.baseResourceiconSize, Layout.baseResourceiconSize, 15);
+					_resContainer = new GridLayoutContainer(4, Layout.baseResourceIconSize, Layout.baseResourceIconSize, 15);
 				}
 				_resContainer.unflatten();
 				_resContainer.clear();
@@ -196,11 +196,11 @@ package ru.catAndBall.view.core.ui {
 		//
 		//--------------------------------------------------------------------------
 
-		private function handler_buttonClick(event:Event):void {
+		private function handler_buttonClick(event:*):void {
 			dispatchEventWith(EVENT_BUTTON_CLICK);
 		}
 
-		private function handler_resourceChange(event:Event):void {
+		private function handler_resourceChange(event:*):void {
 			invalidate(INVALIDATION_FLAG_LAYOUT);
 		}
 	}

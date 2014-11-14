@@ -34,6 +34,14 @@ package ru.catAndBall.view.screens.craft {
 
 		//--------------------------------------------------------------------------
 		//
+		//  Class constants
+		//
+		//--------------------------------------------------------------------------
+
+		public static const EVENT_MAKE_CLICK:String = 'makeClick';
+
+		//--------------------------------------------------------------------------
+		//
 		//  Constructor
 		//
 		//--------------------------------------------------------------------------
@@ -169,7 +177,7 @@ package ru.catAndBall.view.screens.craft {
 		}
 
 		private function handler_makeClick(event:*):void {
-
+			dispatchEventWith(EVENT_MAKE_CLICK, true, _toolData);
 		}
 	}
 }

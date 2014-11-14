@@ -11,8 +11,8 @@ package ru.catAndBall.view.core.utils {
 	public class L {
 
 		public static function get(text:String, args:Array = null):String {
-			text = str(text, args);
-			return dict[text] || text;
+			text = str(dict[text] || text, args);
+			return text;
 		}
 
 		private static const dict:Object = {
@@ -39,7 +39,9 @@ package ru.catAndBall.view.core.utils {
 			'screen.craft.tabRug.title': 'Tools for rug field',
 			'screen.craft.tabRolls.title': 'Tools for roll field',
 			'screen.craft.tabWindow.title': 'Tools for window field',
-			'screen.craft.makeButton': 'Create'
+			'screen.craft.makeButton': 'Create',
+			'screen.craft.popup.makeFree': 'Create',
+			'screen.craft.popup.makeFor': 'Create for %s'
 		};
 
 		//--------------------------------------------------------------------------

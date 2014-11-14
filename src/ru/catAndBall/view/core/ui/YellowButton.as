@@ -21,20 +21,20 @@ package ru.catAndBall.view.core.ui {
 		//
 		//--------------------------------------------------------------------------
 
-		public function YellowButton(icon:String) {
+		public function YellowButton(icon:String, width:Number = NaN, height:Number = NaN) {
 			super();
 
-			var img:Image = Assets.getImage(AssetList.buttons_button);
+			var img:Image = Assets.getImage(AssetList.buttons_button, width, height);
 			hoverSkin = img;
-			defaultSkin = Assets.getImage(AssetList.buttons_button_on);
-			disabledSkin = Assets.getImage(AssetList.buttons_button_off);
+			defaultSkin = Assets.getImage(AssetList.buttons_button_on, width, height);
+			disabledSkin = Assets.getImage(AssetList.buttons_button_off, width, height);
 
 			_icon = Assets.getImage(icon);
-			//_icon.x = img.texture.width / 2;
-			//_icon.y = img.texture.height / 2;
+			if (width) _icon.width = Math.min(width, img.width);
+			if (height) _icon.height = Math.min(height, img.height);
 
-			_w = Math.max(img.texture.width, _icon.texture.width);
-			_h = Math.max(img.texture.height, _icon.texture.height);
+			_w = width || Math.max(img.texture.width, _icon.texture.width);
+			_h = height || Math.max(img.texture.height, _icon.texture.height);
 		}
 
 		//--------------------------------------------------------------------------

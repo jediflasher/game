@@ -39,13 +39,13 @@ package ru.catAndBall.view.layout.popup {
 		/**
 		 * Расстояние по оси Y между объектами контента
 		 */
-		public const contentGap:int = AppProperties.getValue(20, 10);
+		public const contentGap:int = AppProperties.getValue(30, 10);
 
 		/**
 		 * Центральная точка кнопки закрытия
 		 */
 		public const closeButtonPosition:Point = AppProperties.getValue(new Point(970, 195), new Point(480, 97));
 
-		public const bgBottomHeight:int = AppProperties.getValue(200, 100);
+		public const bgBottomHeight:int = AppProperties.getValue(130, 100);
 	}
 }
