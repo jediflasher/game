@@ -28,6 +28,10 @@ package ru.catAndBall {
 
 		public static var iOS:Boolean = false;
 
+		public static var isWeb:Boolean = false;
+
+		public static var dev:Boolean = false;
+
 		public static function get isHD():Boolean {
 			return true;
 			return starlingRect.width >= 768 && starlingRect.height >= 1024;

@@ -67,14 +67,14 @@ package ru.catAndBall.view.core.game.field {
 			var count:int = 0;
 
 			for (var key:String in _data.settings.upgradeHash) {
-				var resourceType:String = GridCellType.getResourceType(int(key));
+				var resourceType:String = GridCellType.getResourceType(key);
 				if (resourceType in _hashTypeToCounter) continue;
 				var counter:ObjectsCounter = addCounter(resourceType);
 				count++;
 			}
 
-			for each (var cellType:int in _data.settings.pestsResultHash) {
-				resourceType = GridCellType.getResourceType(int(cellType));
+			for each (var cellType:String in _data.settings.pestsResultHash) {
+				resourceType = GridCellType.getResourceType(cellType);
 				if (resourceType in _hashTypeToCounter) continue;
 				counter = addCounter(resourceType);
 				count++;
@@ -90,6 +90,7 @@ package ru.catAndBall.view.core.game.field {
 			}
 
 			_data.addEventListener(GridData.EVENT_UPDATE_FIELD, updateCounters);
+			_data.addEventListener(GridData.EVENT_FILL_FIELD, updateCounters);
 			updateCounters();
 		}
 

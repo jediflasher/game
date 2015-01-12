@@ -5,15 +5,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data.game.player {
 
-	import flash.events.EventDispatcher;
-
 	import ru.catAndBall.data.BaseData;
-
-	import ru.catAndBall.data.game.GridFieldSettings;
+	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.field.GridData;
-	import ru.catAndBall.data.game.settings.BallsFieldSettings;
-	import ru.catAndBall.data.game.settings.RugFieldSettings;
 
 	/**
 	 * @author                Obi
@@ -47,15 +42,16 @@ package ru.catAndBall.data.game.player {
 		//
 		//---------------------------------------------------------
 
-		public const ballsField:GridData = new GridData(new BallsFieldSettings());
+		public const ballsField:GridData = new GridData(Dictionaries.ballsFieldSettings);
 
-		public const rugField:GridData = new GridData(new RugFieldSettings());
+		public const rugField:GridData = new GridData(Dictionaries.rugFieldSettings);
 
-		public const windowField:GridData = new GridData(new GridFieldSettings());
+		public const windowField:GridData = new GridData(Dictionaries.windowFieldSettings);
 
 		public const resources:ResourceSet = new ResourceSet();
 
-		public const buildings:BuildingsData = new BuildingsData();
+		public const constructions:ConstructionCollectionData = new ConstructionCollectionData();
+
 
 		public function get level():int {
 			return resources.get(ResourceSet.EXPERIENCE) / 10;
@@ -63,7 +59,15 @@ package ru.catAndBall.data.game.player {
 
 		// helpers
 		public function get catHouseLevel():int {
-			return buildings.catHouse.level;
+			return constructions.catHouse.level;
+		}
+
+		public function get money():int {
+			return resources.get(ResourceSet.MONEY);
+		}
+
+		public function set money(value:int):void {
+			resources.set(ResourceSet.MONEY, value);
 		}
 
 		//--------------------------------------------------------------------------
@@ -75,8 +79,8 @@ package ru.catAndBall.data.game.player {
 		public override function deserialize(value:Object):void {
 			super.deserialize(value);
 
-			if ('buildings' in value) {
-				buildings.deserialize(value.buildings);
+			if ('constructions' in value) {
+				constructions.deserialize(value.constructions);
 			}
 
 			if ('resources' in value) {
@@ -86,7 +90,7 @@ package ru.catAndBall.data.game.player {
 
 		public override function serialize():Object {
 			var result:Object = super.serialize();
-			result['buildings'] = buildings.serialize();
+			result['constructions'] = constructions.serialize();
 			result['resources'] = resources.serialize();
 			return result;
 		}

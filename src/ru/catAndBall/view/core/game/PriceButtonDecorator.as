@@ -46,6 +46,7 @@ package ru.catAndBall.view.core.game {
 			super();
 
 			this.button = button;
+			this.button.gap = Layout.baseGap / 2;
 			_iconSize = iconSize || MEDIUM_ICON_SIZE;
 			_labelKeyPrice = labelKeyHasPrice;
 			_labelKeyNoPrice = labelKeyNoPrice;
@@ -85,7 +86,6 @@ package ru.catAndBall.view.core.game {
 		}
 
 		public var button:Button;
-
 
 		//--------------------------------------------------------------------------
 		//

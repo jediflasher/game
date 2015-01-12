@@ -19,7 +19,7 @@ package ru.catAndBall.data.game.field {
 		//
 		//--------------------------------------------------------------------------
 
-		public function PestGridCellData(gridCellType:int, column:int, row:int, settings:GridFieldSettings) {
+		public function PestGridCellData(gridCellType:String, column:int, row:int, settings:GridFieldSettings) {
 			super(gridCellType, column, row, settings);
 			family = GridCellFamily.PEST;
 		}

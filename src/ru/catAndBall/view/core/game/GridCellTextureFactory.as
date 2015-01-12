@@ -57,7 +57,7 @@ package ru.catAndBall.view.core.game {
 
 
 
-		public static function getTextureByType(type:int):Texture {
+		public static function getTextureByType(type:String):Texture {
 			return Assets.getTexture(MAP[type]);
 		}
 

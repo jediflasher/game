@@ -86,14 +86,11 @@ package ru.catAndBall.view.core.game.field {
 			addRawChild(_bg);
 
 			_fieldController = new GridController(screenData.gridData, this);
-			_fieldController.added();
 
 			_counterContainer = new FieldCounters((data as BaseScreenFieldData).gridData);
 			_counterContainer.touchable = false;
 			_counterContainer.y = Layout.field.countersY;
 			addRawChild(_counterContainer);
-
-			_fieldController.added();
 
 			super.initialize();
 		}
@@ -113,7 +110,7 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		protected function update(event:* = null):void {
-			const fieldData:GridData = screenData.gridData;
+			var fieldData:GridData = screenData.gridData;
 
 			fieldData.addEventListener(GridData.EVENT_TURN_UPDATE, updateTurn);
 			updateTurn(event);
@@ -126,7 +123,7 @@ package ru.catAndBall.view.core.game.field {
 		protected override function feathersControl_removedFromStageHandler(event:Event):void {
 			super.feathersControl_removedFromStageHandler(event);
 
-			_fieldController.removed();
+			_fieldController.clear();
 		}
 
 		//---------------------------------------------------------

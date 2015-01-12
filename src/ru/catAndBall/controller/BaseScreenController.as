@@ -15,6 +15,8 @@ package ru.catAndBall.controller {
 
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.screens.BaseScreen;
+	import ru.catAndBall.view.screens.ScreenType;
+	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
 
 	/**
 	 * @author                Obi
@@ -24,14 +26,6 @@ package ru.catAndBall.controller {
 	 * @date                03.07.14 12:28
 	 */
 	public class BaseScreenController extends ScreenNavigatorItem implements IEventDispatcher {
-
-		//--------------------------------------------------------------------------
-		//
-		//  Class constants
-		//
-		//--------------------------------------------------------------------------
-
-		public static const EVENT_BACK:String = 'eventBack';
 
 		//---------------------------------------------------------
 		//
@@ -46,7 +40,10 @@ package ru.catAndBall.controller {
 			this._navigator = navigator;
 
 			this._view.addEventListener(FeathersEventType.CREATION_COMPLETE, handler_creationComplete);
+			this._view.addEventListener(Event.ADDED_TO_STAGE, handler_addedToStage);
 			this._view.addEventListener(Event.REMOVED_FROM_STAGE, handler_removedFromStage);
+
+			events[SimpleScreenFooterBar.EVENT_BACK_CLICK] = backClick;
 		}
 
 		//--------------------------------------------------------------------------
@@ -56,6 +53,8 @@ package ru.catAndBall.controller {
 		//--------------------------------------------------------------------------
 
 		private var _eventDispatcher:EventDispatcher;
+
+		private var _creatinComplete:Boolean = false;
 
 		//--------------------------------------------------------------------------
 		//
@@ -78,6 +77,10 @@ package ru.catAndBall.controller {
 		public function get navigator():ScreenNavigator {
 			return _navigator;
 		}
+
+		public var previousScreen:String = ScreenType.ROOM;
+
+		public var purchaseController:PurchaseController;
 
 		//--------------------------------------------------------------------------
 		//
@@ -119,6 +122,12 @@ package ru.catAndBall.controller {
 
 		}
 
+		protected function backClick():void {
+			if (previousScreen) {
+				navigator.showScreen(previousScreen);
+			}
+		}
+
 		//--------------------------------------------------------------------------
 		//
 		//  Event handlers
@@ -126,7 +135,12 @@ package ru.catAndBall.controller {
 		//--------------------------------------------------------------------------
 
 		private function handler_creationComplete(event:*):void {
+			_creatinComplete = true;
 			added();
+		}
+
+		private function handler_addedToStage(event:*):void {
+			if (_creatinComplete) added();
 		}
 
 		private function handler_removedFromStage(event:*):void {

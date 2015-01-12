@@ -72,7 +72,7 @@ package ru.catAndBall.data.game.field {
 
 		public const collectedResourceSet:ResourceSet = new ResourceSet();
 
-		public function getCollectCount(type:int):int {
+		public function getCollectCount(type:String):int {
 			if (type in settings.connectCounts) return int(settings.connectCounts[type]);
 			return settings.baseConnectCount;
 		}
@@ -157,10 +157,10 @@ package ru.catAndBall.data.game.field {
 					var oldValue:int = collectedResourceSet.get(resourceType);
 					var newValue:int = int(newCount / stackSize);
 					if (newValue > oldValue) collectedResourceSet.addType(resourceType, newValue - oldValue);
-
-					removeCell(cell);
-					columns[cell.column] = true;
 				}
+
+				removeCell(cell);
+				columns[cell.column] = true;
 			}
 
 			for (var column:String in columns) {
@@ -194,7 +194,7 @@ package ru.catAndBall.data.game.field {
 		}
 
 		[Inline]
-		public final function getCellsByType(cellType:int):Vector.<GridCellData> {
+		public final function getCellsByType(cellType:String):Vector.<GridCellData> {
 			return _typesHash[cellType] as Vector.<GridCellData>;
 		}
 
@@ -220,8 +220,7 @@ package ru.catAndBall.data.game.field {
 			_typesHash = {};
 			_familyHash = {};
 			_collectedResourceElements = {};
-			_currentTurn = 0;
-			maxTurns = 0;
+			currentTurn = 0;
 		}
 
 		[Inline]
@@ -341,7 +340,7 @@ package ru.catAndBall.data.game.field {
 				result.push(startCell);
 			}
 
-			var startCellType:int = startCell.type;
+			var startCellType:String = startCell.type;
 			var sx:int = startCell.column - 1;
 			var fx:int = startCell.column + 1;
 			var sy:int = startCell.row - 1;

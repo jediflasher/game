@@ -8,12 +8,12 @@ package ru.catAndBall.controller.screen {
 	import feathers.controls.ScreenNavigator;
 
 	import ru.catAndBall.controller.generators.BaseGridGenerator;
-	import ru.catAndBall.controller.tools.ToolCollectCells;
+	import ru.catAndBall.controller.tools.BaseToolController;
 	import ru.catAndBall.data.GameData;
+	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.ResourceSet;
-	import ru.catAndBall.data.game.field.GridCellType;
-	import ru.catAndBall.data.game.tools.ToolCollectCellsData;
+	import ru.catAndBall.data.game.tools.BaseToolData;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 
@@ -47,7 +47,7 @@ package ru.catAndBall.controller.screen {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _toolCollect:ToolCollectCells;
+		private var _toolCollect:BaseToolController;
 
 		//--------------------------------------------------------------------------
 		//
@@ -58,14 +58,8 @@ package ru.catAndBall.controller.screen {
 		protected override function added():void {
 			super.added();
 
-			var toolData:ToolCollectCellsData = new ToolCollectCellsData(new <int>[
-				GridCellType.TOY_BLUE,
-				GridCellType.TOY_GREEN,
-				GridCellType.TOY_RED,
-				GridCellType.TOY_PURPLE
-			], ResourceSet.TOOL_SPOKES, GameData.player.resources);
-
-			_toolCollect = new ToolCollectCells(toolData);
+			var toolData:BaseToolData = new BaseToolData(Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_SPOOL), GameData.player.resources);
+			_toolCollect = new BaseToolController(toolData);
 
 			view.addEventListener(FieldFooterBar.EVENT_TOOLS_CLICK, handler_toolsClick);
 		}
@@ -89,7 +83,7 @@ package ru.catAndBall.controller.screen {
 		//--------------------------------------------------------------------------
 
 		private function handler_toolsClick(event:Event):void {
-			_toolCollect.apply(_fieldData, _view.fieldController, _settings);
+			_toolCollect.apply(_fieldData, _view.fieldController, this);
 		}
 	}
 }

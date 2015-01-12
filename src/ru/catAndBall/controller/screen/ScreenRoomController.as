@@ -9,19 +9,25 @@ package ru.catAndBall.controller.screen {
 	import feathers.core.PopUpManager;
 	import feathers.core.PopUpManager;
 
+	import ru.catAndBall.AppController;
+
 	import ru.catAndBall.controller.BaseScreenController;
+
+	import ru.catAndBall.controller.BaseScreenController;
+	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
-	import ru.catAndBall.data.game.buildings.BuildingData;
+	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.game.Building;
+	import ru.catAndBall.view.core.game.Construction;
 	import ru.catAndBall.view.core.ui.BasePopup;
 	import ru.catAndBall.view.core.ui.SuperPopup;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.popups.InventoryPopup;
+	import ru.catAndBall.view.popups.StartFieldPaidPopup;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.room.RoomFooterBar;
 	import ru.catAndBall.view.screens.room.ScreenRoom;
@@ -48,11 +54,13 @@ package ru.catAndBall.controller.screen {
 		public function ScreenRoomController(navigator:ScreenNavigator, screen:ScreenRoom) {
 			super(navigator, screen);
 			events[ScreenRoom.EVENT_COMMODE_CLICK] = ScreenType.COMMODE_CRAFT;
-			events[ScreenRoom.EVENT_RUG_CLICK] = ScreenType.RUG_FIELD;
-			events[RoomFooterBar.EVENT_BANK_CLICK] = ScreenType.COMMODE_CRAFT;
-
-			events[RoomFooterBar.EVENT_INVENTORY_CLICK] = inventoryClick;
+			events[ScreenRoom.EVENT_RUG_CLICK] = rugFieldClick;
 			events[ScreenRoom.EVENT_BALLS_CLICK] = ballsClick;
+
+			events[RoomFooterBar.EVENT_MOUSE_CLICK] = ScreenType.COMMODE_CRAFT;
+			events[RoomFooterBar.EVENT_CONSTRUCTION_CLICK] = ScreenType.CONSTRUCTION;
+			events[RoomFooterBar.EVENT_BANK_CLICK] = bankClick;
+			events[RoomFooterBar.EVENT_INVENTORY_CLICK] = inventoryClick;
 		}
 
 		//---------------------------------------------------------
@@ -72,6 +80,8 @@ package ru.catAndBall.controller.screen {
 
 		private var _popupFieldStart:SuperPopup;
 
+		private var _popupPaidFieldStart:SuperPopup;
+
 		private var _inventory:InventoryPopup;
 
 		private var _completedGrid:GridData;
@@ -89,7 +99,7 @@ package ru.catAndBall.controller.screen {
 				_popupFieldComplete = new SuperPopup();
 			}
 
-			const exp:int = fieldData.collectedResourceSet.get(ResourceSet.EXPERIENCE);
+			var exp:int = fieldData.collectedResourceSet.get(ResourceSet.EXPERIENCE);
 			_popupFieldComplete.resourceSet = fieldData.collectedResourceSet;
 			_popupFieldComplete.title = L.get('finish_field_popup.balls.title');
 			_popupFieldComplete.desc = exp ? L.get('finish_field_popup.balls.desc', [exp]) : null;
@@ -99,6 +109,9 @@ package ru.catAndBall.controller.screen {
 			_popupFieldComplete.addEventListener(BasePopup.EVENT_BUTTON_CLICK, handler_completeBallsClick);
 
 			PopUpManager.addPopUp(_popupFieldComplete);
+
+			GameData.player.resources.add(_completedGrid.collectedResourceSet);
+			AppController.saveData();
 		}
 
 		public function fieldCancel(fieldData:GridData):void {
@@ -114,11 +127,11 @@ package ru.catAndBall.controller.screen {
 		protected override function added():void {
 			super.added();
 
-			view.addEventListener(Building.EVENT_TOUCH, handler_buildingTouch);
+			view.addEventListener(Construction.EVENT_TOUCH, handler_buildingTouch);
 		}
 
 		protected override function removed():void {
-			view.removeEventListener(Building.EVENT_TOUCH, handler_buildingTouch);
+			view.removeEventListener(Construction.EVENT_TOUCH, handler_buildingTouch);
 			super.removed();
 		}
 
@@ -136,9 +149,23 @@ package ru.catAndBall.controller.screen {
 			_popupFieldStart.desc = L.get('start_field_popup.balls.desc');
 			_popupFieldStart.icon = Assets.getImage(AssetList.start_windows_tangled_icon);
 			_popupFieldStart.showClose = true;
+			_popupFieldStart.resourceSet = GameData.player.ballsField.settings.price;
 			_popupFieldStart.addEventListener(BasePopup.EVENT_BUTTON_CLICK, handler_startBallsClick);
 
 			PopUpManager.addPopUp(_popupFieldStart);
+		}
+
+		private function rugFieldClick():void {
+			if (!_popupPaidFieldStart) _popupPaidFieldStart = new StartFieldPaidPopup();
+
+			_popupPaidFieldStart.title = L.get('start_field_popup.rug.title');
+			_popupPaidFieldStart.desc = L.get('start_field_popup.rug.desc');
+			_popupPaidFieldStart.icon = Assets.getImage(AssetList.start_windows_carpet_icon);
+			_popupPaidFieldStart.showClose = true;
+			_popupPaidFieldStart.resourceSet = GameData.player.rugField.settings.price;
+			_popupPaidFieldStart.addEventListener(BasePopup.EVENT_BUTTON_CLICK, handler_startRugClick);
+
+			PopUpManager.addPopUp(_popupPaidFieldStart);
 		}
 
 		private function inventoryClick():void {
@@ -150,6 +177,20 @@ package ru.catAndBall.controller.screen {
 			PopUpManager.addPopUp(_inventory);
 		}
 
+		private function bankClick():void {
+			var screenBankController:BaseScreenController = navigator.getScreen(ScreenType.BANK) as BaseScreenController;
+			screenBankController.previousScreen = ScreenType.ROOM;
+			navigator.showScreen(ScreenType.BANK);
+		}
+
+		private function onRugRecourseReady():void {
+			navigator.showScreen(ScreenType.RUG_FIELD);
+		}
+
+		private function onRugRecourseFailed():void {
+			rugFieldClick();
+		}
+
 		//---------------------------------------------------------
 		//
 		// Event handlers
@@ -157,8 +198,8 @@ package ru.catAndBall.controller.screen {
 		//---------------------------------------------------------
 
 		private function handler_buildingTouch(event:Event):void {
-			var building:Building = event.target as Building;
-			var data:BuildingData = building.data;
+			var building:Construction = event.target as Construction;
+			var data:ConstructionData = building.data;
 
 			if (data.canCollectBonus) {
 				var bonus:ResourceSet = data.bonus;
@@ -176,8 +217,12 @@ package ru.catAndBall.controller.screen {
 			navigator.showScreen(ScreenType.BALLS_FIELD);
 		}
 
+		private function handler_startRugClick(event:Event):void {
+			PurchaseController.buyResources(_popupPaidFieldStart.resourceSet, onRugRecourseReady, onRugRecourseFailed, false);
+			PopUpManager.removePopUp(_popupPaidFieldStart);
+		}
+
 		private function handler_completeBallsClick(event:Event):void {
-			GameData.player.resources.add(_completedGrid.collectedResourceSet);
 			PopUpManager.removePopUp(_popupFieldComplete);
 		}
 

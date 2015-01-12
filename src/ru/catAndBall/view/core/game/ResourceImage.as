@@ -34,6 +34,11 @@ package ru.catAndBall.view.core.game {
 			AssetList.header_header_icon_lexp,
 			AssetList.header_header_icon_lexp
 		];
+		HASH[ResourceSet.MOUSE] = [
+			AssetList.header_header_mouseIcon,
+			AssetList.header_header_mouseIcon,
+			AssetList.header_header_mouseIcon
+		];
 		HASH[ResourceSet.TOOL_BOWL] = [
 			AssetList.panel_tools_kontener,
 			AssetList.panel_tools_kontener,

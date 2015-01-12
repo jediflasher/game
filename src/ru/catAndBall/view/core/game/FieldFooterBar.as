@@ -35,6 +35,8 @@ package ru.catAndBall.view.core.game {
 
 		public static const EVENT_TOOLS_CLICK:String = 'eventToolsClick';
 
+		public static const EVENT_BACK_CLICK:String = 'eventBackClick';
+
 		//---------------------------------------------------------
 		//
 		// Constructor
@@ -86,7 +88,11 @@ package ru.catAndBall.view.core.game {
 
 		protected override function initialize():void {
 			_back = new YellowButton(AssetList.buttons_back);
+			_back.addEventListener(Event.TRIGGERED, handler_backClick);
+
 			_tools = Assets.getButton(AssetList.panel_tools_tools_footer_icon);
+			_tools.addEventListener(Event.TRIGGERED, handler_toolsClick);
+
 			_settings =new YellowButton(AssetList.buttons_settings);
 
 			leftItems = new <DisplayObject>[_back];
@@ -94,6 +100,20 @@ package ru.catAndBall.view.core.game {
 			rightItems = new <DisplayObject>[_settings];
 
 			super.initialize();
+		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Event handlers
+		//
+		//--------------------------------------------------------------------------
+
+		private function handler_backClick(event:Event):void {
+			dispatchEventWith(EVENT_BACK_CLICK, true);
+		}
+
+		private function handler_toolsClick(event:Event):void {
+			dispatchEventWith(EVENT_TOOLS_CLICK);
 		}
 	}
 }

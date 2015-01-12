@@ -54,12 +54,12 @@ package ru.catAndBall.view.core.game {
 			if (POOL.length == 0) {
 				if (!P) P = new ConstructorPrivater();
 
-				var cell:GridCell = new GridCell(data, P);
+				var cell:GridCell = new GridCell(P);
 				POOL.push(cell);
 			}
 
 			cell = POOL.pop() as GridCell;
-			cell.$data = data;
+			cell.updateData(data, false);
 			return cell;
 		}
 
@@ -74,7 +74,7 @@ package ru.catAndBall.view.core.game {
 			cell.alpha = 1;
 			cell.rotation = 0;
 			cell.updateExplode();
-			cell.$data = null;
+			cell.updateData(null);
 			cell.updateCount();
 			TweenNano.killTweensOf(cell);
 		}
@@ -90,16 +90,9 @@ package ru.catAndBall.view.core.game {
 		//
 		//---------------------------------------------------------
 
-		public function GridCell(data:GridCellData, privater:ConstructorPrivater) {
+		public function GridCell(privater:ConstructorPrivater) {
 			super();
-			_image = new Image(GridCellTextureFactory.getTextureByType(data.type));
-			addChild(_image);
-
 			if (!privater) throw new IllegalOperationError('Use method GridCell.fromPool');
-
-			alignPivot(HAlign.CENTER, VAlign.CENTER);
-			width = height = Layout.field.elementSize;
-			_data = data;
 		}
 
 		//--------------------------------------------------------------------------
@@ -120,27 +113,6 @@ package ru.catAndBall.view.core.game {
 
 		public function get data():GridCellData {
 			return _data;
-		}
-
-		public function set $data(value:GridCellData):void {
-			if (_data === value) return;
-
-			if (_data) _data.removeEventListener(PestGridCellData.EVENT_TURNS_CHANGE, updateCount);
-			var textureChanged:Boolean = _data && value ? _data.type != value.type : true;
-			_data = value;
-
-			if (_data) _data.addEventListener(PestGridCellData.EVENT_TURNS_CHANGE, updateCount);
-
-			if (textureChanged) {
-				if (stage) {
-					playChangeTexture();
-				} else {
-					changeTexture();
-				}
-			}
-
-			updateExplode();
-			updateCount();
 		}
 
 		private var _selected:Boolean = false;
@@ -197,6 +169,37 @@ package ru.catAndBall.view.core.game {
 			}
 		}
 
+		public function updateData(value:GridCellData, animated:Boolean = true):void {
+			if (_data === value) return;
+
+			if (_data) _data.removeEventListener(PestGridCellData.EVENT_TURNS_CHANGE, updateCount);
+			var textureChanged:Boolean = _data && value ? _data.type != value.type : true;
+			_data = value;
+
+			if (_data)  {
+				_data.addEventListener(PestGridCellData.EVENT_TURNS_CHANGE, updateCount);
+				touchable = _data.collectable;
+				if (!_image) {
+					_image = new Image(GridCellTextureFactory.getTextureByType(data.type));
+					addChild(_image);
+
+					alignPivot(HAlign.CENTER, VAlign.CENTER);
+					width = height = Layout.field.elementSize;
+				}
+			}
+
+			if (textureChanged) {
+				if (stage && animated) {
+					playChangeTexture();
+				} else {
+					changeTexture();
+				}
+			}
+
+			updateExplode();
+			updateCount();
+		}
+
 		//--------------------------------------------------------------------------
 		//
 		//  Private methods
@@ -212,7 +215,9 @@ package ru.catAndBall.view.core.game {
 
 			_image.texture = GridCellTextureFactory.getTextureByType(data.type);
 			if (stage) {
-				TweenNano.to(this, 0.2, {width: Layout.field.elementSize, height: Layout.field.elementSize});
+				if (this.width < Layout.field.elementSize) {
+					TweenNano.to(this, 0.2, {width: Layout.field.elementSize, height: Layout.field.elementSize});
+				}
 			}
 		}
 

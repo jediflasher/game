@@ -62,7 +62,10 @@ package ru.catAndBall.view.core.game {
 			super();
 
 			_data = data;
+			_data.addEventListener(GridData.EVENT_FILL_FIELD, init);
+
 			_container = screen;
+			init();
 		}
 
 		//--------------------------------------------------------------------------
@@ -137,7 +140,7 @@ package ru.catAndBall.view.core.game {
 			if (pest) {
 				flyPest(cell, pest);
 			} else {
-				cell.$data = data;
+				cell.updateData(data);
 				_hashDataToView[data] = cell;
 			}
 		}
@@ -148,25 +151,17 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
-		public function added(event:* = null):void {
-			_data.addEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
-			_data.addEventListener(GridData.EVENT_FILL_FIELD, buildField);
-
-			var gridWidth:Number = _data.rows * Layout.field.elementSize;
-			_startX = (Layout.field.fieldBgBounds.width - gridWidth) / 2 + Layout.field.elementSize / 2;
-			_startY = Layout.field.fieldBgBounds.y + Layout.field.elementSize / 2 + Layout.field.elementsTopPadding;
-
-			buildField();
-
-			_container.addEventListener(TouchEvent.TOUCH, handler_cellTouch);
-		}
-
-		public function removed():void {
+		public function clear():void {
 			_lineLayer.clear();
 			_selectedQueue.length = 0;
 			_mouseDown = false;
-			_hashDataToView = new Dictionary();
+
+			for (var d:* in _hashDataToView) {
+				removeCell(d as GridCellData);
+			}
+
 			if (_data) _data.removeEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
+
 
 			_container.removeEventListener(TouchEvent.TOUCH, handler_cellTouch);
 		}
@@ -176,6 +171,16 @@ package ru.catAndBall.view.core.game {
 		//  Private methods
 		//
 		//--------------------------------------------------------------------------
+
+		private function init(event:* = null):void {
+			_data.addEventListener(GridData.EVENT_UPDATE_FIELD, updateCellPositions);
+
+			var gridWidth:Number = _data.rows * Layout.field.elementSize;
+			_startX = (Layout.field.fieldBgBounds.width - gridWidth) / 2 + Layout.field.elementSize / 2;
+			_startY = Layout.field.fieldBgBounds.y + Layout.field.elementSize / 2 + Layout.field.elementsTopPadding;
+
+			buildField();
+		}
 
 		private function buildField(event:* = null):void {
 			var columns:int = _data.columns;
@@ -196,6 +201,8 @@ package ru.catAndBall.view.core.game {
 					}
 				}
 			}
+
+			_container.addEventListener(TouchEvent.TOUCH, handler_cellTouch);
 		}
 
 		private function updateCellPositions(event:* = null):void {
@@ -256,7 +263,7 @@ package ru.catAndBall.view.core.game {
 			return null;
 		}
 
-		private function highlightCellsByType(cellType:int):void {
+		private function highlightCellsByType(cellType:String):void {
 			_container.darken();
 
 			const cells:Vector.<GridCellData> = _data.getCellsByType(cellType);
@@ -308,7 +315,7 @@ package ru.catAndBall.view.core.game {
 					if (lastCell) _lineLayer.lineTo(lastCell.x, lastCell.y, cell.x, cell.y);
 				}
 			} else {
-				if (len > 2) {
+				if (len > 1) {
 					var toRemove:int = 0;
 					if (cell === _selectedQueue[len - 2] || cell === _selectedQueue[len - 1]) {
 						toRemove = 1;
@@ -367,7 +374,7 @@ package ru.catAndBall.view.core.game {
 			img.alignPivot();
 			img.x = point.x;
 			img.y = point.y;
-			_container.addChild(img);
+			_container.addRawChild(img);
 
 			point = getCoordsByCell(toCell, pestData.column, pestData.row);
 
@@ -376,7 +383,7 @@ package ru.catAndBall.view.core.game {
 
 			var firstPartY:Number = Math.min(img.y, point.y) - Layout.field.elementSize;
 			var yTime:Number = jumpTime / 2;
-			TweenNano.to(img, yTime, {y: firstPartY, scaleX: 1.2, scaleY: 1.2, overwrite: false, onComplete: secondPartFlyPest, onCompleteParams: [img, point.y, yTime]})
+			TweenNano.to(img, yTime, {y: firstPartY, scaleX: 1.4, scaleY: 1.4, overwrite: false, onComplete: secondPartFlyPest, onCompleteParams: [img, point.y, yTime]})
 		}
 
 		private function secondPartFlyPest(image:Image, targetY:Number, time:Number):void {
@@ -384,10 +391,10 @@ package ru.catAndBall.view.core.game {
 		}
 
 		private function flyPestComplete(image:Image, toCell:GridCell, pestData:PestGridCellData):void {
-			image.parent.removeChild(image);
+			_container.removeRawChild(image);
 			image.dispose();
 
-			toCell.$data = pestData;
+			toCell.updateData(pestData, false);
 			_hashDataToView[pestData] = toCell;
 
 			_container.touchable = true;

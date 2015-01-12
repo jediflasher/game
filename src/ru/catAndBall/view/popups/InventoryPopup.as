@@ -223,5 +223,9 @@ package ru.catAndBall.view.popups {
 			_selectedTab = 0;
 			invalidate(INVALIDATION_FLAG_DATA);
 		}
+
+		private function handler_resChange(event:Event):void {
+			invalidate(INVALIDATION_FLAG_DATA);
+		}
 	}
 }

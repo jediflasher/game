@@ -14,7 +14,7 @@ package ru.catAndBall.data.game {
 	 */
 	public class GridCellDataFactory {
 
-		public static function getCell(gridCellType:int, column:int, row:int, settings:GridFieldSettings):GridCellData {
+		public static function getCell(gridCellType:String, column:int, row:int, settings:GridFieldSettings):GridCellData {
 			var result:GridCellData;
 
 			switch (gridCellType) {

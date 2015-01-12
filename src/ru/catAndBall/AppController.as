@@ -5,26 +5,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall {
 
-	import dragonBones.animation.WorldClock;
-
 	import feathers.controls.ScreenNavigatorItem;
 	import feathers.core.IPopUpManager;
 	import feathers.core.PopUpManager;
 	import feathers.motion.transitions.ScreenFadeTransitionManager;
-	import feathers.motion.transitions.ScreenSlidingStackTransitionManager;
 
-	import flash.desktop.NativeApplication;
 	import flash.events.Event;
-
-	import flash.filesystem.File;
-	import flash.filesystem.FileMode;
-	import flash.filesystem.FileStream;
-
 	import flash.net.SharedObject;
-	import flash.utils.setInterval;
+	import flash.utils.getDefinitionByName;
 
 	import ru.catAndBall.controller.BaseScreenController;
+	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.controller.screen.ScreenBallsFieldController;
+	import ru.catAndBall.controller.screen.ScreenBankController;
+	import ru.catAndBall.controller.screen.ScreenConstructionController;
 	import ru.catAndBall.controller.screen.ScreenCraftController;
 	import ru.catAndBall.controller.screen.ScreenMenuController;
 	import ru.catAndBall.controller.screen.ScreenRoomController;
@@ -32,23 +26,24 @@ package ru.catAndBall {
 	import ru.catAndBall.data.DefaultUserState;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
-	import ru.catAndBall.utils.TimeInterval;
+	import ru.catAndBall.utils.Logger;
+	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.ui.CatPopupManager;
 	import ru.catAndBall.view.core.ui.Hint;
 	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.ballsField.ScreenBallsField;
+	import ru.catAndBall.view.screens.bank.ScreenBank;
+	import ru.catAndBall.view.screens.construction.ScreenConstruction;
 	import ru.catAndBall.view.screens.craft.ScreenCraft;
 	import ru.catAndBall.view.screens.mainMenu.ScreenMenu;
 	import ru.catAndBall.view.screens.preloader.ScreenPreloader;
 	import ru.catAndBall.view.screens.room.ScreenRoom;
 	import ru.catAndBall.view.screens.rugField.ScreenRugField;
 
-	import starling.animation.Juggler;
 	import starling.core.Starling;
-
 	import starling.events.EventDispatcher;
+	import starling.utils.SystemUtil;
 
 	/**
 	 * @author                Obi
@@ -61,15 +56,30 @@ package ru.catAndBall {
 
 		//--------------------------------------------------------------------------
 		//
+		//  Class methods
+		//
+		//--------------------------------------------------------------------------
+
+		private static var _instance:AppController;
+
+		public static function saveData():void {
+			if (!_instance) return;
+
+			_instance.saveData();
+		}
+
+		//--------------------------------------------------------------------------
+		//
 		//  Constructor
 		//
 		//--------------------------------------------------------------------------
 
 		public function AppController(view:AppView) {
 			super();
+			_instance = this;
 			_view = view;
 
-			this.init();
+			this.initPreloader();
 		}
 
 		//--------------------------------------------------------------------------
@@ -105,28 +115,32 @@ package ru.catAndBall {
 		//
 		//--------------------------------------------------------------------------
 
+		private function initPreloader():void {
+			var screen:BaseScreen = new ScreenPreloader(new BaseScreenData(ScreenType.PRELOADER));
+			var item:ScreenNavigatorItem = new BaseScreenController(_view, screen);
+			_view.addScreen(screen.data.type, item);
+		}
+
 		private function init():void {
 			Hint.layer = _view;
 
 			Starling.juggler.add(new DragonBonesEnterFramer());
 
-			PopUpManager.popUpManagerFactory = function():IPopUpManager {
+			PopUpManager.popUpManagerFactory = function ():IPopUpManager {
 				return new CatPopupManager();
 			};
 
-			var screen:BaseScreen = new ScreenPreloader(new BaseScreenData(ScreenType.PRELOADER));
-			var item:ScreenNavigatorItem = new BaseScreenController(_view, screen);
+			PurchaseController.init(_view);
+
+			var screen:BaseScreen = new ScreenMenu(new BaseScreenData(ScreenType.MAIN_MENU));
+			var item:ScreenNavigatorItem = new ScreenMenuController(_view, screen as ScreenMenu);
 			_view.addScreen(screen.data.type, item);
 
-			screen = new ScreenMenu(new BaseScreenData(ScreenType.MAIN_MENU));
-			item = new ScreenMenuController(_view, screen as ScreenMenu);
-			_view.addScreen(screen.data.type, item);
-
-			screen = new ScreenRoom(new BaseScreenData(ScreenType.ROOM));
+			screen = new ScreenRoom();
 			item = new ScreenRoomController(_view, screen as ScreenRoom);
 			_view.addScreen(screen.data.type, item);
 
-			screen = new ScreenCraft(new BaseScreenData(ScreenType.COMMODE_CRAFT));
+			screen = new ScreenCraft();
 			item = new ScreenCraftController(_view, screen as ScreenCraft);
 			_view.addScreen(screen.data.type, item);
 
@@ -138,48 +152,51 @@ package ru.catAndBall {
 			item = new ScreenBallsFieldController(_view, screen as ScreenBallsField);
 			_view.addScreen(screen.data.type, item);
 
+			screen = new ScreenBank();
+			item = new ScreenBankController(_view, screen);
+			_view.addScreen(screen.data.type, item);
+
+			screen = new ScreenConstruction();
+			item = new ScreenConstructionController(_view, screen);
+			_view.addScreen(screen.data.type, item);
+
 			new ScreenFadeTransitionManager(_view);
 		}
 
 		private function loadComplete():void {
+			var defaultUserState:DefaultUserState = new DefaultUserState();
+			var dictionaries:Object = Assets.getJSON('dict.json');
+			GameData.dictionaries.deserialize(dictionaries);
+
 			try {
 				var so:SharedObject = SharedObject.getLocal('game');
+				delete so.data['game'];
+
 				var data:Object = so.data['game'];
+
 				if (data) {
 					GameData.deserialize(data);
 				} else {
-					GameData.deserialize(new DefaultUserState());
+					GameData.deserialize(defaultUserState);
 				}
 			} catch (error:Error) {
-				trace('Wtf error!');
-				GameData.deserialize(new DefaultUserState());
+				Logger.logError('Cant load data from SharedObject');
+				GameData.deserialize(defaultUserState);
 			}
 
-			NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE, saveData);
-			NativeApplication.nativeApplication.addEventListener(Event.EXITING, saveData);
-			setInterval(saveData, TimeInterval.MINUTE * 3000);
+			if (!AppProperties.isWeb) {
+				var cl:Class = getDefinitionByName('flash.desktop.NativeApplication') as Class;
+				cl['nativeApplication'].addEventListener(Event['DEACTIVATE'], saveData);
+				cl['nativeApplication'].addEventListener(Event['EXITING'], saveData);
+			}
+
+			this.init();
 
 			_view.showScreen(ScreenType.MAIN_MENU);
 		}
 
 		private function saveData(event:* = null):void {
-			var f:File = File.applicationStorageDirectory.resolvePath("game.dat");
-
-			if (!f.exists) {
-				this.saveInSharedObject();
-			} else {
-				var fs:FileStream = new FileStream();
-				try {
-					fs.openAsync(f, FileMode.WRITE);
-					fs.position = 0;
-					fs.writeObject(GameData.serialize());
-					fs.close();
-					trace('Data saved to game.dat! Horray');
-				} catch (error:Error) {
-					trace(error);
-					saveInSharedObject();
-				}
-			}
+			this.saveInSharedObject();
 		}
 
 		private function saveInSharedObject():void {
@@ -189,8 +206,7 @@ package ru.catAndBall {
 				so.flush();
 				trace('Data saved to Shared Object! Horray!');
 			} catch (error:Error) {
-				trace(error);
-				trace('Data dont saved!Wtf!');
+				Logger.logError('Cant save data to shared object' + error);
 			}
 		}
 

@@ -130,11 +130,7 @@ package ru.catAndBall.view.screens.craft {
 
 					_iconBg.validate();
 
-					const bgRect:Rectangle = _iconBg.getBounds(this);
-					_counter.text = String(GameData.player.resources.get(_toolData.resourceType));
-					_counter.validate();
-					_counter.x = _iconBg.x + _iconBg.width - _counter.width - 5;
-					_counter.y = _iconBg.y + _iconBg.height - _counter.height - 5;
+					var bgRect:Rectangle = _iconBg.getBounds(this);
 
 					_buttonMake.x = bgRect.x;
 					_buttonMake.y = bgRect.y + bgRect.height;
@@ -152,13 +148,18 @@ package ru.catAndBall.view.screens.craft {
 						if (!_toolData.price.has(type)) continue;
 
 						var item:ResourceCounter = new ResourceCounter(type, _toolData.price, Layout.craft.priceIconSize);
-						item.isPriceFor = GameData.player.resources;
+						item.maxResources = GameData.player.resources;
 						_resContainer.addChild(item);
 						_hashTypeToItem[type] = item;
 					}
 
 					_dataInited = true;
 				}
+
+				_counter.text = String(GameData.player.resources.get(_toolData.resourceType));
+				_counter.validate();
+				_counter.x = _iconBg.x + _iconBg.width - _counter.width - 5;
+				_counter.y = _iconBg.y + _iconBg.height - _counter.height - 5;
 
 				flatten();
 			}

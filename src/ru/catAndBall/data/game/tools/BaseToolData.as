@@ -7,6 +7,8 @@ package ru.catAndBall.data.game.tools {
 
 	import flash.events.EventDispatcher;
 
+	import ru.catAndBall.data.dict.tools.ToolDict;
+
 	import ru.catAndBall.data.game.ResourceSet;
 
 	/**
@@ -24,18 +26,16 @@ package ru.catAndBall.data.game.tools {
 		//
 		//--------------------------------------------------------------------------
 
-		public static const EVENT_COUNT_CHANGE:String = 'eventCountChange';
-
 		//---------------------------------------------------------
 		//
 		// Constructor
 		//
 		//---------------------------------------------------------
 
-		public function BaseToolData(resourceType:String, resourceSet:ResourceSet, name:String = null, description:String = null) {
+		public function BaseToolData(dict:ToolDict, resourceSet:ResourceSet) {
 			super();
+			this.dict = dict;
 			this.resourceSet = resourceSet;
-			this.resourceType = resourceType;
 		}
 
 		//---------------------------------------------------------
@@ -45,44 +45,11 @@ package ru.catAndBall.data.game.tools {
 		//---------------------------------------------------------
 
 		public function get availableCount():int {
-			return resourceSet.get(resourceType);
+			return resourceSet.get(dict.resourceType);
 		}
 
+		public var dict:ToolDict;
+
 		public var resourceSet:ResourceSet;
-
-		public var resourceType:String;
-
-		//---------------------------------------------------------
-		//
-		// Variables
-		//
-		//---------------------------------------------------------
-
-		//---------------------------------------------------------
-		//
-		// Public methods
-		//
-		//---------------------------------------------------------
-
-
-		//---------------------------------------------------------
-		//
-		// Protected methods
-		//
-		//---------------------------------------------------------
-
-
-		//---------------------------------------------------------
-		//
-		// Private methods
-		//
-		//---------------------------------------------------------
-
-
-		//---------------------------------------------------------
-		//
-		// Event handlers
-		//
-		//---------------------------------------------------------
 	}
 }

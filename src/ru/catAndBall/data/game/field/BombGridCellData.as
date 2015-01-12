@@ -16,7 +16,7 @@ package ru.catAndBall.data.game.field {
 		//
 		//--------------------------------------------------------------------------
 
-		public function BombGridCellData(gridCellType:int, column:int, row:int, settings:GridFieldSettings) {
+		public function BombGridCellData(gridCellType:String, column:int, row:int, settings:GridFieldSettings) {
 			super(gridCellType, column, row, settings);
 			family = GridCellFamily.BOMB;
 		}
@@ -24,5 +24,10 @@ package ru.catAndBall.data.game.field {
 		public var readyToBlow:Boolean = false;
 
 		public var bombResultCellType:int;
+
+
+		public override function get collectable():Boolean {
+			return false;
+		}
 	}
 }

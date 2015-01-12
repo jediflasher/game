@@ -23,61 +23,61 @@ package ru.catAndBall.data.game.field {
 
 		// balls
 
-		public static const BALL_RED:int = 1;
+		public static const BALL_RED:String = 'bf_ballRed';
 
-		public static const BALL_GREEN:int = 2;
+		public static const BALL_GREEN:String = 'bf_ballGreen';
 
-		public static const BALL_BLUE:int = 3;
+		public static const BALL_BLUE:String = 'bf_ballBlue';
 
-		public static const BALL_PURPLE:int = 4;
+		public static const BALL_PURPLE:String = 'bf_ballPurple';
 
-		public static const TOY_RED:int = 5;
+		public static const TOY_RED:String = "bf_toyRed";
 
-		public static const TOY_GREEN:int = 6;
+		public static const TOY_GREEN:String = "bf_toyGreen";
 
-		public static const TOY_BLUE:int = 7;
+		public static const TOY_BLUE:String = "bf_toyBlue";
 
-		public static const TOY_PURPLE:int = 8;
+		public static const TOY_PURPLE:String = "bf_toyPurple";
 
-		public static const SWEATER_RED:int = 9;
+		public static const SWEATER_RED:String = "bf_sweaterRed";
 
-		public static const SWEATER_GREEN:int = 10;
+		public static const SWEATER_GREEN:String = "bf_sweaterGreen";
 
-		public static const SWEATER_BLUE:int = 11;
+		public static const SWEATER_BLUE:String = "bf_sweaterBlue";
 
-		public static const SWEATER_PURPLE:int = 12;
+		public static const SWEATER_PURPLE:String = "bf_sweaterPurple";
 
-		public static const WOLF:int = 13;
+		public static const WOLF:String = "bf_wolf";
 
-		public static const GRANNY:int = 14;
+		public static const GRANNY:String = "bf_granny";
 
-		public static const SOCKS:int = 15;
+		public static const SOCKS:String = "bf_socks";
 
-		public static const BALL_GOLD:int = 16;
+		public static const BALL_GOLD:String = "bf_ballGold";
 
 		// rug
 
-		public static const BALL:int = 21;
+		public static const BALL:String = "rf_ball";
 
-		public static const COOKIE:int = 22;
+		public static const COOKIE:String = "rf_cookie";
 
-		public static const MOUSE:int = 23;
+		public static const MOUSE:String = "rf_mouse";
 
-		public static const MILK:int = 24;
+		public static const MILK:String = "rf_milk";
 
-		public static const PIGEON:int = 25;
+		public static const PIGEON:String = "rf_pigeon";
 
-		public static const CONSERVE:int = 26;
+		public static const CONSERVE:String = "rf_conserve";
 
-		public static const GOLD_FISH:int = 27;
+		public static const GOLD_FISH:String = "rf_goldFish";
 
-		public static const WRAPPER:int = 28;
+		public static const WRAPPER:String = "rf_wrapper";
 
-		public static const THREAD:int = 29;
+		public static const THREAD:String = "rf_thread";
 
-		public static const DOG:int = 30;
+		public static const DOG:String = "rf_dog";
 
-		public static const PARROT:int = 31;
+		public static const PARROT:String = "rf_parrot";
 
 		// window field
 
@@ -88,7 +88,7 @@ package ru.catAndBall.data.game.field {
 		//
 		//--------------------------------------------------------------------------
 
-		public static function getResourceType(gridCellType:int):String {
+		public static function getResourceType(gridCellType:String):String {
 			switch (gridCellType) {
 				case GridCellType.BALL_BLUE:
 				case GridCellType.BALL_GREEN:
@@ -139,7 +139,7 @@ package ru.catAndBall.data.game.field {
 			}
 		}
 
-		public static function hasResourceType(gridCellType):Boolean {
+		public static function hasResourceType(gridCellType:String):Boolean {
 			return getResourceType(gridCellType) != null;
 		}
 

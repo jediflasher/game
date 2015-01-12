@@ -95,14 +95,6 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
-		public function get disabled():Boolean {
-			return _icon.disabled;
-		}
-
-		public function set disabled(value:Boolean):void {
-			_icon.disabled = value;
-		}
-
 		private var _gray:Boolean = false;
 
 		public function get gray():Boolean {
@@ -118,18 +110,51 @@ package ru.catAndBall.view.core.game {
 			_icon.gray = _gray;
 		}
 
-		private var _isPriceFor:ResourceSet;
+		private var _minResources:ResourceSet;
 
-		public function get isPriceFor():ResourceSet {
-			return _isPriceFor;
+		/**
+		 * Если текущее значение меньше этого, будет загораться красный
+		 */
+		public function get minResources():ResourceSet {
+			return _minResources;
 		}
 
-		public function set isPriceFor(value:ResourceSet):void {
-			if (_isPriceFor === value) return;
+		public function set minResources(value:ResourceSet):void {
+			if (_minResources === value) return;
 
-			if (_isPriceFor) _isPriceFor.removeEventListener(Event.CHANGE, updateCount);
-			_isPriceFor = value;
-			if (_isPriceFor) _isPriceFor.addEventListener(Event.CHANGE, updateCount);
+			if (_minResources) _minResources.removeEventListener(Event.CHANGE, updateCount);
+			_minResources = value;
+			if (_minResources) _minResources.addEventListener(Event.CHANGE, updateCount);
+		}
+
+		private var _maxResources:ResourceSet;
+
+		/**
+		 * * Если текущее значение больше этого, будет загораться красный
+		 */
+		public function get maxResources():ResourceSet {
+			return _maxResources;
+		}
+
+		public function set maxResources(value:ResourceSet):void {
+			if (_maxResources === value) return;
+
+			if (_maxResources) _maxResources.removeEventListener(Event.CHANGE, updateCount);
+			_maxResources = value;
+			if (_maxResources) _maxResources.addEventListener(Event.CHANGE, updateCount);
+		}
+
+		private var _disableOnZero:Boolean = true;
+
+		public function get disableOnZero():Boolean {
+			return _disableOnZero;
+		}
+
+		public function set disableOnZero(value:Boolean):void {
+			if (_disableOnZero == value) return;
+
+			_disableOnZero = value;
+			invalidate(INVALIDATION_FLAG_DATA);
 		}
 
 		//--------------------------------------------------------------------------
@@ -144,8 +169,8 @@ package ru.catAndBall.view.core.game {
 				_resourceSet.addEventListener(Event.CHANGE, updateCount);
 			}
 
-			if (_isPriceFor) {
-				_isPriceFor.addEventListener(Event.CHANGE, updateCount);
+			if (_minResources) {
+				_minResources.addEventListener(Event.CHANGE, updateCount);
 			}
 		}
 
@@ -153,20 +178,23 @@ package ru.catAndBall.view.core.game {
 			super.draw();
 
 			if (isInvalid(INVALIDATION_FLAG_DATA)) {
-				const count:int = _resourceSet.get(_resourceType);
-				_tf.text = String(count < 0 ? 0 : count);
+				var count:int = _resourceSet.get(_resourceType);
+				_tf.text = String(count);//String(count < 0 ? 0 : count);
 				_tf.visible = !gray;
-				_icon.disabled = count <= 0;
+				_icon.disabled = _disableOnZero && count <= 0;
 
-					if (_isPriceFor && _resourceSet && _isPriceFor.get(_resourceType) >= count) {
-						if (_tf.background is Image) {
-							(_tf.background as Scale3Image).textures = _brownTextures
-						}
-					} else if (count < 0) {
-						if (_tf.background is Image) {
-							(_tf.background as Scale3Image).textures = _redTextures;
-						}
+				var minValue:int = _minResources ? _minResources.get(_resourceType) : int.MIN_VALUE;
+				var maxValue:int = _maxResources ? _maxResources.get(_resourceType) : int.MAX_VALUE;
+
+				if (count >= minValue && count <= maxValue) {
+					if (_tf.background is Scale3Image) {
+						(_tf.background as Scale3Image).textures = _brownTextures
 					}
+				} else  {
+					if (_tf.background is Scale3Image) {
+						(_tf.background as Scale3Image).textures = _redTextures;
+					}
+				}
 
 				_tf.validate();
 

@@ -16,7 +16,7 @@ package ru.catAndBall.data.game.field {
 		//
 		//--------------------------------------------------------------------------
 
-		public function ResourceGridCellData(gridCellType:int, column:int, row:int, settings:GridFieldSettings) {
+		public function ResourceGridCellData(gridCellType:String, column:int, row:int, settings:GridFieldSettings) {
 			super(gridCellType, column, row, settings);
 			family = GridCellFamily.RESOURCE;
 		}

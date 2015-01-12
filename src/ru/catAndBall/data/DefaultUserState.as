@@ -26,18 +26,14 @@ package ru.catAndBall.data {
 			super();
 
 			this["player"] = {
-				buildings: {
-					cat_house: {
+				constructions: [
+					{
+						id: "catHouse",
 						level: 1,
 						startBuildingTime: 0,
 						lastBonusTime: TimeUtil.now
-					},
-					commode: {
-						level: 0,
-						startBuildingTime: 0,
-						lastBonusTime: 0
 					}
-				},
+				],
 				resources: {
 					experience: 10,
 					money: 130,
@@ -55,7 +51,9 @@ package ru.catAndBall.data {
 					rfWrapper: 10,
 					rfThread: 0
 				}
-			}
+			};
 		}
 	}
 }
+
+

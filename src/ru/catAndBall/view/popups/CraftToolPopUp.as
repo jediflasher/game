@@ -2,6 +2,8 @@ package ru.catAndBall.view.popups {
 	import feathers.display.Scale3Image;
 	import feathers.textures.Scale3Textures;
 
+	import ru.catAndBall.controller.PurchaseController;
+
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.tools.ToolDict;
 	import ru.catAndBall.data.game.ResourceSet;
@@ -37,6 +39,12 @@ package ru.catAndBall.view.popups {
 		//
 		//--------------------------------------------------------------------------
 
+		public static const EVENT_CREATE_CLICK:String = 'createClick';
+
+		private static const INVALIDATION_FLAG_COUNT:String = 'count';
+
+		private static const HELPER_RESOURCE_SET:ResourceSet = new ResourceSet();
+
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
@@ -63,15 +71,13 @@ package ru.catAndBall.view.popups {
 
 		private var _makeButton:PriceButtonDecorator;
 
+		private const _totalPrice:ResourceSet = new ResourceSet();
+
+		private const _shownResult:ResourceSet = new ResourceSet();
+
 		private const _counterContainer:Sprite = new Sprite();
 
 		private const _content:Vector.<DisplayObject> = new Vector.<DisplayObject>();
-
-		private var _count:int = 0;
-
-		private var _totalResourceSet:ResourceSet = new ResourceSet();
-
-		private var _totalPrice:ResourceSet = new ResourceSet();
 
 		//--------------------------------------------------------------------------
 		//
@@ -89,8 +95,23 @@ package ru.catAndBall.view.popups {
 			if (_data === value) return;
 
 			_data = value;
+
 			invalidate(INVALIDATION_FLAG_LAYOUT);
 			invalidate(INVALIDATION_FLAG_DATA);
+			invalidate(INVALIDATION_FLAG_COUNT);
+		}
+
+		private var _count:int = 0;
+
+		public function get count():int {
+			return _count;
+		}
+
+		public function set count(value:int):void {
+			if (_count == value) return;
+
+			_count = value;
+			invalidate(INVALIDATION_FLAG_COUNT);
 		}
 
 		//--------------------------------------------------------------------------
@@ -115,7 +136,7 @@ package ru.catAndBall.view.popups {
 			_plusButton.x = Layout.craft.popupCounterBgSize - Layout.craft.popupPlusMinusButtonSize;
 			_counterContainer.addChild(_plusButton);
 
-			_resContainer = new GridLayoutContainer(4, Layout.baseResourceIconSize, Layout.baseResourceIconSize);
+			_resContainer = new GridLayoutContainer(4, Layout.baseResourceIconSize, Layout.baseResourceIconSize, Layout.craft.priceIconGaps.x);
 
 			_makeButton = new PriceButtonDecorator(new MediumGreenButton(""), 'screen.craft.popup.makeFor', 'screen.craft.popup.makeFree');
 			_makeButton.button.addEventListener(Event.TRIGGERED, handler_createClick);
@@ -124,34 +145,50 @@ package ru.catAndBall.view.popups {
 			_content.push(_resContainer);
 			_content.push(_makeButton.button);
 
-			super.initialize();
+			var playerRes:ResourceSet = GameData.player.resources;
+			playerRes.addEventListener(Event.CHANGE, handler_playerResourcesChange);
 
-			updateByPlayerResources();
+			super.initialize();
 		}
 
 		protected override function draw():void {
 			if (isInvalid(INVALIDATION_FLAG_DATA)) {
-				_counterTf.text = String(_count);
-				_counterTf.validate();
-
 				_resContainer.clear();
-				_totalResourceSet.clear();
-				_totalPrice.clear();
 
 				if (_data) {
-					_resContainer.clear();
-
 					icon = new ResourceImage(_data.resourceType, Layout.craft.iconSize);
-					var playerRes:ResourceSet = GameData.player.resources;
-					playerRes.addEventListener(Event.CHANGE, handler_playerResourcesChange);
 
 					for each (var resourceType:String in ResourceSet.TYPES) {
 						if (!_data.price.has(resourceType)) continue;
 
-						var counter:ResourceCounter = new ResourceCounter(resourceType, _totalResourceSet);
+						var counter:ResourceCounter = new ResourceCounter(resourceType, _shownResult);
+						counter.disableOnZero = false;
+						counter.minResources = new ResourceSet();
 						_resContainer.addChild(counter);
 					}
 				}
+			}
+
+			if (isInvalid(INVALIDATION_FLAG_COUNT)) {
+				_totalPrice.clear();
+				_shownResult.clear();
+
+				_counterTf.text = String(_count);
+				_counterTf.validate();
+
+				this._minusButton.isEnabled = this._count > 0;
+				this._makeButton.button.isEnabled = this._count > 0;
+
+				_totalPrice.add(_data.price, _count);
+
+				_shownResult.add(GameData.player.resources);
+				_shownResult.substract(_totalPrice);
+
+				HELPER_RESOURCE_SET.clear();
+				GameData.player.resources.getDeficit(_totalPrice, HELPER_RESOURCE_SET);
+
+				_makeButton.price = PurchaseController.getDeficitPrice(HELPER_RESOURCE_SET);
+				invalidate(INVALIDATION_FLAG_LAYOUT);
 			}
 
 			super.draw();
@@ -167,29 +204,6 @@ package ru.catAndBall.view.popups {
 		//
 		//--------------------------------------------------------------------------
 
-		private function updateByPlayerResources():void {
-			if (!_data) return;
-
-			_totalResourceSet.clear();
-
-			var playerRes:ResourceSet = GameData.player.resources;
-			for each (var resourceType:String in ResourceSet.TYPES) {
-				if (!_data.price.has(resourceType)) continue;
-
-				_totalResourceSet.set(resourceType, playerRes.get(resourceType));
-			}
-
-			_totalResourceSet.substract(_totalPrice);
-			var priceMoney:int = 0;
-			for each (var resourceType:String in ResourceSet.TYPES) {
-				var count:int = _totalResourceSet.get(resourceType);
-				if (count < 0) priceMoney += count * -1;
-			}
-
-			_makeButton.price = priceMoney;
-			invalidate(INVALIDATION_FLAG_LAYOUT);
-		}
-
 		//--------------------------------------------------------------------------
 		//
 		//  Event handlers
@@ -197,25 +211,23 @@ package ru.catAndBall.view.popups {
 		//--------------------------------------------------------------------------
 
 		private function handler_createClick(event:Event):void {
-
+			dispatchEventWith(EVENT_CREATE_CLICK);
 		}
 
 		private function handler_plusClick(event:Event):void {
 			_count++;
 			_counterTf.text = String(_count);
-			_totalPrice.add(_data.price);
-			updateByPlayerResources();
+			invalidate(INVALIDATION_FLAG_COUNT);
 		}
 
 		private function handler_minusClick(event:*):void {
 			_count--;
 			_counterTf.text = String(_count);
-			_totalPrice.substract(_data.price);
-			updateByPlayerResources();
+			invalidate(INVALIDATION_FLAG_COUNT);
 		}
 
 		private function handler_playerResourcesChange(event:*):void {
-			updateByPlayerResources();
+			invalidate(INVALIDATION_FLAG_COUNT);
 		}
 	}
 }

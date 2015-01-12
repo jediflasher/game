@@ -19,9 +19,13 @@ package ru.catAndBall.data.game {
 		//
 		//--------------------------------------------------------------------------
 
+		public static const EXP:String = 'exp';
+
 		public static const EXPERIENCE:String = 'experience';
 
 		public static const MONEY:String = 'money';
+
+		public static const MOUSE:String = 'mouse';
 
 		public static const TOOL_SPOOL:String = 'toolSpool'; // катушка
 
@@ -60,7 +64,7 @@ package ru.catAndBall.data.game {
 		public static const RF_THREAD:String = 'rfThread';
 
 		public static const TYPES:Vector.<String> = new <String>[
-			EXPERIENCE, MONEY,
+			EXPERIENCE, MONEY, MOUSE,
 			TOOL_BOWL, TOOL_BROOM, TOOL_SPOKES, TOOL_SPOOL, TOOL_TEA, TOOL_TOY_BOX,
 			BF_BALLS, BF_SOCKS, BF_SWEATERS, BF_TOYS, RF_BALL,
 			RF_COOKIE, RF_MOUSE, RF_MILK, RF_PIGEON, RF_CONSERVE, RF_WRAPPER, RF_THREAD
@@ -150,12 +154,12 @@ package ru.catAndBall.data.game {
 		}
 
 		[Inline]
-		public final function add(resourceSet:ResourceSet):void {
+		public final function add(resourceSet:ResourceSet, multiplier:int = 1):void {
 			if (resourceSet.isEmpty) return;
 
 			for each(var type:String in TYPES) {
 				var value:Number = resourceSet._hash[type] || 0;
-				if (value) addTypeSilent(type, value);
+				if (value) addTypeSilent(type, value * multiplier);
 			}
 
 			if (hasEventListener(Event.CHANGE)) dispatchEvent(new Event(Event.CHANGE));
@@ -193,10 +197,30 @@ package ru.catAndBall.data.game {
 			return true;
 		}
 
+		/**
+		 * Возвращает ресурсы, которые необходимо докупить
+		 * @param resourseSet
+		 * @param result
+		 * @return
+		 */
+		public function getDeficit(resourseSet:ResourceSet, result:ResourceSet):ResourceSet {
+			for each (var type:String in TYPES) {
+				var current:int = _hash[type];
+				var def:int = resourseSet._hash[type];
+				if (current < def) {
+					result._hash[type] = def - current;
+				}
+			}
+
+			return result;
+		}
+
 		public override function deserialize(value:Object):void {
 			super.deserialize(value);
 
 			for each (var key:String in TYPES) {
+				if (key == EXP) key = EXPERIENCE;
+
 				set(key, value[key] || 0);
 			}
 		}

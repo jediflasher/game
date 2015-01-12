@@ -114,14 +114,15 @@ package ru.catAndBall.view.core.game.field {
 			_cat.y = Layout.field.progressCatY;
 			addChild(_cat);
 
-			const ballBg:Image = Assets.getImage(AssetList.Strip_moves_ball_for_strip);
+			_line = Assets.getImage(AssetList.Strip_moves_line_for_strip);
+			_line.y = Layout.field.progresslineY;
+			addChild(_line);
+
+			var ballBg:Image = Assets.getImage(AssetList.Strip_moves_ball_for_strip);
 			_ball = new TextFieldBackground(AssetList.font_xsmall_milk_bold, ballBg, true, true);
 			_ball.y = Layout.field.progressBallY;
 			addChild(_ball);
 
-			_line = Assets.getImage(AssetList.Strip_moves_line_for_strip);
-			_line.y = Layout.field.progresslineY;
-			addChild(_line);
 		}
 
 		protected override function draw():void {
@@ -144,12 +145,20 @@ package ru.catAndBall.view.core.game.field {
 
 			_ball.text = String(_stepsLeft);
 
-			const catX:int = start + totalPath * _progress;
-			const ballX:int = catX + _cat.texture.width + Layout.baseGap / 4;
-			const lineX:int = ballX + Layout.baseGap / 2;
-			TweenNano.to(_cat, 0.3, {x:catX, delay:0.2, ease:Linear.easeNone});
-			TweenNano.to(_ball, 0.3, {x: ballX, ease:Linear.easeNone});
-			TweenNano.to(_line, 0.3, {x: lineX, width: AppProperties.appWidth - lineX, ease:Linear.easeNone});
+			var catX:int = start + totalPath * _progress;
+			var ballX:int = catX + _cat.texture.width + Layout.baseGap / 4;
+			var lineX:int = ballX + Layout.baseGap / 2;
+
+			if (_progress > 0) {
+				TweenNano.to(_cat, 0.3, {x:catX, delay:0.2, ease:Linear.easeNone});
+				TweenNano.to(_ball, 0.3, {x: ballX, ease:Linear.easeNone});
+				TweenNano.to(_line, 0.3, {x: lineX, width: AppProperties.appWidth - lineX, ease:Linear.easeNone});
+			} else {
+				_cat.x = catX;
+				_ball.x = ballX;
+				_line.x = lineX;
+				_line.width = AppProperties.appWidth - lineX;
+			}
 		}
 
 		//---------------------------------------------------------

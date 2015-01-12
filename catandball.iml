@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="Flex" version="4">
-  <component name="FlexBuildConfigurationManager" active="catandball">
+  <component name="FlexBuildConfigurationManager" active="catandball_web">
     <configurations>
       <configuration name="catandball" target-platform="Mobile" pure-as="true" main-class="ru.catAndBall.Main" output-file="Catandball.swf" output-folder="$MODULE_DIR$/bin">
         <dependencies target-player="13.0">
@@ -19,6 +19,7 @@
             <entry key="compiler.debug.swf" value="true" />
           </map>
           <option name="resourceFilesMode" value="ResourcePatterns" />
+          <option name="additionalOptions" value="-advanced-telemetry" />
         </compiler-options>
         <packaging-air-desktop />
         <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/CatAndBall-app.xml" package-file-name="Catandball">
@@ -33,6 +34,23 @@
           </files-to-package>
           <AirSigningOptions sdk="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk" keystore-path="$MODULE_DIR$/cert.p12" provisioning-profile-path="$MODULE_DIR$/iOS_Team_Provisioning_Profile_.mobileprovision" />
         </packaging-ios>
+      </configuration>
+      <configuration name="catandball_web" pure-as="true" main-class="ru.catAndBall.Main" output-file="catandball_web.swf" output-folder="$MODULE_DIR$/bin" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/bin/html-template">
+        <dependencies target-player="14.0">
+          <entries>
+            <entry library-name="greensock" library-level="application">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="starling" library-level="application">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="AIRSDK_Compiler" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android />
+        <packaging-ios />
       </configuration>
     </configurations>
     <compiler-options />
@@ -61,4 +79,3 @@
     <orderEntry type="library" exported="" name="greensock" level="application" />
   </component>
 </module>
-

@@ -7,7 +7,11 @@ package ru.catAndBall.controller.tools {
 
 	import flash.errors.IllegalOperationError;
 
+	import ru.catAndBall.controller.screen.BaseScreenFieldController;
+	import ru.catAndBall.data.game.GridCellDataFactory;
+
 	import ru.catAndBall.data.game.GridFieldSettings;
+	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.tools.BaseToolData;
 	import ru.catAndBall.view.core.game.GridController;
@@ -27,6 +31,14 @@ package ru.catAndBall.controller.tools {
 		//
 		//--------------------------------------------------------------------------
 
+		//--------------------------------------------------------------------------
+		//
+		//  Class constants
+		//
+		//--------------------------------------------------------------------------
+
+		private static const HELPER_VECTOR:Vector.<GridCellData> = new Vector.<GridCellData>();
+
 		//---------------------------------------------------------
 		//
 		// Constructor
@@ -44,10 +56,38 @@ package ru.catAndBall.controller.tools {
 		//
 		//--------------------------------------------------------------------------
 
-		public function apply(fieldData:GridData, fieldView:GridController, settings:GridFieldSettings):void {
+		public function apply(fieldData:GridData, fieldView:GridController, screenFieldController:BaseScreenFieldController):void {
 			if (_data.availableCount <= 0) throw new IllegalOperationError('no turns');
 
-			_data.resourceSet.substractType(_data.resourceType, 1);
+			_data.resourceSet.substractType(_data.dict.resourceType, 1);
+
+			var collect:Vector.<String> = data.dict.elementsToCollect;
+			if (collect.length) {
+				for each (var type:String in collect) {
+					var c:Vector.<GridCellData> = fieldData.getCellsByType(type);
+					for each (var cell:GridCellData in c) {
+						HELPER_VECTOR.push(cell);
+					}
+				}
+
+				var newCells:Vector.<GridCellData> = fieldData.settings.generator.getGridCells(HELPER_VECTOR);
+
+				fieldView.removeCells(HELPER_VECTOR);
+				fieldData.collectCells(HELPER_VECTOR, newCells);
+			}
+
+			HELPER_VECTOR.length = 0;
+
+			var replace:Object = data.dict.elementsToReplace;
+			for (var fromType:String in replace) {
+				var toType:String = replace[fromType];
+				c = fieldData.getCellsByType(fromType);
+
+				for each (cell in c) {
+					var newCell:GridCellData = GridCellDataFactory.getCell(toType, cell.column, cell.row, fieldData.settings);
+					screenFieldController.replaceCell(newCell);
+				}
+			}
 		}
 
 		//--------------------------------------------------------------------------

@@ -24,7 +24,7 @@ package ru.catAndBall.data.game.field {
 		//
 		//---------------------------------------------------------
 
-		public function GridCellData(gridCellType:int, column:int, row:int, settings:GridFieldSettings) {
+		public function GridCellData(gridCellType:String, column:int, row:int, settings:GridFieldSettings) {
 			super();
 			this.type = gridCellType;
 			this.column = column;
@@ -38,7 +38,7 @@ package ru.catAndBall.data.game.field {
 		//
 		//---------------------------------------------------------
 
-		public var type:int;
+		public var type:String;
 
 		public var column:int;
 
@@ -47,6 +47,10 @@ package ru.catAndBall.data.game.field {
 		public var family:int;
 
 		public var destroyed:Boolean;
+
+		public function get collectable():Boolean {
+			return true;
+		}
 
 		public function get nextLevelCount():int {
 			if (type in _settings.customUpgradeLimits) return _settings.customUpgradeLimits[type];

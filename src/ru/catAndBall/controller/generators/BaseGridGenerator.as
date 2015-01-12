@@ -41,7 +41,7 @@ package ru.catAndBall.controller.generators {
 		//
 		//--------------------------------------------------------------------------
 
-		public var pestToGenerate:int = 0;
+		public var pestToGenerate:String;
 
 		//--------------------------------------------------------------------------
 		//
@@ -80,7 +80,7 @@ package ru.catAndBall.controller.generators {
 					resultCell = GridCellDataFactory.getCell(pestToGenerate, column, row, _settings);
 				} else  {
 					// каждая n-я – бонусная
-					var nextLevelCellType:int = _settings.upgradeHash[collectedCell.type];
+					var nextLevelCellType:String = _settings.upgradeHash[collectedCell.type];
 					if (!(i % collectedCell.nextLevelCount) && nextLevelCellType) {
 						resultCell = GridCellDataFactory.getCell(nextLevelCellType, column, row, _settings);
 					} else {
@@ -111,42 +111,11 @@ package ru.catAndBall.controller.generators {
 			return GridCellDataFactory.getCell(chance.gridCellType, column, row, _settings);
 		}
 
-		/*public function addChance(type:int, delta:Number):void {
-			var currentCh:Chance = _hash[type];
-			var nowChance:Number = currentCh.chance;
-
-			if (delta > 1 - nowChance) throw new IllegalOperationError('Cant add chance. Chance cant be more than 1');
-			if (delta < -1 * nowChance) throw new IllegalOperationError('Cant add chance. Chance cant be less than 0');
-
-			// если мы прибавляем кому-нибудь шанс, у остальных его надо отнять
-			var otherDelta:Number = int((delta / (_list.length - 1)) * 1000) / 1000;
-
-			var nextLimit:Number = 0;
-			var len:int = _list.length;
-
-			for (var i:int = 0; i < len; i++) {
-				var ch:Chance = _list[i];
-
-				if (ch === currentCh) {
-					currentCh.chance += delta;
-				} else {
-					currentCh.chance -= otherDelta;
-				}
-
-				currentCh.chance = Math.round(currentCh.chance * 1000) / 1000;
-
-				nextLimit += currentCh.chance;
-				trace(currentCh.chance);
-				nextLimit = int(nextLimit * 1000) / 1000;
-				_limits[i] = nextLimit;
-			}
-		}*/
-
 		public function getChance(type:int):Number {
 			return _hash[type].chance;
 		}
 
-		public function updateChances(gridCellTypes:Vector.<int>, chances:Vector.<Number>):void {
+		public function updateChances(gridCellTypes:Vector.<String>, chances:Vector.<Number>):void {
 			_limits.length = 0;
 			_list.length = 0;
 			for (var key:String in _hash) delete _hash[key];
@@ -160,12 +129,12 @@ package ru.catAndBall.controller.generators {
 		//
 		//--------------------------------------------------------------------------
 
-		private function parse(gridCellTypes:Vector.<int>, chances:Vector.<Number>):void {
+		private function parse(gridCellTypes:Vector.<String>, chances:Vector.<Number>):void {
 			var nextLimit:Number = 0;
 
 			var len:int = gridCellTypes.length;
 			for(var i:int = 0; i < len; i++) {
-				var type:int = gridCellTypes[i];
+				var type:String = gridCellTypes[i];
 				var chance:Number = chances[i];
 
 				var ch:Chance = new Chance();
@@ -187,6 +156,6 @@ package ru.catAndBall.controller.generators {
 }
 
 class Chance {
-	public var gridCellType:int;
+	public var gridCellType:String;
 	public var chance:Number;
 }

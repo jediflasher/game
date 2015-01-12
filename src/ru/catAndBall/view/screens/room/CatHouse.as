@@ -4,7 +4,7 @@ package ru.catAndBall.view.screens.room {
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.view.assets.AssetList;
-	import ru.catAndBall.view.core.game.Building;
+	import ru.catAndBall.view.core.game.Construction;
 
 	import starling.display.DisplayObject;
 
@@ -15,7 +15,7 @@ package ru.catAndBall.view.screens.room {
 	 * @langversion         3.0
 	 * @date                27.09.14 14:54
 	 */
-	public class CatHouse extends Building {
+	public class CatHouse extends Construction {
 
 		//--------------------------------------------------------------------------
 		//
@@ -23,8 +23,8 @@ package ru.catAndBall.view.screens.room {
 		//
 		//--------------------------------------------------------------------------
  
-		public function CatHouse() {
-			super(GameData.player.buildings.catHouse, AssetList.Room_cat_house_lvl1.replace('lvl1', 'lvl'));
+		public function CatHouse(data:CatHouseData) {
+			super(data, AssetList.Room_cat_house_lvl1.replace('lvl1', 'lvl'));
 		}
 
 		//--------------------------------------------------------------------------

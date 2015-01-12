@@ -7,14 +7,19 @@ package ru.catAndBall.view.screens.room {
 
 	import flash.utils.Dictionary;
 
+	import ru.catAndBall.data.GameData;
+
 	import ru.catAndBall.data.game.ResourceSet;
+	import ru.catAndBall.data.game.player.ConstructionCollectionData;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
+	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.layout.room.RoomLayout;
 	import ru.catAndBall.view.screens.BaseScreen;
+	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.room.drop.DropLayer;
 
 	import starling.display.Button;
@@ -59,8 +64,8 @@ package ru.catAndBall.view.screens.room {
 		//
 		//---------------------------------------------------------
 
-		public function ScreenRoom(data:BaseScreenData) {
-			super(data, "room");
+		public function ScreenRoom() {
+			super(new BaseScreenData(ScreenType.ROOM), "room");
 		}
 
 		//---------------------------------------------------------
@@ -110,11 +115,13 @@ package ru.catAndBall.view.screens.room {
 			headerClass = RoomHeaderBar;
 			footerClass = RoomFooterBar;
 
-			_catHouse = new CatHouse();
+			var con:ConstructionCollectionData = GameData.player.constructions;
+
+			_catHouse = ConstructionViewFactory.createConstruction(con.catHouse) as CatHouse;
+			_commode = new Commode(con.commode1, con.commode2, con.commode3);
 			_granny = new Granny();
 			_window = new Window();
 			_carpet = new Carpet();
-			_commode = new Commode();
 			_tangles = new Tangles();
 
 			var l:RoomLayout = Layout.room;

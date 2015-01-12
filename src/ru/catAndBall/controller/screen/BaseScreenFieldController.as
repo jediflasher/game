@@ -23,6 +23,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.field.PestGridCellData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
+	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.GridCell;
 	import ru.catAndBall.view.core.game.GridController;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
@@ -58,11 +59,11 @@ package ru.catAndBall.controller.screen {
 			_petRandom = new BooleanRandom(_settings.pestChance);
 
 			for (var pest:String in _settings.pestsFoodHash) {
-				var foods:Vector.<int> = _settings.pestsFoodHash[pest];
+				var foods:Vector.<String> = _settings.pestsFoodHash[pest];
 
 				for each (var foodType:int in foods) {
-					_foodToPestHash[foodType] ||= new Vector.<int>();
-					_foodToPestHash[foodType].push(int(pest));
+					_foodToPestHash[foodType] ||= new Vector.<String>();
+					_foodToPestHash[foodType].push(pest);
 				}
 			}
 		}
@@ -105,6 +106,18 @@ package ru.catAndBall.controller.screen {
 		//
 		//---------------------------------------------------------
 
+		public function replaceCell(newCellData:GridCellData):void {
+			var old:GridCellData = _fieldData.getCellAt(newCellData.column, newCellData.row);
+			if (!old) throw new IllegalOperationError('old cell not found');
+
+			_fieldData.replaceCell(newCellData);
+
+			var cellView:GridCell = _view.fieldController.getCellByData(old);
+			if (cellView) {
+				_view.fieldController.setNewData(cellView, newCellData);
+			}
+		}
+
 		//---------------------------------------------------------
 		//
 		// Protected methods
@@ -117,15 +130,19 @@ package ru.catAndBall.controller.screen {
 			_fieldData.fullFill(_generator);
 
 			view.addEventListener(GridController.EVENT_COLLECT_CELLS, handler_collectCells);
+			view.addEventListener(FieldFooterBar.EVENT_BACK_CLICK, handler_backClick);
 		}
 
 		protected override function removed():void {
 			if (_fieldData) _fieldData.clear();
+
 			_pestGenerationEnabledHash = {};
 			_pests = new Dictionary(true);
 			_petRandom.reset();
 			_prevBombs = null;
+
 			view.removeEventListener(GridController.EVENT_COLLECT_CELLS, handler_collectCells);
+			view.removeEventListener(FieldFooterBar.EVENT_BACK_CLICK, handler_backClick);
 
 			super.removed();
 		}
@@ -136,9 +153,9 @@ package ru.catAndBall.controller.screen {
 
 			for (var i:int = 0; i < newCellsLen; i++) {
 				var cell:GridCellData = newCells[i];
-				var pests:Vector.<int> = _foodToPestHash[cell.type];
+				var pests:Vector.<String> = _foodToPestHash[cell.type];
 				if (pests) {
-					for each (var pestType:int in pests) {
+					for each (var pestType:String in pests) {
 						_pestGenerationEnabledHash[pestType] = true;
 					}
 				}
@@ -146,7 +163,7 @@ package ru.catAndBall.controller.screen {
 
 			// генерируем монстра каждого типа
 			for (var pt:String in _pestGenerationEnabledHash) {
-				pestType = int(pt);
+				pestType = pt;
 				var generatePet:Boolean = _petRandom.rand();
 				if (generatePet) {
 					var index:int = Math.round(Math.random() * (newCellsLen - 1));
@@ -175,6 +192,12 @@ package ru.catAndBall.controller.screen {
 			room.fieldComplete(_fieldData);
 		}
 
+		protected function fieldCancel():void {
+			var room:ScreenRoomController = navigator.getScreen(ScreenType.ROOM) as ScreenRoomController;
+			navigator.showScreen(ScreenType.ROOM);
+			room.fieldCancel(_fieldData);
+		}
+
 		//---------------------------------------------------------
 		//
 		// Private methods
@@ -191,12 +214,12 @@ package ru.catAndBall.controller.screen {
 
 				if (pest.turnsLeft > 0) continue;
 
-				var foods:Vector.<int> = _settings.pestsFoodHash[pest.type];
+				var foods:Vector.<String> = _settings.pestsFoodHash[pest.type];
 				var foodList:Vector.<GridCellData> = new Vector.<GridCellData>();
 				var len:int = foods.length;
 
 				for (var i:int = 0; i < len; i++) {
-					var foodType:int = foods[i];
+					var foodType:String = foods[i];
 					var foodTypeList:Vector.<GridCellData> = _fieldData.getCellsByType(foodType);
 					if (foodTypeList) foodList = foodList.concat(foodTypeList);
 				}
@@ -204,7 +227,7 @@ package ru.catAndBall.controller.screen {
 				if (foodList.length) {
 					var rndElement:GridCellData = foodList[Math.round(Math.random() * (foodList.length - 1))];
 
-					var resultType:int = _settings.pestsResultHash[pest.type];
+					var resultType:String = _settings.pestsResultHash[pest.type];
 					if (!resultType) continue;
 
 					var pestResultCell:GridCellData = GridCellDataFactory.getCell(resultType, pest.column, pest.row, _settings);
@@ -294,7 +317,7 @@ package ru.catAndBall.controller.screen {
 			}
 		}
 
-		private function blowCell(cell:GridCellData, resultType:int, hash:Dictionary = null):void {
+		private function blowCell(cell:GridCellData, resultType:String, hash:Dictionary = null):void {
 			hash ||= new Dictionary();
 			if (cell in hash) return;
 
@@ -317,18 +340,6 @@ package ru.catAndBall.controller.screen {
 			}
 		}
 
-		private function replaceCell(newCellData:GridCellData):void {
-			var old:GridCellData = _fieldData.getCellAt(newCellData.column, newCellData.row);
-			if (!old) throw new IllegalOperationError('old cell not found');
-
-			_fieldData.replaceCell(newCellData);
-
-			var cellView:GridCell = _view.fieldController.getCellByData(old);
-			if (cellView) {
-				_view.fieldController.setNewData(cellView, newCellData);
-			}
-		}
-
 		//---------------------------------------------------------
 		//
 		// Event handlers
@@ -340,6 +351,10 @@ package ru.catAndBall.controller.screen {
 			if (!cells) return;
 
 			collectSells(cells);
+		}
+
+		private function handler_backClick(event:*):void {
+			fieldCancel();
 		}
 	}
 }

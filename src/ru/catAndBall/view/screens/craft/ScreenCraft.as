@@ -42,8 +42,11 @@ package ru.catAndBall.view.screens.craft {
 		//
 		//--------------------------------------------------------------------------
 
-		public function ScreenCraft(data:BaseScreenData) {
-			super(data, AssetList.Tools_name_tools_background);
+		public function ScreenCraft() {
+			super(new BaseScreenData(ScreenType.COMMODE_CRAFT), AssetList.Tools_name_tools_background);
+
+			headerClass = RoomHeaderBar;
+			footerClass = SimpleScreenFooterBar;
 		}
 
 		//--------------------------------------------------------------------------
@@ -85,9 +88,6 @@ package ru.catAndBall.view.screens.craft {
 		//--------------------------------------------------------------------------
 
 		protected override function initialize():void {
-			headerClass = RoomHeaderBar;
-			footerClass = CraftFooterBar;
-
 			super.initialize();
 
 			(_backgroundSkin as Image).smoothing = TextureSmoothing.NONE;
@@ -175,7 +175,7 @@ package ru.catAndBall.view.screens.craft {
 
 		private function itemFactory():IListItemRenderer {
 			return new CraftItem();
-		};
+		}
 
 		private function selectTab(tab:Button):void {
 			_newSelectedTab = tab;

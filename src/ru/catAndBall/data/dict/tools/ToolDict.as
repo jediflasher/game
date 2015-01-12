@@ -1,6 +1,7 @@
 package ru.catAndBall.data.dict.tools {
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.utils.str;
+	import ru.catAndBall.view.core.utils.ArrayUtils;
 	import ru.catAndBall.view.core.utils.L;
 
 	/**
@@ -23,7 +24,23 @@ package ru.catAndBall.data.dict.tools {
 			this.resourceType = resourceType;
 		}
 
+		//--------------------------------------------------------------------------
+		//
+		//  Properties
+		//
+		//--------------------------------------------------------------------------
+
 		public var resourceType:String;
+
+		public var elementsToCollect:Vector.<String> = new Vector.<String>();
+
+		public var elementsToReplace:Object = {}; // hash element -> element
+
+		//--------------------------------------------------------------------------
+		//
+		//  Variables
+		//
+		//--------------------------------------------------------------------------
 
 		private var _name:String;
 
@@ -40,5 +57,23 @@ package ru.catAndBall.data.dict.tools {
 		}
 
 		public const price:ResourceSet = new ResourceSet();
+
+		//--------------------------------------------------------------------------
+		//
+		//  Public methods
+		//
+		//--------------------------------------------------------------------------
+
+		public function deserialize(input:Object):void {
+			if ('price' in input) {
+				price.deserialize(input.price);
+			}
+
+			if ('collect' in input) {
+				ArrayUtils.toVector(input.collect, elementsToCollect);
+			}
+
+			if ('replace' in input) elementsToReplace = input.replace;
+		}
 	}
 }

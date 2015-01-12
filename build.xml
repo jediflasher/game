@@ -1,0 +1,29 @@
+<project name="Build to local server" default="build">
+    <property name="source_path" value="/Users/RG/Work/projects/as3/catandball/"/>
+    <property name="target_path" value="/Users/RG/RubymineProjects/catclew_admin/"/>
+
+    <target name="build">
+        <antcall target="copy assets"/>
+        <antcall target="copy bin"/>
+    </target>
+
+    <target name="copy assets">
+        <copy todir="${target_path}/public/assets/game">
+            <fileset dir="${source_path}/assets"/>
+        </copy>
+    </target>
+
+    <target name="copy bin">
+        <copy todir="${target_path}/app/assets/flash">
+            <filelist dir="${source_path}/bin">
+                <file name="catandball_web.swf"/>
+                <file name="playerProductInstall.swf"/>
+            </filelist>
+        </copy>
+        <copy todir="${target_path}/app/assets/javascripts">
+            <filelist dir="${source_path}/bin">
+                <file name="swfobject.js"/>
+            </filelist>
+        </copy>
+    </target>
+</project>

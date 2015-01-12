@@ -37,6 +37,8 @@ package ru.catAndBall.view.layout.room {
 		public const tangles:Point = AppProperties.getValue(new Point(1070, 1208), new Point(1070, 1208));
 
 		public const headerIconSize:int = AppProperties.getValue(76, 50);
+
+		public const headerResourcePanelWidth:int = AppProperties.getValue(250, 70);
 	}
 }
 

@@ -157,7 +157,7 @@ package ru.catAndBall.view.core.ui {
 							(obj as BitmapFontTextRenderer).maxWidth = Layout.popup.contentWidth;
 						}
 
-						if (obj is IFeathersControl) (obj as IFeathersControl).validate();
+						this.invalidateContainer(obj);
 
 						var w:Number = 0;
 						var h:Number = 0;
@@ -213,9 +213,19 @@ package ru.catAndBall.view.core.ui {
 			}
 		}
 
-		private function invalidateContainer(container:DisplayObjectContainer):void {
-			if (container is IFeathersControl) {
+		private function invalidateContainer(container:DisplayObject):void {
+			var cont:DisplayObjectContainer = container as DisplayObjectContainer;
 
+			if (cont) {
+				var numChildren:int = cont.numChildren;
+				for (var i:int = 0; i < numChildren; i++) {
+					var child:DisplayObject = cont.getChildAt(i);
+					invalidateContainer(child);
+				}
+			}
+
+			if (container is IFeathersControl) {
+				(container as IFeathersControl).validate();
 			}
 		}
 

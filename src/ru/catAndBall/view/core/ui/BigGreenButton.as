@@ -37,9 +37,7 @@ package ru.catAndBall.view.core.ui {
 			const center:Number =  Layout.bigButtonScaleGridSizes[1];
 
 			var texture:Texture = Assets.getTexture(AssetList.buttons_M_greenbutton);
-			upSkin = new Scale3Image(new Scale3Textures(texture, left, center));
-
-			hoverSkin = upSkin;
+			defaultSkin = new Scale3Image(new Scale3Textures(texture, left, center));
 
 			texture = Assets.getTexture(AssetList.buttons_M_greenbutton_on);
 			downSkin = new Scale3Image(new Scale3Textures(texture, left, center));

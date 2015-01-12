@@ -22,6 +22,8 @@ package ru.catAndBall.view.core.utils {
 			'finish_field_popup.balls.title': 'It was very useful day! Hooray!',
 			'finish_field_popup.balls.desc': '+%s experience',
 			'finish_field_popup.balls.take': 'Take',
+			'start_field_popup.rug.title': 'Rug',
+			'start_field_popup.rug.desc': 'There is super beautiful field. You should pay money.',
 			'inventory.tab0': 'Tools',
 			'inventory.tab1': 'Resources',
 			'tool.toolSpool.name': 'Spool',
@@ -41,7 +43,13 @@ package ru.catAndBall.view.core.utils {
 			'screen.craft.tabWindow.title': 'Tools for window field',
 			'screen.craft.makeButton': 'Create',
 			'screen.craft.popup.makeFree': 'Create',
-			'screen.craft.popup.makeFor': 'Create for %s'
+			'screen.craft.popup.makeFor': 'Create for %s',
+			'screen.bank.buy_button': 'Take %s',
+			'screen.bank.clear_button': 'Reset all to 0',
+			'screen.room.popupPaid.makeFor': 'Start for %s',
+			'screen.room.popupPaid.makeFree': 'Start',
+			'construction.catHouse.name': 'Cat House',
+			'construction.catHouse.desc': 'Very beautiful house for cat. She can leave in it so long as she want'
 		};
 
 		//--------------------------------------------------------------------------
@@ -51,7 +59,7 @@ package ru.catAndBall.view.core.utils {
 		//--------------------------------------------------------------------------
 
 		public function L() {
-
+			super();
 		}
 	}
 }

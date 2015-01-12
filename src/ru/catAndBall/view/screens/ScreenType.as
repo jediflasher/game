@@ -28,6 +28,10 @@ package ru.catAndBall.view.screens {
 
 		public static const COMMODE_CRAFT:String = 'commodeCraft';
 
+		public static const CONSTRUCTION:String = 'construction';
+
+		public static const BANK:String = 'bank';
+
 		public function ScreenType() {
 			super();
 		}

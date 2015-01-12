@@ -123,5 +123,9 @@ package ru.catAndBall.view.assets {
 		public static function getByteArray(name:String):ByteArray {
 			return _assetManager.getByteArray(name);
 		}
+
+		public static function getJSON(name:String):Object {
+			return _assetManager.getObject(name);
+		}
 	}
 }

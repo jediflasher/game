@@ -5,14 +5,11 @@ package ru.catAndBall.view.core.ui {
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
-	import ru.catAndBall.view.core.display.GridLayoutContainer;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.layout.Layout;
 
 	import starling.display.DisplayObject;
-	import starling.display.DisplayObjectContainer;
-	import starling.display.Sprite;
 	import starling.events.Event;
 
 	/**
@@ -108,6 +105,10 @@ package ru.catAndBall.view.core.ui {
 			invalidate(INVALIDATION_FLAG_LAYOUT);
 		}
 
+		public var resourceCounterFactory:Function = function (resourceType:String, resourceSet:ResourceSet = null, size:int = 0):ResourceCounter {
+			return new ResourceCounter(resourceType, resourceSet, size);
+		};
+
 		//--------------------------------------------------------------------------
 		//
 		//  Protected methods
@@ -168,8 +169,7 @@ package ru.catAndBall.view.core.ui {
 					var count:int = _resourceSet.get(type);
 					if (count == 0) continue;
 
-					var counter:ResourceCounter = new ResourceCounter(type, _resourceSet);
-					counter.disabled = count == 0;
+					var counter:ResourceCounter = resourceCounterFactory.apply(this, [type, _resourceSet]);
 					_resContainer.addChild(counter);
 				}
 

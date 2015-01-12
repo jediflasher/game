@@ -13,8 +13,6 @@ package ru.catAndBall.controller {
 
 		function getGridCell(coumn:int, row:int):GridCellData;
 
-		//function addChance(type:int, chance:Number):void;
-
 		function getChance(type:int):Number;
 	}
 }

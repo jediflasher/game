@@ -26,40 +26,6 @@ package ru.catAndBall.data {
 
 		public static const dictionaries:Dictionaries = new Dictionaries();
 
-		public static const defaulState:Object = {
-		"player": {
-			"buildings": {
-				"cat_house": {
-					"level": 1,
-					"startBuildingTime": 0,
-					"lastBonusTime": 0
-				},
-				"commode": {
-					"level": 0,
-					"startBuildingTime": 0,
-					"lastBonusTime": 0
-				}
-			},
-			"resources": {
-				'experience': 0,
-				'money': 0,
-				'toolCollectSocks': 0,
-				'bfBalls': 0,
-				'bfSocks': 0,
-				'bfSweaters': 0,
-				'bgToys': 0,
-				'rfBall': 0,
-				'rfCookie': 0,
-				'rfMouse': 0,
-				'rfSausage': 0,
-				'rfPigeon': 0,
-				'rfConserve': 0,
-				'rfWrapper': 0,
-				'rfThread': 0
-			}
-		}
-	};
-
 		//--------------------------------------------------------------------------
 		//
 		//  Class methods
@@ -67,6 +33,10 @@ package ru.catAndBall.data {
 		//--------------------------------------------------------------------------
 
 		public static function deserialize(value:Object):void {
+			if ('dictionaries' in value) {
+				dictionaries.deserialize(value.dictionaries);
+			}
+
 			if ('player' in value) {
 				player.deserialize(value.player);
 			}
