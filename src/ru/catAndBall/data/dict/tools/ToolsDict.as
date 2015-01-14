@@ -41,6 +41,7 @@ package ru.catAndBall.data.dict.tools {
 				var toolObj:Object = input[toolResource];
 				var tool:ToolDict = new ToolDict(toolResource);
 				tool.deserialize(toolObj);
+				_hash[tool.resourceType] = tool;
 			}
 		}
 	}

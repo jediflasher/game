@@ -1,9 +1,11 @@
 package ru.catAndBall.data.game.player {
 	import ru.catAndBall.data.BaseData;
+	import ru.catAndBall.data.dict.CommodeShelfDict;
 	import ru.catAndBall.data.dict.ConstructionDict;
 	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
+	import ru.catAndBall.data.game.buildings.constructions.CommodeShelfData;
 
 	/**
 	 * @author              Obi
@@ -40,11 +42,11 @@ package ru.catAndBall.data.game.player {
 
 		public var catHouse:CatHouseData;
 
-		public var commode1:ConstructionData;
+		public var commode1:CommodeShelfData;
 
-		public var commode2:ConstructionData;
+		public var commode2:CommodeShelfData;
 
-		public var commode3:ConstructionData;
+		public var commode3:CommodeShelfData;
 
 		public const list:Vector.<ConstructionData> = new Vector.<ConstructionData>();
 
@@ -54,17 +56,19 @@ package ru.catAndBall.data.game.player {
 		//
 		//--------------------------------------------------------------------------
 
+		public function init():void {
+			var constructions:Vector.<ConstructionDict> = Dictionaries.constructions.list;
+			for each (var c:ConstructionDict in constructions) {
+				createConstruction(c.id);
+			}
+		}
+
 		public override function deserialize(value:Object):void {
 			super.deserialize(value);
 
 			for each(var obj:Object in value) {
 				var id:String = obj.id;
-				var construction:ConstructionData = getConstructionById(id);
-				if (!construction) {
-					construction = _hash[id] = createConstruction(id);
-					list.push(construction)
-				}
-
+				var construction:ConstructionData = getConstructionById(id) || createConstruction(id);
 				construction.deserialize(obj);
 			}
 		}
@@ -72,7 +76,7 @@ package ru.catAndBall.data.game.player {
 		public override function serialize():Object {
 			var result:Object = super.serialize();
 			for each (var construction:ConstructionData in list) {
-				result[construction.dict.id] = construction.serialize();
+				result[construction.proto.id] = construction.serialize();
 			}
 			return result;
 		}
@@ -89,22 +93,26 @@ package ru.catAndBall.data.game.player {
 
 		private function createConstruction(id:String):ConstructionData {
 			var dict:ConstructionDict = Dictionaries.constructions.getConstructionById(id);
+			var result:ConstructionData;
 			switch (id) {
 				case ConstructionData.CAT_HOUSE:
-					catHouse = new CatHouseData(dict);
-					return catHouse;
+					result = catHouse = new CatHouseData(dict);
+					break;
 				case ConstructionData.COMMODE_1:
-					commode1 = new ConstructionData(dict);
-					return commode1;
+					result = commode1 = new CommodeShelfData(dict as CommodeShelfDict);
+					break;
 				case ConstructionData.COMMODE_2:
-					commode2 = new ConstructionData(dict);
-					return commode2;
+					result = commode2 = new CommodeShelfData(dict as CommodeShelfDict);
+					break;
 				case ConstructionData.COMMODE_3:
-					commode3 = new ConstructionData(dict);
-					return commode3;
+					result = commode3 = new CommodeShelfData(dict as CommodeShelfDict);
+					break;
 			}
 
-			return null;
+			_hash[result.proto.id] = result;
+			list.push(result);
+
+			return result;
 		}
 	}
 }

@@ -50,7 +50,7 @@ package ru.catAndBall.data.game.buildings {
 		//--------------------------------------------------------------------------
 
 		public function ConstructionData(proto:ConstructionDict) {
-			_dict = proto;
+			_proto = proto;
 		}
 
 		//--------------------------------------------------------------------------
@@ -83,24 +83,24 @@ package ru.catAndBall.data.game.buildings {
 			return _lastBonusTime;
 		}
 
-		private var _dict:ConstructionDict;
+		private var _proto:ConstructionDict;
 
-		public function get dict():ConstructionDict {
-			return _dict;
+		public function get proto():ConstructionDict {
+			return _proto;
 		}
 
 		public function get visible():Boolean {
 			var catHouseLevel:int = GameData.player.catHouseLevel;
-			return _dict.catHouseLevel <= catHouseLevel && state;
+			return _proto.catHouseLevel <= catHouseLevel && state;
 		}
 
 		public function get state():ConstructionState {
 			if (level < 1) return null;
-			return _dict.states[level - 1];
+			return _proto.states[level - 1];
 		}
 
 		public function get nextState():ConstructionState {
-			var u:Vector.<ConstructionState> = _dict.states;
+			var u:Vector.<ConstructionState> = _proto.states;
 			if (u.length <= level) return null;
 			return u[level];
 		}
@@ -163,14 +163,14 @@ package ru.catAndBall.data.game.buildings {
 		private var _name:String;
 
 		public function get name():String {
-			if (!_name) _name = L.get('construction.' + _dict.id + '.name');
+			if (!_name) _name = L.get('construction.' + _proto.id + '.name');
 			return _name;
 		}
 
 		private var _description:String;
 
 		public function get description():String {
-			if (!_description) _description = L.get('construction.' + _dict.id + '.desc');
+			if (!_description) _description = L.get('construction.' + _proto.id + '.desc');
 			return _description;
 		}
 

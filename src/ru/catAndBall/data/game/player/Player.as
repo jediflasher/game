@@ -76,6 +76,10 @@ package ru.catAndBall.data.game.player {
 		//
 		//--------------------------------------------------------------------------
 
+		public function init():void {
+			constructions.init();
+		}
+
 		public override function deserialize(value:Object):void {
 			super.deserialize(value);
 

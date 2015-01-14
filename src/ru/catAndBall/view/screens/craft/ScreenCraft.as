@@ -8,6 +8,7 @@ package ru.catAndBall.view.screens.craft {
 	import feathers.layout.VerticalLayout;
 
 	import ru.catAndBall.AppProperties;
+	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
@@ -65,17 +66,9 @@ package ru.catAndBall.view.screens.craft {
 
 		private var _rugArea:List;
 
-		private var _rollDataProvider:ListCollection = new ListCollection([
-			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_BOWL),
-			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_BROOM),
-			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_SPOKES)
-		]);
+		private var _rollDataProvider:ListCollection = new ListCollection();
 
-		private var _rugDataProvider:ListCollection = new ListCollection([
-			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_SPOOL),
-			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_TEA),
-			Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_TOY_BOX)
-		]);
+		private var _rugDataProvider:ListCollection = new ListCollection();
 
 		private var _selectedTab:Button;
 
@@ -89,6 +82,9 @@ package ru.catAndBall.view.screens.craft {
 
 		protected override function initialize():void {
 			super.initialize();
+
+			_rollDataProvider.data = GameData.player.constructions.commode1.availableTools;
+			_rugDataProvider.data = GameData.player.constructions.commode2.availableTools;
 
 			(_backgroundSkin as Image).smoothing = TextureSmoothing.NONE;
 
@@ -114,6 +110,7 @@ package ru.catAndBall.view.screens.craft {
 			_rollArea.itemRendererFactory = itemFactory;
 			_rollArea.visible = false;
 			_rollArea.dataProvider = _rollDataProvider;
+
 
 			_rugArea = new List();
 			l = new VerticalLayout();

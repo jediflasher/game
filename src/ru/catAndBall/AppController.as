@@ -167,6 +167,7 @@ package ru.catAndBall {
 			var defaultUserState:DefaultUserState = new DefaultUserState();
 			var dictionaries:Object = Assets.getJSON('dict.json');
 			GameData.dictionaries.deserialize(dictionaries);
+			GameData.player.init();
 
 			try {
 				var so:SharedObject = SharedObject.getLocal('game');

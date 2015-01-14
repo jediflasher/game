@@ -26,11 +26,11 @@ package ru.catAndBall.view.core.game.factory {
 			var result:Construction;
 			if (data is CatHouseData) {
 				result = new CatHouse(data as CatHouseData);
-			} else if (data.dict.id == ConstructionData.COMMODE_1) {
+			} else if (data.proto.id == ConstructionData.COMMODE_1) {
 				result = new CommodeShelf1(data);
-			} else if (data.dict.id == ConstructionData.COMMODE_2) {
+			} else if (data.proto.id == ConstructionData.COMMODE_2) {
 				result = new CommodeShelf2(data);
-			} else if (data.dict.id == ConstructionData.COMMODE_3) {
+			} else if (data.proto.id == ConstructionData.COMMODE_3) {
 				result = new CommodeShelf3(data);
 			} else {
 				throw new Error('Unkown construction');

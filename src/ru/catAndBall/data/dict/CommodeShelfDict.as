@@ -1,14 +1,15 @@
-package ru.catAndBall.data.dict.constructions {
-	import ru.catAndBall.data.dict.ConstructionDict;
+package ru.catAndBall.data.dict {
+	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.view.core.utils.ArrayUtils;
 
 	/**
 	 * @author              Obi
 	 * @version             1.0
 	 * @playerversion       Flash 10
 	 * @langversion         3.0
-	 * @date                07.12.14 22:48
+	 * @date                14.01.15 22:19
 	 */
-	public class ConstructionCollectionDict {
+	public class CommodeShelfDict extends ConstructionDict {
 
 		//--------------------------------------------------------------------------
 		//
@@ -16,17 +17,21 @@ package ru.catAndBall.data.dict.constructions {
 		//
 		//--------------------------------------------------------------------------
 
-		public function ConstructionCollectionDict() {
+		public function CommodeShelfDict() {
 			super();
 		}
 
 		//--------------------------------------------------------------------------
 		//
-		//  Variables
+		//  Properties
 		//
 		//--------------------------------------------------------------------------
 
-		private var _hash:Object = {}; // id -> ConstructionDict
+		private var _tools:Vector.<ToolDict> = new Vector.<ToolDict>();
+
+		public function get tools():Vector.<ToolDict> {
+			return _tools;
+		}
 
 		//--------------------------------------------------------------------------
 		//
@@ -34,15 +39,13 @@ package ru.catAndBall.data.dict.constructions {
 		//
 		//--------------------------------------------------------------------------
 
-		public function getConstructionById(id:String):ConstructionDict {
-			return _hash[id];
-		}
+		public override function deserialize(input:Object):void {
+			super.deserialize(input);
 
-		public function deserialize(input:Object):void {
-			for each(var obj:Object in input) {
-				var dict:ConstructionDict = new ConstructionDict();
-				dict.deserialize(obj);
-				_hash[dict.id] = dict;
+			if ('tools' in input) {
+				for each (var toolId:String in input.tools) {
+					_tools.push(Dictionaries.tools.getToolByResourceType(toolId));
+				}
 			}
 		}
 	}

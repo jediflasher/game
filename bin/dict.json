@@ -1,0 +1,218 @@
+{
+  "tools": {
+    "toolSpool":{
+      "price": {
+        "money":10
+      },
+      "collect": ["bf_ballRed", "bf_ballBlue", "bf_ballGreen"]
+    },
+    "toolBroom":{
+      "price": {
+        "money":10
+      },
+      "replace": {
+        "bf_ballRed" : "bf_toyRed",
+        "bf_ballBlue": "bf_toyBlue"
+      }
+    },
+    "toolToyBox":{
+      "price": {
+        "money":10
+      }
+    },
+    "toolBowl":{
+      "price": {
+        "money":10
+      }
+    },
+    "toolSpokes":{
+      "price": {
+        "money":10
+      }
+    },
+    "toolTea": {
+      "price": {
+        "money": 1
+      }
+    }
+  },
+  "constructions": [
+    {
+      "id": "catHouse",
+      "catHouseLevel": 0,
+      "states": [
+        {
+          "lockedToLevel": 0,
+          "buildTime": 50,
+          "price": {
+            "bfBalls": 3
+          },
+          "speedUpPrice": {
+            "money": 3
+          },
+          "bonusPeriod": 120,
+          "bonus": {
+            "money": 3,
+            "exp": 10
+          }
+        },
+        {
+          "lockedToLevel": 3,
+          "buildTime": 150,
+          "price": {
+            "bfBalls": 3
+          },
+          "speedUpPrice": {
+            "money": 10
+          },
+          "bonusPeriod": 120,
+          "bonus": {
+            "money": 10
+          }
+        }
+      ]
+    },
+    {
+      "id":"commode1",
+      "catHouseLevel": 1,
+      "states": [
+        {
+          "lockedToLevel": 0,
+          "buildTime": 50,
+          "price": {
+            "bfBalls": 3
+          },
+          "speedUpPrice": {
+            "money": 3
+          },
+          "bonusPeriod": 120,
+          "bonus": {
+            "money": 3,
+            "exp":10
+          }
+        }
+      ],
+      "tools": ["toolBowl", "toolBroom", "toolSpokes"]
+    },
+    {
+      "id":"commode2",
+      "catHouseLevel": 1,
+      "states": [
+        {
+          "lockedToLevel": 0,
+          "buildTime": 50,
+          "price": {
+            "bfBalls": 3
+          },
+          "speedUpPrice": {
+            "money": 3
+          },
+          "bonusPeriod": 120,
+          "bonus": {
+            "money": 3,
+            "exp":10
+          }
+        }
+      ],
+      "tools": ["toolSpool", "toolTea", "toolToyBox"]
+    },
+    {
+      "id":"commode3",
+      "catHouseLevel": 1,
+      "states": [
+        {
+          "lockedToLevel": 0,
+          "buildTime": 50,
+          "price": {
+            "bfBalls": 3
+          },
+          "speedUpPrice": {
+            "money": 3
+          },
+          "bonusPeriod": 120,
+          "bonus": {
+            "money": 3,
+            "exp":10
+          }
+        }
+      ]
+    }
+  ],
+  "fields": {
+    "balls":{
+      "price": {"bfBalls":1},
+      "turnsCount": 15,
+      "pestChance": 0.03,
+      "pestTurnCount": 3,
+      "upgradeLimit": 7,
+      "stackSize": 8,
+      "connectCount": 3,
+      "blowBombCount": 3,
+      "elements": ["bf_ballRed", "bf_ballGreen", "bf_ballBlue", "bf_granny"],
+      "elementChances": [0.3, 0.3, 0.3, 0.1],
+      "pests": ["bf_wolf"],
+      "pestsFood": {
+        "bf_wolf":["bf_toyRed", "bf_toyGreen", "bf_toyBlue", "bf_toyPurple", "bf_sweaterRed", "bf_sweaterGreen", "bf_sweaterBlue", "bf_sweaterPurple"]
+      },
+      "pestsResult": {
+        "bf_wolf":"bf_socks"
+      },
+      "upgrades": {
+        "bf_ballBlue":"bf_toyBlue",
+        "bf_toyBlue":"bf_sweaterBlue",
+        "bf_sweaterBlue":"bf_ballGold",
+        "bf_ballGreen":"bf_toyGreen",
+        "bf_toyGreen":"bf_sweaterGreen",
+        "bf_sweaterGreen":"bf_ballGold",
+        "bf_ballPurple":"bf_toyPurple",
+        "bf_toyPurple":"bf_sweaterPurple",
+        "bf_sweaterPurple":"bf_ballGold"
+      },
+      "customUpgradeLimits": {},
+      "customConnectCounts": {"bf_ballGold":1},
+      "bombsResultHash": {"bf_granny":"bf_socks"}
+    },
+    "rug": {
+      "turnsCount": 30,
+      "pestChance": 0.03,
+      "pestTurnCount": 3,
+      "upgradeLimit": 7,
+      "stackSize": 8,
+      "connectCount": 3,
+      "blowBombCount": 3,
+      "price": {
+        "bfBalls":10
+      },
+      "elements": ["rf_ball", "rf_cookie", "rf_wrapper", "rf_thread"],
+      "elementChances": [0.46, 0.46, 0.04, 0.04],
+      "pests": ["rf_dog", "rf_parrot"],
+      "pestsFood": {
+        "rf_dog": ["rf_ball", "rf_cookie", "rf_mouse", "rf_milk", "rf_pigeon", "rf_conserve"],
+        "rf_parrot": ["rf_ball", "rf_cookie", "rf_mouse", "rf_milk", "rf_pigeon", "rf_conserve"]
+      },
+      "pests_result": {
+        "rf_dog":"rf_thread",
+        "rf_parrot":"rf_wrapper"
+      },
+      "upgrades": {
+        "rf_ball":"rf_mouse",
+        "rf_mouse": "rf_pigeon",
+        "rf_pigeon": "rf_goldFish",
+        "rf_cookie": "rf_milk",
+        "rf_milk": "rf_conserve",
+        "rf_conserve": "rf_goldFish"
+      },
+      "customUpgradesLimits": {},
+      "customConnectsCounts": {
+        "rf_goldFish": 1
+      }
+    },
+    "window": {
+      "price": {
+
+      },
+      "elements": ["bf_ballRed", "bf_ballGreen", "bf_ballBlue", "bf_granny"],
+      "elementChances": [0.3, 0.3, 0.3, 0.1]
+    }
+  }
+}

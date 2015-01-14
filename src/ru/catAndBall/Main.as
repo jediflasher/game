@@ -83,7 +83,7 @@ package ru.catAndBall {
 			AppProperties.iOS = Capabilities.manufacturer.indexOf("iOS") > -1;
 			AppProperties.isWeb = !SystemUtil.isAIR;
 
-			_url = stage.loaderInfo.parameters['url'];
+			_url = stage.loaderInfo.parameters['url'] || '.';
 			AppProperties.dev = _url ? _url.search(/(localhost|127\.0\.0\.1)/) >= 0 : false;
 
 			stage.scaleMode = StageScaleMode.NO_SCALE;

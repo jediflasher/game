@@ -1,5 +1,5 @@
 package ru.catAndBall.data.dict {
-	import ru.catAndBall.data.dict.constructions.ConstructionCollectionDict;
+	import ru.catAndBall.data.game.buildings.constructions.ConstructionCollectionDict;
 	import ru.catAndBall.data.dict.tools.ToolsDict;
 	import ru.catAndBall.data.game.GridFieldSettings;
 
