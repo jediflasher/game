@@ -129,7 +129,7 @@ package ru.catAndBall {
 				var folderName:String = AppProperties.isHD ? 'hd' : 'ld';
 				var urlLoader:URLLoader = new URLLoader();
 				urlLoader.addEventListener(Event.COMPLETE, handler_loadAssetListComplete);
-				urlLoader.load(new URLRequest(_url + '/assets/' + folderName));
+				urlLoader.load(new URLRequest(_url + '/game/assets/' + folderName));
 			} else {
 				_assetlistLoaded = true;
 				initAssets();
@@ -154,7 +154,7 @@ package ru.catAndBall {
 				_assetManager.enqueue(assets);
 			}
 
-			_assetManager.enqueueWithName(_url + '/dict.json', 'dict.json');
+			_assetManager.enqueueWithName('/dict.json', 'dict.json');
 			tryLoadResources();
 		}
 
