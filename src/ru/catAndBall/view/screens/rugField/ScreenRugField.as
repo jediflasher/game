@@ -48,9 +48,9 @@ package ru.catAndBall.view.screens.rugField {
 
 		protected override function getBackground():GridBackground {
 			return new GridBackground(
-					AssetList.fields_carpet_bg1,
-					AssetList.fields_carpet_bg2,
-					AssetList.fields_carpet_bg3,
+					AssetList.fields_carpet_carpetBg1,
+					AssetList.fields_carpet_carpetBg2,
+					AssetList.fields_carpet_carpetBg3,
 					screenData.gridData.columns,
 					screenData.gridData.rows
 			);

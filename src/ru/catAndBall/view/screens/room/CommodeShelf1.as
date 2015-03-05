@@ -1,5 +1,6 @@
 package ru.catAndBall.view.screens.room {
 	import ru.catAndBall.data.game.buildings.ConstructionData;
+	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.Construction;
 
 	/**
@@ -17,8 +18,9 @@ package ru.catAndBall.view.screens.room {
 		//
 		//--------------------------------------------------------------------------
 
-		public function CommodeShelf1(data:ConstructionData) {
-			super(data, '');
+		public function CommodeShelf1(data:ConstructionData, asIcon:Boolean = false) {
+			super(data, AssetList.Room_shelf1_1, asIcon);
+			showIfNotAvailable = true;
 		}
 	}
 }

@@ -21,6 +21,8 @@ package ru.catAndBall.view.screens.room {
 	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.room.drop.DropLayer;
+	import ru.catAndBall.view.screens.room.footer.RoomFooterBar;
+	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
 
 	import starling.display.Button;
 	import starling.display.DisplayObject;

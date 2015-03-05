@@ -57,11 +57,11 @@ package ru.catAndBall.view.core.game {
 			if (resourceSet) {
 				_resourceSet = resourceSet;
 
-				_brownTextures = new Scale3Textures(Assets.getTexture(AssetList.Tools_amount_components_on), 33, 5);
-				_redTextures = new Scale3Textures(Assets.getTexture(AssetList.Tools_amount_components_off), 33, 5);
+				_brownTextures = new Scale3Textures(Assets.getTexture(AssetList.ToolsOption_numderComponentsGreen), 33, 5);
+				_redTextures = new Scale3Textures(Assets.getTexture(AssetList.ToolsOption_numderComponentsRed), 33, 5);
 
 				var img:Scale3Image = new Scale3Image(_brownTextures);
-				_tf = new TextFieldBackground(AssetList.font_xsmall_milk_bold, img, false, true, 15);
+				_tf = new TextFieldBackground(AssetList.font_small_white_greenstroke, img, false, true, 15);
 				_tf.bgMinWidth = _brownTextures.texture.width;
 				addChild(_tf);
 

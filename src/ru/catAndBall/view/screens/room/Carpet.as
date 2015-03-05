@@ -26,10 +26,10 @@ package ru.catAndBall.view.screens.room {
 		public function Carpet() {
 			super();
 
-			var img:Image = Assets.getImage(AssetList.Room_carpet);
+			var img:Image = Assets.getImage(AssetList.Room_carpet1);
 			addChild(img);
 
-			_enterButton = Assets.getButton(AssetList.Room_vhod_pole_kover);
+			_enterButton = Assets.getButton(AssetList.Room_entrCarpet);
 			_enterButton.addEventListener(Event.TRIGGERED, handler_triggered);
 			_enterButton.x = img.texture.width / 2 - _enterButton.upState.width / 2;
 			_enterButton.y = img.texture.height / 2 - _enterButton.upState.height / 2;

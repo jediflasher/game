@@ -16,6 +16,7 @@ package ru.catAndBall.view.popups {
 	import ru.catAndBall.view.core.text.TextFieldBackground;
 	import ru.catAndBall.view.core.ui.BasePopup;
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
+	import ru.catAndBall.view.core.ui.SmallGreenButton;
 	import ru.catAndBall.view.core.ui.YellowButton;
 	import ru.catAndBall.view.layout.Layout;
 
@@ -121,10 +122,10 @@ package ru.catAndBall.view.popups {
 		//--------------------------------------------------------------------------
 
 		protected override function initialize():void {
-			const txt:Texture = Assets.getTexture(AssetList.ToolsOption_counter_bg);
+			const txt:Texture = Assets.getTexture(AssetList.ToolsOption_componentsOrderBg);
 			const bg:Scale3Image = new Scale3Image(new Scale3Textures(txt, Layout.craft.popupCounterBgScaleGridSizes[0], Layout.craft.popupCounterBgScaleGridSizes[1]));
 			bg.width = Layout.craft.popupCounterBgSize;
-			_counterTf = new TextFieldBackground(AssetList.font_xlarge_milk_bold, bg, true, true);
+			_counterTf = new TextFieldBackground(AssetList.font_large_white_shadow, bg, true, true);
 			_counterContainer.addChild(_counterTf);
 
 			_minusButton = new YellowButton(AssetList.ToolsOption_minus, Layout.craft.popupPlusMinusButtonSize, Layout.craft.popupPlusMinusButtonSize);

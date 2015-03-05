@@ -71,7 +71,7 @@ package ru.catAndBall.data.game.field {
 
 		public static const GOLD_FISH:String = "rf_goldFish";
 
-		public static const WRAPPER:String = "rf_wrapper";
+		public static const GRAIN:String = "rf_grain";
 
 		public static const THREAD:String = "rf_thread";
 
@@ -132,8 +132,8 @@ package ru.catAndBall.data.game.field {
 				case GridCellType.THREAD:
 					return ResourceSet.RF_THREAD;
 					break;
-				case GridCellType.WRAPPER:
-					return ResourceSet.RF_WRAPPER;
+				case GridCellType.GRAIN:
+					return ResourceSet.RF_GRAIN;
 				default:
 					return null;
 			}

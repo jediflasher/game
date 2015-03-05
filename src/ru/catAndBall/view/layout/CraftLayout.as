@@ -23,14 +23,6 @@ package ru.catAndBall.view.layout {
 			super();
 		}
 
-		public const titlePos:Point = AppProperties.getValue(new Point(115, 36), new Point(78, 27));
-
-		public const descBounds:Rectangle = AppProperties.getValue(new Rectangle(115, 125, 470, 290), new Rectangle(78, 27, 235, 180));
-
-		public const iconPos:Point = AppProperties.getValue(new Point(620, 35), new Point(78, 27));
-
-		public const tabGap:int = AppProperties.getValue(15, 7);
-
 		public const iconSize:Number = AppProperties.getValue(310, 125);
 
 		public const priceIconSize:int = AppProperties.getValue(170, 85);

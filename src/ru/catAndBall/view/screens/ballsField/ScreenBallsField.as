@@ -39,9 +39,9 @@ package ru.catAndBall.view.screens.ballsField {
 
 		protected override function getBackground():GridBackground {
 			return new GridBackground(
-					AssetList.fields_balls_bg1,
-					AssetList.fields_balls_bg2,
-					AssetList.fields_balls_bg3,
+					AssetList.fields_balls_ballsBg1,
+					AssetList.fields_balls_ballsBg2,
+					AssetList.fields_balls_ballsBg3,
 					GameData.player.ballsField.columns,
 					GameData.player.ballsField.rows
 			);

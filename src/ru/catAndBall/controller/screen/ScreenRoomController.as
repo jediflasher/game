@@ -29,7 +29,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.view.popups.InventoryPopup;
 	import ru.catAndBall.view.popups.StartFieldPaidPopup;
 	import ru.catAndBall.view.screens.ScreenType;
-	import ru.catAndBall.view.screens.room.RoomFooterBar;
+	import ru.catAndBall.view.screens.room.footer.RoomFooterBar;
 	import ru.catAndBall.view.screens.room.ScreenRoom;
 
 	import starling.display.Image;
@@ -104,7 +104,7 @@ package ru.catAndBall.controller.screen {
 			_popupFieldComplete.title = L.get('finish_field_popup.balls.title');
 			_popupFieldComplete.desc = exp ? L.get('finish_field_popup.balls.desc', [exp]) : null;
 			_popupFieldComplete.buttonLabel = L.get('finish_field_popup.balls.take');
-			_popupFieldComplete.icon = Assets.getImage(AssetList.start_windows_tangled_icon);
+			_popupFieldComplete.icon = Assets.getImage(AssetList.Room_tangles1);
 			_popupFieldComplete.showClose = false;
 			_popupFieldComplete.addEventListener(BasePopup.EVENT_BUTTON_CLICK, handler_completeBallsClick);
 
@@ -147,7 +147,7 @@ package ru.catAndBall.controller.screen {
 			_popupFieldStart.title = L.get('start_field_popup.balls.title');
 			_popupFieldStart.buttonLabel = L.get('start_field_popup.balls.start');
 			_popupFieldStart.desc = L.get('start_field_popup.balls.desc');
-			_popupFieldStart.icon = Assets.getImage(AssetList.start_windows_tangled_icon);
+			_popupFieldStart.icon = Assets.getImage(AssetList.Room_tangles1);
 			_popupFieldStart.showClose = true;
 			_popupFieldStart.resourceSet = GameData.player.ballsField.settings.price;
 			_popupFieldStart.addEventListener(BasePopup.EVENT_BUTTON_CLICK, handler_startBallsClick);
@@ -160,7 +160,7 @@ package ru.catAndBall.controller.screen {
 
 			_popupPaidFieldStart.title = L.get('start_field_popup.rug.title');
 			_popupPaidFieldStart.desc = L.get('start_field_popup.rug.desc');
-			_popupPaidFieldStart.icon = Assets.getImage(AssetList.start_windows_carpet_icon);
+			_popupPaidFieldStart.icon = Assets.getImage(AssetList.popup_carpet_icon);
 			_popupPaidFieldStart.showClose = true;
 			_popupPaidFieldStart.resourceSet = GameData.player.rugField.settings.price;
 			_popupPaidFieldStart.addEventListener(BasePopup.EVENT_BUTTON_CLICK, handler_startRugClick);

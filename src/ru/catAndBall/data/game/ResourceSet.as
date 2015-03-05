@@ -59,7 +59,7 @@ package ru.catAndBall.data.game {
 
 		public static const RF_CONSERVE:String = 'rfConserve';
 
-		public static const RF_WRAPPER:String = 'rfWrapper';
+		public static const RF_GRAIN:String = 'rfGrain';
 
 		public static const RF_THREAD:String = 'rfThread';
 
@@ -67,7 +67,7 @@ package ru.catAndBall.data.game {
 			EXPERIENCE, MONEY, MOUSE,
 			TOOL_BOWL, TOOL_BROOM, TOOL_SPOKES, TOOL_SPOOL, TOOL_TEA, TOOL_TOY_BOX,
 			BF_BALLS, BF_SOCKS, BF_SWEATERS, BF_TOYS, RF_BALL,
-			RF_COOKIE, RF_MOUSE, RF_MILK, RF_PIGEON, RF_CONSERVE, RF_WRAPPER, RF_THREAD
+			RF_COOKIE, RF_MOUSE, RF_MILK, RF_PIGEON, RF_CONSERVE, RF_GRAIN, RF_THREAD
 		];
 
 		public static function isTool(resourceType:String):Boolean {

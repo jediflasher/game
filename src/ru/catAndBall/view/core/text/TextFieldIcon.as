@@ -33,7 +33,7 @@ package ru.catAndBall.view.core.text {
 		//
 		//--------------------------------------------------------------------------
 
-		public function TextFieldIcon(textField:BaseTextField, icon:Image = null, background:Image = null, fixedHeight:Number = 0, fixedWidth:Number = 0) {
+		public function TextFieldIcon(textField:BaseTextField, icon:Image = null, background:Image = null, fixedWidth:Number = 0, fixedHeight:Number = 0) {
 			super();
 
 			this.textField = textField;
@@ -46,14 +46,15 @@ package ru.catAndBall.view.core.text {
 			if (_background) addChild(_background);
 
 			if (this.icon) {
-				addChild(_layoutGroup);
-
 				var l:HorizontalLayout = new HorizontalLayout();
 				l.gap = 5;
 				l.verticalAlign = HorizontalLayout.VERTICAL_ALIGN_MIDDLE;
+				_layoutGroup = new LayoutGroup();
 				_layoutGroup.layout = l;
 				_layoutGroup.addChild(this.icon);
 				_layoutGroup.addChild(this.textField);
+
+				addChild(_layoutGroup);
 			} else {
 				addChild(this.textField);
 			}
@@ -65,7 +66,7 @@ package ru.catAndBall.view.core.text {
 		//
 		//--------------------------------------------------------------------------
 
-		private const _layoutGroup:LayoutGroup = new LayoutGroup();
+		private var _layoutGroup:LayoutGroup;
 
 		private var _background:DisplayObject;
 
@@ -101,31 +102,35 @@ package ru.catAndBall.view.core.text {
 		//--------------------------------------------------------------------------
 
 		protected override function draw():void {
-			if (_layoutGroup) _layoutGroup.validate();
-			textField.validate();
-
-			if (_background) {
-				if (_layoutGroup) {
-					_layoutGroup.x = PADDING_H;
-					_layoutGroup.y = PADDING_V;
-				} else {
-
-				}
-
-				if (_fixedWidth >= 0) {
-					_background.width = _fixedWidth ? _fixedWidth : _layoutGroup.width + PADDING_H * 2;
-				}
-
-				if (_fixedHeight >= 0) {
-					_background.height = _fixedHeight ? _fixedHeight : _layoutGroup.height + PADDING_V * 2;
-				}
-			}
-
-			var resultWidth:Number = _background ? _background.width : _layoutGroup.width;
-			var resultHeight:Number = _background ? _background.height : _layoutGroup.height;
-
-			setSizeInternal(resultWidth, resultHeight, false);
 			super.draw();
+
+			if (isInvalid(INVALIDATION_FLAG_SIZE)) {
+				if (_layoutGroup) _layoutGroup.validate();
+				textField.validate();
+
+				if (_background) {
+					if (_layoutGroup) {
+						_layoutGroup.x = PADDING_H;
+						_layoutGroup.y = PADDING_V;
+					} else {
+						textField.x = _background.width / 2 - textField.width / 2;
+						textField.y = _background.height / 2 - textField.height / 2;
+					}
+
+					if (_fixedWidth >= 0) {
+						_background.width = _fixedWidth ? _fixedWidth : _layoutGroup.width + PADDING_H * 2;
+					}
+
+					if (_fixedHeight >= 0) {
+						_background.height = _fixedHeight ? _fixedHeight : _layoutGroup.height + PADDING_V * 2;
+					}
+				}
+
+				var resultWidth:Number = _background ? _background.width : _layoutGroup.width;
+				var resultHeight:Number = _background ? _background.height : _layoutGroup.height;
+
+				setSizeInternal(resultWidth, resultHeight, false);
+			}
 		}
 	}
 }

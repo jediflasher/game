@@ -90,7 +90,7 @@ package ru.catAndBall.view.core.game {
 			_back = new YellowButton(AssetList.buttons_back);
 			_back.addEventListener(Event.TRIGGERED, handler_backClick);
 
-			_tools = Assets.getButton(AssetList.panel_tools_tools_footer_icon);
+			_tools = Assets.getButton(AssetList.buttons_ToolsIcon_on);
 			_tools.addEventListener(Event.TRIGGERED, handler_toolsClick);
 
 			_settings =new YellowButton(AssetList.buttons_settings);

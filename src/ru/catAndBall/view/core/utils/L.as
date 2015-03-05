@@ -24,6 +24,7 @@ package ru.catAndBall.view.core.utils {
 			'finish_field_popup.balls.take': 'Take',
 			'start_field_popup.rug.title': 'Rug',
 			'start_field_popup.rug.desc': 'There is super beautiful field. You should pay money.',
+			'inventory.title': 'Inventory',
 			'inventory.tab0': 'Tools',
 			'inventory.tab1': 'Resources',
 			'tool.toolSpool.name': 'Spool',
@@ -38,9 +39,9 @@ package ru.catAndBall.view.core.utils {
 			'tool.toolSpokes.desc': 'Spokes very interesting description about some shit',
 			'tool.toolTea.name': 'Cup of coffee',
 			'tool.toolTea.desc': 'Cup of coffee very interesting description about some shit',
-			'screen.craft.tabRug.title': 'Tools for rug field',
-			'screen.craft.tabRolls.title': 'Tools for roll field',
-			'screen.craft.tabWindow.title': 'Tools for window field',
+			'screen.craft.tabRug.title': 'Ruf',
+			'screen.craft.tabRolls.title': 'Rolls',
+			'screen.craft.tabWindow.title': 'Window',
 			'screen.craft.makeButton': 'Create',
 			'screen.craft.popup.makeFree': 'Create',
 			'screen.craft.popup.makeFor': 'Create for %s',
@@ -48,8 +49,16 @@ package ru.catAndBall.view.core.utils {
 			'screen.bank.clear_button': 'Reset all to 0',
 			'screen.room.popupPaid.makeFor': 'Start for %s',
 			'screen.room.popupPaid.makeFree': 'Start',
+			'construction.hint.done':'Done',
+			'construction.hint.locked':'Not built yet',
 			'construction.catHouse.name': 'Cat House',
-			'construction.catHouse.desc': 'Very beautiful house for cat. She can leave in it so long as she want'
+			'construction.catHouse.desc': 'Very beautiful house \nfor cat. \nShe can leave in it so long \nas she want.',
+			'construction.commode1.name': 'First commode shelf',
+			'construction.commode1.desc': 'First commode shelf. You can use it to create some tools.',
+			'construction.commode2.name': 'Second commode shelf',
+			'construction.commode2.desc': 'Second commode shelf. You can use it to create some tools.',
+			'construction.commode3.name': 'Third commode shelf',
+			'construction.commode3.desc': 'Third commode shelf. You can use it to create some tools.'
 		};
 
 		//--------------------------------------------------------------------------

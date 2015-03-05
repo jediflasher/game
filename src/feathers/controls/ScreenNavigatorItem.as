@@ -78,7 +78,7 @@ package feathers.controls
 		 */
 		internal function getScreen():DisplayObject
 		{
-				var screenInstance:DisplayObject;
+			var screenInstance:DisplayObject;
 			if(this.screen is Class)
 			{
 				var ScreenType:Class = Class(this.screen);

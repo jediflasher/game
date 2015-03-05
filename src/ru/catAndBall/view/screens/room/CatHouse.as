@@ -5,6 +5,7 @@ package ru.catAndBall.view.screens.room {
 	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.Construction;
+	import ru.catAndBall.view.hint.BaseConstructionHint;
 
 	import starling.display.DisplayObject;
 
@@ -23,8 +24,8 @@ package ru.catAndBall.view.screens.room {
 		//
 		//--------------------------------------------------------------------------
  
-		public function CatHouse(data:CatHouseData) {
-			super(data, AssetList.Room_cat_house_lvl1.replace('lvl1', 'lvl'));
+		public function CatHouse(data:CatHouseData, asIcon:Boolean = false) {
+			super(data, AssetList.Room_catHouse1, asIcon);
 		}
 
 		//--------------------------------------------------------------------------
@@ -33,13 +34,23 @@ package ru.catAndBall.view.screens.room {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _hint:CatHouseHint;
+		private var _hint:BaseConstructionHint;
 
-		public override function get hint():FeathersControl {
+		public override function get hint():DisplayObject {
 			if (!data.state) return null;
 
-			if (!_hint) _hint = new CatHouseHint(data as CatHouseData);
+			if (!_hint) _hint = new BaseConstructionHint(data as CatHouseData);
 			return _hint;
+		}
+
+		// 260 30
+
+		public override function get hintX():int {
+			return 260;
+		}
+
+		public override function get hintY():int {
+			return 30;
 		}
 	}
 }

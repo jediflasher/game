@@ -11,13 +11,13 @@ package ru.catAndBall.view.screens.bank {
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.core.ui.BaseButton;
-	import ru.catAndBall.view.core.ui.BigGreenButton;
+	import ru.catAndBall.view.core.ui.MediumGreenButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
-	import ru.catAndBall.view.screens.room.RoomHeaderBar;
+	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
 
 	import starling.events.Event;
 
@@ -45,7 +45,7 @@ package ru.catAndBall.view.screens.bank {
 		//--------------------------------------------------------------------------
 
 		public function ScreenBank() {
-			super(new BaseScreenData(ScreenType.BANK), AssetList.Tools_name_tools_background);
+			super(new BaseScreenData(ScreenType.BANK), AssetList.Bank_bankBg);
 		}
 
 		//--------------------------------------------------------------------------
@@ -54,9 +54,9 @@ package ru.catAndBall.view.screens.bank {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _buyButton:BigGreenButton;
+		private var _buyButton:MediumGreenButton;
 
-		private var _clearButton:BigGreenButton;
+		private var _clearButton:MediumGreenButton;
 
 		private var _container:GridLayoutContainer;
 
@@ -71,11 +71,11 @@ package ru.catAndBall.view.screens.bank {
 			headerClass = RoomHeaderBar;
 			footerClass = SimpleScreenFooterBar;
 
-			_buyButton = new BigGreenButton(L.get('screen.bank.buy_button', [100]));
+			_buyButton = new MediumGreenButton(L.get('screen.bank.buy_button', [100]));
 			_buyButton.addEventListener(Event.TRIGGERED, handler_buyClick);
 			addChild(_buyButton);
 
-			_clearButton = new BigGreenButton(L.get('screen.bank.clear_button'));
+			_clearButton = new MediumGreenButton(L.get('screen.bank.clear_button'));
 			_clearButton.addEventListener(Event.TRIGGERED, handler_clearClick);
 			addChild(_clearButton);
 
@@ -101,14 +101,14 @@ package ru.catAndBall.view.screens.bank {
 			if (isInvalid(INVALIDATION_FLAG_LAYOUT)) {
 				_buyButton.validate();
 
-				_buyButton.x = AppProperties.appWidth / 2 - _buyButton.width / 2;
+				_buyButton.x = AppProperties.baseWidth / 2 - _buyButton.width / 2;
 				_buyButton.y = 100;
 
-				_container.x = AppProperties.appWidth / 2 - _container.width / 2;
+				_container.x = AppProperties.baseWidth / 2 - _container.width / 2;
 				_container.y = _buyButton.y + _buyButton.height + Layout.baseGap;
 
 				_clearButton.validate();
-				_clearButton.x = AppProperties.appWidth / 2 - _clearButton.width / 2;
+				_clearButton.x = AppProperties.baseWidth / 2 - _clearButton.width / 2;
 				_clearButton.y = _container.y + _container.height + Layout.baseGap;
 			}
 		}

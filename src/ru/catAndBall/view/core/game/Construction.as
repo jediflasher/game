@@ -1,7 +1,4 @@
 package ru.catAndBall.view.core.game {
-	import feathers.controls.Button;
-	import feathers.core.FeathersControl;
-
 	import flash.events.Event;
 
 	import ru.catAndBall.data.game.buildings.ConstructionData;
@@ -9,13 +6,15 @@ package ru.catAndBall.view.core.game {
 	import ru.catAndBall.utils.TimeUtil;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
+	import ru.catAndBall.view.core.display.BaseSprite;
 	import ru.catAndBall.view.core.text.TextFieldTest;
 	import ru.catAndBall.view.core.ui.Hint;
+	import ru.catAndBall.view.hint.BaseConstructionHint;
 
 	import starling.core.Starling;
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.MovieClip;
-	import starling.display.Sprite;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
@@ -28,7 +27,7 @@ package ru.catAndBall.view.core.game {
 	 * @langversion         3.0
 	 * @date                27.09.14 11:49
 	 */
-	public class Construction extends Sprite {
+	public class Construction extends BaseSprite {
 
 		//--------------------------------------------------------------------------
 		//
@@ -44,12 +43,11 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
-		public function Construction(data:ConstructionData, assetId:String) {
+		public function Construction(data:ConstructionData, assetId:String, isIcon:Boolean = false) {
 			super();
 			this.data = data;
 			_assetId = assetId;
-
-			init();
+			_isIcon = isIcon;
 		}
 
 		//--------------------------------------------------------------------------
@@ -70,7 +68,9 @@ package ru.catAndBall.view.core.game {
 
 		private var _attentionIcon:Image;
 
-		private var _hint:FeathersControl;
+		private var _hint:DisplayObject;
+
+		private var _isIcon:Boolean;
 
 		//--------------------------------------------------------------------------
 		//
@@ -80,12 +80,21 @@ package ru.catAndBall.view.core.game {
 
 		public var data:ConstructionData;
 
-		public function get hint():FeathersControl {
+		public var showIfNotAvailable:Boolean = false;
+
+		public function get hint():DisplayObject {
 			if (!_hint) {
-				_hint = new FeathersControl();
-				_hint.addChild(new Image(Assets.DUMMY_TEXTURE_2));
+				_hint = new BaseConstructionHint(data);
 			}
 			return _hint;
+		}
+
+		public function get hintX():int {
+			return 100;
+		}
+
+		public function get hintY():int {
+			return 100;
 		}
 
 		//--------------------------------------------------------------------------
@@ -94,18 +103,24 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
-		public function init():void {
-			addEventListener(TouchEvent.TOUCH, this.handler_touch);
-
-			update();
-		}
-
 		public override function dispose():void {
 			data.removeEventListener(ConstructionData.EVENT_BUILDING_COMPLETE, handler_buildingComplete);
 			if (_constructing) Starling.juggler.remove(_constructionProgress);
 
 			SecondsTimer.removeCallback(updateConstructionTime);
 			super.dispose();
+		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Protected methods
+		//
+		//--------------------------------------------------------------------------
+
+		protected override function added(event:* = null):void {
+			addEventListener(TouchEvent.TOUCH, this.handler_touch);
+
+			update();
 		}
 
 		//--------------------------------------------------------------------------
@@ -148,13 +163,18 @@ package ru.catAndBall.view.core.game {
 
 				_view.texture = txt;
 				addChild(_view);
-				_view.visible = data.visible;
+
+				if (!showIfNotAvailable && !data.visible) {
+					_view.visible = false
+				} else {
+					_view.visible = true;
+				}
 
 				SecondsTimer.removeCallback(updateConstructionTime);
 
-				if (data.canCollectBonus) {
+				if (data.canCollectBonus && !_isIcon) {
 					if (!_attentionIcon) {
-						_attentionIcon = Assets.getImage(AssetList.Room_collect_exp_icon);
+						_attentionIcon = Assets.getImage(AssetList.Room_CollectExpIcon);
 						_attentionIcon.x = _view.width / 2 - _attentionIcon.width / 2;
 						_attentionIcon.y = _view.height / 2 - _attentionIcon.height / 2;
 					}
@@ -204,10 +224,10 @@ package ru.catAndBall.view.core.game {
 			var touch:Touch = event.getTouch(stage);
 			if (touch) {
 				if (touch.phase == TouchPhase.BEGAN) {
-					var h:FeathersControl = hint;
+					var h:DisplayObject = hint;
 					// show hint if can't collect bonus only
 					if (h && !data.canCollectBonus) {
-						Hint.showHint(h, touch.globalX, touch.globalY);
+						Hint.showHint(h, hintX, hintY, this);
 					}
 					super.dispatchEventWith(EVENT_TOUCH, true);
 				} else if (touch.phase == TouchPhase.ENDED) {

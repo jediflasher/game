@@ -61,7 +61,7 @@ package ru.catAndBall.view.core.game.field {
 		protected override function initialize():void {
 			super.initialize();
 
-			_bg = Assets.getImage(AssetList.Panel_components_bg_for_components);
+			_bg = Assets.getImage(AssetList.Panel_components_componentsBG);
 			addChild(_bg);
 
 			var count:int = 0;
@@ -82,7 +82,7 @@ package ru.catAndBall.view.core.game.field {
 
 			var step:Number = counter.width + Layout.field.counterRightPadding;
 			var width:int = (count * step) - Layout.field.counterRightPadding;
-			var startX:int = (AppProperties.appWidth - width) / 2;
+			var startX:int = (AppProperties.baseWidth - width) / 2;
 
 			for each (counter in _hashTypeToCounter) {
 				counter.x = startX;

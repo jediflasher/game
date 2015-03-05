@@ -11,11 +11,14 @@ package ru.catAndBall {
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
+	import flash.display3D.Context3DProfile;
+	import flash.display3D.Context3DRenderMode;
 	import flash.events.Event;
 	import flash.geom.Rectangle;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.system.Capabilities;
+	import flash.text.engine.RenderingMode;
 	import flash.utils.getDefinitionByName;
 
 	import ru.catAndBall.view.assets.Assets;
@@ -78,8 +81,8 @@ package ru.catAndBall {
 
 		private function init(event:Event = null):void {
 			AppProperties.fps = 60;
-			AppProperties.appWidth = 1536;
-			AppProperties.appHeight = 2048;
+			AppProperties.baseWidth = 1536;
+			AppProperties.baseHeight = 2048;
 			AppProperties.iOS = Capabilities.manufacturer.indexOf("iOS") > -1;
 			AppProperties.isWeb = !SystemUtil.isAIR;
 
@@ -97,26 +100,26 @@ package ru.catAndBall {
 			var stageHeight:Number = AppProperties.isWeb ? stage.stageHeight : stage.fullScreenHeight;
 
 			var r:Rectangle = RectangleUtil.fit(
-					new Rectangle(0, 0, AppProperties.appWidth, AppProperties.appHeight),
+					new Rectangle(0, 0, AppProperties.baseWidth, AppProperties.baseHeight),
 					new Rectangle(0, 0, stageWidth, stageHeight),
 					ScaleMode.NO_BORDER);
 
 			AppProperties.starlingRect = r;
 
-			var mW:Number = AppProperties.appWidth / stageWidth;
-			var mH:Number = AppProperties.appHeight / stageHeight;
+			var mW:Number = AppProperties.baseWidth / r.width;
+			var mH:Number = AppProperties.baseHeight / r.height;
 			var deltaX:int = r.x * mW;
 			var deltaY:int = r.y * mH;
 
-			AppProperties.viewRect.setTo(-deltaX, -deltaY, AppProperties.appWidth + deltaX * 2, AppProperties.appHeight + deltaY * 2);
+			AppProperties.viewRect.setTo(-deltaX, -deltaY, AppProperties.baseWidth + deltaX * 2, AppProperties.baseHeight + deltaY * 2);
 
-			_starling = new Starling(AppView, stage, AppProperties.starlingRect);
-			_starling.stage.stageWidth = AppProperties.appWidth;
-			_starling.stage.stageHeight = AppProperties.appHeight;
+			_starling = new Starling(AppView, stage, AppProperties.starlingRect, null, Context3DRenderMode.AUTO, Context3DProfile.BASELINE_EXTENDED);
+			_starling.stage.stageWidth = AppProperties.baseWidth;
+			_starling.stage.stageHeight = AppProperties.baseHeight;
 			_starling.simulateMultitouch = false;
 			_starling.enableErrorChecking = Capabilities.isDebugger;
 			_starling.addEventListener('rootCreated', rootCreated);
-			//_starling.showStats = true;
+			_starling.showStats = true;
 
 			var bg:DisplayObject = new Assets.bgHD();
 			bg.x = AppProperties.starlingRect.x;

@@ -1,4 +1,8 @@
 package ru.catAndBall.data.dict {
+	import ru.catAndBall.utils.s;
+	import ru.catAndBall.utils.str;
+	import ru.catAndBall.view.core.utils.L;
+
 	/**
 	 * @author              Obi
 	 * @version             1.0
@@ -18,6 +22,12 @@ package ru.catAndBall.data.dict {
 			super();
 		}
 
+		//--------------------------------------------------------------------------
+		//
+		//  Properties
+		//
+		//--------------------------------------------------------------------------
+
 		public const states:Vector.<ConstructionState> = new Vector.<ConstructionState>();
 
 		public var catHouseLevel:int;
@@ -26,6 +36,14 @@ package ru.catAndBall.data.dict {
 
 		public function get maxLevel():int {
 			return states.length;
+		}
+
+		public function get name():String {
+			return L.get('construction.' + id + '.name');
+		}
+
+		public function get description():String {
+			return L.get('construction.' + id + '.desc');
 		}
 
 		public function deserialize(input:Object):void {

@@ -30,9 +30,9 @@ package ru.catAndBall.view.core.game {
 			AssetList.header_catmoneyIcon
 		];
 		HASH[ResourceSet.EXPERIENCE] = [
-			AssetList.header_header_icon_lexp,
-			AssetList.header_header_icon_lexp,
-			AssetList.header_header_icon_lexp
+			AssetList.header_header_icon_exp,
+			AssetList.header_header_icon_exp,
+			AssetList.header_header_icon_exp
 		];
 		HASH[ResourceSet.MOUSE] = [
 			AssetList.header_header_mouseIcon,
@@ -50,8 +50,8 @@ package ru.catAndBall.view.core.game {
 			AssetList.inventory_grey_icon_venik_shadow
 		];
 		HASH[ResourceSet.TOOL_SPOKES] = [
-			AssetList.panel_tools_spitsbl,
-			AssetList.panel_tools_spitsbl,
+			AssetList.panel_tools_knitt,
+			AssetList.panel_tools_knitt,
 			AssetList.inventory_grey_icon_spitsbl_shadow
 		];
 		HASH[ResourceSet.TOOL_SPOOL] = [
@@ -70,64 +70,64 @@ package ru.catAndBall.view.core.game {
 			AssetList.inventory_grey_icon_box_shadow
 		];
 		HASH[ResourceSet.BF_BALLS] = [
-			AssetList.fields_balls_component_screenFieldBalls_ballsIcon,
-			AssetList.fields_balls_component_screenFieldBalls_ballsIconDisabled,
-			AssetList.inventory_grey_icon_balls_shadow
+			AssetList.fields_balls_component_ballIcon,
+			AssetList.fields_balls_component_ballIconDisabled,
+			AssetList.inventory_grey_icon_ballIconGrey
 		];
 		HASH[ResourceSet.BF_SOCKS] = [
-			AssetList.fields_balls_component_screenFieldBalls_socksIcon,
-			AssetList.fields_balls_component_screenFieldBalls_socksIconDisabled,
-			AssetList.inventory_grey_icon_socks_shadow
+			AssetList.fields_balls_component_socksIcon,
+			AssetList.fields_balls_component_socksIconDisabled,
+			AssetList.inventory_grey_icon_socksIconGrey
 		];
 		HASH[ResourceSet.BF_SWEATERS] = [
-			AssetList.fields_balls_component_screenFieldBalls_sweaterIcon,
-			AssetList.fields_balls_component_screenFieldBalls_sweaterIconDisabled,
-			AssetList.inventory_grey_icon_sweaters_shadow
+			AssetList.fields_balls_component_sweaterIcon,
+			AssetList.fields_balls_component_sweaterIconDisabled,
+			AssetList.inventory_grey_icon_sweaterIconGrey
 		];
 		HASH[ResourceSet.BF_TOYS] = [
-			AssetList.fields_balls_component_screenFieldBalls_toysIcon,
-			AssetList.fields_balls_component_screenFieldBalls_toysIconDisabled,
-			AssetList.inventory_grey_icon_toys_shadow
+			AssetList.fields_balls_component_toyIcon,
+			AssetList.fields_balls_component_toyIconDisabled,
+			AssetList.inventory_grey_icon_toyIconGrey
 		];
 		HASH[ResourceSet.RF_BALL] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_ballIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_ballIconDisabled,
-			AssetList.inventory_grey_icon_balls_shadow
+			AssetList.fields_carpet_components_globIcon,
+			AssetList.fields_carpet_components_globIconDisabled,
+			AssetList.inventory_grey_icon_globIconGrey
 		];
 		HASH[ResourceSet.RF_CONSERVE] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_cannedIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_cannedIconDisabled,
-			AssetList.inventory_grey_icon_konservbl_shadow
+			AssetList.fields_carpet_components_cannedIcon,
+			AssetList.fields_carpet_components_cannedIconDisabled,
+			AssetList.inventory_grey_icon_cannedIconGrey
 		];
 		HASH[ResourceSet.RF_COOKIE] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_cookieIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_cookieIconDisabled,
-			AssetList.inventory_grey_icon_cookies_shadow
+			AssetList.fields_carpet_components_cookieIcon,
+			AssetList.fields_carpet_components_cookieIconDisabled,
+			AssetList.inventory_grey_icon_cookieIconGrey
 		];
 		HASH[ResourceSet.RF_MOUSE] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_mouseIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_mouseIconDisabled,
-			AssetList.inventory_grey_icon_mouse_shadow
+			AssetList.header_header_mouseIcon,
+			AssetList.fields_carpet_components_mouseIconDisabled,
+			AssetList.inventory_grey_icon_mouseIconGrey
 		];
 		HASH[ResourceSet.RF_PIGEON] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_doveIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_doveIcon_Disabled,
-			AssetList.inventory_grey_icon_dove_shadow
+			AssetList.fields_carpet_components_doveIcon,
+			AssetList.fields_carpet_components_doveIconDisabled,
+			AssetList.inventory_grey_icon_doveIconGrey
 		];
 		HASH[ResourceSet.RF_MILK] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_sausageIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_sausageIconDisabled,
-			AssetList.inventory_grey_icon_kolbasa_shadow
+			AssetList.fields_carpet_components_milkIcon,
+			AssetList.fields_carpet_components_milkIconDisabled,
+			AssetList.inventory_grey_icon_milkIconGrey
 		];
 		HASH[ResourceSet.RF_THREAD] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_threadIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_threadIconDisabled,
-			AssetList.inventory_grey_icon_nitki_shadow
+			AssetList.fields_carpet_components_threadsIcon,
+			AssetList.fields_carpet_components_threadsIconDisabled,
+			AssetList.inventory_grey_icon_threadsIconGrey
 		];
-		HASH[ResourceSet.RF_WRAPPER] = [
-			AssetList.fields_carpet_components_screenFieldCarpet_wrapperIcon,
-			AssetList.fields_carpet_components_screenFieldCarpet_wrapperIconDisabled,
-			AssetList.inventory_grey_icon_wrappers_shadow
+		HASH[ResourceSet.RF_GRAIN] = [
+			AssetList.fields_carpet_components_grainIcon,
+			AssetList.fields_carpet_components_grainIconDisabled,
+			AssetList.inventory_grey_icon_grainIconGrey
 		];
 
 		//--------------------------------------------------------------------------
@@ -141,6 +141,7 @@ package ru.catAndBall.view.core.game {
 			super(getTexture());
 			width = size || Layout.baseResourceIconSize;
 			height = size || Layout.baseResourceIconSize;
+			touchable = false;
 		}
 
 		//--------------------------------------------------------------------------
@@ -193,9 +194,9 @@ package ru.catAndBall.view.core.game {
 		private function getTexture():Texture {
 			if (!(_resourceType in HASH)) {
 				HASH[_resourceType] = [
-					AssetList.fields_balls_component_screenFieldBalls_socksIcon,
-					AssetList.fields_balls_component_screenFieldBalls_socksIconDisabled,
-					AssetList.inventory_grey_icon_socks_shadow
+					AssetList.fields_balls_component_socksIcon,
+					AssetList.fields_balls_component_socksIconDisabled,
+					AssetList.inventory_grey_icon_socksIconGrey
 				];
 			}
 

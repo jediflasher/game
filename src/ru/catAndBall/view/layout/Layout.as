@@ -21,9 +21,13 @@ package ru.catAndBall.view.layout {
 		//
 		//--------------------------------------------------------------------------
 
-		public static const baseGap:int = AppProperties.getValue(50, 30);
+		public static const baseGap:int = AppProperties.getValue(50, 50); 
 
-		public static const baseResourceIconSize:int = AppProperties.getValue(125, 90);
+		public static const headerHeight:Number = 173;
+
+		public static const footerHeight:Number = 173;
+
+		public static const baseResourceIconSize:int = AppProperties.getValue(125, 125);
 
 		public static const popup:PopupLayout = new PopupLayout();
 
@@ -31,17 +35,13 @@ package ru.catAndBall.view.layout {
 
 		public static const field:FieldLayout = new FieldLayout();
 
-		public static const preloaderLayout:PreloaderLayout = new PreloaderLayout();
-
 		public static const inventory:InventoryLayout = new InventoryLayout();
 
 		public static const craft:CraftLayout = new CraftLayout();
 
-		public static const bigButtonScaleGridSizes:Array = AppProperties.getValue([70, 176], [50, 100]);
+		public static const mediumButtonScaleGridSizes:Array = AppProperties.getValue([50, 48], [50, 48]);
 
-		public static const mediumButtonScaleGridSizes:Array = AppProperties.getValue([50, 135], [50, 100]);
-
-		public static const smallButtonScaleGridSizes:Array = AppProperties.getValue([40, 112], [50, 100]);
+		public static const smallButtonScaleGridSizes:Array = AppProperties.getValue([35, 32], [35, 32]);
 
 		//--------------------------------------------------------------------------
 		//

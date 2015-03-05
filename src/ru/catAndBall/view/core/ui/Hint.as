@@ -3,14 +3,19 @@ package ru.catAndBall.view.core.ui {
 	import feathers.display.Scale9Image;
 	import feathers.textures.Scale9Textures;
 
+	import flash.geom.Point;
+
 	import flash.geom.Rectangle;
 
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
+	import ru.catAndBall.view.core.ui.Hint;
+	import ru.catAndBall.view.layout.Layout;
 
 	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
+	import starling.display.Image;
 
 	/**
 	 * @author              Obi
@@ -29,14 +34,6 @@ package ru.catAndBall.view.core.ui {
 
 		public static var layer:DisplayObjectContainer;
 
-		private static const MARGIN_HD:int = 50;
-
-		private static const MARGN_LD:int = 30;
-
-		private static const RECT_HD:Rectangle = new Rectangle(121, 120, 120, 23);
-
-		private static const RECT_LD:Rectangle = new Rectangle(121, 120, 120, 23);
-
 		private static var instance:Hint;
 
 		private static var _hint:DisplayObject;
@@ -45,17 +42,25 @@ package ru.catAndBall.view.core.ui {
 
 		private static var _startY:int;
 
+		private static const RECT:Rectangle = new Rectangle(60, 60, 130, 94);
+
+		private static const HELPER_POINT:Point = new Point();
+
 		//--------------------------------------------------------------------------
 		//
 		//  Class methods
 		//
 		//--------------------------------------------------------------------------
 
-		public static function showHint(content:FeathersControl, mouseX:int, mouseY:int):void {
+		public static function showHint(content:DisplayObject, x:Number, y:Number, localCoordinateSpace:DisplayObject = null):void {
 			if (!instance) instance = new Hint();
 
-			_startX = mouseX;
-			_startY = mouseY;
+			HELPER_POINT.setTo(x, y);
+
+			if (localCoordinateSpace) localCoordinateSpace.localToGlobal(HELPER_POINT, HELPER_POINT);
+
+			_startX = HELPER_POINT.x;
+			_startY = HELPER_POINT.y;
 
 			instance.setContent(content);
 			show(instance);
@@ -82,11 +87,12 @@ package ru.catAndBall.view.core.ui {
 		public function Hint() {
 			super();
 
-			var s9t:Scale9Textures = new Scale9Textures(Assets.getTexture(AssetList.hint_hint_bg), AppProperties.getValue(RECT_HD, RECT_LD));
+			var s9t:Scale9Textures = new Scale9Textures(Assets.getTexture(AssetList.hint_hintBg), RECT);
 			_bg = new Scale9Image(s9t);
 			addChild(_bg);
 
-			alignPivot();
+			_tail = Assets.getImage(AssetList.hint_angle);
+			addChild(_tail);
 		}
 
 		//--------------------------------------------------------------------------
@@ -97,7 +103,9 @@ package ru.catAndBall.view.core.ui {
 
 		private var _bg:Scale9Image;
 
-		private var _content:FeathersControl;
+		private var _tail:Image;
+
+		private var _content:DisplayObject;
 
 		//--------------------------------------------------------------------------
 		//
@@ -115,18 +123,40 @@ package ru.catAndBall.view.core.ui {
 			super.draw();
 
 			if (isInvalid(FeathersControl.INVALIDATION_FLAG_LAYOUT)) {
-				var margin:Number = AppProperties.getValue(MARGIN_HD, MARGN_LD);
+				var marginX:Number = RECT.x;
+				var marginY:Number = RECT.y;
 
-				_content.validate();
-				_content.x = margin;
-				_content.y = margin;
+				if (_content is FeathersControl) {
+					FeathersControl(_content).validate();
+				}
+				_content.x = marginX;
+				_content.y = marginY;
 
-				_bg.width = _content.width + (margin * 2);
-				_bg.height = _content.height + (margin * 2);
+				var b:Rectangle = _content.getBounds(_content);
+
+				_bg.width = b.width + (marginX * 2);
+				_bg.height = b.height + (marginY * 2);
 				_bg.validate();
 
-				instance.x = Hint._startX - _bg.width / 2;
-				instance.y = Hint._startY - 200;
+				_tail.x = _bg.width / 2 - _tail.width / 2;
+				_tail.y = _bg.height - 41;
+
+				var baseX:Number = Hint._startX - _bg.width / 2;
+
+				var minX:Number = AppProperties.viewRect.x + Layout.baseGap;
+				var maxX:Number = AppProperties.viewRect.right - _bg.width - Layout.baseGap;
+
+				if (baseX < minX) {
+					_tail.x -= minX - baseX;
+					baseX = AppProperties.viewRect.x + Layout.baseGap;
+				} else if (baseX > maxX) {
+					_tail.x += baseX - maxX;
+					baseX = maxX;
+				}
+
+				instance.validate();
+				instance.x = baseX;
+				instance.y = Hint._startY - _bg.height;
 			}
 		}
 
@@ -136,7 +166,7 @@ package ru.catAndBall.view.core.ui {
 		//
 		//--------------------------------------------------------------------------
 
-		private function setContent(content:FeathersControl):void {
+		private function setContent(content:DisplayObject):void {
 			if (_content && _content !== content) removeChild(_content);
 
 			_content = content;

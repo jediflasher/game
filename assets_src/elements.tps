@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.5.3</string>
+        <string>3.6.0</string>
         <key>fileName</key>
         <string>/Users/RG/Work/projects/as3/catandball/assets_src/elements.tps</string>
         <key>autoSDSettings</key>
@@ -21,31 +21,14 @@
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
-                    <int>2048</int>
+                    <int>4096</int>
                     <key>height</key>
-                    <int>2048</int>
+                    <int>4096</int>
                 </QSize>
             </struct>
             <struct type="AutoSDSettings">
                 <key>scale</key>
                 <double>0.5</double>
-                <key>extension</key>
-                <string>md</string>
-                <key>spriteFilter</key>
-                <string></string>
-                <key>acceptFractionalValues</key>
-                <false/>
-                <key>maxTextureSize</key>
-                <QSize>
-                    <key>width</key>
-                    <int>2048</int>
-                    <key>height</key>
-                    <int>2048</int>
-                </QSize>
-            </struct>
-            <struct type="AutoSDSettings">
-                <key>scale</key>
-                <double>0.3</double>
                 <key>extension</key>
                 <string>ld</string>
                 <key>spriteFilter</key>
@@ -210,11 +193,11 @@
             <key>innerPadding</key>
             <uint>0</uint>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
             <key>pivotPoint</key>

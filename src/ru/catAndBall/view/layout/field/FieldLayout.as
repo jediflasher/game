@@ -67,7 +67,7 @@ package ru.catAndBall.view.layout.field {
 		/**
 		 * Размеры и координаты подложки поля
 		 */
-		public const fieldBgBounds:Rectangle = AppProperties.getValue(new Rectangle(0, 168, AppProperties.appWidth, 1313), new Rectangle(0, 165, AppProperties.appWidth, 1316));
+		public const fieldBgBounds:Rectangle = AppProperties.getValue(new Rectangle(0, 168, AppProperties.baseWidth, 1313), new Rectangle(0, 165, AppProperties.baseWidth, 1316));
 
 		/**
 		 * Y координата счетчиков поля

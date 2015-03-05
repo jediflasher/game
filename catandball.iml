@@ -5,9 +5,6 @@
       <configuration name="catandball" target-platform="Mobile" pure-as="true" main-class="ru.catAndBall.Main" output-file="Catandball.swf" output-folder="$MODULE_DIR$/bin">
         <dependencies target-player="13.0">
           <entries>
-            <entry library-name="starling" library-level="application">
-              <dependency linkage="Merged" />
-            </entry>
             <entry library-name="greensock" library-level="application">
               <dependency linkage="Merged" />
             </entry>
@@ -36,7 +33,7 @@
         </packaging-ios>
       </configuration>
       <configuration name="catandball_web" pure-as="true" main-class="ru.catAndBall.Main" output-file="catandball_web.swf" output-folder="$MODULE_DIR$/bin" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/bin/html-template">
-        <dependencies target-player="14.0">
+        <dependencies target-player="16.0">
           <entries>
             <entry library-name="greensock" library-level="application">
               <dependency linkage="Merged" />

@@ -9,7 +9,7 @@ package ru.catAndBall.view.screens.mainMenu {
 
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.view.core.ui.BigGreenButton;
+	import ru.catAndBall.view.core.ui.MediumGreenButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.screens.BaseScreen;
 
@@ -61,7 +61,7 @@ package ru.catAndBall.view.screens.mainMenu {
 		protected override function initialize():void {
 			super.initialize();
 
-			_buttonStart = new BigGreenButton(L.get("Start game"));
+			_buttonStart = new MediumGreenButton(L.get("Start game"));
 			_buttonStart.addEventListener(Event.TRIGGERED, handler_startClick);
 
 			addChild(_buttonStart);
@@ -70,8 +70,8 @@ package ru.catAndBall.view.screens.mainMenu {
 		protected override function draw():void {
 			super.draw();
 
-			_buttonStart.x = AppProperties.appWidth / 2 - _buttonStart.width / 2;
-			_buttonStart.y = AppProperties.appHeight * 0.7;
+			_buttonStart.x = AppProperties.baseWidth / 2 - _buttonStart.width / 2;
+			_buttonStart.y = AppProperties.baseHeight * 0.7;
 		}
 
 //--------------------------------------------------------------------------

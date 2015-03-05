@@ -24,18 +24,14 @@ package ru.catAndBall.view.layout.popup {
 
 		public const bg2Position:Point = AppProperties.getValue(new Point(135, 353), new Point(320, 350));
 
-		public const tab0Position:Point = AppProperties.getValue(new Point(185, 227), new Point(320, 350));
-
-		public const tab1Position:Point = AppProperties.getValue(new Point(631, 227), new Point(320, 350));
-
 		public const contentPosition:Point = AppProperties.getValue(new Point(226, 415), new Point(160, 390));
 
-		public const inactiveTabDeltaY:int = AppProperties.getValue(20, 15);
-
-		public const closeButtonPosition:Point = AppProperties.getValue(new Point(1100, 77), new Point(1100, 77));
+		public const closeButtonY:Number = AppProperties.getValue(47, 77);
 
 		public const resourceIconSize:int = AppProperties.getValue(105, 50);
 
 		public const itemsGaps:Point = AppProperties.getValue(new Point(50, 70), new Point(25, 20));
+
+		public const titlePos:Point = AppProperties.getValue(new Point(560, 80), new Point());
 	}
 }

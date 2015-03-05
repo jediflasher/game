@@ -5,29 +5,25 @@ package ru.catAndBall.view.screens.construction {
 	import feathers.textures.Scale9Textures;
 
 	import flash.events.Event;
-
 	import flash.geom.Rectangle;
 
+	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
-
-	import ru.catAndBall.data.dict.tools.ToolDict;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-
+	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
 	import ru.catAndBall.view.core.game.Construction;
 	import ru.catAndBall.view.core.game.ResourceCounter;
-
-	import ru.catAndBall.view.core.game.ResourceImage;
 	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
-
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
 
+	import starling.display.Image;
 	import starling.events.Event;
 
 	/**
@@ -71,9 +67,9 @@ package ru.catAndBall.view.screens.construction {
 
 		private var _resContainer:GridLayoutContainer;
 
-		private var _iconBg:Scale9Image;
+		private var _buttonConstruct:Button;
 
-		private var _buttonConstruct:MediumGreenButton;
+		private var _level:BaseTextField;
 
 		private var _constructionData:ConstructionData;
 
@@ -93,7 +89,7 @@ package ru.catAndBall.view.screens.construction {
 
 			super.data = value;
 
-			if (super.data === value) {
+			if (super.data) {
 				super.data.addEventListener(ConstructionData.EVENT_BUILDING_COMPLETE, handler_buildingComplete);
 			}
 		}
@@ -107,33 +103,31 @@ package ru.catAndBall.view.screens.construction {
 		protected override function initialize():void {
 			super.initialize();
 
-			_title = new BaseTextField(AssetList.font_large_white_bold);
-			_title.x = Layout.craft.titlePos.x;
-			_title.y = Layout.craft.titlePos.y;
+			_title = new BaseTextField(AssetList.font_large_brown);
+			_title.x = AppProperties.baseWidth / 2;
+			_title.y = 30;
 			addChild(_title);
 
-			_description = new BaseTextField(AssetList.font_small_milk_bold);
-			_description.x = Layout.craft.descBounds.x;
-			_description.y = Layout.craft.descBounds.y;
+			_description = new BaseTextField(AssetList.font_medium_brown);
+			_description.x = 180;
+			_description.y = 200;
 			_description.wordWrap = true;
-			_description.maxWidth = Layout.craft.descBounds.width;
+			_description.maxWidth = 355;
 			addChild(_description);
-
-			_iconBg = new Scale9Image(new Scale9Textures(Assets.getTexture(AssetList.Tools_tool_icon_background), new Rectangle(60, 60, 10, 10)));
-			_iconBg.x = Layout.craft.iconPos.x;
-			_iconBg.y = Layout.craft.iconPos.y;
-			_iconBg.width = Layout.craft.iconSize;
-			_iconBg.height = Layout.craft.iconSize;
-			addChild(_iconBg);
 
 			_buttonConstruct = new MediumGreenButton(L.get('screen.craft.makeButton'));
 			_buttonConstruct.addEventListener(starling.events.Event.TRIGGERED, handler_constructClick);
 			addChild(_buttonConstruct);
 
 			_resContainer = new GridLayoutContainer(2, Layout.craft.priceIconSize, Layout.craft.priceIconSize, Layout.craft.priceIconGaps.x, Layout.craft.priceIconGaps.y);
-			_resContainer.x = Layout.craft.priceX;
-			_resContainer.y = _iconBg.y;
+			_resContainer.x = 980;
+			_resContainer.y = 127;
 			addChild(_resContainer);
+
+			_level = new BaseTextField(AssetList.font_small_white_orangestroke);
+			_level.x = 702;
+			_level.y = 413;
+			addChild(_level);
 
 			GameData.player.resources.addEventListener(flash.events.Event.CHANGE, handler_resourceChange);
 		}
@@ -156,21 +150,27 @@ package ru.catAndBall.view.screens.construction {
 			_constructionData = _data as ConstructionData;
 			if (_icon) removeChild(_icon);
 
-			defaultSkin = Assets.getImage(AssetList.Tools_tool_background_1);
+			defaultSkin = Assets.getImage(AssetList.building_buildingBg);
 
-			var bgRect:Rectangle = _iconBg.getBounds(this);
+			var rect:Rectangle = new Rectangle(593, 141, 333, 329);
 
-			_buttonConstruct.x = bgRect.x;
-			_buttonConstruct.y = bgRect.y + bgRect.height;
-			_buttonConstruct.width = bgRect.width;
+			_buttonConstruct.x = rect.x;
+			_buttonConstruct.y = rect.y + rect.height + 10;
+			_buttonConstruct.width = rect.width;
 
-			_icon = ConstructionViewFactory.createConstruction(_constructionData);
-			_icon.x = bgRect.x + bgRect.width / 2 - Layout.craft.iconSize / 2;
-			_icon.y = bgRect.y + bgRect.height / 2 - Layout.craft.iconSize / 2;
+			_icon = ConstructionViewFactory.createConstruction(_constructionData, true);
 			addChild(_icon);
+			var iconBounds:Rectangle = _icon.getBounds(_icon);
+
+			_icon.x = rect.x + rect.width / 2 - iconBounds.width / 2;
+			_icon.y = rect.y + rect.height / 2 - iconBounds.height / 2;
 
 			_title.text = _constructionData.name;
+			_title.validate();
+			_title.x = AppProperties.baseWidth / 2 - _title.width / 2;
+
 			_description.text = _constructionData.description;
+			_level.text = 'LVL ' + _constructionData.level;
 
 			var price:ResourceSet = _constructionData.nextState.price;
 			for each (var type:String in ResourceSet.TYPES) {

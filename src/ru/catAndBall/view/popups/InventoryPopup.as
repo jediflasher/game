@@ -1,7 +1,10 @@
 package ru.catAndBall.view.popups {
 	import feathers.controls.Button;
+	import feathers.controls.ToggleButton;
 	import feathers.controls.text.BitmapFontTextRenderer;
 	import feathers.core.FeathersControl;
+
+	import flash.text.TextFormatAlign;
 
 	import ru.catAndBall.data.GameData;
 
@@ -37,6 +40,10 @@ package ru.catAndBall.view.popups {
 
 		public static const EVENT_CLOSE_CLICK:String = 'inventoryCloseClick';
 
+		private static const SELECTED_Y:Number = 157;
+
+		private static const DEFAULT_Y:Number = 177;
+
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
@@ -57,11 +64,11 @@ package ru.catAndBall.view.popups {
 
 		private var _bg:Image;
 
-		private var _bg2:Image;
+		private var _paperBg:Image;
 
-		private var _tab0:Button;
+		private var _tab0:ToggleButton;
 
-		private var _tab1:Button;
+		private var _tab1:ToggleButton;
 
 		private var _closeButton:YellowButton;
 
@@ -70,6 +77,8 @@ package ru.catAndBall.view.popups {
 		private const _hashTypeToIcon:Object = {};
 
 		private var _data:ResourceSet;
+
+		private var _title:BaseTextField;
 
 		//--------------------------------------------------------------------------
 		//
@@ -100,23 +109,32 @@ package ru.catAndBall.view.popups {
 
 			_data = GameData.player.resources;
 
-			_bg = Assets.getImage(AssetList.inventory_shcatulka);
+			_bg = Assets.getImage(AssetList.inventory_inventoryBg);
 			addChild(_bg);
 
 			_w = _bg.texture.width;
 			_h = _bg.texture.height;
 
+			_title = new BaseTextField(AssetList.font_large_white_shadow);
+			_title.x = Layout.inventory.titlePos.x;
+			_title.y = Layout.inventory.titlePos.y;
+			_title.text = L.get('inventory.title');
+			addChild(_title);
+
 			_closeButton = new YellowButton(AssetList.buttons_close);
 			_closeButton.addEventListener(Event.TRIGGERED, handler_closeClick);
-			_closeButton.x = Layout.inventory.closeButtonPosition.x;
-			_closeButton.y = Layout.inventory.closeButtonPosition.y;
+			_closeButton.x = _w - _closeButton.width;//Layout.inventory.closeButtonPosition.x;
+			_closeButton.y = Layout.inventory.closeButtonY;
 			addChild(_closeButton);
 
-			const activeTxt:Texture = Assets.getTexture(AssetList.inventory_activ);
-			const passiveTxt:Texture = Assets.getTexture(AssetList.inventory_pasiv);
-			_tab0 = new Button();
+			var activeTxt:Texture = Assets.getTexture(AssetList.inventory_inset_on);
+			var passiveTxt:Texture = Assets.getTexture(AssetList.inventory_inset_off);
+			_tab0 = new ToggleButton();
+
 			_tab0.labelFactory = labelFactory;
+			_tab0.isToggle = false;
 			_tab0.label = L.get('inventory.tab0');
+			_tab0.labelOffsetY = -25;
 			_tab0.upSkin = new Image(passiveTxt);
 			_tab0.downSkin = new Image(passiveTxt);
 			_tab0.hoverSkin = new Image(passiveTxt);
@@ -124,13 +142,15 @@ package ru.catAndBall.view.popups {
 			_tab0.selectedDownSkin = new Image(activeTxt);
 			_tab0.selectedHoverSkin = new Image(activeTxt);
 			_tab0.addEventListener(Event.TRIGGERED, handler_tab0Click);
-			_tab0.x = Layout.inventory.tab0Position.x;
-			_tab0.y = Layout.inventory.tab0Position.y;
+			_tab0.x = 170;
+			_tab0.y = DEFAULT_Y;
 			addChild(_tab0);
 
-			_tab1 = new Button();
+			_tab1 = new ToggleButton();
+			_tab1.isToggle = false;
 			_tab1.labelFactory = labelFactory;
 			_tab1.label = L.get('inventory.tab1');
+			_tab1.labelOffsetY = -25;
 			_tab1.upSkin = new Image(passiveTxt);
 			_tab1.downSkin = new Image(passiveTxt);
 			_tab1.hoverSkin = new Image(passiveTxt);
@@ -138,14 +158,15 @@ package ru.catAndBall.view.popups {
 			_tab1.selectedDownSkin = new Image(activeTxt);
 			_tab1.selectedHoverSkin = new Image(activeTxt);
 			_tab1.addEventListener(Event.TRIGGERED, handler_tab1Click);
-			_tab1.x = Layout.inventory.tab1Position.x;
-			_tab1.y = Layout.inventory.tab1Position.y;
+			_tab1.x = 616;
+			_tab1.y = DEFAULT_Y;
 			addChild(_tab1);
 
-			_bg2 = Assets.getImage(AssetList.inventory_fon_pod_ikonki);
-			_bg2.x = Layout.inventory.bg2Position.x;
-			_bg2.y = Layout.inventory.bg2Position.y;
-			addChild(_bg2);
+			_paperBg = Assets.getImage(AssetList.inventory_inventoryBg1);
+			_paperBg.x = 40;
+			_paperBg.y = 240;
+			_paperBg.touchable = false;
+			addChild(_paperBg);
 
 			_content = new GridLayoutContainer(5,
 					Layout.inventory.resourceIconSize,
@@ -156,11 +177,15 @@ package ru.catAndBall.view.popups {
 			_content.x = Layout.inventory.contentPosition.x;
 			_content.y = Layout.inventory.contentPosition.y;
 			addChild(_content);
+
+			updateSelection();
 		}
 
 		protected override function draw():void {
 			if (isInvalid(INVALIDATION_FLAG_DATA)) {
-				_content.unflatten();
+				_title.validate();
+				_title.x = _w / 2 - _title.width / 2;
+
 				_content.clear();
 
 				for each (var resourceType:String in ResourceSet.TYPES) {
@@ -177,9 +202,6 @@ package ru.catAndBall.view.popups {
 					counter.gray = !_data.has(resourceType);
 					_content.addChild(counter);
 				}
-
-				_content.flatten();
-				updateSelection();
 			}
 
 			super.draw();
@@ -192,16 +214,19 @@ package ru.catAndBall.view.popups {
 		//--------------------------------------------------------------------------
 
 		private function updateSelection():void {
-			const diff:int = Layout.inventory.inactiveTabDeltaY;
-			_tab0.isSelected = _selectedTab == 0;
-			_tab0.y = Layout.inventory.tab0Position.y + (_selectedTab ? diff : 0);
+			var sel:Boolean = _selectedTab == 0;
+			_tab0.isSelected = sel;
+			_tab0.touchable = !sel;
+			_tab0.y = sel ? SELECTED_Y : DEFAULT_Y;
 
-			_tab1.isSelected = _selectedTab == 1;
-			_tab1.y = Layout.inventory.tab1Position.y + (_selectedTab ? 0 : diff);
+			sel = _selectedTab == 1;
+			_tab1.isSelected = sel;
+			_tab1.touchable = !sel;
+			_tab1.y = sel ? SELECTED_Y : DEFAULT_Y;
 		}
 
 		private function labelFactory():BitmapFontTextRenderer {
-			return new BaseTextField(AssetList.font_small_milk_bold);
+			return new BaseTextField(AssetList.font_small_white);
 		}
 
 		//--------------------------------------------------------------------------
@@ -216,11 +241,13 @@ package ru.catAndBall.view.popups {
 
 		private function handler_tab1Click(event:Event):void {
 			_selectedTab = 1;
+			updateSelection();
 			invalidate(INVALIDATION_FLAG_DATA);
 		}
 
 		private function handler_tab0Click(event:Event):void {
 			_selectedTab = 0;
+			updateSelection();
 			invalidate(INVALIDATION_FLAG_DATA);
 		}
 

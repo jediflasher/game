@@ -39,8 +39,6 @@ package ru.catAndBall.view.core.ui {
 		//
 		//--------------------------------------------------------------------------
 
-		protected var _items:Vector.<DisplayObject>;
-
 		//--------------------------------------------------------------------------
 		//
 		//  Protected methods
@@ -48,48 +46,17 @@ package ru.catAndBall.view.core.ui {
 		//--------------------------------------------------------------------------
 
 		protected override function initialize():void {
-			var bg:TiledImage = new TiledImage(Assets.getTexture(AssetList.Footer_pannel_pattern));
-			bg.width = AppProperties.appWidth;
+			var bg:TiledImage = new TiledImage(Assets.getTexture(AssetList.Footer_footerPannel));
+			bg.width = AppProperties.baseWidth;
 			backgroundSkin = bg;
 
-			paddingRight = paddingLeft = AppProperties.viewRect.x + Layout.baseGap;
+			var r:Rectangle = AppProperties.viewRect;
+			paddingLeft = paddingRight = r.x + Layout.baseGap;
 
-			if (_items) {
-				for each (var item:DisplayObject in _items) addChild(item);
-			}
+			gap = Layout.baseGap;
+			paddingTop = 50;
 
 			super.initialize();
-		}
-
-		protected override function draw():void {
-			super.draw();
-
-			if (isInvalid(INVALIDATION_FLAG_LAYOUT)) {
-				const bounds:Rectangle = backgroundSkin.getBounds(backgroundSkin);
-				const maxWidth:Number = AppProperties.viewRect.width - (Layout.baseGap * 2);
-
-				const hashBounds:Dictionary = new Dictionary(true);
-				var totalWidth:Number = 0;
-				var totalItems:int;
-
-				for each (var item:DisplayObject in _items) {
-					if (item is IFeathersControl) (item as IFeathersControl).validate();
-					var itemBounds:Rectangle = item.getBounds(item);
-					hashBounds[item] = itemBounds;
-					totalWidth += itemBounds.width;
-					totalItems += 1;
-				}
-
-				const itemsGap:int = (maxWidth - totalWidth) / (totalItems - 1);
-				var startX:Number = AppProperties.viewRect.x + Layout.baseGap;
-
-				for each (item in _items) {
-					itemBounds = hashBounds[item];
-					item.x = startX;
-					item.y = bounds.height / 2 - itemBounds.height / 2 + 5;
-					startX += itemsGap + itemBounds.width;
-				}
-			}
 		}
 	}
 }

@@ -26,10 +26,10 @@ package ru.catAndBall.view.screens.room {
 		public function Tangles() {
 			super();
 
-			var img:Image = Assets.getImage(AssetList.Room_tangles);
+			var img:Image = Assets.getImage(AssetList.Room_tangles1);
 			addChild(img);
 
-			_enterButton = Assets.getButton(AssetList.Room_vhod_pole_klubki);
+			_enterButton = Assets.getButton(AssetList.Room_entrTangles);
 			_enterButton.addEventListener(Event.TRIGGERED, handler_triggered);
 			_enterButton.x = img.texture.width / 2 - _enterButton.upState.width / 2;
 			_enterButton.y = img.texture.height / 2 - _enterButton.upState.height / 2;

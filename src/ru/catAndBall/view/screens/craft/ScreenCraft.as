@@ -1,7 +1,7 @@
 package ru.catAndBall.view.screens.craft {
-	import feathers.controls.Button;
 	import feathers.controls.List;
 	import feathers.controls.ScrollContainer;
+	import feathers.controls.ToggleButton;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.core.FeathersControl;
 	import feathers.data.ListCollection;
@@ -9,14 +9,13 @@ package ru.catAndBall.view.screens.craft {
 
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.Dictionaries;
-	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.assets.AssetList;
+	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.*;
-	import ru.catAndBall.view.screens.room.RoomHeaderBar;
+	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
 
 	import starling.display.Image;
 	import starling.events.Event;
@@ -44,7 +43,7 @@ package ru.catAndBall.view.screens.craft {
 		//--------------------------------------------------------------------------
 
 		public function ScreenCraft() {
-			super(new BaseScreenData(ScreenType.COMMODE_CRAFT), AssetList.Tools_name_tools_background);
+			super(new BaseScreenData(ScreenType.COMMODE_CRAFT));
 
 			headerClass = RoomHeaderBar;
 			footerClass = SimpleScreenFooterBar;
@@ -56,11 +55,11 @@ package ru.catAndBall.view.screens.craft {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _tabRug:Button;
+		private var _tabRug:ToggleButton;
 
-		private var _tabRolls:Button;
+		private var _tabRolls:ToggleButton;
 
-		private var _tabWindow:Button;
+		private var _tabWindow:ToggleButton;
 
 		private var _rollArea:List;
 
@@ -70,9 +69,9 @@ package ru.catAndBall.view.screens.craft {
 
 		private var _rugDataProvider:ListCollection = new ListCollection();
 
-		private var _selectedTab:Button;
+		private var _selectedTab:ToggleButton;
 
-		private var _newSelectedTab:Button;
+		private var _baseTabHeight:Number;
 
 		//--------------------------------------------------------------------------
 		//
@@ -86,39 +85,42 @@ package ru.catAndBall.view.screens.craft {
 			_rollDataProvider.data = GameData.player.constructions.commode1.availableTools;
 			_rugDataProvider.data = GameData.player.constructions.commode2.availableTools;
 
-			(_backgroundSkin as Image).smoothing = TextureSmoothing.NONE;
+			if (_backgroundSkin) {
+				(_backgroundSkin as Image).smoothing = TextureSmoothing.NONE;
+			}
+
+			var shelfBg:Image = Assets.getImage(AssetList.Tools_shelfBg);
+			shelfBg.x = 0;
+			shelfBg.y = Layout.headerHeight;
+			addRawChild(shelfBg);
 
 			_tabRolls = tabFactory(L.get('screen.craft.tabRolls.title'));
-			addChild(_tabRolls);
-
 			_tabRug = tabFactory(L.get('screen.craft.tabRug.title'));
-			addChild(_tabRug);
-
 			_tabWindow = tabFactory(L.get('screen.craft.tabWindow.title'));
 			_tabWindow.isEnabled = false;
-			addChild(_tabWindow);
 
 			_rollArea = new List();
 			var l:VerticalLayout = new VerticalLayout();
-			l.gap = Layout.baseGap;
+			l.gap = 0;
 			_rollArea.layout = l;
 
 			_rollArea.x = 0;
-			_rollArea.width = AppProperties.appWidth;
+			_rollArea.y = Layout.headerHeight;
+			_rollArea.width = AppProperties.baseWidth;
 			_rollArea.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
 			_rollArea.scrollBarDisplayMode = ScrollContainer.SCROLL_BAR_DISPLAY_MODE_NONE;
 			_rollArea.itemRendererFactory = itemFactory;
 			_rollArea.visible = false;
 			_rollArea.dataProvider = _rollDataProvider;
 
-
 			_rugArea = new List();
 			l = new VerticalLayout();
-			l.gap = Layout.baseGap;
+			l.gap = 0;
 
 			_rugArea.layout = l;
 			_rugArea.x = 0;
-			_rugArea.width = AppProperties.appWidth;
+			_rugArea.y = _rollArea.y;
+			_rugArea.width = AppProperties.baseWidth;
 			_rugArea.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
 			_rugArea.scrollBarDisplayMode = ScrollContainer.SCROLL_BAR_DISPLAY_MODE_NONE;
 			_rugArea.itemRendererFactory = itemFactory;
@@ -126,8 +128,12 @@ package ru.catAndBall.view.screens.craft {
 			_rugArea.dataProvider = _rugDataProvider;
 
 			selectTab(_tabRolls);
-			addChild(_rollArea);
-			addChild(_rugArea);
+			addRawChild(_rollArea);
+			addRawChild(_rugArea);
+
+			addRawChild(_tabRug);
+			addRawChild(_tabWindow);
+			addRawChild(_tabRolls);
 		}
 
 		protected override function draw():void {
@@ -138,34 +144,26 @@ package ru.catAndBall.view.screens.craft {
 				_tabRug.validate();
 				_tabWindow.validate();
 
-				_tabRolls.x = AppProperties.viewRect.x + Layout.craft.tabGap;
-				_tabRug.x = _tabRolls.x + _tabRolls.width + Layout.craft.tabGap;
-				_tabWindow.x = _tabRug.x + _tabRug.width + Layout.craft.tabGap;
-				_rollArea.y = _tabRolls.y + _tabRolls.height;
+				_baseTabHeight = 107;
+
+				_tabRolls.x = AppProperties.baseWidth / 2 - (_tabRolls.width * 3) / 2;
+				_tabRug.x = _tabRolls.x + _tabRolls.width;
+				_tabWindow.x = _tabRug.x + _tabRug.width;
+
+				_tabRolls.y = _tabRug.y = _tabWindow.y = Layout.headerHeight;
+
+				_rollArea.y = _tabRolls.y + _baseTabHeight;
 				_rugArea.y = _rollArea.y;
 
-				const height:Number = AppProperties.viewRect.height - _tabRolls.height - header.height - footer.height;
+				var height:Number = AppProperties.viewRect.height - Layout.headerHeight - Layout.footerHeight - _baseTabHeight;
 				_rollArea.height = height;
 				_rugArea.height = height;
 			}
-
-			if (isInvalid(INVALIDATION_FLAG_DATA)) {
-				if (_newSelectedTab) {
-					if (_selectedTab) {
-						_selectedTab.isSelected = false;
-						_selectedTab = null;
-					}
-
-					_selectedTab = _newSelectedTab;
-					_selectedTab.isSelected = true;
-					_newSelectedTab = null;
-				}
-			}
 		}
 
-		private function tabFactory(label:String):Button {
-			const result:Button = new CraftTab(label);
-			result.width = (AppProperties.viewRect.width - (Layout.craft.tabGap * 4)) / 3;
+		private function tabFactory(label:String):ToggleButton {
+			var result:ToggleButton = new CraftTab(label);
+			result.labelOffsetY = -20;
 			result.addEventListener(Event.TRIGGERED, handler_tabClick);
 			return result;
 		}
@@ -174,17 +172,21 @@ package ru.catAndBall.view.screens.craft {
 			return new CraftItem();
 		}
 
-		private function selectTab(tab:Button):void {
-			_newSelectedTab = tab;
-			if (_newSelectedTab == _tabRolls) {
+		private function selectTab(tab:ToggleButton):void {
+			if (_selectedTab === tab) return;
+
+			if (_selectedTab) _selectedTab.isSelected = false;
+
+			if (tab == _tabRolls) {
 				_rollArea.visible = true;
 				_rugArea.visible = false;
-			} else if (_newSelectedTab == _tabRug) {
+			} else if (tab == _tabRug) {
 				_rollArea.visible = false;
 				_rugArea.visible = true;
 			}
 
-			invalidate(INVALIDATION_FLAG_DATA);
+			_selectedTab = tab;
+			_selectedTab.isSelected = true;
 		}
 
 		//--------------------------------------------------------------------------
@@ -194,7 +196,7 @@ package ru.catAndBall.view.screens.craft {
 		//--------------------------------------------------------------------------
 
 		private function handler_tabClick(event:Event):void {
-			selectTab(event.target as Button);
+			selectTab(event.target as ToggleButton);
 		}
 	}
 }

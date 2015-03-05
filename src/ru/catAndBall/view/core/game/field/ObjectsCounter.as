@@ -116,7 +116,7 @@ package ru.catAndBall.view.core.game.field {
 			if (!_progressBar) {
 				_startY = Layout.baseResourceIconSize * 0.75;
 
-				var t:Texture = Assets.getTexture(AssetList.Panel_components_components_level_bg);
+				var t:Texture = Assets.getTexture(AssetList.Panel_components_componentsProgressBg);
 				var a:Array = Layout.field.counterBgScaleGridSizes;
 				var bg:Scale3Image = new Scale3Image(new Scale3Textures(t, a[0], a[1], Scale3Textures.DIRECTION_VERTICAL));
 				bg.smoothing = TextureSmoothing.NONE;
@@ -128,7 +128,7 @@ package ru.catAndBall.view.core.game.field {
 				const bgWidth:Number = bg.textures.texture.width;
 				_bgHeight = Layout.field.counterBgHeight;
 
-				t = Assets.getTexture(AssetList.Panel_components_milk);
+				t = Assets.getTexture(AssetList.Panel_components_milkProgress);
 				a = Layout.field.counterMilkScaleGridSizes;
 				_progressBar = new Scale3Image(new Scale3Textures(t, a[0], a[1], Scale3Textures.DIRECTION_VERTICAL));
 				_progressBar.smoothing = TextureSmoothing.NONE;

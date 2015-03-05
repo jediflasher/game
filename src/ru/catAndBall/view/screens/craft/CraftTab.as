@@ -1,5 +1,6 @@
 package ru.catAndBall.view.screens.craft {
 	import feathers.controls.Button;
+	import feathers.controls.ToggleButton;
 	import feathers.core.ITextRenderer;
 	import feathers.display.Scale3Image;
 	import feathers.text.BitmapFontTextFormat;
@@ -18,7 +19,7 @@ package ru.catAndBall.view.screens.craft {
 	 * @langversion         3.0
 	 * @date                12.10.14 17:33
 	 */
-	public class CraftTab extends Button {
+	public class CraftTab extends ToggleButton {
 
 		//--------------------------------------------------------------------------
 		//
@@ -29,28 +30,35 @@ package ru.catAndBall.view.screens.craft {
 		public function CraftTab(label:String = null) {
 			super();
 
-			defaultSkin = new Scale3Image(new Scale3Textures(Assets.getTexture(AssetList.Tools_name_tools_passive), 40, 8));
-			defaultSelectedSkin = new Scale3Image(new Scale3Textures(Assets.getTexture(AssetList.Tools_name_tools_active), 40, 8));
-			disabledSkin = new Scale3Image(new Scale3Textures(Assets.getTexture(AssetList.Tools_name_tools_unavailable), 40, 8));
+			defaultSkin = Assets.getImage(AssetList.Tools_shelfPassive);
+			defaultSelectedSkin = Assets.getImage(AssetList.Tools_shelfActive);
+			disabledSkin = Assets.getImage(AssetList.Tools_shelfDisabled);
 
 			defaultLabelProperties.wordWrap = true;
-			defaultLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_xsmall_lightbrown_bold);
+			defaultLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_medium_darkmilk_shadow);
 			disabledLabelProperties.wordWrap = true;
-			disabledLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_xsmall_grey_bold);
+			disabledLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_medium_greymilk_shadow);
 			selectedUpLabelProperties.wordWrap = true;
-			selectedUpLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_xsmall_milk_bold);
+			selectedUpLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_medium_milk_shadow);
 			selectedDownLabelProperties.wordWrap = true;
-			selectedDownLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_xsmall_milk_bold);
+			selectedDownLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_medium_milk_shadow);
 			selectedHoverLabelProperties.wordWrap = true;
-			selectedHoverLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_xsmall_milk_bold);
+			selectedHoverLabelProperties.textFormat = new BitmapFontTextFormat(AssetList.font_medium_milk_shadow);
 
-			paddingRight = Layout.baseGap;
-			paddingLeft = Layout.baseGap;
+			isToggle = false;
+//			paddingRight = Layout.baseGap;
+//			paddingLeft = Layout.baseGap;
 
 			this.label = label;
 		}
 
-		//--------------------------------------------------------------------------
+
+		public override function set isSelected(value:Boolean):void {
+			super.isSelected = value;
+			invalidate(INVALIDATION_FLAG_SIZE);
+		}
+
+//--------------------------------------------------------------------------
 		//
 		//  Private methods
 		//

@@ -26,7 +26,6 @@ package ru.catAndBall.view.screens.room.drop {
 	public class DropLayer extends Sprite {
 
 
-
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
@@ -59,7 +58,7 @@ package ru.catAndBall.view.screens.room.drop {
 
 			for each (var resourceType:String in ResourceSet.TYPES) {
 				var value:int = resources.get(resourceType);
-				if (value <= 0) return;
+				if (value <= 0) continue;
 
 				var time:Number = 0;
 				var iconsCount:int = Math.ceil(value / 3);
@@ -92,7 +91,7 @@ package ru.catAndBall.view.screens.room.drop {
 			addChild(icon);
 			_dropCount += 1;
 
-			var step:Number = AppProperties.appHeight / 10;
+			var step:Number = AppProperties.baseHeight / 10;
 
 			var targetX:int = fromX + (Math.random() * step - step / 2);
 			var targetY:int = fromY + (Math.random() * step / 2 + step / 4);
@@ -121,7 +120,7 @@ package ru.catAndBall.view.screens.room.drop {
 			txt.y = icon.y;
 			txt.touchable = false;
 			addChild(txt);
-			var step:int = AppProperties.appHeight / 20;
+			var step:int = AppProperties.baseHeight / 20;
 
 			TweenNano.to(txt, 1, {
 				alpha: 0,

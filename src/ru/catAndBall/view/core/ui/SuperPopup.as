@@ -132,7 +132,7 @@ package ru.catAndBall.view.core.ui {
 
 			if (_title) {
 				if (!_titleTextField) {
-					_titleTextField = new BaseTextField(AssetList.font_medium_white_orangestroke_bold);
+					_titleTextField = new BaseTextField(AssetList.font_large_white_orangestroke);
 					_titleTextField.wordWrap = true;
 				}
 
@@ -146,7 +146,7 @@ package ru.catAndBall.view.core.ui {
 
 			if (_desc) {
 				if (!_descTextField) {
-					_descTextField = new BaseTextField(AssetList.font_small_brown_regular);
+					_descTextField = new BaseTextField(AssetList.font_medium_brown);
 					_descTextField.wordWrap = true;
 				}
 

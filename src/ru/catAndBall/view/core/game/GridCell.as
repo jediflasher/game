@@ -232,8 +232,8 @@ package ru.catAndBall.view.core.game {
 			if (!p) return;
 
 			if (!_countTextField) {
-				const bg:Image = Assets.getImage(AssetList.Tools_amount_components_on);
-				_countTextField = new TextFieldBackground(AssetList.font_xsmall_milk_bold, bg, true, true);
+				const bg:Image = Assets.getImage(AssetList.ToolsOption_numderComponentsGreen);
+				_countTextField = new TextFieldBackground(AssetList.font_small_white, bg, true, true);
 				_countTextField.x = Layout.field.elementSize - bg.width;
 				_countTextField.y = Layout.field.elementSize - bg.height;
 			}

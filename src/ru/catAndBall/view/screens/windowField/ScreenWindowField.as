@@ -81,8 +81,8 @@ package ru.catAndBall.view.screens.windowField {
 
 			if (!_catButton) {
 				_catButton = Assets.getButton('buttonStartRug');
-				_catButton.x = AppProperties.appWidth * 0.6;
-				_catButton.y = AppProperties.appHeight * 0.8;
+				_catButton.x = AppProperties.baseWidth * 0.6;
+				_catButton.y = AppProperties.baseHeight * 0.8;
 				_catButton.addEventListener(Event.TRIGGERED, handler_catButtonClick);
 			}
 
@@ -111,7 +111,7 @@ package ru.catAndBall.view.screens.windowField {
 			addChild(_catButton);
 
 			_toolContainer.x = 50;
-			_toolContainer.y = AppProperties.appHeight * 0.8;
+			_toolContainer.y = AppProperties.baseHeight * 0.8;
 			addChild(_toolContainer);
 
 		}

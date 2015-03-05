@@ -22,16 +22,16 @@ package ru.catAndBall.view.core.game.factory {
 		//
 		//--------------------------------------------------------------------------
 
-		public static function createConstruction(data:ConstructionData):Construction {
+		public static function createConstruction(data:ConstructionData, asIcon:Boolean = false):Construction {
 			var result:Construction;
 			if (data is CatHouseData) {
-				result = new CatHouse(data as CatHouseData);
+				result = new CatHouse(data as CatHouseData, asIcon);
 			} else if (data.proto.id == ConstructionData.COMMODE_1) {
-				result = new CommodeShelf1(data);
+				result = new CommodeShelf1(data, asIcon);
 			} else if (data.proto.id == ConstructionData.COMMODE_2) {
-				result = new CommodeShelf2(data);
+				result = new CommodeShelf2(data, asIcon);
 			} else if (data.proto.id == ConstructionData.COMMODE_3) {
-				result = new CommodeShelf3(data);
+				result = new CommodeShelf3(data, asIcon);
 			} else {
 				throw new Error('Unkown construction');
 			}

@@ -5,16 +5,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.preloader {
 
-	import flash.display.Loader;
-
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.core.ui.LoaderBar;
-	import ru.catAndBall.view.core.utils.Line;
 	import ru.catAndBall.view.screens.BaseScreen;
-
-	import starling.utils.HAlign;
-	import starling.utils.VAlign;
 
 	/**
 	 * @author                Obi
@@ -71,8 +65,8 @@ package ru.catAndBall.view.screens.preloader {
 		protected override function draw():void {
 			super.draw();
 
-			_line.x = AppProperties.appWidth / 2 - _line.width / 2;
-			_line.y = AppProperties.appHeight * 0.7;
+			_line.x = AppProperties.baseWidth / 2 - _line.width / 2;
+			_line.y = AppProperties.baseHeight * 0.7;
 		}
 
 		//--------------------------------------------------------------------------

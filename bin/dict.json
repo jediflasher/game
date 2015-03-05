@@ -2,13 +2,16 @@
   "tools": {
     "toolSpool":{
       "price": {
-        "money":10
+        "bfBalls":3,
+        "bfSocks":20,
+        "rfThread":3
       },
       "collect": ["bf_ballRed", "bf_ballBlue", "bf_ballGreen"]
     },
     "toolBroom":{
       "price": {
-        "money":10
+        "bfToys":2,
+        "bfSocks":5
       },
       "replace": {
         "bf_ballRed" : "bf_toyRed",
@@ -17,22 +20,30 @@
     },
     "toolToyBox":{
       "price": {
-        "money":10
+        "bfBalls":3,
+        "bfSocks":20,
+        "rfThread":3
       }
     },
     "toolBowl":{
       "price": {
-        "money":10
+        "bfBalls":3,
+        "bfSocks":20,
+        "rfThread":3
       }
     },
     "toolSpokes":{
       "price": {
-        "money":10
+        "bfBalls":3,
+        "bfSocks":20,
+        "rfThread":3
       }
     },
     "toolTea": {
       "price": {
-        "money": 1
+        "bfBalls":3,
+        "bfSocks":20,
+        "rfThread":3
       }
     }
   },
@@ -43,13 +54,9 @@
       "states": [
         {
           "lockedToLevel": 0,
-          "buildTime": 50,
-          "price": {
-            "bfBalls": 3
-          },
-          "speedUpPrice": {
-            "money": 3
-          },
+          "buildTime": 0,
+          "price": {},
+          "speedUpPrice": {},
           "bonusPeriod": 120,
           "bonus": {
             "money": 3,
@@ -57,7 +64,7 @@
           }
         },
         {
-          "lockedToLevel": 3,
+          "lockedToLevel": 0,
           "buildTime": 150,
           "price": {
             "bfBalls": 3
@@ -183,7 +190,7 @@
       "price": {
         "bfBalls":10
       },
-      "elements": ["rf_ball", "rf_cookie", "rf_wrapper", "rf_thread"],
+      "elements": ["rf_ball", "rf_cookie", "rf_grain", "rf_thread"],
       "elementChances": [0.46, 0.46, 0.04, 0.04],
       "pests": ["rf_dog", "rf_parrot"],
       "pestsFood": {
@@ -192,7 +199,7 @@
       },
       "pests_result": {
         "rf_dog":"rf_thread",
-        "rf_parrot":"rf_wrapper"
+        "rf_parrot":"rf_grain"
       },
       "upgrades": {
         "rf_ball":"rf_mouse",

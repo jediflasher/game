@@ -116,14 +116,14 @@ package ru.catAndBall.view.screens {
 
 			if (Assets.hasTexture(_bg)) {
 				backgroundSkin = Assets.getImage(_bg);
-				backgroundSkin.width = AppProperties.appWidth;
-				backgroundSkin.height = AppProperties.appHeight;
+				backgroundSkin.width = AppProperties.baseWidth;
+				backgroundSkin.height = AppProperties.baseHeight;
 			}
 
 			if (!_darkenImage) {
 				_darkenImage = new Image(DARKEN_TEXTURE);
-				_darkenImage.width = AppProperties.appWidth;
-				_darkenImage.height = AppProperties.appHeight;
+				_darkenImage.width = AppProperties.baseWidth;
+				_darkenImage.height = AppProperties.baseHeight;
 				_darkenImage.visible = false;
 			}
 

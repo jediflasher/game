@@ -17,7 +17,7 @@ package ru.catAndBall.view.core.text {
 		//--------------------------------------------------------------------------
 
 		public function TextFieldTest() {
-			super(AssetList.font_medium_green_bold);
+			super(AssetList.font_medium_green);
 		}
 	}
 }

@@ -8,6 +8,7 @@ package ru.catAndBall.view.core.display {
 	import starling.display.Image;
 	import starling.display.QuadBatch;
 	import starling.textures.Texture;
+	import starling.textures.TextureSmoothing;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
 
@@ -130,6 +131,7 @@ package ru.catAndBall.view.core.display {
 				x = 0;
 				while (x < _width - 1) {
 					var img:Image = new Image(_texture);
+					img.smoothing = TextureSmoothing.NONE;
 					img.x = x;
 					img.y = y;
 					addImage(img);

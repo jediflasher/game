@@ -3,6 +3,7 @@ package ru.catAndBall.view.core.ui {
 	import feathers.core.FeathersControl;
 	import feathers.core.IFeathersControl;
 	import feathers.display.Scale3Image;
+	import feathers.display.TiledImage;
 	import feathers.textures.Scale3Textures;
 
 	import flash.geom.Point;
@@ -56,7 +57,11 @@ package ru.catAndBall.view.core.ui {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _bg:Scale3Image;
+		private var _bgTop:Image;
+
+		private var _bgCenter:TiledImage;
+
+		private var _bgBottom:Image;
 
 		private var _closeButton:YellowButton;
 
@@ -125,12 +130,17 @@ package ru.catAndBall.view.core.ui {
 		protected override function initialize():void {
 			super.initialize();
 
-			const sizes:Array = Layout.popup.bgScaleGridSizes;
-			const t:Texture = Assets.getTexture(AssetList.start_windows_bg_start_window);
-			_bg = new Scale3Image(new Scale3Textures(t, sizes[0], sizes[1], Scale3Textures.DIRECTION_VERTICAL));
-			addChild(_bg);
 
-			_w = _bg.textures.texture.width;
+			_bgTop = Assets.getImage(AssetList.popup_popup1);
+			addChild(_bgTop);
+
+			_bgCenter = new TiledImage(Assets.getTexture(AssetList.popup_popup2));
+			addChild(_bgCenter);
+
+			_bgBottom = Assets.getImage(AssetList.popup_popup3);
+			addChild(_bgBottom);
+
+			_w = _bgTop.texture.width;
 			updateCloseButton();
 		}
 
@@ -138,7 +148,8 @@ package ru.catAndBall.view.core.ui {
 			if (isInvalid(INVALIDATION_FLAG_LAYOUT)) {
 				if (_closeButton) addChild(_closeButton);
 
-				var nextY:int = Layout.popup.contentY;
+				var nextY:int = _bgTop.texture.height - Layout.popup.topYOffset;
+				var totalHeight:Number = 0;
 
 				updateCloseButton();
 				addChild(_icon);
@@ -175,13 +186,11 @@ package ru.catAndBall.view.core.ui {
 						obj.y = nextY;
 
 						nextY += h + Layout.popup.contentGap;
+						totalHeight += h;
 					}
 				}
 
-				const bgHeight:Number = nextY + Layout.popup.bgBottomHeight;
-				_bg.height = Math.max(bgHeight, _bg.textures.texture.height);
-
-				_h = bgHeight;
+				updateBackground(totalHeight);
 			}
 
 			super.draw();
@@ -206,11 +215,25 @@ package ru.catAndBall.view.core.ui {
 			} else {
 				if (!_closeButton) _closeButton = new YellowButton(AssetList.buttons_close);
 
-				_closeButton.x = Layout.popup.closeButtonPosition.x - _closeButton.width / 2;
-				_closeButton.y = Layout.popup.closeButtonPosition.y - _closeButton.height / 2;
+				_closeButton.x = Layout.popup.closeButtonPosition.x;
+				_closeButton.y = Layout.popup.closeButtonPosition.y;
 				_closeButton.addEventListener(Event.TRIGGERED, handler_closeClick);
 				addChild(_closeButton);
 			}
+		}
+
+		private function updateBackground(contentHeight:Number):void {
+			var additionalBottomPlace:Number = 100;
+			var th:Number = _bgTop.texture.height;
+			var bh:Number = _bgBottom.texture.height;
+
+			_h = (th - Layout.popup.topYOffset) + (contentHeight - additionalBottomPlace) + bh;
+
+			var centerHeight:Number = contentHeight - additionalBottomPlace - Layout.popup.topYOffset;
+			_bgCenter.height = centerHeight;
+
+			_bgCenter.y = th;
+			_bgBottom.y = th + centerHeight;
 		}
 
 		private function invalidateContainer(container:DisplayObject):void {

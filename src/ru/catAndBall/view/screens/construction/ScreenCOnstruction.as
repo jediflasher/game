@@ -1,8 +1,11 @@
 package ru.catAndBall.view.screens.construction {
 	import feathers.controls.List;
+	import feathers.controls.ScrollContainer;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.data.ListCollection;
 	import feathers.layout.VerticalLayout;
+
+	import ru.catAndBall.AppProperties;
 
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
@@ -14,7 +17,7 @@ package ru.catAndBall.view.screens.construction {
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
 	import ru.catAndBall.view.screens.craft.CraftItem;
-	import ru.catAndBall.view.screens.room.RoomHeaderBar;
+	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
 
 	/**
 	 * @author              Obi
@@ -32,7 +35,7 @@ package ru.catAndBall.view.screens.construction {
 		//--------------------------------------------------------------------------
 
 		public function ScreenConstruction() {
-			super(new BaseScreenData(ScreenType.CONSTRUCTION), AssetList.Tools_name_tools_background);
+			super(new BaseScreenData(ScreenType.CONSTRUCTION), AssetList.building_buildingWallpaper);
 
 			headerClass = RoomHeaderBar;
 			footerClass = SimpleScreenFooterBar;
@@ -57,9 +60,13 @@ package ru.catAndBall.view.screens.construction {
 
 			_items = new List();
 			var l:VerticalLayout = new VerticalLayout();
-			l.gap = Layout.baseGap;
 			_items.layout = l;
 			_items.itemRendererFactory = itemFactory;
+			_items.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
+			_items.scrollBarDisplayMode = SCROLL_BAR_DISPLAY_MODE_NONE;
+			_items.x = 0;
+			_items.y = Layout.headerHeight;
+			_items.width = AppProperties.baseWidth;
 
 			var provider:ListCollection = new ListCollection();
 			var constructions:Vector.<ConstructionData> = GameData.player.constructions.list;
@@ -68,9 +75,18 @@ package ru.catAndBall.view.screens.construction {
 			}
 
 			_items.dataProvider = provider;
-			addChild(_items);
+			addRawChild(_items);
 		}
 
+		protected override function draw():void {
+			super.draw();
+
+			if (isInvalid(INVALIDATION_FLAG_LAYOUT)) {
+
+				var height:Number = AppProperties.viewRect.height - Layout.footerHeight - Layout.headerHeight;
+				_items.height = height;
+			}
+		}
 
 		//--------------------------------------------------------------------------
 		//

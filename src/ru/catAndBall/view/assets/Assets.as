@@ -8,6 +8,8 @@ package ru.catAndBall.view.assets {
 	import flash.display.BitmapData;
 	import flash.utils.ByteArray;
 
+	import ru.catAndBall.AppProperties;
+
 	import ru.catAndBall.view.core.display.BaseMovieClip;
 
 	import starling.display.Button;
@@ -59,6 +61,8 @@ package ru.catAndBall.view.assets {
 
 		private static var _hash:Object = {}; // name -> texture/null
 
+		public static var scaleFactor:Number = 1;
+
 		//--------------------------------------------------------------------------
 		//
 		//  Class methods
@@ -67,12 +71,23 @@ package ru.catAndBall.view.assets {
 
 		public static function init(assetManager:AssetManager):void {
 			_assetManager = assetManager;
+			scaleFactor = AppProperties.isHD ? 1 : 0.5;
+			_assetManager.scaleFactor = scaleFactor;
 		}
 
 		public static function initComplete():void {
 			DUMMY_TEXTURE = Texture.fromBitmapData(new BitmapData(30, 30, false, 0xFFFF0000));
 			DUMMY_TEXTURE_2 = Texture.fromBitmapData(new BitmapData(30, 30, false, 0xFF00FF00));
 			DUMMY_MOVIE_CLIP = new <Texture>[DUMMY_TEXTURE, DUMMY_TEXTURE_2];
+		}
+
+		/**
+		 * Scales base value to current scale factor
+		 * @param baseValue
+		 * @return scaled value
+		 */
+		public static function s(baseValue:Number):Number {
+			return baseValue * scaleFactor;
 		}
 
 		public static function getTexture(name:String):Texture {

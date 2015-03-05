@@ -24,10 +24,10 @@ package ru.catAndBall.view.core.ui {
 		public function YellowButton(icon:String, width:Number = NaN, height:Number = NaN) {
 			super();
 
-			var img:Image = Assets.getImage(AssetList.buttons_button, width, height);
+			var img:Image = Assets.getImage(AssetList.buttons_buttonYellow, width, height);
 			hoverSkin = img;
-			defaultSkin = Assets.getImage(AssetList.buttons_button_on, width, height);
-			disabledSkin = Assets.getImage(AssetList.buttons_button_off, width, height);
+			defaultSkin = Assets.getImage(AssetList.buttons_buttonYellow_on, width, height);
+			disabledSkin = Assets.getImage(AssetList.buttons_buttonYellow_off, width, height);
 
 			_icon = Assets.getImage(icon);
 			if (width) _icon.width = Math.min(width, img.width);

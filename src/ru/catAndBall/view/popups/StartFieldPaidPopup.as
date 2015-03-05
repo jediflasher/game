@@ -4,7 +4,7 @@ package ru.catAndBall.view.popups {
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.core.game.PriceButtonDecorator;
 	import ru.catAndBall.view.core.game.ResourceCounter;
-	import ru.catAndBall.view.core.ui.MediumGreenButton;
+	import ru.catAndBall.view.core.ui.SmallGreenButton;
 	import ru.catAndBall.view.core.ui.SuperPopup;
 
 	import starling.display.DisplayObject;
@@ -53,7 +53,7 @@ package ru.catAndBall.view.popups {
 				return rc;
 			};
 
-			_buttonDecorator = new PriceButtonDecorator(new MediumGreenButton(""), 'screen.room.popupPaid.makeFor', 'screen.room.popupPaid.makeFree');
+			_buttonDecorator = new PriceButtonDecorator(new SmallGreenButton(""), 'screen.room.popupPaid.makeFor', 'screen.room.popupPaid.makeFree');
 			_buttonDecorator.button.addEventListener(Event.TRIGGERED, handler_buttonClick);
 
 			GameData.player.resources.addEventListener(Event.CHANGE, handler_resourcePlayerChange);

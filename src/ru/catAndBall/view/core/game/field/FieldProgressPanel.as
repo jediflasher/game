@@ -107,10 +107,10 @@ package ru.catAndBall.view.core.game.field {
 		protected override function initialize():void {
 			super.initialize();
 
-			_bg = Assets.getImage(AssetList.Strip_moves_strip_moves);
+			_bg = Assets.getImage(AssetList.Strip_moves_stripMovesBalls);
 			addChild(_bg);
 
-			_cat = Assets.getImage(AssetList.Strip_moves_cat_for_strip);
+			_cat = Assets.getImage(AssetList.Strip_moves_cat_animation_cat1);
 			_cat.y = Layout.field.progressCatY;
 			addChild(_cat);
 
@@ -119,7 +119,7 @@ package ru.catAndBall.view.core.game.field {
 			addChild(_line);
 
 			var ballBg:Image = Assets.getImage(AssetList.Strip_moves_ball_for_strip);
-			_ball = new TextFieldBackground(AssetList.font_xsmall_milk_bold, ballBg, true, true);
+			_ball = new TextFieldBackground(AssetList.font_small_white, ballBg, true, true);
 			_ball.y = Layout.field.progressBallY;
 			addChild(_ball);
 
@@ -141,7 +141,7 @@ package ru.catAndBall.view.core.game.field {
 
 		private function update():void {
 			var start:Number = AppProperties.viewRect.x;
-			var totalPath:Number = AppProperties.appWidth - (start * 2 + _cat.texture.width);
+			var totalPath:Number = AppProperties.baseWidth - (start * 2 + _cat.texture.width);
 
 			_ball.text = String(_stepsLeft);
 
@@ -152,12 +152,12 @@ package ru.catAndBall.view.core.game.field {
 			if (_progress > 0) {
 				TweenNano.to(_cat, 0.3, {x:catX, delay:0.2, ease:Linear.easeNone});
 				TweenNano.to(_ball, 0.3, {x: ballX, ease:Linear.easeNone});
-				TweenNano.to(_line, 0.3, {x: lineX, width: AppProperties.appWidth - lineX, ease:Linear.easeNone});
+				TweenNano.to(_line, 0.3, {x: lineX, width: AppProperties.baseWidth - lineX, ease:Linear.easeNone});
 			} else {
 				_cat.x = catX;
 				_ball.x = ballX;
 				_line.x = lineX;
-				_line.width = AppProperties.appWidth - lineX;
+				_line.width = AppProperties.baseWidth - lineX;
 			}
 		}
 

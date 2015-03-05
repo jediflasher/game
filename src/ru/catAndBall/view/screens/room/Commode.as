@@ -45,5 +45,36 @@ package ru.catAndBall.view.screens.room {
 		private var _data2:ConstructionData;
 
 		private var _data3:ConstructionData;
+
+		private var _shelf1:CommodeShelf1;
+
+		private var _shelf2:CommodeShelf2;
+
+		private var _shelf3:CommodeShelf3;
+
+		//--------------------------------------------------------------------------
+		//
+		//  Protected methods
+		//
+		//--------------------------------------------------------------------------
+
+		protected override function added(event:* = null):void {
+			super.added(event);
+
+			_shelf1 = new CommodeShelf1(_data1);
+			_shelf1.x = 215;
+			_shelf1.y = 49;
+			addChild(_shelf1);
+
+			_shelf2 = new CommodeShelf2(_data2);
+			_shelf2.x = 215;
+			_shelf2.y = 174;
+			addChild(_shelf2);
+
+			_shelf3 = new CommodeShelf3(_data3);
+			_shelf3.x = 215;
+			_shelf3.y = 317;
+			addChild(_shelf3);
+		}
 	}
 }
