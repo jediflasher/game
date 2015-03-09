@@ -70,7 +70,7 @@ package ru.catAndBall.view.popups {
 		protected override function draw():void {
 			if (isInvalid(INVALIDATION_FLAG_DATA)) {
 				GameData.player.resources.getDeficit(resourceSet, _helperResources);
-				_buttonDecorator.price = PurchaseController.getDeficitPrice(_helperResources);
+				_buttonDecorator.price = PurchaseController.getResourceSetPrice(_helperResources);
 			}
 
 			super.draw();

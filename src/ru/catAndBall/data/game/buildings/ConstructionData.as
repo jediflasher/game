@@ -29,6 +29,8 @@ package ru.catAndBall.data.game.buildings {
 		//
 		//--------------------------------------------------------------------------
 
+		public static const EVENT_BUILDING_START:String = 'eventBuildingStart';
+
 		public static const EVENT_BUILDING_COMPLETE:String = 'eventBuildingComplete';
 
 		public static const EVENT_BONUS_TIME_COMPLETE:String = 'eventBonusTimeComplete';
@@ -91,7 +93,7 @@ package ru.catAndBall.data.game.buildings {
 
 		public function get visible():Boolean {
 			var catHouseLevel:int = GameData.player.catHouseLevel;
-			return _proto.catHouseLevel <= catHouseLevel && state;
+			return _proto.states[0].catHouseLevel <= catHouseLevel;
 		}
 
 		public function get state():ConstructionState {
@@ -180,7 +182,7 @@ package ru.catAndBall.data.game.buildings {
 		//
 		//--------------------------------------------------------------------------
 
-		public function start():void {
+		public function startBuilding():void {
 			var startTimeSeconds:Number = TimeUtil.now;
 			var upgrade:ConstructionState = nextState;
 
@@ -189,6 +191,8 @@ package ru.catAndBall.data.game.buildings {
 				_startBuildingTime = 0;
 				return;
 			}
+
+			if (hasEventListener(EVENT_BUILDING_START)) dispatchEvent(new Event(EVENT_BUILDING_START));
 
 			_startBuildingTime = startTimeSeconds;
 			updateTimers();

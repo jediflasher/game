@@ -24,8 +24,8 @@ package ru.catAndBall.view.screens.room {
 		//
 		//--------------------------------------------------------------------------
  
-		public function CatHouse(data:CatHouseData, asIcon:Boolean = false) {
-			super(data, AssetList.Room_catHouse1, asIcon);
+		public function CatHouse(data:CatHouseData) {
+			super(data);
 		}
 
 		//--------------------------------------------------------------------------

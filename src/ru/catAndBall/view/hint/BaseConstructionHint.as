@@ -5,7 +5,7 @@ package ru.catAndBall.view.hint {
 
 	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
-	import ru.catAndBall.utils.SecondsTimer;
+	import ru.catAndBall.utils.EverySecond;
 	import ru.catAndBall.utils.TimeUtil;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
@@ -80,12 +80,12 @@ package ru.catAndBall.view.hint {
 		protected override function feathersControl_addedToStageHandler(event:Event):void {
 			super.feathersControl_addedToStageHandler(event);
 
-			SecondsTimer.addCallBack(updateTimer);
+			EverySecond.addCallBack(updateTimer);
 			update();
 		}
 
 		protected override function feathersControl_removedFromStageHandler(event:Event):void {
-			SecondsTimer.removeCallback(updateTimer);
+			EverySecond.removeCallback(updateTimer);
 
 			super.feathersControl_removedFromStageHandler(event);
 		}

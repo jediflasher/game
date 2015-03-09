@@ -2,6 +2,7 @@ package ru.catAndBall.view.core.ui {
 	import feathers.controls.text.BitmapFontTextRenderer;
 	import feathers.core.FeathersControl;
 	import feathers.core.IFeathersControl;
+	import feathers.core.ITextRenderer;
 	import feathers.display.Scale3Image;
 	import feathers.display.TiledImage;
 	import feathers.textures.Scale3Textures;
@@ -163,12 +164,12 @@ package ru.catAndBall.view.core.ui {
 					for each (var obj:DisplayObject in _content) {
 						addChild(obj);
 
-						if (obj is BitmapFontTextRenderer) {
-							(obj as BitmapFontTextRenderer).wordWrap = true;
-							(obj as BitmapFontTextRenderer).maxWidth = Layout.popup.contentWidth;
+						if (obj is ITextRenderer) {
+							(obj as ITextRenderer).wordWrap = true;
+							(obj as ITextRenderer).maxWidth = Layout.popup.contentWidth;
 						}
 
-						this.invalidateContainer(obj);
+						this.validateContainer(obj);
 
 						var w:Number = 0;
 						var h:Number = 0;
@@ -236,14 +237,14 @@ package ru.catAndBall.view.core.ui {
 			_bgBottom.y = th + centerHeight;
 		}
 
-		private function invalidateContainer(container:DisplayObject):void {
+		private function validateContainer(container:DisplayObject):void {
 			var cont:DisplayObjectContainer = container as DisplayObjectContainer;
 
 			if (cont) {
 				var numChildren:int = cont.numChildren;
 				for (var i:int = 0; i < numChildren; i++) {
 					var child:DisplayObject = cont.getChildAt(i);
-					invalidateContainer(child);
+					validateContainer(child);
 				}
 			}
 

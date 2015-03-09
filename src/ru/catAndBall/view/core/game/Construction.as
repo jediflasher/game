@@ -2,19 +2,16 @@ package ru.catAndBall.view.core.game {
 	import flash.events.Event;
 
 	import ru.catAndBall.data.game.buildings.ConstructionData;
-	import ru.catAndBall.utils.SecondsTimer;
-	import ru.catAndBall.utils.TimeUtil;
+	import ru.catAndBall.utils.EverySecond;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.BaseSprite;
-	import ru.catAndBall.view.core.text.TextFieldTest;
+	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
 	import ru.catAndBall.view.core.ui.Hint;
 	import ru.catAndBall.view.hint.BaseConstructionHint;
 
-	import starling.core.Starling;
 	import starling.display.DisplayObject;
 	import starling.display.Image;
-	import starling.display.MovieClip;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
@@ -43,11 +40,9 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
-		public function Construction(data:ConstructionData, assetId:String, isIcon:Boolean = false) {
+		public function Construction(data:ConstructionData) {
 			super();
 			this.data = data;
-			_assetId = assetId;
-			_isIcon = isIcon;
 		}
 
 		//--------------------------------------------------------------------------
@@ -56,21 +51,15 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _assetId:String;
-
 		private var _view:Image;
 
 		private var _constructing:Boolean = false;
 
-		private var _constructionTextField:TextFieldTest;
+		private var _dropIcon:Image;
 
-		private var _constructionProgress:MovieClip;
-
-		private var _attentionIcon:Image;
+		private var _constructIcon:Image;
 
 		private var _hint:DisplayObject;
-
-		private var _isIcon:Boolean;
 
 		//--------------------------------------------------------------------------
 		//
@@ -105,9 +94,8 @@ package ru.catAndBall.view.core.game {
 
 		public override function dispose():void {
 			data.removeEventListener(ConstructionData.EVENT_BUILDING_COMPLETE, handler_buildingComplete);
-			if (_constructing) Starling.juggler.remove(_constructionProgress);
 
-			SecondsTimer.removeCallback(updateConstructionTime);
+			EverySecond.removeCallback(updateConstructionTime);
 			super.dispose();
 		}
 
@@ -134,35 +122,30 @@ package ru.catAndBall.view.core.game {
 
 			updateHandlers();
 
+			var txt:Texture = ConstructionViewFactory.getIcon(data);
+			if (!_view) {
+				_view = new Image(txt);
+			} else {
+				_view.texture = txt;
+			}
+			addChild(_view);
+
 			if (_constructing) {
-				if (!_constructionProgress) _constructionProgress = new MovieClip(Assets.DUMMY_MOVIE_CLIP);
-				if (!_constructionTextField) _constructionTextField = new TextFieldTest();
+				if (!_constructIcon) {
+					_constructIcon = Assets.getImage(AssetList.Room_buildingIcon);
+				}
 
-				Starling.juggler.add(_constructionProgress);
-				addChild(_constructionProgress);
-				addChild(_constructionTextField);
-
-				if (_view && _view.parent) removeChild(_view);
 				updateConstructionTime();
 
-				SecondsTimer.addCallBack(updateConstructionTime);
+				EverySecond.addCallBack(updateConstructionTime);
+
+				_constructIcon.x = _view.width / 2 - _constructIcon.width / 2;
+				_constructIcon.y = _view.height / 2 - _constructIcon.height / 2;
+				addChild(_constructIcon);
 			} else {
-				if (_constructionTextField && _constructionTextField.parent) {
-					removeChild(_constructionTextField);
+				if (_constructIcon && _constructIcon.parent) {
+					_constructIcon.parent.removeChild(_constructIcon);
 				}
-
-				if (_constructionProgress && _constructionProgress.parent) {
-					Starling.juggler.remove(_constructionProgress);
-					removeChild(_constructionProgress);
-				}
-
-				var stateIndex:int = data.state ? data.state.index : 0;
-				var txt:Texture = Assets.getTexture(this._assetId + int(stateIndex + 1));
-				if (!txt) txt = Assets.getTexture(this._assetId);
-				if (!_view) _view = new Image(txt);
-
-				_view.texture = txt;
-				addChild(_view);
 
 				if (!showIfNotAvailable && !data.visible) {
 					_view.visible = false
@@ -170,18 +153,18 @@ package ru.catAndBall.view.core.game {
 					_view.visible = true;
 				}
 
-				SecondsTimer.removeCallback(updateConstructionTime);
+				EverySecond.removeCallback(updateConstructionTime);
 
-				if (data.canCollectBonus && !_isIcon) {
-					if (!_attentionIcon) {
-						_attentionIcon = Assets.getImage(AssetList.Room_CollectExpIcon);
-						_attentionIcon.x = _view.width / 2 - _attentionIcon.width / 2;
-						_attentionIcon.y = _view.height / 2 - _attentionIcon.height / 2;
+				if (data.canCollectBonus) {
+					if (!_dropIcon) {
+						_dropIcon = Assets.getImage(AssetList.Room_CollectExpIcon);
+						_dropIcon.x = _view.width / 2 - _dropIcon.width / 2;
+						_dropIcon.y = _view.height / 2 - _dropIcon.height / 2;
 					}
-					addChild(_attentionIcon);
+					addChild(_dropIcon);
 				} else {
-					if (_attentionIcon) {
-						removeChild(_attentionIcon);
+					if (_dropIcon) {
+						removeChild(_dropIcon);
 					}
 				}
 			}
@@ -207,7 +190,7 @@ package ru.catAndBall.view.core.game {
 		}
 
 		private function updateConstructionTime():void {
-			_constructionTextField.text = TimeUtil.stringify(data.constructTimeLeft);
+
 		}
 
 		//--------------------------------------------------------------------------

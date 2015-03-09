@@ -18,8 +18,8 @@ package ru.catAndBall.view.screens.room {
 		//
 		//--------------------------------------------------------------------------
 
-		public function CommodeShelf3(data:ConstructionData, asIcon:Boolean = false) {
-			super(data, AssetList.Room_shelf1_3, asIcon);
+		public function CommodeShelf3(data:ConstructionData) {
+			super(data);
 			showIfNotAvailable = true;
 		}
 	}

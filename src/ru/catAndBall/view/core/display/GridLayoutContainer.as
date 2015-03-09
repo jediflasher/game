@@ -1,4 +1,6 @@
 package ru.catAndBall.view.core.display {
+	import feathers.core.FeathersControl;
+
 	import flash.errors.IllegalOperationError;
 	import flash.geom.Point;
 
@@ -86,8 +88,14 @@ package ru.catAndBall.view.core.display {
 			super.addChild(child);
 			_numChildren++;
 
-			_maxW = Math.max(_maxW, pos.x + _elementWidth);
-			_maxH = Math.max(_maxH, pos.y + _elementHeight);
+			if (child is FeathersControl) {
+				(child as FeathersControl).validate();
+			}
+			var w:Number = (child is FeathersControl) ? child.width : _elementWidth;
+			var h:Number = (child is FeathersControl) ? child.height : _elementHeight;
+
+			_maxW = Math.max(_maxW, pos.x + w);
+			_maxH = Math.max(_maxH, pos.y + h);
 
 			return child;
 		}

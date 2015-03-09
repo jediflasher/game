@@ -11,7 +11,7 @@ package ru.catAndBall.utils {
 	 * @langversion         3.0
 	 * @date                27.09.14 14:13
 	 */
-	public class SecondsTimer {
+	public class EverySecond {
 
 		//--------------------------------------------------------------------------
 		//
@@ -27,7 +27,7 @@ package ru.catAndBall.utils {
 			instance.removeCallback(callback);
 		}
 
-		private static const instance:SecondsTimer = new SecondsTimer();
+		private static const instance:EverySecond = new EverySecond();
 
 		//--------------------------------------------------------------------------
 		//
@@ -35,7 +35,7 @@ package ru.catAndBall.utils {
 		//
 		//--------------------------------------------------------------------------
 
-		public function SecondsTimer() {
+		public function EverySecond() {
 			super();
 		}
 

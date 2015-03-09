@@ -49,6 +49,8 @@ package ru.catAndBall.view.core.utils {
 			'screen.bank.clear_button': 'Reset all to 0',
 			'screen.room.popupPaid.makeFor': 'Start for %s',
 			'screen.room.popupPaid.makeFree': 'Start',
+			'screen.construction.popup.construct': 'Build for %s',
+			'screen.construction.popup.desc': 'Sorry, you dont have enough resources:',
 			'construction.hint.done':'Done',
 			'construction.hint.locked':'Not built yet',
 			'construction.catHouse.name': 'Cat House',

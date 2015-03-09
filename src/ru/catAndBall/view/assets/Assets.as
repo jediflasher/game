@@ -103,7 +103,9 @@ package ru.catAndBall.view.assets {
 		}
 
 		public static function getImage(name:String, width:Number = NaN, height:Number = NaN):Image {
-			const result:Image = new Image(getTexture(name));
+			var txt:Texture = getTexture(name);
+			if(!txt) return null;
+			var result:Image = new Image(txt);
 			if (width == width) result.width = width;
 			if (height == height) result.height = height;
 			return result;

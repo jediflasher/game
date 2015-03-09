@@ -188,7 +188,7 @@ package ru.catAndBall.view.popups {
 				HELPER_RESOURCE_SET.clear();
 				GameData.player.resources.getDeficit(_totalPrice, HELPER_RESOURCE_SET);
 
-				_makeButton.price = PurchaseController.getDeficitPrice(HELPER_RESOURCE_SET);
+				_makeButton.price = PurchaseController.getResourceSetPrice(HELPER_RESOURCE_SET);
 				invalidate(INVALIDATION_FLAG_LAYOUT);
 			}
 

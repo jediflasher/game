@@ -37,7 +37,7 @@ package ru.catAndBall.view.layout.popup {
 		/**
 		 * Расстояние по оси Y между объектами контента
 		 */
-		public const contentGap:int = AppProperties.getValue(30, 10);
+		public const contentGap:int = 15;
 
 		/**
 		 * Центральная точка кнопки закрытия

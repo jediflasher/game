@@ -200,6 +200,8 @@ package ru.catAndBall.view.core.game {
 
 				_tf.x = _size - _tf.width * 0.75;
 				_tf.y = _size - _tf.height * 0.75;
+
+				setSizeInternal(_size + _tf.width * 0.75, _size + _tf.height * 0.75, false);
 			}
 		}
 

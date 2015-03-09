@@ -50,6 +50,17 @@ package ru.catAndBall.data.game.player {
 
 		public const list:Vector.<ConstructionData> = new Vector.<ConstructionData>();
 
+		/**
+		 * Строится ли хотя бы одно здание
+		 */
+		public function get inConstruction():Boolean {
+			for each (var c:ConstructionData in list) {
+				if (c.constructTimeLeft > 0) return true;
+			}
+
+			return false;
+		}
+
 		//--------------------------------------------------------------------------
 		//
 		//  Public methods
@@ -111,6 +122,9 @@ package ru.catAndBall.data.game.player {
 
 			_hash[result.proto.id] = result;
 			list.push(result);
+
+			result.addEventListener(ConstructionData.EVENT_BUILDING_START, dispatchEvent);
+			result.addEventListener(ConstructionData.EVENT_BUILDING_COMPLETE, dispatchEvent);
 
 			return result;
 		}

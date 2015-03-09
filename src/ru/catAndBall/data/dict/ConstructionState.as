@@ -31,6 +31,8 @@ package ru.catAndBall.data.dict {
 
 		public var lockedToLevel:int;
 
+		public var catHouseLevel:int;
+
 		public var buildTime:int; // in seconds
 
 		public const price:ResourceSet = new ResourceSet();
@@ -48,6 +50,10 @@ package ru.catAndBall.data.dict {
 		public function deserialize(input:Object):void {
 			if ('lockedToLevel' in input) {
 				lockedToLevel = input.lockedToLevel;
+			}
+
+			if ('catHouseLevel' in input) {
+				catHouseLevel = input.catHouseLevel;
 			}
 
 			if ('buildTime' in input) {

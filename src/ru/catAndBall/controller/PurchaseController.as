@@ -34,7 +34,12 @@ package ru.catAndBall.controller {
 			_instance.buyResources(resourceSet, onSuccess, onFail, backToStartScreen);
 		}
 
-		public static function getDeficitPrice(resourceSet:ResourceSet):int {
+		/**
+		 * Сколько денег нужно потратить,чтобы докупить заданное количество ресурсов
+		 * @param resourceSet
+		 * @return
+		 */
+		public static function getResourceSetPrice(resourceSet:ResourceSet):int {
 			var result:int = 0;
 
 			for each (var key:String in ResourceSet.TYPES) {
@@ -43,6 +48,15 @@ package ru.catAndBall.controller {
 			}
 
 			return result;
+		}
+
+		/**
+		 * Возвращает количество денег, необходимое для пропуска переданного количества секунд времени
+		 * @param seconds время в секундах
+		 * @return
+		 */
+		public static function getSkipTimePrice(seconds:int):int {
+			return Math.ceil(seconds / 60);
 		}
 
 		//--------------------------------------------------------------------------
@@ -111,7 +125,7 @@ package ru.catAndBall.controller {
 
 			_deficitResources.clear();
 			pr.getDeficit(resourceSet, _deficitResources);
-			_deficitPrice = getDeficitPrice(_deficitResources);
+			_deficitPrice = getResourceSetPrice(_deficitResources);
 
 			if (!_deficitPrice) {
 				completePurchase(true);

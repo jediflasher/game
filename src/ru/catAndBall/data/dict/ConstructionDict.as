@@ -30,8 +30,6 @@ package ru.catAndBall.data.dict {
 
 		public const states:Vector.<ConstructionState> = new Vector.<ConstructionState>();
 
-		public var catHouseLevel:int;
-
 		public var id:String;
 
 		public function get maxLevel():int {
@@ -49,10 +47,6 @@ package ru.catAndBall.data.dict {
 		public function deserialize(input:Object):void {
 			if ('id' in input) {
 				this.id = input.id;
-			}
-
-			if ('catHouseLevel' in input) {
-				this.catHouseLevel = input.catHouseLevel;
 			}
 
 			var st:Array = input.states;
