@@ -1,6 +1,7 @@
 package ru.catAndBall.view.core.game.field {
 
 
+	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.TiledImage;
 	import ru.catAndBall.view.layout.Layout;
@@ -30,6 +31,9 @@ package ru.catAndBall.view.core.game.field {
 			_fieldBg = new TiledImage(Assets.getTexture(fieldBg));
 			_elementBg1 = elementBg1;
 			_elementBg2 = elementBg2;
+
+			elementSize = Assets.getTexture(elementBg1).width;
+
 			_sizeW = wSize;
 			_sizeH = hSize;
 
@@ -52,6 +56,12 @@ package ru.catAndBall.view.core.game.field {
 
 		private var _sizeH:int;
 
+		public var startX:Number = 155;
+
+		public var startY:Number = 45;
+
+		public var elementSize:Number;
+
 		//--------------------------------------------------------------------------
 		//
 		//  Private methods
@@ -65,10 +75,6 @@ package ru.catAndBall.view.core.game.field {
 			_fieldBg.setTo(Layout.field.fieldBgBounds.width, Layout.field.fieldBgBounds.height);
 
 			addChild(_fieldBg);
-
-			var gridWidth:Number = _sizeW * Layout.field.elementSize;
-			var startX:Number = (Layout.field.fieldBgBounds.width - gridWidth) / 2;
-			var startY:Number = Layout.field.elementsTopPadding;
 
 			for (var i:int = 0; i < _sizeW; i++) {
 				for (var j:int = 0; j < _sizeH; j++) {

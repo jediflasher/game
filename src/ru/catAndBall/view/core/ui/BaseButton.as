@@ -8,6 +8,8 @@ package ru.catAndBall.view.core.ui {
 
 	import feathers.controls.Button;
 
+	import ru.catAndBall.view.assets.Assets;
+
 	import starling.display.DisplayObject;
 	import starling.display.Image;
 
@@ -26,8 +28,10 @@ package ru.catAndBall.view.core.ui {
 		//
 		//--------------------------------------------------------------------------
 
-		public function BaseButton(upState:DisplayObject) {
-			defaultSkin = upState;
+		public function BaseButton(upStateId:String, downStateId:String = null, disabledStateId:String = null) {
+			defaultSkin = Assets.getImage(upStateId);
+			downSkin = Assets.getImage(downStateId);
+			disabledSkin = Assets.getImage(disabledStateId);
 		}
 
 		//--------------------------------------------------------------------------

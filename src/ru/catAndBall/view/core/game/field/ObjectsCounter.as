@@ -7,20 +7,18 @@ package ru.catAndBall.view.core.game.field {
 
 	import com.greensock.TweenNano;
 	import com.greensock.easing.Linear;
-	import com.greensock.easing.Quart;
 
+	import feathers.core.FeathersControl;
 	import feathers.display.Scale3Image;
 	import feathers.textures.Scale3Textures;
-
-	import flash.events.Event;
 
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.display.BaseSprite;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.layout.Layout;
 
+	import starling.events.Event;
 	import starling.textures.Texture;
 	import starling.textures.TextureSmoothing;
 
@@ -31,7 +29,7 @@ package ru.catAndBall.view.core.game.field {
 	 * @langversion            3.0
 	 * @date                14.08.14 22:59
 	 */
-	public class ObjectsCounter extends BaseSprite {
+	public class ObjectsCounter extends FeathersControl {
 
 		//---------------------------------------------------------
 		//
@@ -72,12 +70,6 @@ package ru.catAndBall.view.core.game.field {
 			updateProgress();
 		}
 
-		private var _totalHeight:Number;
-
-		public function get totalHeight():Number {
-			return _totalHeight;
-		}
-
 		//---------------------------------------------------------
 		//
 		// Variables
@@ -96,9 +88,9 @@ package ru.catAndBall.view.core.game.field {
 
 		private var _vPadding:int;
 
-		private var _minHeight:int;
+		private var _mMinHeight:int;
 
-		private var _maxHeight:int;
+		private var _mMaxHeight:int;
 
 		private var _bgHeight:int;
 
@@ -112,7 +104,7 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		protected override function added(event:* = null):void {
+		protected override function initialize():void {
 			if (!_progressBar) {
 				_startY = Layout.baseResourceIconSize * 0.75;
 
@@ -135,8 +127,8 @@ package ru.catAndBall.view.core.game.field {
 				addChild(_progressBar);
 
 				_vPadding = (_bgHeight - Layout.field.counterProgressMaxHeight) / 2;
-				_minHeight = _progressBar.textures.texture.height;
-				_maxHeight = Layout.field.counterProgressMaxHeight - _minHeight;
+				_mMinHeight = _progressBar.textures.texture.height;
+				_mMaxHeight = Layout.field.counterProgressMaxHeight - _mMinHeight;
 
 				getValuesByProgress(0);
 				_progressBar.x = (bgWidth - _progressBar.textures.texture.width) / 2;
@@ -145,8 +137,6 @@ package ru.catAndBall.view.core.game.field {
 
 				_icon = new ResourceCounter(_resourseType, _resourceSet);
 				addChild(_icon);
-
-				_totalHeight = Layout.baseResourceIconSize + Layout.field.counterBgHeight - _startY;
 			}
 
 			_resourceSet.addEventListener(Event.CHANGE, handler_countChange);
@@ -154,9 +144,21 @@ package ru.catAndBall.view.core.game.field {
 			updateProgress();
 		}
 
-		protected override function removed(event:* = null):void {
+
+		override protected function draw():void {
+			super.draw();
+
+			if (isInvalid(FeathersControl.INVALIDATION_FLAG_LAYOUT)) {
+				_icon.validate();
+				_progressBar.validate();
+				setSizeInternal(_icon.width, _progressBar.y + _progressBar.height, false);
+			}
+		}
+
+		protected override function feathersControl_removedFromStageHandler(event:Event):void {
+			super.feathersControl_removedFromStageHandler(event);
+
 			_resourceSet.removeEventListener(Event.CHANGE, updateProgress);
-			super.removed(event);
 		}
 
 		//--------------------------------------------------------------------------
@@ -173,11 +175,16 @@ package ru.catAndBall.view.core.game.field {
 			if (_overLoad && progress >= 0 && progress < 1) {
 				// сначала прогрессбар доедет до полного значения,затем сбросится в 0 и поедет к текущему
 				getValuesByProgress(1);
-				TweenNano.to(_progressBar, 0.3, {height: _helperVector[1], y:_helperVector[0], ease:Linear.easeNone, onComplete:overloadComplete });
+				TweenNano.to(_progressBar, 0.3, {
+					height: _helperVector[1],
+					y: _helperVector[0],
+					ease: Linear.easeNone,
+					onComplete: overloadComplete
+				});
 				_overLoad = false;
 			} else {
 				getValuesByProgress(progress);
-				TweenNano.to(_progressBar, 0.3, {height: _helperVector[1], y:_helperVector[0], ease:Linear.easeNone});
+				TweenNano.to(_progressBar, 0.3, {height: _helperVector[1], y: _helperVector[0], ease: Linear.easeNone});
 			}
 		}
 
@@ -189,7 +196,7 @@ package ru.catAndBall.view.core.game.field {
 		}
 
 		private function getValuesByProgress(progress:Number):Vector.<int> {
-			_helperVector[1] = _maxHeight * progress + _minHeight; // height;
+			_helperVector[1] = _mMaxHeight * progress + _mMinHeight; // height;
 			_helperVector[0] = _startY + _bgHeight - _vPadding - _helperVector[1]; // y
 			return _helperVector;
 		}
@@ -200,7 +207,7 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		private function handler_countChange(event:Event):void {
+		private function handler_countChange(event:*):void {
 			_overLoad = true;
 		}
 	}

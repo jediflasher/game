@@ -1,4 +1,6 @@
 package ru.catAndBall.view.core.game {
+	import flash.display.BitmapData;
+
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
@@ -22,6 +24,8 @@ package ru.catAndBall.view.core.game {
 		//
 		//--------------------------------------------------------------------------
 
+		public static const DUMMY:Texture = Texture.fromBitmapData(new BitmapData(100, 100, false, 0xFF0000));
+
 		private static const HASH:Object = {};
 
 		HASH[ResourceSet.MONEY] = [
@@ -38,36 +42,6 @@ package ru.catAndBall.view.core.game {
 			AssetList.header_header_mouseIcon,
 			AssetList.header_header_mouseIcon,
 			AssetList.header_header_mouseIcon
-		];
-		HASH[ResourceSet.TOOL_BOWL] = [
-			AssetList.panel_tools_kontener,
-			AssetList.panel_tools_kontener,
-			AssetList.inventory_grey_icon_konteiner_shadow
-		];
-		HASH[ResourceSet.TOOL_BROOM] = [
-			AssetList.panel_tools_venik,
-			AssetList.panel_tools_venik,
-			AssetList.inventory_grey_icon_venik_shadow
-		];
-		HASH[ResourceSet.TOOL_SPOKES] = [
-			AssetList.panel_tools_knitt,
-			AssetList.panel_tools_knitt,
-			AssetList.inventory_grey_icon_spitsbl_shadow
-		];
-		HASH[ResourceSet.TOOL_SPOOL] = [
-			AssetList.panel_tools_katyshka,
-			AssetList.panel_tools_katyshka,
-			AssetList.inventory_grey_icon_katushka_shadow
-		];
-		HASH[ResourceSet.TOOL_TEA] = [
-			AssetList.panel_tools_coffee,
-			AssetList.panel_tools_coffee,
-			AssetList.inventory_grey_icon_coffe_shadow
-		];
-		HASH[ResourceSet.TOOL_TOY_BOX] = [
-			AssetList.panel_tools_korobka,
-			AssetList.panel_tools_korobka,
-			AssetList.inventory_grey_icon_box_shadow
 		];
 		HASH[ResourceSet.BF_BALLS] = [
 			AssetList.fields_balls_component_ballIcon,
@@ -193,11 +167,12 @@ package ru.catAndBall.view.core.game {
 
 		private function getTexture():Texture {
 			if (!(_resourceType in HASH)) {
-				HASH[_resourceType] = [
-					AssetList.fields_balls_component_socksIcon,
-					AssetList.fields_balls_component_socksIconDisabled,
-					AssetList.inventory_grey_icon_socksIconGrey
-				];
+
+				if(_resourceType.indexOf('tool_') == 0) {
+					return Assets.getTexture('panel_tools/tools_icon/' + _resourceType) || DUMMY;
+				}
+
+				return DUMMY;
 			}
 
 			var index:int = 0;

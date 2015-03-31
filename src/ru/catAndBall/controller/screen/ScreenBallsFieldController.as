@@ -58,16 +58,12 @@ package ru.catAndBall.controller.screen {
 		protected override function added():void {
 			super.added();
 
-			var toolData:BaseToolData = new BaseToolData(Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_SPOOL), GameData.player.resources);
+			var toolData:BaseToolData = new BaseToolData(Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_BASKET), GameData.player.resources);
 			_toolCollect = new BaseToolController(toolData);
-
-			view.addEventListener(FieldFooterBar.EVENT_TOOLS_CLICK, handler_toolsClick);
 		}
 
 		protected override function removed():void {
 			super.removed();
-
-			view.addEventListener(FieldFooterBar.EVENT_TOOLS_CLICK, handler_toolsClick);
 		}
 
 		//--------------------------------------------------------------------------
@@ -82,8 +78,5 @@ package ru.catAndBall.controller.screen {
 		//
 		//--------------------------------------------------------------------------
 
-		private function handler_toolsClick(event:Event):void {
-			_toolCollect.apply(_fieldData, _view.fieldController, this);
-		}
 	}
 }

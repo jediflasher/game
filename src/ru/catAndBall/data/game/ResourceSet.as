@@ -27,17 +27,57 @@ package ru.catAndBall.data.game {
 
 		public static const MOUSE:String = 'mouse';
 
-		public static const TOOL_SPOOL:String = 'toolSpool'; // катушка
+		public static const TOOL_SPOKES:String = 'tool_spokes';
 
-		public static const TOOL_BROOM:String = 'toolBroom'; // метла
+		public static const TOOL_TOYBOX:String = 'tool_toybox';
 
-		public static const TOOL_TOY_BOX:String = 'toolToyBox'; // коробка для игрушек
+		public static const TOOL_BASKET:String = 'tool_basket';
 
-		public static const TOOL_BOWL:String = 'toolBowl'; // миска
+		public static const TOOL_KNITTEDGUN:String = 'tool_knittedgun';
 
-		public static const TOOL_SPOKES:String = 'toolSpokes'; // спицы
+		public static const TOOL_CUP_COFFEE:String = 'tool_cup_coffee';
 
-		public static const TOOL_TEA:String = 'toolTea';
+		public static const TOOL_BARE_FEET:String = 'tool_bare_feet';
+
+		public static const TOOL_CONTAINER:String = 'tool_container';
+
+		public static const TOOL_COZY_HOLE:String = 'tool_cozy_hole';
+
+		public static const TOOL_CONVENIENT_CELL:String = 'tool_convenient_cell';
+
+		public static const TOOL_VACUUM_CLEANER:String = 'tool_vacuum_cleaner';
+
+		public static const TOOL_SPONGE:String = 'tool_sponge';
+
+		public static const TOOL_PACKET:String = 'tool_packet';
+
+		public static const TOOL_SPARROWS:String = 'tool_sparrows';
+
+		public static const TOOL_DOGCOUCHES:String = 'tool_dogcouches';
+
+		public static const TOOL_EMPTY_REEL:String = 'tool_empty_reel';
+
+		public static const TOOL_MIRROR:String = 'tool_mirror';
+
+		public static const TOOL_RIBBON:String = 'tool_ribbon';
+
+		public static const TOOL_POT:String = 'tool_pot';
+
+		public static const TOOL_VASE:String = 'tool_vase';
+
+		public static const TOOL_FODDER:String = 'tool_fodder';
+
+		public static const TOOL_CARROT:String = 'tool_carrot';
+
+		public static const TOOL_APPLE:String = 'tool_apple';
+
+		public static const TOOL_LAWN_MOWER:String = 'tool_lawn_mower';
+
+		public static const TOOL_NEEDLE:String = 'tool_needle';
+
+		public static const TOOL_EMPTY_CANS:String = 'tool_empty_cans';
+
+		public static const TOOL_COLLAR:String = 'tool_collar';
 
 		public static const BF_BALLS:String = 'bfBalls';
 
@@ -65,7 +105,9 @@ package ru.catAndBall.data.game {
 
 		public static const TYPES:Vector.<String> = new <String>[
 			EXPERIENCE, MONEY, MOUSE,
-			TOOL_BOWL, TOOL_BROOM, TOOL_SPOKES, TOOL_SPOOL, TOOL_TEA, TOOL_TOY_BOX,
+			TOOL_APPLE, TOOL_BARE_FEET, TOOL_BASKET, TOOL_CARROT, TOOL_COLLAR, TOOL_CONTAINER, TOOL_CONVENIENT_CELL, TOOL_COZY_HOLE,
+			TOOL_CUP_COFFEE, TOOL_DOGCOUCHES, TOOL_EMPTY_CANS, TOOL_EMPTY_REEL, TOOL_FODDER, TOOL_KNITTEDGUN, TOOL_LAWN_MOWER, TOOL_MIRROR,
+			TOOL_NEEDLE, TOOL_PACKET, TOOL_POT, TOOL_RIBBON, TOOL_SPARROWS, TOOL_SPOKES, TOOL_SPONGE, TOOL_TOYBOX, TOOL_VACUUM_CLEANER, TOOL_VASE,
 			BF_BALLS, BF_SOCKS, BF_SWEATERS, BF_TOYS, RF_BALL,
 			RF_COOKIE, RF_MOUSE, RF_MILK, RF_PIGEON, RF_CONSERVE, RF_GRAIN, RF_THREAD
 		];

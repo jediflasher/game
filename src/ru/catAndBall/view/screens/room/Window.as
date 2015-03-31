@@ -2,7 +2,7 @@ package ru.catAndBall.view.screens.room {
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 
-	import starling.display.Button;
+	import feathers.controls.Button;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -30,8 +30,8 @@ package ru.catAndBall.view.screens.room {
 
 			_enterButton = Assets.getButton(AssetList.Room_entrWindow);
 			_enterButton.addEventListener(Event.TRIGGERED, handler_triggered);
-			_enterButton.x = img.texture.width / 2 - _enterButton.upState.width / 2;
-			_enterButton.y = img.texture.height / 2 - _enterButton.upState.height / 2;
+			_enterButton.x = img.texture.width / 2 - _enterButton.defaultSkin.width / 2;
+			_enterButton.y = img.texture.height / 2 - _enterButton.defaultSkin.height / 2;
 			addChild(_enterButton);
 		}
 

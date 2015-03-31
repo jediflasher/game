@@ -53,12 +53,22 @@ package ru.catAndBall.data.dict {
 			if (st) {
 				var len:int = st.length;
 				for (var i:int = 0; i < len; i++) {
-					var state:ConstructionState = new ConstructionState();
+					var state:ConstructionState = createState();
 					state.index = i;
 					state.deserialize(st[i]);
 					states.push(state);
 				}
 			}
+		}
+
+		//--------------------------------------------------------------------------
+		//
+		//  Private methods
+		//
+		//--------------------------------------------------------------------------
+
+		protected function createState():ConstructionState {
+			return new ConstructionState();
 		}
 	}
 }

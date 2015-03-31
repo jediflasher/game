@@ -183,7 +183,7 @@
         <key>prependSmartFolderName</key>
         <false/>
         <key>cleanTransparentPixels</key>
-        <true/>
+        <false/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>

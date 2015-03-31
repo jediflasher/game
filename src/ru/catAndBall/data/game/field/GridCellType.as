@@ -79,6 +79,8 @@ package ru.catAndBall.data.game.field {
 
 		public static const PARROT:String = "rf_parrot";
 
+		public static const WRAPPER:String = 'rf_wrapper';
+
 		// window field
 
 

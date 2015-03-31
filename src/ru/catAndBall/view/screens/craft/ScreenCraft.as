@@ -82,8 +82,8 @@ package ru.catAndBall.view.screens.craft {
 		protected override function initialize():void {
 			super.initialize();
 
-			_rollDataProvider.data = GameData.player.constructions.commode1.availableTools;
-			_rugDataProvider.data = GameData.player.constructions.commode2.availableTools;
+			_rollDataProvider.data = GameData.player.constructions.commode1.tools;
+			_rugDataProvider.data = GameData.player.constructions.commode2.tools;
 
 			if (_backgroundSkin) {
 				(_backgroundSkin as Image).smoothing = TextureSmoothing.NONE;

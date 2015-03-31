@@ -5,15 +5,24 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
 
+	import feathers.core.FeathersControl;
+	import feathers.display.TiledImage;
+
+	import ru.catAndBall.AppProperties;
+
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
+	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
-	import ru.catAndBall.view.core.game.GridController;
+	import ru.catAndBall.view.core.game.GridContainer;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.BaseScreen;
 
 	import starling.display.DisplayObject;
+	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.utils.HAlign;
+	import starling.utils.VAlign;
 
 	/**
 	 * @author                Obi
@@ -30,6 +39,9 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//--------------------------------------------------------------------------
 
+		private static const PANEL_Y:Number = 1500;
+
+		private static const PANEL_Y_EXPANDED:Number = 735;
 
 		//---------------------------------------------------------
 		//
@@ -47,10 +59,10 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		private var _fieldController:GridController;
+		private var _fieldContainer:GridContainer;
 
-		public function get fieldController():GridController {
-			return _fieldController;
+		public function get fieldContainer():GridContainer {
+			return _fieldContainer;
 		}
 
 		public function get screenData():BaseScreenFieldData {
@@ -63,11 +75,11 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		private var _bg:DisplayObject;
+		private var _border:DisplayObject
 
 		protected var _progressPanel:FieldProgressPanel;
 
-		private var _counterContainer:FieldCounters;
+		private var _footer:FieldFooter;
 
 		//---------------------------------------------------------
 		//
@@ -78,19 +90,26 @@ package ru.catAndBall.view.core.game.field {
 		protected override function initialize():void {
 			footerClass = FieldFooterBar;
 
+			_fieldContainer = new GridContainer(screenData.gridData, getBackground());
+			_fieldContainer.y = 170;
+			addRawChild(_fieldContainer);
+
 			_progressPanel = new FieldProgressPanel();
 			addRawChild(_progressPanel);
 
-			_bg = getBackground();
-			_bg.y = Layout.field.fieldBgBounds.y;
-			addRawChild(_bg);
+			_footer = new FieldFooter((data as BaseScreenFieldData).gridData);
+			_footer.addEventListener(ToolsPanel.EVENT_EXPAND_COLLAPSE, handler_expandCollapse);
+			_footer.y = PANEL_Y;
+			addRawChild(_footer);
 
-			_fieldController = new GridController(screenData.gridData, this);
+			_border = new TiledImage(Assets.getTexture(getBorder()));
+			_border.alignPivot(HAlign.LEFT, VAlign.CENTER);
+			_border.width = AppProperties.baseWidth;
+			_border.x = 0;
+			_border.y = PANEL_Y + 20;
+			addRawChild(_border);
 
-			_counterContainer = new FieldCounters((data as BaseScreenFieldData).gridData);
-			_counterContainer.touchable = false;
-			_counterContainer.y = Layout.field.countersY;
-			addRawChild(_counterContainer);
+			addEventListener(FieldFooterBar.EVENT_TOOLS_CLICK, handler_toolsClick);
 
 			super.initialize();
 		}
@@ -120,10 +139,14 @@ package ru.catAndBall.view.core.game.field {
 			throw "must be implemented";
 		}
 
+		protected function getBorder():String {
+			throw "must be implemented"
+		}
+
 		protected override function feathersControl_removedFromStageHandler(event:Event):void {
 			super.feathersControl_removedFromStageHandler(event);
 
-			_fieldController.clear();
+			_fieldContainer.clear();
 		}
 
 		//---------------------------------------------------------
@@ -135,6 +158,16 @@ package ru.catAndBall.view.core.game.field {
 		private function updateTurn(event:* = null):void {
 			_progressPanel.progress = screenData.gridData.currentTurn / screenData.gridData.maxTurns;
 			_progressPanel.stepsLeft = screenData.gridData.maxTurns - screenData.gridData.currentTurn;
+		}
+
+		private function handler_toolsClick(event:*):void {
+			_footer.switchPanels();
+		}
+
+		private function handler_expandCollapse(event:*):void {
+			setChildIndex(_footer, numChildren - 1);
+			_footer.y = _footer.toolsPanel.collapsed ? PANEL_Y : PANEL_Y_EXPANDED;
+			_border.y = _footer.y + 20;
 		}
 	}
 }

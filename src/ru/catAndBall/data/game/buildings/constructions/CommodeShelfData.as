@@ -28,7 +28,7 @@ package ru.catAndBall.data.game.buildings.constructions {
 		//
 		//--------------------------------------------------------------------------
 
-		public function get availableTools():Vector.<ToolDict> {
+		public function get tools():Vector.<ToolDict> {
 			return (proto as CommodeShelfDict).tools;
 		}
 	}

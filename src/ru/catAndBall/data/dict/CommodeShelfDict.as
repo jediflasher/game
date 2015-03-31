@@ -27,11 +27,20 @@ package ru.catAndBall.data.dict {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _tools:Vector.<ToolDict> = new Vector.<ToolDict>();
+		private var _tools:Vector.<ToolDict>;
 
 		public function get tools():Vector.<ToolDict> {
+			if (!_tools) {
+				_tools = new Vector.<ToolDict>();
+				for each (var state:CommodeShelfState in states) {
+					for each (var tool:ToolDict in state.tools) {
+						_tools.push(tool);
+					}
+				}
+			}
 			return _tools;
 		}
+
 
 		//--------------------------------------------------------------------------
 		//
@@ -41,12 +50,10 @@ package ru.catAndBall.data.dict {
 
 		public override function deserialize(input:Object):void {
 			super.deserialize(input);
+		}
 
-			if ('tools' in input) {
-				for each (var toolId:String in input.tools) {
-					_tools.push(Dictionaries.tools.getToolByResourceType(toolId));
-				}
-			}
+		protected override function createState():ConstructionState {
+			return new CommodeShelfState();
 		}
 	}
 }

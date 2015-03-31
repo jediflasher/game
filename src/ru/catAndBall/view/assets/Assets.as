@@ -5,6 +5,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.assets {
 
+	import feathers.controls.Button;
+
 	import flash.display.BitmapData;
 	import flash.utils.ByteArray;
 
@@ -12,7 +14,6 @@ package ru.catAndBall.view.assets {
 
 	import ru.catAndBall.view.core.display.BaseMovieClip;
 
-	import starling.display.Button;
 	import starling.display.Image;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
@@ -120,9 +121,14 @@ package ru.catAndBall.view.assets {
 		}
 
 		public static function getButton(prefix:String):Button {
-			var up:Texture = getTexture(prefix);
-			var down:Texture = getTexture(prefix + 'Down');
-			return new Button(up, "", down);
+			var up:Image = getImage(prefix);
+			var down:Image = getImage(prefix + '_on');
+			var disabled:Image = getImage(prefix + '_off');
+			var result:Button = new Button();
+			result.defaultSkin = up;
+			result.downSkin = down;
+			result.disabledSkin = disabled;
+			return result;
 		}
 
 		public static function getMovieClip(prefix:String):BaseMovieClip {

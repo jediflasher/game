@@ -25,7 +25,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.GridCell;
-	import ru.catAndBall.view.core.game.GridController;
+	import ru.catAndBall.view.core.game.GridContainer;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.utils.BooleanRandom;
 	import ru.catAndBall.view.screens.ScreenType;
@@ -112,9 +112,9 @@ package ru.catAndBall.controller.screen {
 
 			_fieldData.replaceCell(newCellData);
 
-			var cellView:GridCell = _view.fieldController.getCellByData(old);
+			var cellView:GridCell = _view.fieldContainer.getCellByData(old);
 			if (cellView) {
-				_view.fieldController.setNewData(cellView, newCellData);
+				_view.fieldContainer.setNewData(cellView, newCellData);
 			}
 		}
 
@@ -129,7 +129,7 @@ package ru.catAndBall.controller.screen {
 
 			_fieldData.fullFill(_generator);
 
-			view.addEventListener(GridController.EVENT_COLLECT_CELLS, handler_collectCells);
+			view.addEventListener(GridContainer.EVENT_COLLECT_CELLS, handler_collectCells);
 			view.addEventListener(FieldFooterBar.EVENT_BACK_CLICK, handler_backClick);
 		}
 
@@ -141,7 +141,7 @@ package ru.catAndBall.controller.screen {
 			_petRandom.reset();
 			_prevBombs = null;
 
-			view.removeEventListener(GridController.EVENT_COLLECT_CELLS, handler_collectCells);
+			view.removeEventListener(GridContainer.EVENT_COLLECT_CELLS, handler_collectCells);
 			view.removeEventListener(FieldFooterBar.EVENT_BACK_CLICK, handler_backClick);
 
 			super.removed();
@@ -287,7 +287,7 @@ package ru.catAndBall.controller.screen {
 
 						bomb = line[j] as BombGridCellData;
 						bomb.readyToBlow = false;
-						bombView = _view.fieldController.getCellByData(bomb);
+						bombView = _view.fieldContainer.getCellByData(bomb);
 						if (bombView) bombView.updateExplode();
 					}
 				}
@@ -303,7 +303,7 @@ package ru.catAndBall.controller.screen {
 					if (bomb.destroyed) continue;
 
 					bomb.readyToBlow = true;
-					bombView = _view.fieldController.getCellByData(bomb);
+					bombView = _view.fieldContainer.getCellByData(bomb);
 					if (bombView) bombView.updateExplode();
 				}
 			}
@@ -323,7 +323,7 @@ package ru.catAndBall.controller.screen {
 
 			hash[cell] = true;
 
-			var field:GridController = _view.fieldController;
+			var field:GridContainer = _view.fieldContainer;
 			var cellView:GridCell = field.getCellByData(cell);
 
 			if (cellView) {

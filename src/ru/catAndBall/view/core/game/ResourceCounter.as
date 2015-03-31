@@ -157,6 +157,10 @@ package ru.catAndBall.view.core.game {
 			invalidate(INVALIDATION_FLAG_DATA);
 		}
 
+		public function get count():int {
+			return _resourceSet.get(_resourceType);
+		}
+
 		//--------------------------------------------------------------------------
 		//
 		//  Public methods
@@ -178,7 +182,6 @@ package ru.catAndBall.view.core.game {
 			super.draw();
 
 			if (isInvalid(INVALIDATION_FLAG_DATA)) {
-				var count:int = _resourceSet.get(_resourceType);
 				_tf.text = String(count);//String(count < 0 ? 0 : count);
 				_tf.visible = !gray;
 				_icon.disabled = _disableOnZero && count <= 0;

@@ -5,16 +5,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game {
 
-	import feathers.controls.Header;
+	import feathers.controls.Button;
 
-	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.display.TiledImage;
 	import ru.catAndBall.view.core.ui.BaseFooterBar;
 	import ru.catAndBall.view.core.ui.YellowButton;
 
-	import starling.display.Button;
 	import starling.display.DisplayObject;
 	import starling.events.Event;
 
@@ -90,10 +87,10 @@ package ru.catAndBall.view.core.game {
 			_back = new YellowButton(AssetList.buttons_back);
 			_back.addEventListener(Event.TRIGGERED, handler_backClick);
 
-			_tools = Assets.getButton(AssetList.buttons_ToolsIcon_on);
+			_tools = Assets.getButton(AssetList.buttons_ToolsIcon);
 			_tools.addEventListener(Event.TRIGGERED, handler_toolsClick);
 
-			_settings =new YellowButton(AssetList.buttons_settings);
+			_settings = new YellowButton(AssetList.buttons_settings);
 
 			leftItems = new <DisplayObject>[_back];
 			centerItems = new <DisplayObject>[_tools];
@@ -113,7 +110,7 @@ package ru.catAndBall.view.core.game {
 		}
 
 		private function handler_toolsClick(event:Event):void {
-			dispatchEventWith(EVENT_TOOLS_CLICK);
+			dispatchEventWith(EVENT_TOOLS_CLICK, true);
 		}
 	}
 }

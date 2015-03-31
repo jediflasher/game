@@ -1,4 +1,5 @@
 package ru.catAndBall.view.screens.room.footer {
+	import feathers.controls.Button;
 	import feathers.controls.Header;
 	import feathers.core.IFeathersControl;
 
@@ -13,7 +14,6 @@ package ru.catAndBall.view.screens.room.footer {
 	import ru.catAndBall.view.core.ui.YellowButton;
 	import ru.catAndBall.view.layout.Layout;
 
-	import starling.display.Button;
 	import starling.display.DisplayObject;
 	import starling.events.Event;
 

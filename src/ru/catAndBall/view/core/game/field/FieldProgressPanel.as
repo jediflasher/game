@@ -9,6 +9,7 @@ package ru.catAndBall.view.core.game.field {
 	import com.greensock.easing.Linear;
 
 	import feathers.core.FeathersControl;
+	import feathers.display.TiledImage;
 
 	import flash.display3D.textures.Texture;
 
@@ -24,6 +25,8 @@ package ru.catAndBall.view.core.game.field {
 
 	import starling.display.Image;
 	import starling.textures.TextureSmoothing;
+	import starling.utils.HAlign;
+	import starling.utils.VAlign;
 
 	/**
 	 * @author                Obi
@@ -98,6 +101,8 @@ package ru.catAndBall.view.core.game.field {
 
 		private var _line:Image;
 
+		private var _border:TiledImage;
+
 		//---------------------------------------------------------
 		//
 		// Public methods
@@ -123,14 +128,19 @@ package ru.catAndBall.view.core.game.field {
 			_ball.y = Layout.field.progressBallY;
 			addChild(_ball);
 
+			_border = new TiledImage(Assets.getTexture(AssetList.fields_balls_ballsBgTop));
+			_border.alignPivot(HAlign.LEFT, VAlign.CENTER);
+			_border.width = AppProperties.baseWidth;
+			addChild(_border);
+
 		}
 
 		protected override function draw():void {
+			super.draw();
+
 			if (isInvalid(FeathersControl.INVALIDATION_FLAG_DATA)) {
 				this.update();
 			}
-
-			super.draw();
 		}
 
 		//---------------------------------------------------------
@@ -159,6 +169,8 @@ package ru.catAndBall.view.core.game.field {
 				_line.x = lineX;
 				_line.width = AppProperties.baseWidth - lineX;
 			}
+
+			_border.y = _bg.height;
 		}
 
 		//---------------------------------------------------------

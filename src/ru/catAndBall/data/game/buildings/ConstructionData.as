@@ -39,11 +39,11 @@ package ru.catAndBall.data.game.buildings {
 
 		public static const CAT_HOUSE:String = 'catHouse';
 
-		public static const COMMODE_1:String = 'commode1';
+		public static const COMMODE_1:String = 'shelf1';
 
-		public static const COMMODE_2:String = 'commode2';
+		public static const COMMODE_2:String = 'shelf2';
 
-		public static const COMMODE_3:String = 'commode3';
+		public static const COMMODE_3:String = 'shelf3';
 
 		//--------------------------------------------------------------------------
 		//
