@@ -101,7 +101,7 @@ package ru.catAndBall.view.core.game.field {
 			_border = Assets.getImage(AssetList.panel_tools_panelTool_shelf);
 			addChild(_border);
 
-			_icon = new ResourceCounter(_data.resourceType, GameData.player.resources);
+			_icon = new ResourceCounter(_data.resourceType, GameData.player.resources, 220);
 			_icon.y = 85;
 			addChild(_icon);
 

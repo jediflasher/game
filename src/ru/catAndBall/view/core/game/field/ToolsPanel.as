@@ -136,8 +136,8 @@ package ru.catAndBall.view.core.game.field {
 			addChild(_buttonRight);
 
 			d = new AnchorLayoutData();
-			d.top = 70;
-			d.right = AppProperties.viewRect.x + GAP;
+			d.top = 35;
+			d.right = AppProperties.viewRect.x + GAP + 5;
 			_helpButton = Assets.getButton(AssetList.buttons_InfoIcon);
 			_helpButton.layoutData = d;
 			_helpButton.addEventListener(Event.TRIGGERED, handler_helpClick);
@@ -152,16 +152,15 @@ package ru.catAndBall.view.core.game.field {
 				if (_collapsed) {
 					var hl:HorizontalLayout = new HorizontalLayout();
 					hl.gap = 10;
-					hl.paddingTop = 45;
 					_iconContainer.layout = hl;
 					_iconContainer.verticalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
 					_iconContainer.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_ON;
 					_iconContainer.width = AppProperties.viewRect.width - _buttonLeft.width - _buttonRight.width - GAP * 4;
 					_iconContainer.height = 400;
-					_iconContainer.invalidate(FeathersControl.INVALIDATION_FLAG_LAYOUT);
 				} else {
 					var vl:VerticalLayout = new VerticalLayout();
 					vl.paddingTop = 50;
+					vl.paddingBottom = 50;
 					vl.gap = 50;
 					vl.hasVariableItemDimensions = true;
 					_iconContainer.layout = vl;
@@ -169,7 +168,6 @@ package ru.catAndBall.view.core.game.field {
 					_iconContainer.horizontalScrollPolicy = ScrollContainer.SCROLL_POLICY_OFF;
 					_iconContainer.width = AppProperties.baseWidth;
 					_iconContainer.height = 1150;
-					_iconContainer.invalidate(FeathersControl.INVALIDATION_FLAG_LAYOUT);
 				}
 
 				_buttonLeft.visible = _buttonRight.visible = _collapsed;
