@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:bbe0a259bf6c1220b446026d16641978:e057a3862a6d331d5ce62d844942a603:ec51c7fed9fc071d7f858ea9ca27f389$ -->
+<!-- $TexturePacker:SmartUpdate:8d4a1a9acc472dbf1e5279a082b421ee:e057a3862a6d331d5ce62d844942a603:ec51c7fed9fc071d7f858ea9ca27f389$ -->
 <TextureAtlas imagePath="atlas1.png">
     <SubTexture name="Bank/Lcatbrooch" x="730" y="960" width="101" height="95"/>
     <SubTexture name="Bank/Mcatbrooch" x="170" y="1083" width="91" height="96"/>

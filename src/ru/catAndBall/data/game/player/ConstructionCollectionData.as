@@ -118,6 +118,9 @@ package ru.catAndBall.data.game.player {
 				case ConstructionData.COMMODE_3:
 					result = commode3 = new CommodeShelfData(dict as CommodeShelfDict);
 					break;
+				default:
+					result = new ConstructionData(dict);
+					break;
 			}
 
 			_hash[result.proto.id] = result;

@@ -43,6 +43,12 @@ package ru.catAndBall.data.dict {
 
 		public const bonus:ResourceSet = new ResourceSet();
 
+		public var customConnectCounts:Object;
+
+		public var customCollectTurnPrice:Object;
+
+		public var freeToCollect:Array;
+
 		public function get hasEnoughSources():Boolean {
 			return GameData.player.resources.hasEnough(price);
 		}
@@ -74,6 +80,18 @@ package ru.catAndBall.data.dict {
 
 			if ('bonus' in input) {
 				bonus.deserialize(input.bonus);
+			}
+
+			if ('customConnectCounts' in input) {
+				customConnectCounts = input.customConnectCounts;
+			}
+
+			if ('customCollectTurnPrice' in input) {
+				customCollectTurnPrice = input.customCollectTurnPrice;
+			}
+
+			if ('freeToCollect' in input) {
+				freeToCollect = input.freeToCollect;
 			}
 		}
 	}

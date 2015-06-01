@@ -55,5 +55,9 @@ package ru.catAndBall.view.screens.rugField {
 					screenData.gridData.rows
 			);
 		}
+
+		protected override function getBorder():String {
+			return AssetList.fields_carpet_carpetBgDown;
+		}
 	}
 }

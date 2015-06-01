@@ -16,12 +16,16 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.IGridGenerator;
 	import ru.catAndBall.controller.screen.ScreenRoomController;
+	import ru.catAndBall.data.GameData;
+	import ru.catAndBall.data.dict.ConstructionState;
 	import ru.catAndBall.data.game.GridCellDataFactory;
 	import ru.catAndBall.data.game.GridFieldSettings;
+	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.data.game.field.BombGridCellData;
 	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.field.PestGridCellData;
+	import ru.catAndBall.data.game.player.ConstructionCollectionData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.GridCell;
@@ -127,6 +131,25 @@ package ru.catAndBall.controller.screen {
 		protected override function added():void {
 			super.added();
 
+			var constructions:ConstructionCollectionData = GameData.player.constructions;
+
+			this._settings.freeToCollect = null;
+
+			for each (var construction:ConstructionData in constructions.list) {
+				for (var elementName:String in construction.customConnectCounts) {
+					var count:int = construction.customConnectCounts[elementName];
+					this._settings.customConnectCounts[elementName] = count;
+				}
+
+				if (construction.freeToCollect) {
+					if (this._settings.freeToCollect) {
+						this._settings.freeToCollect = this._settings.freeToCollect.concat(construction.freeToCollect);
+					} else {
+						this._settings.freeToCollect = construction.freeToCollect;
+					}
+				}
+			}
+
 			_fieldData.fullFill(_generator);
 
 			view.addEventListener(GridContainer.EVENT_COLLECT_CELLS, handler_collectCells);
@@ -176,7 +199,10 @@ package ru.catAndBall.controller.screen {
 			}
 
 			_fieldData.collectCells(cells, newCells);
-			_fieldData.currentTurn++;
+
+			if (_settings.freeToCollect.indexOf(cells[0].type) == -1) {
+				_fieldData.currentTurn++;
+			}
 
 			if (_fieldData.currentTurn == _fieldData.maxTurns) {
 				fieldComplete();

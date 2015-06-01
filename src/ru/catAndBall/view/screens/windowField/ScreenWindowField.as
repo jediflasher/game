@@ -5,15 +5,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.windowField {
 
-	import ru.catAndBall.AppProperties;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.view.assets.Assets;
+	import ru.catAndBall.data.GameData;
+	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
+	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
-	import ru.catAndBall.view.core.ui.BaseButton;
-
-	import starling.display.Button;
-	import starling.display.Sprite;
-	import starling.events.Event;
+	import ru.catAndBall.view.core.game.field.GridBackground;
+	import ru.catAndBall.view.screens.ScreenType;
 
 	/**
 	 * @author                Obi
@@ -28,14 +25,7 @@ package ru.catAndBall.view.screens.windowField {
 		//
 		//  Class constants
 		//
-		//--------------------------------------------------------------------------
-
-		public static const EVENT_BEERCUP_APPLY:String = 'eventBeercupApply';
-
-		public static const EVENT_BUTTERFLY_APPLY:String = 'eventButterflyApply';
-
-		public static const EVENT_LADYBUG_APPLY:String = 'eventLadybugApply';
-
+		//---------------------------------------------------------
 
 		//---------------------------------------------------------
 		//
@@ -43,77 +33,8 @@ package ru.catAndBall.view.screens.windowField {
 		//
 		//---------------------------------------------------------
 
-		public function ScreenWindowField(data:BaseScreenData) {
-			super(data);
-		}
-
-		//---------------------------------------------------------
-		//
-		// Properties
-		//
-		//---------------------------------------------------------
-
-
-		//---------------------------------------------------------
-		//
-		// Variables
-		//
-		//---------------------------------------------------------
-
-		private var _catButton:Button;
-
-		private var _toolContainer:Sprite = new Sprite();
-
-		private var _toolButterfly:BaseButton;
-
-		private var _toolLadybug:BaseButton;
-
-		private var _toolBeercup:BaseButton;
-
-		//---------------------------------------------------------
-		//
-		// Public methods
-		//
-		//---------------------------------------------------------
-
-		public override function added():void {
-			super.added();
-
-			if (!_catButton) {
-				_catButton = Assets.getButton('buttonStartRug');
-				_catButton.x = AppProperties.baseWidth * 0.6;
-				_catButton.y = AppProperties.baseHeight * 0.8;
-				_catButton.addEventListener(Event.TRIGGERED, handler_catButtonClick);
-			}
-
-			/*
-			 if (!_toolBeercup) {
-			 _toolBeercup = new BaseButton(GridCell.BEER_CUP);
-			 _toolBeercup.addEventListener(Event.TRIGGERED, handler_toolBeercupApply);
-			 _toolBeercup.x = 0;
-			 _toolContainer.addChild(_toolBeercup);
-			 }
-
-			 if (!_toolButterfly) {
-			 _toolButterfly = new BaseButton(GridCell.BFLY1);
-			 _toolButterfly.addEventListener(Event.TRIGGERED, handler_toolButterflyApply);
-			 _toolButterfly.x = _toolContainer.width + 10;
-			 _toolContainer.addChild(_toolButterfly);
-			 }
-
-			 if (!_toolLadybug) {
-			 _toolLadybug = new BaseButton(GridCell.LADYBUG);
-			 _toolLadybug.addEventListener(Event.TRIGGERED, handler_toolLadybugApply);
-			 _toolLadybug.x = _toolContainer.width + 10;
-			 _toolContainer.addChild(_toolLadybug);
-			 }
-			 */
-			addChild(_catButton);
-
-			_toolContainer.x = 50;
-			_toolContainer.y = AppProperties.baseHeight * 0.8;
-			addChild(_toolContainer);
-
+		public function ScreenWindowField() {
+			super(new BaseScreenFieldData(ScreenType.WINDOW_FIELD, GameData.player.rugField));
 		}
 
 		//---------------------------------------------------------
@@ -122,32 +43,18 @@ package ru.catAndBall.view.screens.windowField {
 		//
 		//---------------------------------------------------------
 
-
-		//---------------------------------------------------------
-		//
-		// Private methods
-		//
-		//---------------------------------------------------------
-		//---------------------------------------------------------
-		//
-		// Event handlers
-		//
-		//---------------------------------------------------------
-
-		private function handler_catButtonClick(event:Event):void {
-			back();
+		protected override function getBackground():GridBackground {
+			return new GridBackground(
+					AssetList.fields_carpet_carpetBg1,
+					AssetList.fields_carpet_carpetBg2,
+					AssetList.fields_carpet_carpetBg3,
+					screenData.gridData.columns,
+					screenData.gridData.rows
+			);
 		}
 
-		private function handler_toolBeercupApply(event:Event):void {
-			dispatchEventWith(EVENT_BEERCUP_APPLY);
-		}
-
-		private function handler_toolButterflyApply(event:Event):void {
-			dispatchEventWith(EVENT_BUTTERFLY_APPLY);
-		}
-
-		private function handler_toolLadybugApply(event:Event):void {
-			dispatchEventWith(EVENT_LADYBUG_APPLY);
+		protected override function getBorder():String {
+			return AssetList.fields_carpet_carpetBgDown;
 		}
 	}
 }

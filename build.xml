@@ -11,6 +11,7 @@
         <copy todir="${target_path}/public/assets/game">
             <fileset dir="${source_path}/assets"/>
         </copy>
+
     </target>
 
     <target name="copy bin">

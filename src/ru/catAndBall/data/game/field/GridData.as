@@ -45,7 +45,6 @@ package ru.catAndBall.data.game.field {
 		public function GridData(settings:GridFieldSettings) {
 			super();
 
-			_maxTurns = settings.turnCount;
 			this.settings = settings;
 
 			columns = settings.fieldHeight;
@@ -56,6 +55,8 @@ package ru.catAndBall.data.game.field {
 			for (var i:int = 0; i < columns; i++) {
 				cellsMatrix[i] = new Vector.<GridCellData>(rows, true);
 			}
+
+			trace(1);
 		}
 
 		//---------------------------------------------------------
@@ -73,7 +74,7 @@ package ru.catAndBall.data.game.field {
 		public const collectedResourceSet:ResourceSet = new ResourceSet();
 
 		public function getCollectCount(type:String):int {
-			if (type in settings.connectCounts) return int(settings.connectCounts[type]);
+			if (type in settings.customConnectCounts) return int(settings.customConnectCounts[type]);
 			return settings.baseConnectCount;
 		}
 
@@ -90,16 +91,14 @@ package ru.catAndBall.data.game.field {
 			dispatchEvent(new DataEvent(EVENT_TURN_UPDATE));
 		}
 
-		private var _maxTurns:int;
-
 		public function get maxTurns():int {
-			return _maxTurns;
+			return settings.turnCount;
 		}
 
 		public function set maxTurns(value:int):void {
-			if (_maxTurns == value) return;
+			if (settings.turnCount == value) return;
 
-			_maxTurns = value;
+			settings.turnCount = value;
 			dispatchEvent(new DataEvent(EVENT_TURN_UPDATE));
 		}
 
@@ -184,7 +183,7 @@ package ru.catAndBall.data.game.field {
 			for (var i:int = 0; i < columns; i++) {
 				for (var j:int = 0; j < rows; j++) {
 					if (!cellsMatrix[i][j]) {
-						var cell:GridCellData = generator.getGridCell(i, j);
+						var cell:GridCellData = generator.getStartGridCell(i, j);
 						addCell(cell);
 					}
 				}

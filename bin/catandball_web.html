@@ -37,22 +37,19 @@
         <script type="text/javascript" src="swfobject.js"></script>
         <script type="text/javascript">
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
-            var swfVersionStr = "14.0.0";
+            var swfVersionStr = "16.0.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
             var xiSwfUrlStr = "playerProductInstall.swf";
             var flashvars = {};
-            flashvars.url = document.URL;
-
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";
             params.allowscriptaccess = "sameDomain";
             params.allowfullscreen = "true";
-            params.wmode = 'direct';
             var attributes = {};
             attributes.id = "catandball_web";
             attributes.name = "catandball_web";
-            attributes.align = "left";
+            attributes.align = "middle";
             swfobject.embedSWF(
                 "catandball_web.swf", "flashContent", 
                 "480", "800", 
@@ -70,7 +67,7 @@
         <div id="flashContent">
             <p>
                 To view this page ensure that Adobe Flash Player version 
-                14.0.0 or greater is installed. 
+                16.0.0 or greater is installed. 
             </p>
             <script type="text/javascript"> 
                 var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
@@ -86,19 +83,17 @@
                 <param name="bgcolor" value="#ffffff" />
                 <param name="allowScriptAccess" value="sameDomain" />
                 <param name="allowFullScreen" value="true" />
-                <param name="wmode" value="direct" />
                 <!--[if !IE]>-->
                 <object type="application/x-shockwave-flash" data="catandball_web.swf" width="480" height="800">
                     <param name="quality" value="high" />
                     <param name="bgcolor" value="#ffffff" />
                     <param name="allowScriptAccess" value="sameDomain" />
                     <param name="allowFullScreen" value="true" />
-                    <param name="wmode" value="direct" />
                 <!--<![endif]-->
                 <!--[if gte IE 6]>-->
                     <p> 
                         Either scripts and active content are not permitted to run or Adobe Flash Player version
-                        14.0.0 or greater is not installed.
+                        16.0.0 or greater is not installed.
                     </p>
                 <!--<![endif]-->
                     <a href="http://www.adobe.com/go/getflashplayer">

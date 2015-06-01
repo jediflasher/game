@@ -176,6 +176,44 @@ package ru.catAndBall.data.game.buildings {
 			return _description;
 		}
 
+		private var _customConnectCounts:Object;
+
+		public function get customConnectCounts():Object {
+			if (!this._customConnectCounts) {
+				this._customConnectCounts = {};
+
+				for (var i:int = 0; i < level; i++) {
+					var state:ConstructionState = _proto.states[i];
+					if (!state.customConnectCounts) continue;
+
+					for (var elementName:String in state.customConnectCounts) {
+						this._customConnectCounts[elementName] = state.customConnectCounts[elementName];
+					}
+				}
+			}
+
+			return this._customConnectCounts;
+		}
+
+		private var _freeToCollect:Vector.<String>;
+
+		public function get freeToCollect():Vector.<String> {
+			if (!this._freeToCollect) {
+				this._freeToCollect = new Vector.<String>();
+
+				for (var i:int = 0; i < level; i++) {
+					var state:ConstructionState = _proto.states[i];
+					if (!state.freeToCollect) continue;
+
+					for each (var elementName:String in state.freeToCollect) {
+						this._freeToCollect.push(elementName);
+					}
+				}
+			}
+
+			return this._freeToCollect;
+		}
+
 		//--------------------------------------------------------------------------
 		//
 		//  Public methods
@@ -257,6 +295,9 @@ package ru.catAndBall.data.game.buildings {
 			_startBuildingTime = 0;
 			_lastBonusTime = TimeUtil.now;
 			updateTimers();
+
+			// to update counts including new built state
+			this._customConnectCounts = null;
 			if (super.hasEventListener(EVENT_BUILDING_COMPLETE)) dispatchEvent(new Event(EVENT_BUILDING_COMPLETE));
 		}
 
