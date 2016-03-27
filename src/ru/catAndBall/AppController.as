@@ -115,9 +115,9 @@ package ru.catAndBall {
 		//--------------------------------------------------------------------------
 
 		private function initPreloader():void {
-			var screen:BaseScreen = new ScreenPreloader(new BaseScreenData(ScreenType.PRELOADER));
+			var screen:BaseScreen = new ScreenPreloader();
 			var item:ScreenNavigatorItem = new BaseScreenController(_view, screen);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID,item);
 		}
 
 		private function init():void {
@@ -131,31 +131,31 @@ package ru.catAndBall {
 
 			var screen:BaseScreen = new ScreenMenu();
 			var item:ScreenNavigatorItem = new ScreenMenuController(_view, screen as ScreenMenu);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID, item);
 
 			screen = new ScreenRoom();
 			item = new ScreenRoomController(_view, screen as ScreenRoom);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID, item);
 
 			screen = new ScreenCraft();
 			item = new ScreenCraftController(_view, screen as ScreenCraft);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID, item);
 
 			screen = new ScreenRugField();
 			item = new ScreenRugFieldController(_view, screen as ScreenRugField);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID, item);
 
 			screen = new ScreenBallsField();
 			item = new ScreenBallsFieldController(_view, screen as ScreenBallsField);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID, item);
 
 			screen = new ScreenBank();
 			item = new ScreenBankController(_view, screen);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID, item);
 
 			screen = new ScreenConstruction();
 			item = new ScreenConstructionController(_view, screen);
-			_view.addScreen(screen.data.type, item);
+			_view.addScreen(screen.screenID, item);
 
 			new ScreenFadeTransitionManager(_view);
 		}

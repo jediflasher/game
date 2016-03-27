@@ -42,8 +42,8 @@ package ru.catAndBall.view.screens.mainMenu {
 		//
 		//--------------------------------------------------------------------------
 
-		public function ScreenMenu(data:BaseScreenData) {
-			super(ScreenType.PRELOADER);
+		public function ScreenMenu() {
+			super(ScreenType.MAIN_MENU);
 		}
 
 		//--------------------------------------------------------------------------

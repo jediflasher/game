@@ -14,6 +14,9 @@
             <entry library-name="GreenSock-AS3" library-level="application">
               <dependency linkage="Merged" />
             </entry>
+            <entry module-name="reader" build-configuration-name="reader">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="air19_sdk_win" />
         </dependencies>
@@ -35,5 +38,6 @@
     <orderEntry type="library" exported="" name="Feathers" level="application" />
     <orderEntry type="library" exported="" name="Starling" level="application" />
     <orderEntry type="library" exported="" name="GreenSock-AS3" level="application" />
+    <orderEntry type="module" module-name="reader" exported="" />
   </component>
 </module>

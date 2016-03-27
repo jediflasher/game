@@ -1,5 +1,7 @@
 package ru.catAndBall.view.screens.craft {
 	
+	import airlib.view.core.BaseScreen;
+
 	import feathers.controls.List;
 	import feathers.controls.ScrollContainer;
 	import feathers.controls.ToggleButton;
@@ -44,7 +46,7 @@ package ru.catAndBall.view.screens.craft {
 		//--------------------------------------------------------------------------
 
 		public function ScreenCraft() {
-			super(new BaseScreenData(ScreenType.COMMODE_CRAFT));
+			super(ScreenType.COMMODE_CRAFT);
 
 			headerClass = RoomHeaderBar;
 			footerClass = SimpleScreenFooterBar;

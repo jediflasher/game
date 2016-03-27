@@ -5,20 +5,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
 	
+	import airlib.view.core.BaseScreen;
+
 	import feathers.display.TiledImage;
-	
+
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.GridContainer;
-	
+
 	import starling.display.DisplayObject;
 	import starling.events.Event;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-	
+
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -44,8 +46,9 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		public function BaseScreenField(data:BaseScreenFieldData) {
-			super(data);
+		public function BaseScreenField(screenType:String, data:BaseScreenFieldData) {
+			super(screenType);
+			_data = data;
 		}
 
 		//---------------------------------------------------------
@@ -60,8 +63,10 @@ package ru.catAndBall.view.core.game.field {
 			return _fieldContainer;
 		}
 
-		public function get screenData():BaseScreenFieldData {
-			return (data as BaseScreenFieldData);
+		private var _data:BaseScreenFieldData;
+
+		public function get data():BaseScreenFieldData {
+			return _data;
 		}
 
 		//---------------------------------------------------------
@@ -83,27 +88,27 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		protected override function initialize():void {
-			footerClass = FieldFooterBar;
-
-			_fieldContainer = new GridContainer(screenData.gridData, getBackground());
-			_fieldContainer.y = 170;
-			addRawChild(_fieldContainer);
-
-			_progressPanel = new FieldProgressPanel();
-			addRawChild(_progressPanel);
-
-			_footer = new FieldFooter((data as BaseScreenFieldData).gridData);
-			_footer.addEventListener(ToolsPanel.EVENT_EXPAND_COLLAPSE, handler_expandCollapse);
-			_footer.y = PANEL_Y;
-			addRawChild(_footer);
-
-			_border = new TiledImage(Assets.getTexture(getBorder()));
-			_border.alignPivot(HAlign.LEFT, VAlign.CENTER);
-			_border.width = AppProperties.baseWidth;
-			_border.x = 0;
-			_border.y = PANEL_Y + 20;
-			addRawChild(_border);
-
+//			footerClass = FieldFooterBar;
+//
+//			_fieldContainer = new GridContainer(_data.gridData, getBackground());
+//			_fieldContainer.y = 170;
+//			addRawChild(_fieldContainer);
+//
+//			_progressPanel = new FieldProgressPanel();
+//			addRawChild(_progressPanel);
+//
+//			_footer = new FieldFooter((data as BaseScreenFieldData).gridData);
+//			_footer.addEventListener(ToolsPanel.EVENT_EXPAND_COLLAPSE, handler_expandCollapse);
+//			_footer.y = PANEL_Y;
+//			addRawChild(_footer);
+//
+//			_border = new TiledImage(Assets.getTexture(getBorder()));
+//			_border.alignPivot(HAlign.LEFT, VAlign.CENTER);
+//			_border.width = AppProperties.baseWidth;
+//			_border.x = 0;
+//			_border.y = PANEL_Y + 20;
+//			addRawChild(_border);
+//
 			addEventListener(FieldFooterBar.EVENT_TOOLS_CLICK, handler_toolsClick);
 
 			super.initialize();
@@ -124,18 +129,10 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		protected function update(event:* = null):void {
-			var fieldData:GridData = screenData.gridData;
+			var fieldData:GridData = _data.gridData;
 
 			fieldData.addEventListener(GridData.EVENT_TURN_UPDATE, updateTurn);
 			updateTurn(event);
-		}
-
-		protected function getBackground():GridBackground {
-			throw "must be implemented";
-		}
-
-		protected function getBorder():String {
-			throw "must be implemented"
 		}
 
 		protected override function feathersControl_removedFromStageHandler(event:Event):void {
@@ -151,8 +148,8 @@ package ru.catAndBall.view.core.game.field {
 		//---------------------------------------------------------
 
 		private function updateTurn(event:* = null):void {
-			_progressPanel.progress = screenData.gridData.currentTurn / screenData.gridData.maxTurns;
-			_progressPanel.stepsLeft = screenData.gridData.maxTurns - screenData.gridData.currentTurn;
+			_progressPanel.progress = _data.gridData.currentTurn / _data.gridData.maxTurns;
+			_progressPanel.stepsLeft = _data.gridData.maxTurns - _data.gridData.currentTurn;
 		}
 
 		private function handler_toolsClick(event:*):void {

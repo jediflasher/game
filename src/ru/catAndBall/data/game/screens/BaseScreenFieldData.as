@@ -1,5 +1,7 @@
 package ru.catAndBall.data.game.screens {
 	
+	import flash.events.EventDispatcher;
+
 	import ru.catAndBall.data.game.field.GridData;
 	
 	/**
@@ -9,7 +11,7 @@ package ru.catAndBall.data.game.screens {
 	 * @langversion         3.0
 	 * @date                05.11.14 9:25
 	 */
-	public class BaseScreenFieldData extends BaseScreenData {
+	public class BaseScreenFieldData extends EventDispatcher {
 
 		//--------------------------------------------------------------------------
 		//
@@ -17,8 +19,8 @@ package ru.catAndBall.data.game.screens {
 		//
 		//--------------------------------------------------------------------------
 
-		public function BaseScreenFieldData(screenType:String, fieldData:GridData) {
-			super(screenType);
+		public function BaseScreenFieldData(fieldData:GridData) {
+			super();
 			this.gridData = fieldData;
 		}
 

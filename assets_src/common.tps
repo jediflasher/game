@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.4</string>
         <key>fileName</key>
-        <string>D:/Work/catandball/assets_src/field_window.tps</string>
+        <string>D:/Work/catandball/assets_src/common.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -72,7 +72,7 @@
         <key>dataFormat</key>
         <string>sparrow</string>
         <key>textureFileName</key>
-        <filename>../assets/graphics/{v}/window_field.png</filename>
+        <filename>../assets/graphics/{v}/common{n}.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -92,7 +92,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">PngQuantLow</enum>
+        <enum type="SettingsBase::DitherType">Linear</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -181,11 +181,11 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../assets/graphics/{v}/window_field.xml</filename>
+                <filename>../assets/graphics/{v}/common{n}.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
-        <false/>
+        <true/>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -224,7 +224,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>export/hd/window_field</filename>
+            <filename>export/hd/common</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

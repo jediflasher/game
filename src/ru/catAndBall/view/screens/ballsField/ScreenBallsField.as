@@ -7,6 +7,7 @@ package ru.catAndBall.view.screens.ballsField {
 	
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
+	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.game.field.GridBackground;
@@ -28,7 +29,7 @@ package ru.catAndBall.view.screens.ballsField {
 		//---------------------------------------------------------
 
 		public function ScreenBallsField() {
-			super(new BaseScreenFieldData(ScreenType.BALLS_FIELD, GameData.player.ballsField));
+			super(ScreenType.BALLS_FIELD, new BaseScreenFieldData(GameData.player.ballsField));
 		}
 
 		//---------------------------------------------------------

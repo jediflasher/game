@@ -1,22 +1,18 @@
-//////////////////////////////////////////////////////////////////////////////////
-//
-//  © 2011 Crazy Panda
-//
-//////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller {
 	
+	import airlib.view.core.BaseScreen;
+
 	import feathers.controls.ScreenNavigator;
 	import feathers.controls.ScreenNavigatorItem;
 	import feathers.events.FeathersEventType;
-	
+
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	
-	import ru.catAndBall.data.game.screens.BaseScreenData;
+
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
-	
+
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -65,10 +61,6 @@ package ru.catAndBall.controller {
 
 		public function get view():BaseScreen {
 			return _view;
-		}
-
-		public function get data():BaseScreenData {
-			return _view.data;
 		}
 
 		private var _navigator:ScreenNavigator;

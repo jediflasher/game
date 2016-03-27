@@ -1,5 +1,7 @@
 package ru.catAndBall.view.screens.bank {
 	
+	import airlib.view.core.BaseScreen;
+	
 	import feathers.controls.Button;
 	
 	import ru.catAndBall.AppProperties;
