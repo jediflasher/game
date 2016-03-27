@@ -1,10 +1,11 @@
 package ru.catAndBall.view.screens.room.header {
+	
 	import feathers.controls.Header;
 	import feathers.display.TiledImage;
-
+	
 	import flash.events.Event;
 	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
@@ -12,10 +13,10 @@ package ru.catAndBall.view.screens.room.header {
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.core.text.TextFieldIcon;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

@@ -1,6 +1,7 @@
 package ru.catAndBall.data {
+	
 	import flash.events.EventDispatcher;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

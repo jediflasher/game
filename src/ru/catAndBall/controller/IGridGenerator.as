@@ -4,9 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller {
-
+	
 	import ru.catAndBall.data.game.field.GridCellData;
-
+	
 	public interface IGridGenerator {
 
 		function getGridCells(collectedCells:Vector.<GridCellData>):Vector.<GridCellData>;

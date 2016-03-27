@@ -4,17 +4,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.rugField {
-
+	
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.game.ResourceSet;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.game.field.GridBackground;
-	import ru.catAndBall.view.core.game.field.ObjectsCounter;
 	import ru.catAndBall.view.screens.ScreenType;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

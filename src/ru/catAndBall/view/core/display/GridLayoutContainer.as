@@ -1,12 +1,13 @@
 package ru.catAndBall.view.core.display {
+	
 	import feathers.core.FeathersControl;
-
+	
 	import flash.errors.IllegalOperationError;
 	import flash.geom.Point;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.Sprite;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

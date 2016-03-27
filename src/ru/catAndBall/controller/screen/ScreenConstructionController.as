@@ -1,18 +1,18 @@
 package ru.catAndBall.controller.screen {
+	
 	import feathers.controls.ScreenNavigator;
 	import feathers.core.PopUpManager;
-
+	
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.view.popups.ConstructionNoResourcesPopup;
-	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.construction.ConstructionItem;
-
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

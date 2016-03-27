@@ -4,26 +4,21 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
-
-	import feathers.core.FeathersControl;
+	
 	import feathers.display.TiledImage;
-
+	
 	import ru.catAndBall.AppProperties;
-
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.GridContainer;
-	import ru.catAndBall.view.layout.Layout;
-	import ru.catAndBall.view.screens.BaseScreen;
-
+	
 	import starling.display.DisplayObject;
-	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -75,7 +70,7 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//---------------------------------------------------------
 
-		private var _border:DisplayObject
+		private var _border:DisplayObject;
 
 		protected var _progressPanel:FieldProgressPanel;
 

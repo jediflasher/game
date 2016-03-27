@@ -4,9 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data.game.screens {
-
+	
 	import flash.events.EventDispatcher;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

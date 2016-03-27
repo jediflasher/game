@@ -1,11 +1,11 @@
 package ru.catAndBall.view.layout {
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.layout.field.FieldLayout;
 	import ru.catAndBall.view.layout.popup.InventoryLayout;
 	import ru.catAndBall.view.layout.popup.PopupLayout;
-	import ru.catAndBall.view.layout.preloader.PreloaderLayout;
 	import ru.catAndBall.view.layout.room.RoomLayout;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

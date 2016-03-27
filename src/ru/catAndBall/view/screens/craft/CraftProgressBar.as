@@ -1,6 +1,7 @@
 package ru.catAndBall.view.screens.craft {
+	
 	import feathers.core.FeathersControl;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

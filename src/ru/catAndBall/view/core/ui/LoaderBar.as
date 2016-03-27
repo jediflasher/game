@@ -1,14 +1,9 @@
 package ru.catAndBall.view.core.ui {
+	
 	import feathers.display.Scale3Image;
-	import feathers.textures.Scale3Textures;
-
-	import ru.catAndBall.view.assets.AssetList;
-	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.Sprite;
-	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

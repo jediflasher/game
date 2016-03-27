@@ -1,6 +1,7 @@
 package ru.catAndBall.view.core.utils {
+	
 	import ru.catAndBall.utils.str;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

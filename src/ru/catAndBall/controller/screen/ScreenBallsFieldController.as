@@ -4,21 +4,18 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller.screen {
-
+	
 	import feathers.controls.ScreenNavigator;
-
+	
 	import ru.catAndBall.controller.generators.BaseGridGenerator;
 	import ru.catAndBall.controller.tools.BaseToolController;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.Dictionaries;
-	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.ResourceSet;
+	import ru.catAndBall.data.game.settings.GridFieldSettings;
 	import ru.catAndBall.data.game.tools.BaseToolData;
-	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
-
-	import starling.events.Event;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

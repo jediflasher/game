@@ -1,7 +1,7 @@
 package ru.catAndBall.view.core.game.factory {
-
+	
 	import flash.display.BitmapData;
-
+	
 	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.view.assets.Assets;
@@ -10,9 +10,9 @@ package ru.catAndBall.view.core.game.factory {
 	import ru.catAndBall.view.screens.room.CommodeShelf1;
 	import ru.catAndBall.view.screens.room.CommodeShelf2;
 	import ru.catAndBall.view.screens.room.CommodeShelf3;
-
+	
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

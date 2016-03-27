@@ -1,6 +1,7 @@
 package ru.catAndBall.data.game.player {
+	
 	import flash.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

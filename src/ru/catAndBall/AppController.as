@@ -4,16 +4,18 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall {
+	
+	import airlib.view.core.BaseScreen;
 
 	import feathers.controls.ScreenNavigatorItem;
 	import feathers.core.IPopUpManager;
 	import feathers.core.PopUpManager;
 	import feathers.motion.transitions.ScreenFadeTransitionManager;
-
+	
 	import flash.events.Event;
 	import flash.net.SharedObject;
 	import flash.utils.getDefinitionByName;
-
+	
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.controller.screen.ScreenBallsFieldController;
@@ -30,7 +32,6 @@ package ru.catAndBall {
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.ui.CatPopupManager;
 	import ru.catAndBall.view.core.ui.Hint;
-	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.ballsField.ScreenBallsField;
 	import ru.catAndBall.view.screens.bank.ScreenBank;
@@ -40,11 +41,9 @@ package ru.catAndBall {
 	import ru.catAndBall.view.screens.preloader.ScreenPreloader;
 	import ru.catAndBall.view.screens.room.ScreenRoom;
 	import ru.catAndBall.view.screens.rugField.ScreenRugField;
-
-	import starling.core.Starling;
+	
 	import starling.events.EventDispatcher;
-	import starling.utils.SystemUtil;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -124,15 +123,13 @@ package ru.catAndBall {
 		private function init():void {
 			Hint.layer = _view;
 
-			Starling.juggler.add(new DragonBonesEnterFramer());
-
 			PopUpManager.popUpManagerFactory = function ():IPopUpManager {
 				return new CatPopupManager();
 			};
 
 			PurchaseController.init(_view);
 
-			var screen:BaseScreen = new ScreenMenu(new BaseScreenData(ScreenType.MAIN_MENU));
+			var screen:BaseScreen = new ScreenMenu();
 			var item:ScreenNavigatorItem = new ScreenMenuController(_view, screen as ScreenMenu);
 			_view.addScreen(screen.data.type, item);
 
@@ -216,15 +213,5 @@ package ru.catAndBall {
 		//  Event handlers
 		//
 		//--------------------------------------------------------------------------
-	}
-}
-
-import dragonBones.animation.WorldClock;
-
-import starling.animation.IAnimatable;
-
-class DragonBonesEnterFramer implements IAnimatable {
-	public function advanceTime(time:Number):void {
-		WorldClock.clock.advanceTime(time);
 	}
 }

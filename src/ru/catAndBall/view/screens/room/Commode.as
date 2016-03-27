@@ -1,11 +1,12 @@
 package ru.catAndBall.view.screens.room {
+	
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.BaseSprite;
-
+	
 	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

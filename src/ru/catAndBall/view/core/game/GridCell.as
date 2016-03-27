@@ -4,11 +4,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game {
-
+	
 	import com.greensock.TweenNano;
-
+	
 	import flash.errors.IllegalOperationError;
-
+	
 	import ru.catAndBall.data.game.field.BombGridCellData;
 	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.PestGridCellData;
@@ -17,14 +17,14 @@ package ru.catAndBall.view.core.game {
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.text.TextFieldBackground;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.animation.IAnimatable;
 	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -252,5 +252,4 @@ package ru.catAndBall.view.core.game {
 	}
 }
 
-class ConstructorPrivater {
-}
+class ConstructorPrivater {}

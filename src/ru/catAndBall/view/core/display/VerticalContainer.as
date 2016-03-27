@@ -1,8 +1,8 @@
 package ru.catAndBall.view.core.display {
+	
 	import feathers.controls.LayoutGroup;
-	import feathers.core.FeathersControl;
 	import feathers.layout.VerticalLayout;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

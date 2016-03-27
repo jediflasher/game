@@ -1,14 +1,14 @@
 package ru.catAndBall.view.screens.room {
-
+	
 	import feathers.controls.Button;
-
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-
+	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

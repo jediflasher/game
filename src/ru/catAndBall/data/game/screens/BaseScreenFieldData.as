@@ -1,6 +1,7 @@
 package ru.catAndBall.data.game.screens {
+	
 	import ru.catAndBall.data.game.field.GridData;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

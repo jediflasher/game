@@ -1,8 +1,9 @@
 package ru.catAndBall.data.game.buildings.constructions {
+	
 	import ru.catAndBall.data.dict.CommodeShelfDict;
 	import ru.catAndBall.data.dict.tools.ToolDict;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

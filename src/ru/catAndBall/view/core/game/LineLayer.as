@@ -4,12 +4,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game {
-
-	import ru.catAndBall.AppProperties;
+	
 	import ru.catAndBall.view.core.utils.Line;
-
+	
 	import starling.display.Sprite;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

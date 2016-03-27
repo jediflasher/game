@@ -4,18 +4,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller.screen {
-
+	
 	import feathers.controls.ScreenNavigator;
 	import feathers.core.PopUpManager;
-	import feathers.core.PopUpManager;
-
+	
 	import ru.catAndBall.AppController;
-
-	import ru.catAndBall.controller.BaseScreenController;
-
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.PurchaseController;
-	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
@@ -29,13 +24,11 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.view.popups.InventoryPopup;
 	import ru.catAndBall.view.popups.StartFieldPaidPopup;
 	import ru.catAndBall.view.screens.ScreenType;
-	import ru.catAndBall.view.screens.room.footer.RoomFooterBar;
 	import ru.catAndBall.view.screens.room.ScreenRoom;
-
-	import starling.display.Image;
-
+	import ru.catAndBall.view.screens.room.footer.RoomFooterBar;
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

@@ -4,12 +4,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller.screen {
-
+	
 	import feathers.controls.ScreenNavigator;
-
+	
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.view.screens.windowField.ScreenWindowField;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

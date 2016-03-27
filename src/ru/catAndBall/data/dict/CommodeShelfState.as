@@ -1,6 +1,7 @@
 package ru.catAndBall.data.dict {
+	
 	import ru.catAndBall.data.dict.tools.ToolDict;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

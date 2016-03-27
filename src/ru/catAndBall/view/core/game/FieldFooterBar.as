@@ -4,17 +4,17 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game {
-
+	
 	import feathers.controls.Button;
-
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.ui.BaseFooterBar;
 	import ru.catAndBall.view.core.ui.YellowButton;
-
+	
 	import starling.display.DisplayObject;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

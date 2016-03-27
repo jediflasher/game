@@ -1,18 +1,16 @@
 package ru.catAndBall.view.core.game.field {
+	
 	import com.greensock.TweenNano;
-
+	
 	import feathers.core.FeathersControl;
-	import feathers.display.TiledImage;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-
+	
 	import starling.display.Image;
-	import starling.utils.HAlign;
-	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

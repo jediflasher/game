@@ -1,8 +1,7 @@
 package ru.catAndBall.view.screens.bank {
+	
 	import feathers.controls.Button;
-
-	import flash.events.MouseEvent;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
@@ -14,13 +13,12 @@ package ru.catAndBall.view.screens.bank {
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
-	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
 	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
-
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

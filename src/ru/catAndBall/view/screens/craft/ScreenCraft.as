@@ -1,4 +1,5 @@
 package ru.catAndBall.view.screens.craft {
+	
 	import feathers.controls.List;
 	import feathers.controls.ScrollContainer;
 	import feathers.controls.ToggleButton;
@@ -6,7 +7,7 @@ package ru.catAndBall.view.screens.craft {
 	import feathers.core.FeathersControl;
 	import feathers.data.ListCollection;
 	import feathers.layout.VerticalLayout;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
@@ -16,11 +17,11 @@ package ru.catAndBall.view.screens.craft {
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.*;
 	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
-
+	
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.textures.TextureSmoothing;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

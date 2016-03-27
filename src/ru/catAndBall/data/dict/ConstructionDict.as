@@ -1,8 +1,7 @@
 package ru.catAndBall.data.dict {
-	import ru.catAndBall.utils.s;
-	import ru.catAndBall.utils.str;
+	
 	import ru.catAndBall.view.core.utils.L;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

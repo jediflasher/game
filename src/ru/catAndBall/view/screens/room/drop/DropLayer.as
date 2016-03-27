@@ -1,21 +1,22 @@
 package ru.catAndBall.view.screens.room.drop {
+	
 	import com.greensock.TweenNano;
 	import com.greensock.easing.Bounce;
 	import com.greensock.easing.Cubic;
 	import com.greensock.easing.Linear;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.utils.str;
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.core.text.TextFieldTest;
 	import ru.catAndBall.view.core.utils.L;
-
+	
 	import starling.display.Sprite;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

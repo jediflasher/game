@@ -1,21 +1,18 @@
 package ru.catAndBall.view.core.game {
-
+	
 	import feathers.core.FeathersControl;
 	import feathers.display.Scale3Image;
 	import feathers.textures.Scale3Textures;
-
+	
 	import flash.events.Event;
 	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.display.BaseSprite;
 	import ru.catAndBall.view.core.text.TextFieldBackground;
 	import ru.catAndBall.view.layout.Layout;
-
-	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

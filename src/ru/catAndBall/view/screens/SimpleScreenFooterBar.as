@@ -1,11 +1,12 @@
 package ru.catAndBall.view.screens {
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.ui.BaseFooterBar;
 	import ru.catAndBall.view.core.ui.YellowButton;
-
+	
 	import starling.display.DisplayObject;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

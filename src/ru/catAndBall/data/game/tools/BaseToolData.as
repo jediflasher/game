@@ -4,13 +4,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data.game.tools {
-
+	
 	import flash.events.EventDispatcher;
-
+	
 	import ru.catAndBall.data.dict.tools.ToolDict;
-
 	import ru.catAndBall.data.game.ResourceSet;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

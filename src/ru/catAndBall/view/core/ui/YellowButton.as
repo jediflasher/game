@@ -1,11 +1,12 @@
 package ru.catAndBall.view.core.ui {
+	
 	import feathers.controls.Button;
-
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-
+	
 	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

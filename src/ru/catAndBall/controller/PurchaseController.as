@@ -1,14 +1,13 @@
 package ru.catAndBall.controller {
+	
 	import feathers.controls.ScreenNavigator;
-
+	
 	import ru.catAndBall.controller.screen.ScreenBankController;
-
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
-	import ru.catAndBall.view.screens.bank.ScreenBank;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

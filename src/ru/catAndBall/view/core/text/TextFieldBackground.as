@@ -1,10 +1,11 @@
 package ru.catAndBall.view.core.text {
+	
 	import feathers.core.FeathersControl;
-
+	
 	import flash.geom.Rectangle;
-
+	
 	import starling.display.DisplayObject;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

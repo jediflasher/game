@@ -1,6 +1,7 @@
 package ru.catAndBall.view.layout.preloader {
+	
 	import ru.catAndBall.AppProperties;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

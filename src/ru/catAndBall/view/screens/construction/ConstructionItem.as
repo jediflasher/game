@@ -1,25 +1,21 @@
 package ru.catAndBall.view.screens.construction {
+	
 	import feathers.controls.Button;
 	import feathers.controls.renderers.DefaultListItemRenderer;
-	import feathers.display.Scale9Image;
-	import feathers.textures.Scale9Textures;
-
+	
 	import flash.events.Event;
 	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.utils.EverySecond;
-	import ru.catAndBall.utils.EverySecond;
 	import ru.catAndBall.utils.TimeUtil;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
-	import ru.catAndBall.view.core.game.Construction;
 	import ru.catAndBall.view.core.game.PriceButtonDecorator;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
@@ -27,12 +23,10 @@ package ru.catAndBall.view.screens.construction {
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
-
-	import starling.display.Image;
-
+	
 	import starling.display.Image;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

@@ -1,12 +1,13 @@
 package ru.catAndBall.view.screens.room.header {
+	
 	import feathers.core.FeathersControl;
-
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.text.BaseTextField;
-
+	
 	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

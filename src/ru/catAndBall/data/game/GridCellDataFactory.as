@@ -1,10 +1,12 @@
 package ru.catAndBall.data.game {
+	
 	import ru.catAndBall.data.game.field.BombGridCellData;
 	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.GridCellType;
 	import ru.catAndBall.data.game.field.PestGridCellData;
 	import ru.catAndBall.data.game.field.ResourceGridCellData;
-
+	import ru.catAndBall.data.game.settings.GridFieldSettings;
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

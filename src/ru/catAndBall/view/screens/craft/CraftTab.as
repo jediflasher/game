@@ -1,17 +1,11 @@
 package ru.catAndBall.view.screens.craft {
-	import feathers.controls.Button;
+	
 	import feathers.controls.ToggleButton;
-	import feathers.core.ITextRenderer;
-	import feathers.display.Scale3Image;
 	import feathers.text.BitmapFontTextFormat;
-	import feathers.textures.Scale3Textures;
-
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.text.BaseTextField;
-	import ru.catAndBall.view.core.text.TextFieldTest;
-	import ru.catAndBall.view.layout.Layout;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

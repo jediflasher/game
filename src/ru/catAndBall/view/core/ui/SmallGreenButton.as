@@ -1,20 +1,18 @@
 package ru.catAndBall.view.core.ui {
+	
 	import feathers.controls.Button;
 	import feathers.core.ITextRenderer;
 	import feathers.display.Scale3Image;
 	import feathers.textures.Scale3Textures;
-
+	
 	import ru.catAndBall.utils.s;
-
 	import ru.catAndBall.view.assets.AssetList;
-
 	import ru.catAndBall.view.assets.Assets;
-
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

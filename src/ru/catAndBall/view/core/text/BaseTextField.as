@@ -4,12 +4,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.text {
-
+	
 	import feathers.controls.text.BitmapFontTextRenderer;
 	import feathers.text.BitmapFontTextFormat;
-
+	
 	import flash.text.TextFormatAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

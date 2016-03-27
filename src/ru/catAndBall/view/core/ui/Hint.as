@@ -1,22 +1,21 @@
 package ru.catAndBall.view.core.ui {
+	
 	import feathers.core.FeathersControl;
 	import feathers.display.Scale9Image;
 	import feathers.textures.Scale9Textures;
-
+	
 	import flash.geom.Point;
-
 	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.ui.Hint;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

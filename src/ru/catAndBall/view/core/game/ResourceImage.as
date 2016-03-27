@@ -1,14 +1,15 @@
 package ru.catAndBall.view.core.game {
+	
 	import flash.display.BitmapData;
-
+	
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.Image;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

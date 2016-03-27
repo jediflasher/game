@@ -4,9 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall {
-
+	
 	import flash.geom.Rectangle;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

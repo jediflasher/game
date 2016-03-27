@@ -1,4 +1,5 @@
 package ru.catAndBall.view.core.game.field {
+	
 	import feathers.controls.Button;
 	import feathers.controls.LayoutGroup;
 	import feathers.controls.ScrollContainer;
@@ -7,9 +8,7 @@ package ru.catAndBall.view.core.game.field {
 	import feathers.layout.AnchorLayoutData;
 	import feathers.layout.HorizontalLayout;
 	import feathers.layout.VerticalLayout;
-
-	import ru.catAndBall.AppProperties;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.CommodeShelfDict;
@@ -18,9 +17,9 @@ package ru.catAndBall.view.core.game.field {
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.ui.BaseButton;
-
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

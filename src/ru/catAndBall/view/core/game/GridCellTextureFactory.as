@@ -4,13 +4,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game {
-
+	
 	import ru.catAndBall.data.game.field.GridCellType;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-
+	
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

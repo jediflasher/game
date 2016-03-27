@@ -4,9 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall {
-
+	
 	import feathers.controls.ScreenNavigator;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

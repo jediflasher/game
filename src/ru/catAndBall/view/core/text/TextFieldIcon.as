@@ -1,13 +1,14 @@
 package ru.catAndBall.view.core.text {
+	
 	import feathers.controls.LayoutGroup;
 	import feathers.core.FeathersControl;
 	import feathers.layout.HorizontalLayout;
-
+	
 	import ru.catAndBall.AppProperties;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

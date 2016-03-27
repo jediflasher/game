@@ -4,17 +4,17 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data.game.field {
-
+	
 	import flash.errors.IllegalOperationError;
 	import flash.events.EventDispatcher;
 	import flash.utils.Dictionary;
-
+	
 	import ru.catAndBall.controller.IGridGenerator;
-	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.ResourceSet;
+	import ru.catAndBall.data.game.settings.GridFieldSettings;
 	import ru.catAndBall.event.data.DataEvent;
 	import ru.catAndBall.utils.str;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

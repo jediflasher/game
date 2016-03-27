@@ -1,6 +1,7 @@
 package ru.catAndBall.view.core.text {
+	
 	import ru.catAndBall.view.assets.AssetList;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

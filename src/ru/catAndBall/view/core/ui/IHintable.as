@@ -6,8 +6,9 @@
  * @date                28.09.14 15:51
  */
 package ru.catAndBall.view.core.ui {
+	
 	import starling.display.DisplayObject;
-
+	
 	public interface IHintable {
 
 		function get hint():DisplayObject;

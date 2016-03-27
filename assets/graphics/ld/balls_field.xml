@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:b27ab342498b9d4c56e0a0b92736ec16:fb6dbc555a64d7ca26a1c44217973da1:48496533eb5821a5b39b6e4113bcd95a$ -->
+<TextureAtlas imagePath="balls_field.png" width="256" height="512">
+    <SubTexture name="ballBlue" x="217" y="84" width="37" height="38" frameX="-4" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="ballGold" x="217" y="124" width="37" height="37" frameX="-4" frameY="-4" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="ballGreen" x="217" y="163" width="37" height="37" frameX="-4" frameY="-4" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="ballIcon" x="174" y="2" width="43" height="39" frameX="0" frameY="-3" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="ballIconDisabled" x="174" y="43" width="43" height="39" frameX="0" frameY="-3" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="ballPurple" x="129" y="258" width="39" height="39" frameX="-3" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="ballRed" x="212" y="279" width="38" height="39" frameX="-4" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="ballWhite" x="81" y="217" width="37" height="37" frameX="-4" frameY="-4" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="ballsBg1" x="2" y="2" width="90" height="90"/>
+    <SubTexture name="ballsBg2" x="2" y="424" width="44" height="44"/>
+    <SubTexture name="ballsBg3" x="48" y="424" width="44" height="44"/>
+    <SubTexture name="ballsBgDown" x="94" y="2" width="25" height="13" frameX="0" frameY="0" frameWidth="25" frameHeight="16"/>
+    <SubTexture name="ballsBgLeft" x="2" y="94" width="38" height="328" frameX="0" frameY="0" frameWidth="48" frameHeight="328"/>
+    <SubTexture name="ballsBgRight" x="42" y="94" width="37" height="328" frameX="-10" frameY="0" frameWidth="47" frameHeight="328"/>
+    <SubTexture name="ballsBgTop" x="94" y="17" width="25" height="7"/>
+    <SubTexture name="granny" x="89" y="470" width="38" height="40" frameX="-3" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="socks" x="81" y="94" width="38" height="39" frameX="-3" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="socksIcon" x="129" y="45" width="42" height="43" frameX="0" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="socksIconDisabled" x="173" y="84" width="42" height="43" frameX="0" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="sweaterBlue" x="213" y="202" width="40" height="37" frameX="-2" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="sweaterGreen" x="171" y="217" width="40" height="37" frameX="-2" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="sweaterIcon" x="2" y="470" width="43" height="40" frameX="0" frameY="-2" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="sweaterIconDisabled" x="129" y="2" width="43" height="41" frameX="0" frameY="-2" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="sweaterPurple" x="171" y="256" width="39" height="41" frameX="-3" frameY="-1" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="sweaterRed" x="129" y="219" width="40" height="37" frameX="-2" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="sweaterWhite" x="47" y="470" width="40" height="40" frameX="-2" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="toyBlue" x="81" y="135" width="38" height="39" frameX="-3" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="toyGreen" x="129" y="178" width="40" height="39" frameX="-2" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="toyIcon" x="129" y="90" width="42" height="43" frameX="-1" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="toyIconDisabled" x="173" y="129" width="42" height="43" frameX="-1" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="toyPurple" x="213" y="241" width="40" height="36" frameX="-2" frameY="-4" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="toyRed" x="129" y="135" width="40" height="41" frameX="-2" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="toyWhite" x="81" y="176" width="38" height="39" frameX="-3" frameY="-3" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="wolf" x="171" y="174" width="40" height="41" frameX="-2" frameY="-1" frameWidth="44" frameHeight="44"/>
+</TextureAtlas>

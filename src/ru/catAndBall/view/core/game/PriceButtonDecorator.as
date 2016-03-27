@@ -1,20 +1,12 @@
 package ru.catAndBall.view.core.game {
+	
 	import feathers.controls.Button;
-
+	
 	import ru.catAndBall.AppProperties;
-
-	import ru.catAndBall.AppProperties;
-
-	import ru.catAndBall.AppProperties;
-
 	import ru.catAndBall.data.game.ResourceSet;
-
-	import ru.catAndBall.view.assets.AssetList;
-
-	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

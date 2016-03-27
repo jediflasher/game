@@ -4,18 +4,16 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller.tools {
-
+	
 	import flash.errors.IllegalOperationError;
-
+	
 	import ru.catAndBall.controller.screen.BaseScreenFieldController;
 	import ru.catAndBall.data.game.GridCellDataFactory;
-
-	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.tools.BaseToolData;
 	import ru.catAndBall.view.core.game.GridContainer;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

@@ -1,11 +1,11 @@
 package ru.catAndBall.view.core.ui {
-
+	
 	import flash.geom.Rectangle;
-
+	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.textures.Texture;
-
+	
 	public class CBScale9Image extends Sprite {
 
 		//--------------------------------------------------------------------------

@@ -1,15 +1,13 @@
 package ru.catAndBall.view.core.game.field {
-
-
-	import ru.catAndBall.AppProperties;
+	
+	
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.TiledImage;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

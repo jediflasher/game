@@ -1,7 +1,8 @@
 package ru.catAndBall.data.dict {
+	
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

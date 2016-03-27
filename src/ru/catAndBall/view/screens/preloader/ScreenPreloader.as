@@ -4,11 +4,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.preloader {
+	
+	import airlib.view.core.BaseScreen;
 
 	import ru.catAndBall.AppProperties;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.core.ui.LoaderBar;
-	import ru.catAndBall.view.screens.BaseScreen;
+	import ru.catAndBall.view.screens.ScreenType;
 
 	/**
 	 * @author                Obi
@@ -25,8 +26,8 @@ package ru.catAndBall.view.screens.preloader {
 		//
 		//---------------------------------------------------------
 
-		public function ScreenPreloader(data:BaseScreenData = null) {
-			super(data);
+		public function ScreenPreloader() {
+			super(ScreenType.PRELOADER);
 		}
 
 		//--------------------------------------------------------------------------

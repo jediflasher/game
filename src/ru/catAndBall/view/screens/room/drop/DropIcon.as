@@ -1,16 +1,16 @@
 package ru.catAndBall.view.screens.room.drop {
-
+	
 	import com.greensock.TweenNano;
-
+	
 	import flash.errors.IllegalOperationError;
-
+	
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-
+	
 	import starling.display.Image;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

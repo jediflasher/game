@@ -1,9 +1,10 @@
 package ru.catAndBall.utils {
+	
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Dictionary;
 	import flash.utils.Timer;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

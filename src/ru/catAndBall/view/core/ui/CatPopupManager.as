@@ -1,11 +1,12 @@
 package ru.catAndBall.view.core.ui {
+	
 	import feathers.core.DefaultPopUpManager;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Quad;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

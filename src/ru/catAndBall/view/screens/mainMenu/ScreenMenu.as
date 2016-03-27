@@ -4,17 +4,19 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.mainMenu {
+	
+	import airlib.view.core.BaseScreen;
 
 	import feathers.controls.Button;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
 	import ru.catAndBall.view.core.utils.L;
-	import ru.catAndBall.view.screens.BaseScreen;
-
+	import ru.catAndBall.view.screens.ScreenType;
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -41,7 +43,7 @@ package ru.catAndBall.view.screens.mainMenu {
 		//--------------------------------------------------------------------------
 
 		public function ScreenMenu(data:BaseScreenData) {
-			super(data, "preloader");
+			super(ScreenType.PRELOADER);
 		}
 
 		//--------------------------------------------------------------------------

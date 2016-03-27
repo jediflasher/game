@@ -4,8 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data.game.field {
+	
 	import ru.catAndBall.data.game.ResourceSet;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

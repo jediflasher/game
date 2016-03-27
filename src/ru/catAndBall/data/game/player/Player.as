@@ -4,12 +4,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data.game.player {
-
+	
 	import ru.catAndBall.data.BaseData;
 	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.field.GridData;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

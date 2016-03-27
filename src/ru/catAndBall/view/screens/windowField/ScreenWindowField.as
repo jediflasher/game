@@ -4,14 +4,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.windowField {
-
+	
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.game.field.GridBackground;
 	import ru.catAndBall.view.screens.ScreenType;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

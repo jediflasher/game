@@ -4,15 +4,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller.generators {
-
-	import flash.errors.IllegalOperationError;
-
+	
 	import ru.catAndBall.controller.IGridGenerator;
 	import ru.catAndBall.data.game.GridCellDataFactory;
-	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.field.GridCellData;
-	import ru.catAndBall.data.game.field.GridCellType;
-
+	import ru.catAndBall.data.game.settings.GridFieldSettings;
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -32,8 +29,8 @@ package ru.catAndBall.controller.generators {
 			super();
 			_settings = settings;
 			_settings.generator = this;
-			parse(_settings.elements, _settings.elementChances);
-			parse(_settings.startElements, _settings.startElementChances, true);
+			parse(_settings.elements.elements, _settings.elements.chances);
+			parse(_settings.startElements.elements, _settings.startElements.chances, true);
 		}
 
 		//--------------------------------------------------------------------------

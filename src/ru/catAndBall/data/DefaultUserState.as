@@ -1,6 +1,7 @@
 package ru.catAndBall.data {
+	
 	import ru.catAndBall.utils.TimeUtil;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

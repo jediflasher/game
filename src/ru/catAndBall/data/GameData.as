@@ -4,9 +4,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data {
+	
 	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.player.Player;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

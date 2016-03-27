@@ -1,8 +1,8 @@
 package ru.catAndBall.view.screens.room {
+	
 	import ru.catAndBall.data.game.buildings.ConstructionData;
-	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.Construction;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

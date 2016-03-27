@@ -1,10 +1,11 @@
 package ru.catAndBall.view.core.game.field {
+	
 	import feathers.controls.LayoutGroup;
 	import feathers.layout.HorizontalLayout;
-
+	
 	import ru.catAndBall.data.game.field.GridCellType;
 	import ru.catAndBall.data.game.field.GridData;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

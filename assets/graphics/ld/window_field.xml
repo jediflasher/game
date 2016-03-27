@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:1cab4e3fb004de866009b90e9425a80b:7a423fc20edbf43ba8f6756df003321b:942991294943abc2d84e49674f14a117$ -->
+<TextureAtlas imagePath="window_field.png" width="256" height="512">
+    <SubTexture name="bumblebee" x="216" y="260" width="38" height="40" frameX="-3" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="camomile" x="129" y="302" rotated="true" width="40" height="36" frameX="-4" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="camomileIcon" x="71" y="182" rotated="true" width="43" height="39" frameX="-3" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="camomileIconDisabled" x="174" y="219" rotated="true" width="43" height="39" frameX="-3" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="chiken" x="87" y="473" width="40" height="36" frameX="-2" frameY="-4" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="chikenIcon" x="129" y="2" width="43" height="43"/>
+    <SubTexture name="chikenIconDisabled" x="174" y="2" width="43" height="43"/>
+    <SubTexture name="dog" x="174" y="260" width="40" height="39" frameX="-2" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="goldleaf" x="213" y="302" width="38" height="36" frameX="-3" frameY="-4" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="grass" x="45" y="473" width="40" height="37" frameX="-2" frameY="-4" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="grassIcon" x="129" y="47" width="43" height="43"/>
+    <SubTexture name="grassIconDisabled" x="174" y="47" width="43" height="43"/>
+    <SubTexture name="rabbit" x="171" y="301" rotated="true" width="40" height="38" frameX="-3" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="rabbitIcon" x="129" y="92" rotated="true" width="43" height="41" frameX="-1" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="rabbitIconDisabled" x="71" y="97" rotated="true" width="43" height="41" frameX="-1" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="rag" x="129" y="340" rotated="true" width="39" height="38" frameX="-3" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="ragIcon" x="174" y="92" rotated="true" width="43" height="41" frameX="-1" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="ragIconDisabled" x="129" y="135" rotated="true" width="43" height="41" frameX="-1" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="rose" x="2" y="473" rotated="true" width="41" height="37" frameX="-4" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="roseIcon" x="174" y="177" rotated="true" width="43" height="40" frameX="-2" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="roseIconDisabled" x="129" y="178" rotated="true" width="43" height="40" frameX="-2" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="sheep" x="129" y="261" width="40" height="39" frameX="-2" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="sheepIcon" x="71" y="140" width="43" height="40" frameX="0" frameY="-1" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="sheepIconDisabled" x="174" y="135" width="43" height="40" frameX="0" frameY="-1" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="violet" x="219" y="2" width="35" height="40" frameX="-5" frameY="-2" frameWidth="44" frameHeight="44"/>
+    <SubTexture name="violetIcon" x="129" y="220" rotated="true" width="43" height="39" frameX="-3" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="violetIconDisabled" x="71" y="223" rotated="true" width="43" height="39" frameX="-3" frameY="0" frameWidth="43" frameHeight="43"/>
+    <SubTexture name="windowBg1" x="2" y="2" rotated="true" width="96" height="93"/>
+    <SubTexture name="windowBg2" x="2" y="427" width="44" height="44"/>
+    <SubTexture name="windowBg3" x="48" y="427" width="44" height="44"/>
+    <SubTexture name="windowBgDownTop" x="100" y="2" rotated="true" width="19" height="42" frameX="0" frameY="0" frameWidth="42" frameHeight="22"/>
+    <SubTexture name="windowBgLeft" x="37" y="97" width="32" height="328" frameX="0" frameY="0" frameWidth="47" frameHeight="328"/>
+    <SubTexture name="windowBgRight" x="2" y="97" width="33" height="328" frameX="-14" frameY="0" frameWidth="47" frameHeight="328"/>
+</TextureAtlas>

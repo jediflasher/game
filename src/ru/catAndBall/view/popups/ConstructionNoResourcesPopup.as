@@ -1,15 +1,13 @@
 package ru.catAndBall.view.popups {
+	
 	import feathers.core.FeathersControl;
-
+	
 	import ru.catAndBall.controller.PurchaseController;
-
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.view.assets.AssetList;
-	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
-	import ru.catAndBall.view.core.game.Construction;
 	import ru.catAndBall.view.core.game.PriceButtonDecorator;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
@@ -18,12 +16,12 @@ package ru.catAndBall.view.popups {
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

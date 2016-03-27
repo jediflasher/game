@@ -4,22 +4,19 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller.screen {
-
+	
 	import com.greensock.TweenLite;
-
+	
 	import feathers.controls.ScreenNavigator;
-
+	
 	import flash.errors.IllegalOperationError;
 	import flash.utils.Dictionary;
 	import flash.utils.getTimer;
-
+	
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.IGridGenerator;
-	import ru.catAndBall.controller.screen.ScreenRoomController;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.ConstructionState;
 	import ru.catAndBall.data.game.GridCellDataFactory;
-	import ru.catAndBall.data.game.GridFieldSettings;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.data.game.field.BombGridCellData;
 	import ru.catAndBall.data.game.field.GridCellData;
@@ -27,15 +24,16 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.data.game.field.PestGridCellData;
 	import ru.catAndBall.data.game.player.ConstructionCollectionData;
 	import ru.catAndBall.data.game.screens.BaseScreenFieldData;
+	import ru.catAndBall.data.game.settings.GridFieldSettings;
 	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.GridCell;
 	import ru.catAndBall.view.core.game.GridContainer;
 	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.utils.BooleanRandom;
 	import ru.catAndBall.view.screens.ScreenType;
-
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -51,7 +49,7 @@ package ru.catAndBall.controller.screen {
 		//
 		//---------------------------------------------------------
 
-		public function BaseScreenFieldController(navigator:ScreenNavigator, screen:BaseScreenField, generator:IGridGenerator) {
+		public function BaseScreenFieldController(navigator:ScreenNavigator, screen:BaseScreenField, fieldGenerator:IGridGenerator) {
 			super(navigator, screen);
 
 			_data = screen.screenData;
@@ -59,7 +57,7 @@ package ru.catAndBall.controller.screen {
 			_settings = _fieldData.settings;
 
 			_view = screen;
-			_generator = generator;
+			_generator = fieldGenerator;
 			_petRandom = new BooleanRandom(_settings.pestChance);
 
 			for (var pest:String in _settings.pestsFoodHash) {
@@ -83,6 +81,8 @@ package ru.catAndBall.controller.screen {
 		protected var _view:BaseScreenField;
 
 		protected var _generator:IGridGenerator;
+
+		protected var _bombGenerator:IGridGenerator;
 
 		protected var _data:BaseScreenFieldData;
 

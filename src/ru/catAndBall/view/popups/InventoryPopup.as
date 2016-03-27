@@ -1,15 +1,11 @@
 package ru.catAndBall.view.popups {
-	import feathers.controls.Button;
+	
 	import feathers.controls.ToggleButton;
 	import feathers.controls.text.BitmapFontTextRenderer;
 	import feathers.core.FeathersControl;
-
-	import flash.text.TextFormatAlign;
-
+	
 	import ru.catAndBall.data.GameData;
-
 	import ru.catAndBall.data.game.ResourceSet;
-
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
@@ -18,11 +14,11 @@ package ru.catAndBall.view.popups {
 	import ru.catAndBall.view.core.ui.YellowButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

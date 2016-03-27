@@ -1,7 +1,8 @@
 package ru.catAndBall.view.core.display {
+	
 	import feathers.controls.LayoutGroup;
 	import feathers.layout.HorizontalLayout;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

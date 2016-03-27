@@ -1,22 +1,15 @@
 package ru.catAndBall.view.screens.room.footer {
+	
 	import feathers.controls.Button;
-	import feathers.controls.Header;
-	import feathers.core.IFeathersControl;
-
-	import flash.geom.Rectangle;
-	import flash.utils.Dictionary;
-
-	import ru.catAndBall.AppProperties;
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.display.TiledImage;
 	import ru.catAndBall.view.core.ui.BaseFooterBar;
 	import ru.catAndBall.view.core.ui.YellowButton;
-	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.DisplayObject;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

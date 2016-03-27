@@ -1,9 +1,9 @@
 package ru.catAndBall.view.hint {
+	
 	import feathers.controls.Panel;
 	import feathers.controls.Scroller;
 	import feathers.layout.VerticalLayout;
-
-	import ru.catAndBall.data.game.buildings.CatHouseData;
+	
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.utils.EverySecond;
 	import ru.catAndBall.utils.TimeUtil;
@@ -11,11 +11,10 @@ package ru.catAndBall.view.hint {
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.core.text.TextFieldIcon;
-	import ru.catAndBall.view.core.text.TextFieldTest;
 	import ru.catAndBall.view.core.utils.L;
-
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

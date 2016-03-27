@@ -1,19 +1,15 @@
 package ru.catAndBall.view.core.ui {
+	
 	import feathers.controls.Header;
-	import feathers.controls.supportClasses.LayoutViewPort;
-	import feathers.core.IFeathersControl;
 	import feathers.display.TiledImage;
-
+	
 	import flash.geom.Rectangle;
-	import flash.utils.Dictionary;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.layout.Layout;
-
-	import starling.display.DisplayObject;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

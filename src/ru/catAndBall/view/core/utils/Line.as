@@ -4,16 +4,16 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.utils {
-
+	
 	import feathers.display.TiledImage;
-
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-
+	
 	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

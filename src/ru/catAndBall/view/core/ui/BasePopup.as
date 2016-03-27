@@ -1,26 +1,23 @@
 package ru.catAndBall.view.core.ui {
-	import feathers.controls.text.BitmapFontTextRenderer;
+	
 	import feathers.core.FeathersControl;
 	import feathers.core.IFeathersControl;
 	import feathers.core.ITextRenderer;
-	import feathers.display.Scale3Image;
 	import feathers.display.TiledImage;
-	import feathers.textures.Scale3Textures;
-
+	
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Image;
 	import starling.events.Event;
-	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

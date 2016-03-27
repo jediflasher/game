@@ -4,14 +4,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core {
-
+	
 	import flash.display.BitmapData;
 	import flash.display.Graphics;
 	import flash.display.Shape;
-
+	
 	import starling.display.Image;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

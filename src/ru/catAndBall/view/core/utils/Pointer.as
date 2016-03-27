@@ -4,18 +4,18 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.utils {
-
+	
 	import flash.display.BitmapData;
 	import flash.display.Graphics;
 	import flash.display.Shape;
-
+	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.text.TextField;
 	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

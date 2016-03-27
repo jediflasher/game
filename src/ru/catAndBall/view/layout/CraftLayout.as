@@ -1,9 +1,9 @@
 package ru.catAndBall.view.layout {
+	
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.AppProperties;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

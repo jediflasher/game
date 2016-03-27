@@ -1,9 +1,9 @@
 package ru.catAndBall.data.game {
-	import flash.errors.IllegalOperationError;
+	
 	import flash.events.Event;
-
+	
 	import ru.catAndBall.data.BaseData;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

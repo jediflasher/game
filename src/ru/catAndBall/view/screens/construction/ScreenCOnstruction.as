@@ -1,24 +1,21 @@
 package ru.catAndBall.view.screens.construction {
+	
 	import feathers.controls.List;
 	import feathers.controls.ScrollContainer;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.data.ListCollection;
 	import feathers.layout.VerticalLayout;
-
+	
 	import ru.catAndBall.AppProperties;
-
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
-
 	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.layout.Layout;
-	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
-	import ru.catAndBall.view.screens.craft.CraftItem;
 	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

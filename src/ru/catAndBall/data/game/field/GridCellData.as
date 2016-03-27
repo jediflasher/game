@@ -4,11 +4,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data.game.field {
-
+	
 	import flash.events.EventDispatcher;
-
-	import ru.catAndBall.data.game.GridFieldSettings;
-
+	
+	import ru.catAndBall.data.game.settings.GridFieldSettings;
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

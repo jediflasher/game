@@ -4,32 +4,26 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.room {
+	
+	import airlib.view.core.BaseScreen;
 
 	import flash.utils.Dictionary;
-
+	
 	import ru.catAndBall.data.GameData;
-
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.player.ConstructionCollectionData;
 	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.view.assets.AssetList;
-	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.game.FieldFooterBar;
 	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.layout.room.RoomLayout;
-	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.room.drop.DropLayer;
 	import ru.catAndBall.view.screens.room.footer.RoomFooterBar;
 	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
-
-	import starling.display.Button;
+	
 	import starling.display.DisplayObject;
 	import starling.events.Event;
-	import starling.utils.HAlign;
-	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -67,7 +61,7 @@ package ru.catAndBall.view.screens.room {
 		//---------------------------------------------------------
 
 		public function ScreenRoom() {
-			super(new BaseScreenData(ScreenType.ROOM), "room");
+			super(ScreenType.ROOM);
 		}
 
 		//---------------------------------------------------------
@@ -114,8 +108,6 @@ package ru.catAndBall.view.screens.room {
 		//---------------------------------------------------------
 
 		protected override function initialize():void {
-			headerClass = RoomHeaderBar;
-			footerClass = RoomFooterBar;
 
 			var con:ConstructionCollectionData = GameData.player.constructions;
 

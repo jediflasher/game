@@ -1,14 +1,11 @@
 package ru.catAndBall.view.screens.room {
-	import feathers.core.FeathersControl;
-
-	import ru.catAndBall.data.GameData;
+	
 	import ru.catAndBall.data.game.buildings.CatHouseData;
-	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.game.Construction;
 	import ru.catAndBall.view.hint.BaseConstructionHint;
-
+	
 	import starling.display.DisplayObject;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

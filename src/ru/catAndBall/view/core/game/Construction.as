@@ -1,6 +1,7 @@
 package ru.catAndBall.view.core.game {
+	
 	import flash.events.Event;
-
+	
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.utils.EverySecond;
 	import ru.catAndBall.view.assets.AssetList;
@@ -9,14 +10,14 @@ package ru.catAndBall.view.core.game {
 	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
 	import ru.catAndBall.view.core.ui.Hint;
 	import ru.catAndBall.view.hint.BaseConstructionHint;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

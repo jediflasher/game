@@ -4,13 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.utils {
-
-	import com.greensock.TweenNano;
-
-	import feathers.core.PopUpManager;
-
+	
 	import flash.utils.getTimer;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

@@ -1,22 +1,20 @@
 package ru.catAndBall.controller.screen {
+	
 	import feathers.controls.ScreenNavigator;
 	import feathers.core.PopUpManager;
-
+	
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.tools.ToolDict;
 	import ru.catAndBall.data.game.ResourceSet;
-	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.core.ui.BasePopup;
 	import ru.catAndBall.view.popups.CraftToolPopUp;
-	import ru.catAndBall.view.screens.ScreenType;
-	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
 	import ru.catAndBall.view.screens.craft.CraftItem;
 	import ru.catAndBall.view.screens.craft.ScreenCraft;
-
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

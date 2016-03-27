@@ -1,9 +1,9 @@
 package ru.catAndBall.view.popups {
+	
 	import feathers.display.Scale3Image;
 	import feathers.textures.Scale3Textures;
-
+	
 	import ru.catAndBall.controller.PurchaseController;
-
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.tools.ToolDict;
 	import ru.catAndBall.data.game.ResourceSet;
@@ -16,15 +16,14 @@ package ru.catAndBall.view.popups {
 	import ru.catAndBall.view.core.text.TextFieldBackground;
 	import ru.catAndBall.view.core.ui.BasePopup;
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
-	import ru.catAndBall.view.core.ui.SmallGreenButton;
 	import ru.catAndBall.view.core.ui.YellowButton;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

@@ -4,30 +4,23 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
-
+	
 	import com.greensock.TweenNano;
 	import com.greensock.easing.Linear;
-
+	
 	import feathers.core.FeathersControl;
 	import feathers.display.TiledImage;
-
-	import flash.display3D.textures.Texture;
-
+	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.view.assets.AssetList;
-	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.core.text.TextFieldBackground;
-	import ru.catAndBall.view.core.text.TextFieldIcon;
-	import ru.catAndBall.view.core.text.TextFieldIcon;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.Image;
-	import starling.textures.TextureSmoothing;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

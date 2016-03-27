@@ -4,21 +4,20 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.assets {
-
+	
 	import feathers.controls.Button;
-
+	
 	import flash.display.BitmapData;
 	import flash.utils.ByteArray;
-
+	
 	import ru.catAndBall.AppProperties;
-
 	import ru.catAndBall.view.core.display.BaseMovieClip;
-
+	
 	import starling.display.Image;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	import starling.utils.AssetManager;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

@@ -1,16 +1,13 @@
 package ru.catAndBall.view.screens.craft {
+	
 	import feathers.controls.Button;
 	import feathers.controls.renderers.DefaultListItemRenderer;
-	import feathers.controls.supportClasses.LayoutViewPort;
 	import feathers.core.FeathersControl;
-	import feathers.display.Scale9Image;
-	import feathers.textures.Scale9Textures;
-
+	
 	import flash.events.Event;
 	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.AppProperties;
-
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.tools.ToolDict;
 	import ru.catAndBall.data.game.ResourceSet;
@@ -21,14 +18,11 @@ package ru.catAndBall.view.screens.craft {
 	import ru.catAndBall.view.core.game.ResourceImage;
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.core.ui.MediumGreenButton;
-	import ru.catAndBall.view.core.ui.SmallGreenButton;
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
-
-	import starling.display.Image;
-
+	
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

@@ -1,9 +1,10 @@
 package ru.catAndBall.data.dict.tools {
+	
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.utils.str;
 	import ru.catAndBall.view.core.utils.ArrayUtils;
 	import ru.catAndBall.view.core.utils.L;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

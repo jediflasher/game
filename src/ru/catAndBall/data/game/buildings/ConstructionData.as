@@ -1,19 +1,18 @@
 package ru.catAndBall.data.game.buildings {
+	
 	import com.greensock.TweenNano;
-
+	
 	import flash.errors.IllegalOperationError;
 	import flash.events.Event;
-	import flash.events.EventDispatcher;
-
+	
 	import ru.catAndBall.data.BaseData;
-
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.ConstructionDict;
 	import ru.catAndBall.data.dict.ConstructionState;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.utils.TimeUtil;
 	import ru.catAndBall.view.core.utils.L;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

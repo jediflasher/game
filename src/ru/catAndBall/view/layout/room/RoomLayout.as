@@ -1,8 +1,9 @@
 package ru.catAndBall.view.layout.room {
+	
 	import flash.geom.Point;
-
+	
 	import ru.catAndBall.AppProperties;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

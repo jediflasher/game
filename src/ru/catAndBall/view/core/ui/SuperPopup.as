@@ -1,17 +1,18 @@
 package ru.catAndBall.view.core.ui {
+	
 	import feathers.controls.Button;
 	import feathers.controls.text.BitmapFontTextRenderer;
-
+	
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.display.DisplayObject;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

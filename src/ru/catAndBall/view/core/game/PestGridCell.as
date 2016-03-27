@@ -1,8 +1,7 @@
 package ru.catAndBall.view.core.game {
+	
 	import ru.catAndBall.data.game.field.GridCellData;
-	import ru.catAndBall.data.game.field.PestGridCellData;
-	import ru.catAndBall.view.core.text.TextFieldSmall;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

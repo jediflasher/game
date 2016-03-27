@@ -4,24 +4,24 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game.field {
-
+	
 	import com.greensock.TweenNano;
 	import com.greensock.easing.Linear;
-
+	
 	import feathers.core.FeathersControl;
 	import feathers.display.Scale3Image;
 	import feathers.textures.Scale3Textures;
-
+	
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.layout.Layout;
-
+	
 	import starling.events.Event;
 	import starling.textures.Texture;
 	import starling.textures.TextureSmoothing;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

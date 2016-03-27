@@ -4,14 +4,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.display {
-
+	
 	import starling.display.Image;
 	import starling.display.QuadBatch;
 	import starling.textures.Texture;
 	import starling.textures.TextureSmoothing;
-	import starling.utils.HAlign;
-	import starling.utils.VAlign;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

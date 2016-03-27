@@ -1,24 +1,20 @@
 package ru.catAndBall.view.core.game.field {
+	
 	import feathers.controls.Button;
 	import feathers.core.FeathersControl;
-
+	
 	import ru.catAndBall.AppProperties;
-
-	import ru.catAndBall.data.GameData;
-
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.dict.tools.ToolDict;
-	import ru.catAndBall.utils.s;
 	import ru.catAndBall.utils.str;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
-	import ru.catAndBall.view.core.display.TiledImage;
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.core.text.BaseTextField;
 	import ru.catAndBall.view.core.ui.SmallGreenButton;
-
+	
 	import starling.display.Image;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

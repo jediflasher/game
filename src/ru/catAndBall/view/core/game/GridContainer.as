@@ -4,37 +4,29 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.game {
-
+	
 	import com.greensock.TweenLite;
 	import com.greensock.TweenNano;
-	import com.greensock.easing.Back;
 	import com.greensock.easing.Bounce;
-
+	
 	import flash.display.BitmapData;
-
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.utils.Dictionary;
-
-	import ru.catAndBall.data.game.field.GridCellData;
-
+	
 	import ru.catAndBall.data.game.field.GridCellData;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.data.game.field.PestGridCellData;
-	import ru.catAndBall.view.core.game.field.BaseScreenField;
 	import ru.catAndBall.view.core.game.field.GridBackground;
 	import ru.catAndBall.view.layout.Layout;
-
-	import starling.display.DisplayObject;
-
+	
 	import starling.display.DisplayObjectContainer;
-
 	import starling.display.Image;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

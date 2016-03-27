@@ -1,4 +1,5 @@
 package ru.catAndBall.view.popups {
+	
 	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
@@ -6,10 +7,10 @@ package ru.catAndBall.view.popups {
 	import ru.catAndBall.view.core.game.ResourceCounter;
 	import ru.catAndBall.view.core.ui.SmallGreenButton;
 	import ru.catAndBall.view.core.ui.SuperPopup;
-
+	
 	import starling.display.DisplayObject;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

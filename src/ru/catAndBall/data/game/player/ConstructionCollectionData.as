@@ -1,4 +1,5 @@
 package ru.catAndBall.data.game.player {
+	
 	import ru.catAndBall.data.BaseData;
 	import ru.catAndBall.data.dict.CommodeShelfDict;
 	import ru.catAndBall.data.dict.ConstructionDict;
@@ -6,7 +7,7 @@ package ru.catAndBall.data.game.player {
 	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.data.game.buildings.constructions.CommodeShelfData;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

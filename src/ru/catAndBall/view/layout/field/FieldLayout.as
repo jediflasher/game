@@ -1,10 +1,9 @@
 package ru.catAndBall.view.layout.field {
+	
 	import flash.geom.Rectangle;
-
+	
 	import ru.catAndBall.AppProperties;
-
-	import ru.catAndBall.AppProperties;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

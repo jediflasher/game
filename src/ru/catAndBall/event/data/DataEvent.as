@@ -4,9 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.event.data {
-
+	
 	import flash.events.Event;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

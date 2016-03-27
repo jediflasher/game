@@ -1,6 +1,7 @@
 package ru.catAndBall.data.game.buildings {
+	
 	import ru.catAndBall.data.dict.ConstructionDict;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

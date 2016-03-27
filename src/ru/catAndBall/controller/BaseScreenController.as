@@ -4,20 +4,19 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.controller {
-
+	
 	import feathers.controls.ScreenNavigator;
 	import feathers.controls.ScreenNavigatorItem;
 	import feathers.events.FeathersEventType;
-
+	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-
+	
 	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.view.screens.BaseScreen;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

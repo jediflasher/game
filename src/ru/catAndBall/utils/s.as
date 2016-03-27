@@ -4,8 +4,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.utils {
+	
 	import ru.catAndBall.view.assets.Assets;
-
+	
 	/**
 	 * Scales base value to current scale factor
 	 * @param baseValue

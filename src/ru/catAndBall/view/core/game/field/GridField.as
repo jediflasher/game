@@ -1,8 +1,7 @@
 package ru.catAndBall.view.core.game.field {
-	import feathers.controls.LayoutGroup;
-
+	
 	import starling.display.DisplayObjectContainer;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

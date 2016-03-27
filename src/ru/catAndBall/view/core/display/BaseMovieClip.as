@@ -4,13 +4,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.core.display {
-
+	
 	import starling.core.RenderSupport;
 	import starling.core.Starling;
 	import starling.display.MovieClip;
 	import starling.events.Event;
 	import starling.textures.Texture;
-
+	
 	/**
 	 * @author                Obi
 	 * @version                1.0

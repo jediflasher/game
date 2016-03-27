@@ -1,7 +1,8 @@
 package ru.catAndBall.view.core.display {
+	
 	import starling.display.Sprite;
 	import starling.events.Event;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0
