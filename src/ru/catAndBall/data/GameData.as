@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.data {
 	
-	import ru.catAndBall.data.dict.Dictionaries;
+	import ru.catAndBall.data.proto.Prototypes;
 	import ru.catAndBall.data.game.player.Player;
 	
 	/**
@@ -25,7 +25,7 @@ package ru.catAndBall.data {
 
 		public static const player:Player = new Player();
 
-		public static const dictionaries:Dictionaries = new Dictionaries();
+		public static const dictionaries:Prototypes = new Prototypes();
 
 		//--------------------------------------------------------------------------
 		//

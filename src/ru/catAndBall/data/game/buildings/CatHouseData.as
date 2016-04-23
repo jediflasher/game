@@ -1,6 +1,6 @@
 package ru.catAndBall.data.game.buildings {
 	
-	import ru.catAndBall.data.dict.ConstructionDict;
+	import ru.catAndBall.data.proto.ConstructionProto;
 	
 	/**
 	 * @author              Obi
@@ -17,17 +17,8 @@ package ru.catAndBall.data.game.buildings {
 		//
 		//--------------------------------------------------------------------------
 
-		public function CatHouseData(dict:ConstructionDict) {
+		public function CatHouseData(dict:ConstructionProto) {
 			super(dict);
-		}
-
-		public override function deserialize(value:Object):void {
-			super.deserialize(value);
-		}
-
-		public override function serialize():Object {
-			var result:Object = super.serialize();
-			return result;
 		}
 	}
 }

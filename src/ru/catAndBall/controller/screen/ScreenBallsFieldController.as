@@ -10,7 +10,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.controller.generators.BaseGridGenerator;
 	import ru.catAndBall.controller.tools.BaseToolController;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.Dictionaries;
+	import ru.catAndBall.data.proto.Prototypes;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.settings.GridFieldSettings;
 	import ru.catAndBall.data.game.tools.BaseToolData;
@@ -55,7 +55,7 @@ package ru.catAndBall.controller.screen {
 		protected override function added():void {
 			super.added();
 
-			var toolData:BaseToolData = new BaseToolData(Dictionaries.tools.getToolByResourceType(ResourceSet.TOOL_BASKET), GameData.player.resources);
+			var toolData:BaseToolData = new BaseToolData(Prototypes.tools.getToolByResourceType(ResourceSet.TOOL_BASKET), GameData.player.resources);
 			_toolCollect = new BaseToolController(toolData);
 		}
 

@@ -7,7 +7,7 @@ package ru.catAndBall.data.game.tools {
 	
 	import flash.events.EventDispatcher;
 	
-	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.data.proto.tools.ToolProto;
 	import ru.catAndBall.data.game.ResourceSet;
 	
 	/**
@@ -31,7 +31,7 @@ package ru.catAndBall.data.game.tools {
 		//
 		//---------------------------------------------------------
 
-		public function BaseToolData(dict:ToolDict, resourceSet:ResourceSet) {
+		public function BaseToolData(dict:ToolProto, resourceSet:ResourceSet) {
 			super();
 			this.dict = dict;
 			this.resourceSet = resourceSet;
@@ -47,7 +47,7 @@ package ru.catAndBall.data.game.tools {
 			return resourceSet.get(dict.resourceType);
 		}
 
-		public var dict:ToolDict;
+		public var dict:ToolProto;
 
 		public var resourceSet:ResourceSet;
 	}

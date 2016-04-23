@@ -49,7 +49,7 @@ package ru.catAndBall.view.screens.room {
 
 		private var _shelf1:CommodeShelf1;
 
-		private var _shelf2:CommodeShelf2;
+		private var _shelf2:CommodeShelf;
 
 		private var _shelf3:CommodeShelf3;
 
@@ -67,7 +67,7 @@ package ru.catAndBall.view.screens.room {
 			_shelf1.y = 49;
 			addChild(_shelf1);
 
-			_shelf2 = new CommodeShelf2(_data2);
+			_shelf2 = new CommodeShelf(_data2);
 			_shelf2.x = 215;
 			_shelf2.y = 174;
 			addChild(_shelf2);

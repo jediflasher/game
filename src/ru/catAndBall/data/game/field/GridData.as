@@ -55,8 +55,6 @@ package ru.catAndBall.data.game.field {
 			for (var i:int = 0; i < columns; i++) {
 				cellsMatrix[i] = new Vector.<GridCellData>(rows, true);
 			}
-
-			trace(1);
 		}
 
 		//---------------------------------------------------------

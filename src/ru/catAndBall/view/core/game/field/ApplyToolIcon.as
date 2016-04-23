@@ -5,7 +5,7 @@ package ru.catAndBall.view.core.game.field {
 	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.data.proto.tools.ToolProto;
 	import ru.catAndBall.utils.str;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
@@ -38,7 +38,7 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//--------------------------------------------------------------------------
 
-		public function ApplyToolIcon(data:ToolDict) {
+		public function ApplyToolIcon(data:ToolProto) {
 			super();
 
 			_data = data;
@@ -66,9 +66,9 @@ package ru.catAndBall.view.core.game.field {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _data:ToolDict;
+		private var _data:ToolProto;
 
-		public function get data():ToolDict {
+		public function get data():ToolProto {
 			return _data;
 		}
 

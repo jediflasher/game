@@ -7,6 +7,8 @@ package ru.catAndBall.controller.screen {
 	
 	import feathers.controls.ScreenNavigator;
 	import feathers.core.PopUpManager;
+
+	import flash.geom.Point;
 	
 	import ru.catAndBall.AppController;
 	import ru.catAndBall.controller.BaseScreenController;
@@ -15,6 +17,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.data.game.field.GridData;
+	import ru.catAndBall.event.view.RoomEvent;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.game.Construction;
@@ -46,9 +49,9 @@ package ru.catAndBall.controller.screen {
 
 		public function ScreenRoomController(navigator:ScreenNavigator, screen:ScreenRoom) {
 			super(navigator, screen);
-			events[ScreenRoom.EVENT_COMMODE_CLICK] = ScreenType.COMMODE_CRAFT;
-			events[ScreenRoom.EVENT_RUG_CLICK] = rugFieldClick;
-			events[ScreenRoom.EVENT_BALLS_CLICK] = ballsClick;
+			events[RoomEvent.COMMODE_CLICK] = ScreenType.COMMODE_CRAFT;
+			events[RoomEvent.RUG_CLICK] = rugFieldClick;
+			events[RoomEvent.BALLS_CLICK] = ballsClick;
 
 			events[RoomFooterBar.EVENT_MOUSE_CLICK] = ScreenType.COMMODE_CRAFT;
 			events[RoomFooterBar.EVENT_CONSTRUCTION_CLICK] = ScreenType.CONSTRUCTION;
@@ -195,12 +198,12 @@ package ru.catAndBall.controller.screen {
 			var data:ConstructionData = building.data;
 
 			if (data.canCollectBonus) {
-				var bonus:ResourceSet = data.bonus;
+				var bonus:ResourceSet = data.collectBonus();
 				GameData.player.resources.add(bonus);
-				data.collectBonus();
 
-				var fromX:int = building.x;
-				var fromY:int = building.y;
+				var point:Point = building.dropPoint;
+				var fromX:int = building.x + point.x;
+				var fromY:int = building.y + point.y;
 				(view as ScreenRoom).drop(bonus, fromX, fromY);
 			}
 		}

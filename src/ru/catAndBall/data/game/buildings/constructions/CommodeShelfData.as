@@ -1,7 +1,7 @@
 package ru.catAndBall.data.game.buildings.constructions {
 	
-	import ru.catAndBall.data.dict.CommodeShelfDict;
-	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.data.proto.CommodeShelfProto;
+	import ru.catAndBall.data.proto.tools.ToolProto;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	
 	/**
@@ -19,7 +19,7 @@ package ru.catAndBall.data.game.buildings.constructions {
 		//
 		//--------------------------------------------------------------------------
 
-		public function CommodeShelfData(proto:CommodeShelfDict) {
+		public function CommodeShelfData(proto:CommodeShelfProto) {
 			super(proto);
 		}
 
@@ -29,8 +29,8 @@ package ru.catAndBall.data.game.buildings.constructions {
 		//
 		//--------------------------------------------------------------------------
 
-		public function get tools():Vector.<ToolDict> {
-			return (proto as CommodeShelfDict).tools;
+		public function get tools():Vector.<ToolProto> {
+			return (proto as CommodeShelfProto).tools;
 		}
 	}
 }

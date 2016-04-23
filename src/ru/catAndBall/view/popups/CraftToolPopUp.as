@@ -5,7 +5,7 @@ package ru.catAndBall.view.popups {
 	
 	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.data.proto.tools.ToolProto;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
@@ -85,13 +85,13 @@ package ru.catAndBall.view.popups {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _data:ToolDict;
+		private var _data:ToolProto;
 
-		public function get data():ToolDict {
+		public function get data():ToolProto {
 			return _data;
 		}
 
-		public function set data(value:ToolDict):void {
+		public function set data(value:ToolProto):void {
 			if (_data === value) return;
 
 			_data = value;

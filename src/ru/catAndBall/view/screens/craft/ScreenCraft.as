@@ -18,7 +18,7 @@ package ru.catAndBall.view.screens.craft {
 	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.*;
-	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
+	import ru.catAndBall.view.screens.room.header.RoomHeader;
 	
 	import starling.display.Image;
 	import starling.events.Event;
@@ -48,7 +48,7 @@ package ru.catAndBall.view.screens.craft {
 		public function ScreenCraft() {
 			super(ScreenType.COMMODE_CRAFT);
 
-			headerClass = RoomHeaderBar;
+			headerClass = RoomHeader;
 			footerClass = SimpleScreenFooterBar;
 		}
 
@@ -85,8 +85,8 @@ package ru.catAndBall.view.screens.craft {
 		protected override function initialize():void {
 			super.initialize();
 
-			_rollDataProvider.data = GameData.player.constructions.commode1.tools;
-			_rugDataProvider.data = GameData.player.constructions.commode2.tools;
+			_rollDataProvider.data = GameData.player.constructions.shelf1.tools;
+			_rugDataProvider.data = GameData.player.constructions.shelf2.tools;
 
 			if (_backgroundSkin) {
 				(_backgroundSkin as Image).smoothing = TextureSmoothing.NONE;

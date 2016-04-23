@@ -7,9 +7,10 @@ package ru.catAndBall.data.game.buildings {
 	
 	import ru.catAndBall.data.BaseData;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.ConstructionDict;
-	import ru.catAndBall.data.dict.ConstructionState;
+	import ru.catAndBall.data.proto.ConstructionProto;
+	import ru.catAndBall.data.proto.ConstructionStateProto;
 	import ru.catAndBall.data.game.ResourceSet;
+	import ru.catAndBall.event.data.ConstructionDataEvent;
 	import ru.catAndBall.utils.TimeUtil;
 	import ru.catAndBall.view.core.utils.L;
 	
@@ -28,30 +29,17 @@ package ru.catAndBall.data.game.buildings {
 		//
 		//--------------------------------------------------------------------------
 
-		public static const EVENT_BUILDING_START:String = 'eventBuildingStart';
-
-		public static const EVENT_BUILDING_COMPLETE:String = 'eventBuildingComplete';
-
-		public static const EVENT_BONUS_TIME_COMPLETE:String = 'eventBonusTimeComplete';
-
-		public static const EVENT_BONUS_COLLECTED:String = 'eventBonusCollected';
-
-		public static const CAT_HOUSE:String = 'catHouse';
-
-		public static const COMMODE_1:String = 'shelf1';
-
-		public static const COMMODE_2:String = 'shelf2';
-
-		public static const COMMODE_3:String = 'shelf3';
-
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
 		//
 		//--------------------------------------------------------------------------
 
-		public function ConstructionData(proto:ConstructionDict) {
+		public function ConstructionData(proto:ConstructionProto) {
 			_proto = proto;
+			if (!_proto) {
+				trace();
+			}
 		}
 
 		//--------------------------------------------------------------------------
@@ -59,6 +47,16 @@ package ru.catAndBall.data.game.buildings {
 		//  Properties
 		//
 		//--------------------------------------------------------------------------
+
+		public function get id():String {
+			return _proto.id;
+		}
+
+		private var _proto:ConstructionProto;
+
+		public function get proto():ConstructionProto {
+			return _proto;
+		}
 
 		private var _level:int = 0;
 
@@ -83,25 +81,20 @@ package ru.catAndBall.data.game.buildings {
 		public function get lastBonusTime():Number {
 			return _lastBonusTime;
 		}
-
-		private var _proto:ConstructionDict;
-
-		public function get proto():ConstructionDict {
-			return _proto;
-		}
-
 		public function get visible():Boolean {
+			if (_proto.alwaysShow) return true;
+
 			var catHouseLevel:int = GameData.player.catHouseLevel;
 			return _proto.states[0].catHouseLevel <= catHouseLevel;
 		}
 
-		public function get state():ConstructionState {
+		public function get state():ConstructionStateProto {
 			if (level < 1) return null;
 			return _proto.states[level - 1];
 		}
 
-		public function get nextState():ConstructionState {
-			var u:Vector.<ConstructionState> = _proto.states;
+		public function get nextState():ConstructionStateProto {
+			var u:Vector.<ConstructionStateProto> = _proto.states;
 			if (u.length <= level) return null;
 			return u[level];
 		}
@@ -117,7 +110,7 @@ package ru.catAndBall.data.game.buildings {
 		}
 
 		public function get bonusTimeLeft():Number {
-			var s:ConstructionState = state;
+			var s:ConstructionStateProto = state;
 			if (!s) return 0;
 			if (!s.bonusPeriod) return 0;
 			if (!lastBonusTime) return 0;
@@ -131,7 +124,7 @@ package ru.catAndBall.data.game.buildings {
 		public function get bonus():ResourceSet {
 			if (!lastBonusTime) return null;
 
-			var s:ConstructionState = state;
+			var s:ConstructionStateProto = state;
 			if (!s) return null;
 			if (s.bonus.isEmpty) return null;
 
@@ -182,7 +175,7 @@ package ru.catAndBall.data.game.buildings {
 				this._customConnectCounts = {};
 
 				for (var i:int = 0; i < level; i++) {
-					var state:ConstructionState = _proto.states[i];
+					var state:ConstructionStateProto = _proto.states[i];
 					if (!state.customConnectCounts) continue;
 
 					for (var elementName:String in state.customConnectCounts) {
@@ -201,7 +194,7 @@ package ru.catAndBall.data.game.buildings {
 				this._freeToCollect = new Vector.<String>();
 
 				for (var i:int = 0; i < level; i++) {
-					var state:ConstructionState = _proto.states[i];
+					var state:ConstructionStateProto = _proto.states[i];
 					if (!state.freeToCollect) continue;
 
 					for each (var elementName:String in state.freeToCollect) {
@@ -221,7 +214,7 @@ package ru.catAndBall.data.game.buildings {
 
 		public function startBuilding():void {
 			var startTimeSeconds:Number = TimeUtil.now;
-			var upgrade:ConstructionState = nextState;
+			var upgrade:ConstructionStateProto = nextState;
 
 			if (!upgrade) throw new IllegalOperationError('No upgrade found');
 			if (!upgrade.buildTime) {
@@ -229,7 +222,7 @@ package ru.catAndBall.data.game.buildings {
 				return;
 			}
 
-			if (hasEventListener(EVENT_BUILDING_START)) dispatchEvent(new Event(EVENT_BUILDING_START));
+			if (hasEventListener(ConstructionDataEvent.BUILDING_START)) dispatchEvent(new ConstructionDataEvent(ConstructionDataEvent.BUILDING_START));
 
 			_startBuildingTime = startTimeSeconds;
 			updateTimers();
@@ -242,7 +235,7 @@ package ru.catAndBall.data.game.buildings {
 			var tl:Number = constructTimeLeft;
 			if (!tl) return false;
 
-			var nu:ConstructionState = nextState;
+			var nu:ConstructionStateProto = nextState;
 			if (!nu) return false;
 
 			return !nu.speedUpPrice.isEmpty;
@@ -261,7 +254,7 @@ package ru.catAndBall.data.game.buildings {
 
 			_lastBonusTime = TimeUtil.now;
 			updateTimers();
-			if (hasEventListener(EVENT_BONUS_COLLECTED)) dispatchEvent(new Event(EVENT_BONUS_COLLECTED));
+			if (hasEventListener(ConstructionDataEvent.BONUS_COLLECTED)) dispatchEvent(new ConstructionDataEvent(ConstructionDataEvent.BONUS_COLLECTED));
 
 			return bonus;
 		}
@@ -297,12 +290,12 @@ package ru.catAndBall.data.game.buildings {
 
 			// to update counts including new built state
 			this._customConnectCounts = null;
-			if (super.hasEventListener(EVENT_BUILDING_COMPLETE)) dispatchEvent(new Event(EVENT_BUILDING_COMPLETE));
+			if (super.hasEventListener(ConstructionDataEvent.BUILDING_COMPLETE)) dispatchEvent(new ConstructionDataEvent(ConstructionDataEvent.BUILDING_COMPLETE));
 		}
 
 		private function bonusTimeComplete():void {
 			updateTimers();
-			if (super.hasEventListener(EVENT_BONUS_TIME_COMPLETE)) dispatchEvent(new Event(EVENT_BONUS_TIME_COMPLETE));
+			if (super.hasEventListener(ConstructionDataEvent.BONUS_READY)) dispatchEvent(new ConstructionDataEvent(ConstructionDataEvent.BONUS_READY));
 		}
 	}
 }

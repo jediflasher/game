@@ -1,13 +1,15 @@
 package ru.catAndBall.data.game.player {
 	
 	import ru.catAndBall.data.BaseData;
-	import ru.catAndBall.data.dict.CommodeShelfDict;
-	import ru.catAndBall.data.dict.ConstructionDict;
-	import ru.catAndBall.data.dict.Dictionaries;
 	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.data.game.buildings.constructions.CommodeShelfData;
-	
+	import ru.catAndBall.data.proto.ConstructionId;
+	import ru.catAndBall.data.proto.ConstructionProto;
+	import ru.catAndBall.data.proto.Prototypes;
+	import ru.catAndBall.event.data.ConstructionDataEvent;
+	import ru.catAndBall.view.screens.room.CatHouse;
+
 	/**
 	 * @author              Obi
 	 * @version             1.0
@@ -16,6 +18,19 @@ package ru.catAndBall.data.game.player {
 	 * @date                20.09.14 11:06
 	 */
 	public class ConstructionCollectionData extends BaseData {
+
+		//--------------------------------------------------------------------------
+		//
+		//  Class constants
+		//
+		//--------------------------------------------------------------------------
+
+		private static const _MAP:Object = {};
+		_MAP[ConstructionId.CATHOUSE] = CatHouseData;
+		_MAP[ConstructionId.SHELF1] = CommodeShelfData;
+		_MAP[ConstructionId.SHELF2] = CommodeShelfData;
+		_MAP[ConstructionId.SHELF3] = CommodeShelfData;
+
 
 		//--------------------------------------------------------------------------
 		//
@@ -41,14 +56,6 @@ package ru.catAndBall.data.game.player {
 		//
 		//--------------------------------------------------------------------------
 
-		public var catHouse:CatHouseData;
-
-		public var commode1:CommodeShelfData;
-
-		public var commode2:CommodeShelfData;
-
-		public var commode3:CommodeShelfData;
-
 		public const list:Vector.<ConstructionData> = new Vector.<ConstructionData>();
 
 		/**
@@ -69,8 +76,8 @@ package ru.catAndBall.data.game.player {
 		//--------------------------------------------------------------------------
 
 		public function init():void {
-			var constructions:Vector.<ConstructionDict> = Dictionaries.constructions.list;
-			for each (var c:ConstructionDict in constructions) {
+			var constructions:Vector.<ConstructionProto> = Prototypes.constructions.list;
+			for each (var c:ConstructionProto in constructions) {
 				createConstruction(c.id);
 			}
 		}
@@ -88,7 +95,7 @@ package ru.catAndBall.data.game.player {
 		public override function serialize():Object {
 			var result:Object = super.serialize();
 			for each (var construction:ConstructionData in list) {
-				result[construction.proto.id] = construction.serialize();
+				result[construction.id] = construction.serialize();
 			}
 			return result;
 		}
@@ -104,31 +111,14 @@ package ru.catAndBall.data.game.player {
 		//--------------------------------------------------------------------------
 
 		private function createConstruction(id:String):ConstructionData {
-			var dict:ConstructionDict = Dictionaries.constructions.getConstructionById(id);
-			var result:ConstructionData;
-			switch (id) {
-				case ConstructionData.CAT_HOUSE:
-					result = catHouse = new CatHouseData(dict);
-					break;
-				case ConstructionData.COMMODE_1:
-					result = commode1 = new CommodeShelfData(dict as CommodeShelfDict);
-					break;
-				case ConstructionData.COMMODE_2:
-					result = commode2 = new CommodeShelfData(dict as CommodeShelfDict);
-					break;
-				case ConstructionData.COMMODE_3:
-					result = commode3 = new CommodeShelfData(dict as CommodeShelfDict);
-					break;
-				default:
-					result = new ConstructionData(dict);
-					break;
-			}
+			var proto:ConstructionProto = Prototypes.constructions.getConstructionById(id);
+			var result:ConstructionData = new (_MAP[id] || ConstructionData)(proto);
 
-			_hash[result.proto.id] = result;
+			_hash[result.id] = result;
 			list.push(result);
 
-			result.addEventListener(ConstructionData.EVENT_BUILDING_START, dispatchEvent);
-			result.addEventListener(ConstructionData.EVENT_BUILDING_COMPLETE, dispatchEvent);
+			result.addEventListener(ConstructionDataEvent.BUILDING_START, dispatchEvent);
+			result.addEventListener(ConstructionDataEvent.BUILDING_COMPLETE, dispatchEvent);
 
 			return result;
 		}

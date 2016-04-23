@@ -5,25 +5,24 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.room {
 	
-	import airlib.view.core.BaseScreen;
-
+	import airlib.view.core.BaseParserScreen;
+	
+	import feathers.controls.text.TextFieldTextRenderer;
+	
+	import flash.text.TextFormat;
 	import flash.utils.Dictionary;
 	
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
+	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.data.game.player.ConstructionCollectionData;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.view.core.game.factory.ConstructionViewFactory;
-	import ru.catAndBall.view.layout.Layout;
-	import ru.catAndBall.view.layout.room.RoomLayout;
+	import ru.catAndBall.data.proto.ConstructionId;
+	import ru.catAndBall.data.proto.Prototypes;
+	import ru.catAndBall.view.core.game.Construction;
 	import ru.catAndBall.view.screens.ScreenType;
+	import ru.catAndBall.view.screens.room.drop.ConstructionCollectIconLayer;
 	import ru.catAndBall.view.screens.room.drop.DropLayer;
-	import ru.catAndBall.view.screens.room.footer.RoomFooterBar;
-	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
-	
-	import starling.display.DisplayObject;
-	import starling.events.Event;
-	
+
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -31,157 +30,99 @@ package ru.catAndBall.view.screens.room {
 	 * @langversion            3.0
 	 * @date                19.07.14 14:27
 	 */
-	public class ScreenRoom extends BaseScreen {
-
+	public class ScreenRoom extends BaseParserScreen {
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Class constants
 		//
 		//--------------------------------------------------------------------------
 
-		private static var HD_PROPS:Vector.<Object>;
+		
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Class constants
 		//
 		//--------------------------------------------------------------------------
 
-		public static const EVENT_WINDOW_CLICK:String = 'windowClick';
-
-		public static const EVENT_RUG_CLICK:String = 'rugClick';
-
-		public static const EVENT_BALLS_CLICK:String = 'ballsClick';
-
-		public static const EVENT_COMMODE_CLICK:String = 'commodeClick';
-
+		
 		//---------------------------------------------------------
 		//
 		// Constructor
 		//
 		//---------------------------------------------------------
-
+		
 		public function ScreenRoom() {
-			super(ScreenType.ROOM);
+			super(ScreenType.ROOM, Library.get('ScreenRoom'));
+			for each (var id:String in ConstructionId.LIST) {
+				addFactory(id, Construction);
+			}
 		}
-
+		
 		//---------------------------------------------------------
 		//
 		// Properties
 		//
 		//---------------------------------------------------------
-
+		
 		//---------------------------------------------------------
 		//
 		// Variables
 		//
 		//---------------------------------------------------------
 
-		private var _hashButtonToEvent:Dictionary = new Dictionary(true);
+		private var _dataToView:Object = {};
 
-		private const _childrenToAdd:Vector.<DisplayObject> = new Vector.<DisplayObject>();
-
-		private var _catHouse:CatHouse;
-
-		private var _window:Window;
-
-		private var _carpet:Carpet;
-
-		private var _tangles:Tangles;
-
-		private var _commode:Commode;
+		private var _constructionCollectionLayer:ConstructionCollectIconLayer;
 
 		private var _dropLayer:DropLayer;
-
-		private var _granny:Granny;
-
+		
 		//---------------------------------------------------------
 		//
 		// Public methods
 		//
 		//---------------------------------------------------------
 
+		public function drop(resources:ResourceSet, fromX:int, fromY:int):void {
+			_dropLayer.drop(resources, fromX, fromY);
+		}
 
+		public function getConstruction(id:String):Construction {
+			return _dataToView[id];
+		}
+		
 		//---------------------------------------------------------
 		//
 		// Protected methods
 		//
 		//---------------------------------------------------------
-
+		
 		protected override function initialize():void {
+			super.initialize();
+			autoAssign();
 
 			var con:ConstructionCollectionData = GameData.player.constructions;
+			for each (var constructionData:ConstructionData in con.list) {
+				var id:String = constructionData.id;
+				var view:Construction = getChildByName(constructionData.id) as Construction;
+				if (!view) continue;
 
-			_catHouse = ConstructionViewFactory.createConstruction(con.catHouse) as CatHouse;
-			_commode = new Commode(con.commode1, con.commode2, con.commode3);
-			_granny = new Granny();
-			_window = new Window();
-			_carpet = new Carpet();
-			_tangles = new Tangles();
-
-			var l:RoomLayout = Layout.room;
-
-			if (!HD_PROPS) {
-				HD_PROPS = new <Object>[
-					{obj: _window, x: l.window.x, y: l.window.y, onClickEvent: EVENT_WINDOW_CLICK},
-					{obj: _carpet, x: l.rug.x, y: l.rug.y, onClickEvent: EVENT_RUG_CLICK},
-					//{obj: Assets.getImage(AssetList.screenGame_curtain), x: 800, y: 720},
-					//{obj: Assets.getImage(AssetList.screenGame_catBlack), x: 716, y: 782},
-					//{obj: Assets.getImage(AssetList.screenGame_clock), x: 207, y: 493},
-					//{obj: Assets.getImage(AssetList.screenGame_pictures), x: 1400, y: 500},
-					{obj: _commode, x: l.commode.x, y: l.commode.y, onClickEvent:EVENT_COMMODE_CLICK},
-					{obj: _catHouse, x: l.catHouse.x, y: l.catHouse.y},
-					{obj: _granny, x: l.granny.x, y: l.granny.y},
-					{obj: _tangles, x: l.tangles.x, y:l.tangles.y, onClickEvent: EVENT_BALLS_CLICK}
-					//{obj: Assets.getImage(AssetList.screenGame_catRed), x: 312, y: 806},
-					//{obj: Assets.getImage(AssetList.screenGame_tree), x: 156, y: 1221},
-					//{obj: Assets.getButton(AssetList.screenGame_ballBox), x: 1253, y: 1474, onClickEvent: EVENT_BALLS_CLICK},
-					//{obj: Assets.getImage(AssetList.screenGame_catWhite), x: 331, y: 1594},
-					//{obj: Assets.getImage(AssetList.screenGame_bowl), x: 1336, y: 1768, onClickEvent: EVENT_BOWL_CLICK}
-				];
-
-				for each (var obj:Object in HD_PROPS) {
-					var display:DisplayObject = obj.obj;
-					//display.alignPivot(HAlign.CENTER, VAlign.CENTER);
-
-					var eventName:String = obj.onClickEvent;
-
-					if (eventName) {
-						_hashButtonToEvent[display] = eventName;
-						display.addEventListener(Event.TRIGGERED, handler_buttonClick);
-					}
-
-					display.x = obj.x;
-					display.y = obj.y;
-					_childrenToAdd.push(display);
-				}
-
-				_dropLayer = new DropLayer();
-				addRawChild(_dropLayer);
-
-				super.initialize();
+				view.data = constructionData;
+				_dataToView[id] = view;
 			}
 
-			for each (var child:DisplayObject in _childrenToAdd) {
-				addRawChild(child);
-			}
+			_constructionCollectionLayer = new ConstructionCollectIconLayer(this);
+			addChild(_constructionCollectionLayer);
 
+			_dropLayer = new DropLayer();
+			addChild(_dropLayer);
 		}
-
-		public function drop(resources:ResourceSet, fromX:int, fromY:int):void {
-			_dropLayer.drop(resources, fromX, fromY);
-		}
-
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Event handlers
 		//
 		//--------------------------------------------------------------------------
-
-		private function handler_buttonClick(event:Event):void {
-			var btn:DisplayObject = event.target as DisplayObject;
-			if (btn && btn in _hashButtonToEvent) {
-				dispatchEventWith(_hashButtonToEvent[btn]);
-			}
-		}
 	}
 }

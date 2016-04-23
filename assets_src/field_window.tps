@@ -72,7 +72,7 @@
         <key>dataFormat</key>
         <string>sparrow</string>
         <key>textureFileName</key>
-        <filename>../assets/graphics/{v}/window_field.png</filename>
+        <filename>../bin/assets/graphics/{v}/window_field.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -181,7 +181,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../assets/graphics/{v}/window_field.xml</filename>
+                <filename>../bin/assets/graphics/{v}/window_field.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>

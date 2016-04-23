@@ -1,9 +1,9 @@
 package airlib.util.localization {
 
-	import ru.airlib.util.log.info;
+	import airlib.util.log.info;
 
 	import starling.utils.formatString;
-
+	
 	/**
 	 * @author              Obi
 	 * @version             1.0

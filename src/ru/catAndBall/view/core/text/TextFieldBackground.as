@@ -26,7 +26,7 @@ package ru.catAndBall.view.core.text {
 		public function TextFieldBackground(fontId:String, background:DisplayObject, fixedWidth:Boolean = false, fixedHeight:Boolean = false, paddingW:Number = 5, paddingH:Number = 5) {
 
 			super();
-			_textField = new BaseTextField(fontId);
+			_textField = new BaseTextField(0, 30);
 			_background = background;
 			_fixedWidth = fixedWidth;
 			_fixedHeight = fixedHeight;

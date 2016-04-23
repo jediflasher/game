@@ -1,5 +1,7 @@
 package airlib.util {
 
+	import airlib.util.log.error;
+
 	import feathers.controls.Button;
 
 	import flash.display.BitmapData;

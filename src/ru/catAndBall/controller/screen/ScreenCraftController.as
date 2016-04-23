@@ -6,7 +6,7 @@ package ru.catAndBall.controller.screen {
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.PurchaseController;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.data.proto.tools.ToolProto;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.core.ui.BasePopup;
 	import ru.catAndBall.view.popups.CraftToolPopUp;
@@ -46,7 +46,7 @@ package ru.catAndBall.controller.screen {
 
 		private const _totalPriceResourceSet:ResourceSet = new ResourceSet();
 
-		private var _tool:ToolDict;
+		private var _tool:ToolProto;
 
 		private var _count:int;
 
@@ -75,7 +75,7 @@ package ru.catAndBall.controller.screen {
 
 		private function handler_makeClick(event:Event):void {
 			_makePopup.count = 0;
-			_makePopup.data = event.data as ToolDict;
+			_makePopup.data = event.data as ToolProto;
 			_makePopup.addEventListener(CraftToolPopUp.EVENT_CREATE_CLICK, handler_createToolClick);
 			_makePopup.addEventListener(BasePopup.EVENT_CLOSE_CLICK, handler_popupCloseClick);
 

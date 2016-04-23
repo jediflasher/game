@@ -16,7 +16,7 @@ package ru.catAndBall.view.screens.construction {
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
-	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
+	import ru.catAndBall.view.screens.room.header.RoomHeader;
 	
 	/**
 	 * @author              Obi
@@ -36,7 +36,7 @@ package ru.catAndBall.view.screens.construction {
 		public function ScreenConstruction() {
 			super(new BaseScreenData(ScreenType.CONSTRUCTION), AssetList.building_buildingWallpaper);
 
-			headerClass = RoomHeaderBar;
+			headerClass = RoomHeader;
 			footerClass = SimpleScreenFooterBar;
 		}
 

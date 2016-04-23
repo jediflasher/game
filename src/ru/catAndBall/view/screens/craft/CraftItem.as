@@ -9,7 +9,7 @@ package ru.catAndBall.view.screens.craft {
 	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.data.proto.tools.ToolProto;
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
@@ -66,7 +66,7 @@ package ru.catAndBall.view.screens.craft {
 
 		private var _resContainer:GridLayoutContainer;
 
-		private var _toolData:ToolDict;
+		private var _toolData:ToolProto;
 
 		private const _hashTypeToItem:Object = {};
 
@@ -114,7 +114,7 @@ package ru.catAndBall.view.screens.craft {
 				if (!_dataInited) {
 					defaultSkin = Assets.getImage(index % 2 ? AssetList.Tools_toolsBg1 : AssetList.Tools_toolsBg2);
 
-					_toolData = _data as ToolDict;
+					_toolData = _data as ToolProto;
 
 					var bgRect:Rectangle = new Rectangle(587, 132, 320, 320);
 

@@ -1,4 +1,7 @@
 {
+  "player": {
+    "levelMultiplier":65
+  },
   "tools": {
     "tool_spokes": {
       "price": {
@@ -227,7 +230,7 @@
   },
   "constructions": [
     {
-      "id": "catHouse",
+      "id": "cathouse",
       "states": [
         {
           "catHouseLevel": 0,
@@ -236,7 +239,7 @@
           "price": {
             "bfBalls": 1
           },
-          "bonusPeriod": 28800,
+          "bonusPeriod": 5,
           "bonus": {
             "exp": 50
           },
@@ -1149,6 +1152,7 @@
     },
     {
       "id": "stack_sweaters",
+      "alwaysShow":true,
       "states": [
         {
           "catHouseLevel": 4,

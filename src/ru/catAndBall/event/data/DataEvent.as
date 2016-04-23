@@ -42,7 +42,7 @@ package ru.catAndBall.event.data {
 		//---------------------------------------------------------
 
 		public override function clone():Event {
-			return new DataEvent(type, data);
+			return new (Object(this).constructor as Class)(type, data);	
 		}
 	}
 }

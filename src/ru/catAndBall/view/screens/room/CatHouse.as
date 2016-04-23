@@ -1,11 +1,8 @@
 package ru.catAndBall.view.screens.room {
 	
-	import ru.catAndBall.data.game.buildings.CatHouseData;
 	import ru.catAndBall.view.core.game.Construction;
-	import ru.catAndBall.view.hint.BaseConstructionHint;
-	
-	import starling.display.DisplayObject;
-	
+	import ru.flaswf.reader.descriptors.DisplayObjectDescriptor;
+
 	/**
 	 * @author              Obi
 	 * @version             1.0
@@ -20,9 +17,9 @@ package ru.catAndBall.view.screens.room {
 		//  Constructor
 		//
 		//--------------------------------------------------------------------------
- 
-		public function CatHouse(data:CatHouseData) {
-			super(data);
+
+		public function CatHouse(source:DisplayObjectDescriptor) {
+			super(source);
 		}
 
 		//--------------------------------------------------------------------------
@@ -30,17 +27,6 @@ package ru.catAndBall.view.screens.room {
 		//  Properties
 		//
 		//--------------------------------------------------------------------------
-
-		private var _hint:BaseConstructionHint;
-
-		public override function get hint():DisplayObject {
-			if (!data.state) return null;
-
-			if (!_hint) _hint = new BaseConstructionHint(data as CatHouseData);
-			return _hint;
-		}
-
-		// 260 30
 
 		public override function get hintX():int {
 			return 260;

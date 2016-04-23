@@ -2,6 +2,8 @@ package ru.catAndBall.view.core.ui {
 	
 	import feathers.controls.Button;
 	import feathers.controls.text.BitmapFontTextRenderer;
+	import feathers.controls.text.TextFieldTextRenderer;
+	import feathers.core.ITextRenderer;
 	
 	import ru.catAndBall.data.game.ResourceSet;
 	import ru.catAndBall.view.assets.AssetList;
@@ -40,9 +42,9 @@ package ru.catAndBall.view.core.ui {
 
 		private var _button:Button;
 
-		private var _descTextField:BitmapFontTextRenderer;
+		private var _descTextField:TextFieldTextRenderer;
 
-		private var _titleTextField:BitmapFontTextRenderer;
+		private var _titleTextField:TextFieldTextRenderer;
 
 		private var _resContainer:GridLayoutContainer;
 
@@ -133,7 +135,7 @@ package ru.catAndBall.view.core.ui {
 
 			if (_title) {
 				if (!_titleTextField) {
-					_titleTextField = new BaseTextField(AssetList.font_large_white_orangestroke);
+					_titleTextField = new BaseTextField(0, 30);
 					_titleTextField.wordWrap = true;
 				}
 
@@ -147,7 +149,7 @@ package ru.catAndBall.view.core.ui {
 
 			if (_desc) {
 				if (!_descTextField) {
-					_descTextField = new BaseTextField(AssetList.font_medium_brown);
+					_descTextField = new BaseTextField(0, 30);
 					_descTextField.wordWrap = true;
 				}
 

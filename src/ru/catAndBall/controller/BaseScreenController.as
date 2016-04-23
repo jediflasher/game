@@ -2,6 +2,8 @@ package ru.catAndBall.controller {
 	
 	import airlib.view.core.BaseScreen;
 
+	import feathers.controls.IScreen;
+
 	import feathers.controls.ScreenNavigator;
 	import feathers.controls.ScreenNavigatorItem;
 	import feathers.events.FeathersEventType;
@@ -28,7 +30,7 @@ package ru.catAndBall.controller {
 		//
 		//---------------------------------------------------------
 
-		public function BaseScreenController(navigator:ScreenNavigator, screen:BaseScreen) {
+		public function BaseScreenController(navigator:ScreenNavigator, screen:IScreen) {
 			super(screen);
 			this._eventDispatcher = new EventDispatcher(this);
 			this._view = screen;
@@ -57,9 +59,9 @@ package ru.catAndBall.controller {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _view:BaseScreen;
+		private var _view:IScreen;
 
-		public function get view():BaseScreen {
+		public function get view():IScreen {
 			return _view;
 		}
 

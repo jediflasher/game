@@ -2,6 +2,7 @@ package ru.catAndBall.view.screens.room {
 	
 	import ru.catAndBall.data.game.buildings.ConstructionData;
 	import ru.catAndBall.view.core.game.Construction;
+	import ru.flaswf.reader.descriptors.DisplayObjectDescriptor;
 	
 	/**
 	 * @author              Obi
@@ -18,8 +19,8 @@ package ru.catAndBall.view.screens.room {
 		//
 		//--------------------------------------------------------------------------
 
-		public function CommodeShelf1(data:ConstructionData) {
-			super(data);
+		public function CommodeShelf1(source:DisplayObjectDescriptor) {
+			super(source);
 			showIfNotAvailable = true;
 		}
 	}

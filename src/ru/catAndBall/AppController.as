@@ -7,43 +7,33 @@ package ru.catAndBall {
 	
 	import airlib.view.core.BaseScreen;
 
+	import feathers.controls.IScreen;
 	import feathers.controls.ScreenNavigatorItem;
 	import feathers.core.IPopUpManager;
 	import feathers.core.PopUpManager;
 	import feathers.motion.transitions.ScreenFadeTransitionManager;
-	
+
 	import flash.events.Event;
 	import flash.net.SharedObject;
 	import flash.utils.getDefinitionByName;
-	
+
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.controller.PurchaseController;
-	import ru.catAndBall.controller.screen.ScreenBallsFieldController;
-	import ru.catAndBall.controller.screen.ScreenBankController;
-	import ru.catAndBall.controller.screen.ScreenConstructionController;
-	import ru.catAndBall.controller.screen.ScreenCraftController;
 	import ru.catAndBall.controller.screen.ScreenMenuController;
 	import ru.catAndBall.controller.screen.ScreenRoomController;
-	import ru.catAndBall.controller.screen.ScreenRugFieldController;
 	import ru.catAndBall.data.DefaultUserState;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.utils.Logger;
 	import ru.catAndBall.view.assets.Assets;
 	import ru.catAndBall.view.core.ui.CatPopupManager;
 	import ru.catAndBall.view.core.ui.Hint;
 	import ru.catAndBall.view.screens.ScreenType;
-	import ru.catAndBall.view.screens.ballsField.ScreenBallsField;
-	import ru.catAndBall.view.screens.bank.ScreenBank;
-	import ru.catAndBall.view.screens.construction.ScreenConstruction;
-	import ru.catAndBall.view.screens.craft.ScreenCraft;
 	import ru.catAndBall.view.screens.mainMenu.ScreenMenu;
 	import ru.catAndBall.view.screens.preloader.ScreenPreloader;
 	import ru.catAndBall.view.screens.room.ScreenRoom;
-	import ru.catAndBall.view.screens.rugField.ScreenRugField;
-	
+
 	import starling.events.EventDispatcher;
-	
+
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -117,7 +107,7 @@ package ru.catAndBall {
 		private function initPreloader():void {
 			var screen:BaseScreen = new ScreenPreloader();
 			var item:ScreenNavigatorItem = new BaseScreenController(_view, screen);
-			_view.addScreen(screen.screenID,item);
+			_view.addScreen(screen.screenID, item);
 		}
 
 		private function init():void {
@@ -129,46 +119,47 @@ package ru.catAndBall {
 
 			PurchaseController.init(_view);
 
-			var screen:BaseScreen = new ScreenMenu();
+			var screen:IScreen = new ScreenMenu();
 			var item:ScreenNavigatorItem = new ScreenMenuController(_view, screen as ScreenMenu);
 			_view.addScreen(screen.screenID, item);
 
 			screen = new ScreenRoom();
 			item = new ScreenRoomController(_view, screen as ScreenRoom);
 			_view.addScreen(screen.screenID, item);
+			/*
+			 screen = new ScreenCraft();
+			 item = new ScreenCraftController(_view, screen as ScreenCraft);
+			 _view.addScreen(screen.screenID, item);
 
-			screen = new ScreenCraft();
-			item = new ScreenCraftController(_view, screen as ScreenCraft);
-			_view.addScreen(screen.screenID, item);
+			 screen = new ScreenRugField();
+			 item = new ScreenRugFieldController(_view, screen as ScreenRugField);
+			 _view.addScreen(screen.screenID, item);
 
-			screen = new ScreenRugField();
-			item = new ScreenRugFieldController(_view, screen as ScreenRugField);
-			_view.addScreen(screen.screenID, item);
+			 screen = new ScreenBallsField();
+			 item = new ScreenBallsFieldController(_view, screen as ScreenBallsField);
+			 _view.addScreen(screen.screenID, item);
 
-			screen = new ScreenBallsField();
-			item = new ScreenBallsFieldController(_view, screen as ScreenBallsField);
-			_view.addScreen(screen.screenID, item);
+			 screen = new ScreenBank();
+			 item = new ScreenBankController(_view, screen);
+			 _view.addScreen(screen.screenID, item);
 
-			screen = new ScreenBank();
-			item = new ScreenBankController(_view, screen);
-			_view.addScreen(screen.screenID, item);
-
-			screen = new ScreenConstruction();
-			item = new ScreenConstructionController(_view, screen);
-			_view.addScreen(screen.screenID, item);
-
+			 screen = new ScreenConstruction();
+			 item = new ScreenConstructionController(_view, screen);
+			 _view.addScreen(screen.screenID, item);
+			 */
 			new ScreenFadeTransitionManager(_view);
 		}
 
 		private function loadComplete():void {
 			var defaultUserState:DefaultUserState = new DefaultUserState();
-			var dictionaries:Object = Assets.getJSON('dict.json');
+			var dictionaries:Object = Assets.getJSON('dict');
 			GameData.dictionaries.deserialize(dictionaries);
 			GameData.player.init();
 
 			try {
 				var so:SharedObject = SharedObject.getLocal('game');
 				delete so.data['game'];
+				so.flush();
 
 				var data:Object = so.data['game'];
 

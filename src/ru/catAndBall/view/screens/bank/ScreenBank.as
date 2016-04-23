@@ -1,13 +1,12 @@
 package ru.catAndBall.view.screens.bank {
 	
 	import airlib.view.core.BaseScreen;
-	
+
 	import feathers.controls.Button;
-	
+
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
 	import ru.catAndBall.data.game.ResourceSet;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.core.display.GridLayoutContainer;
 	import ru.catAndBall.view.core.game.ResourceCounter;
@@ -17,10 +16,10 @@ package ru.catAndBall.view.screens.bank {
 	import ru.catAndBall.view.layout.Layout;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.SimpleScreenFooterBar;
-	import ru.catAndBall.view.screens.room.header.RoomHeaderBar;
-	
+	import ru.catAndBall.view.screens.room.header.RoomHeader;
+
 	import starling.events.Event;
-	
+
 	/**
 	 * @author              Obi
 	 * @version             1.0
@@ -45,7 +44,7 @@ package ru.catAndBall.view.screens.bank {
 		//--------------------------------------------------------------------------
 
 		public function ScreenBank() {
-			super(new BaseScreenData(ScreenType.BANK), AssetList.Bank_bankBg);
+			super(ScreenType.BANK);
 		}
 
 		//--------------------------------------------------------------------------
@@ -67,10 +66,6 @@ package ru.catAndBall.view.screens.bank {
 		//--------------------------------------------------------------------------
 
 		protected override function initialize():void {
-
-			headerClass = RoomHeaderBar;
-			footerClass = SimpleScreenFooterBar;
-
 			_buyButton = new MediumGreenButton(L.get('screen.bank.buy_button', [100]));
 			_buyButton.addEventListener(Event.TRIGGERED, handler_buyClick);
 			addChild(_buyButton);

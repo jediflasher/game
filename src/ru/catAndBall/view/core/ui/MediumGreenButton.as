@@ -32,7 +32,7 @@ package ru.catAndBall.view.core.ui {
 			super();
 
 			labelFactory = function():ITextRenderer {
-				return new BaseTextField(AssetList.font_medium_white_greenstroke);
+				return new BaseTextField(0, 30);
 			};
 
 			var left:Number =  s(Layout.mediumButtonScaleGridSizes[0]);

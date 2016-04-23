@@ -6,11 +6,11 @@
 package ru.catAndBall.controller.screen {
 	
 	import feathers.controls.ScreenNavigator;
-	
+
 	import ru.catAndBall.controller.BaseScreenController;
 	import ru.catAndBall.view.screens.ScreenType;
 	import ru.catAndBall.view.screens.mainMenu.ScreenMenu;
-	
+
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -28,7 +28,7 @@ package ru.catAndBall.controller.screen {
 
 		public function ScreenMenuController(navigator:ScreenNavigator, screen:ScreenMenu) {
 			super(navigator, screen);
-			events[ScreenMenu.EVENT_GAME_CLICK] = ScreenType.ROOM;
+			setScreenIDForEvent(ScreenMenu.EVENT_GAME_CLICK, ScreenType.ROOM);
 		}
 	}
 }

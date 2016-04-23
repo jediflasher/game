@@ -53,10 +53,10 @@ package ru.catAndBall.view.assets {
 
 		private static var _assetManager:AssetManager;
 
-		[Embed(source="../../../../../assets/graphics/bgLD.png")]
+		[Embed(source="../../../../../bin/assets/graphics/bgLD.png")]
 		public static var bgLD:Class;
 
-		[Embed(source="../../../../../assets/graphics/bgHD.png")]
+		[Embed(source="../../../../../bin/assets/graphics/bgHD.png")]
 		public static var bgHD:Class;
 
 		private static var _hash:Object = {}; // name -> texture/null
@@ -93,6 +93,10 @@ package ru.catAndBall.view.assets {
 		public static function getTexture(name:String):Texture {
 			if (!(name in _hash)) {
 				_hash[name] = _assetManager.getTexture(name);
+			}
+
+			if (!_hash[name]) {
+				trace('Texture not found: ', name);
 			}
 
 			return _hash[name];

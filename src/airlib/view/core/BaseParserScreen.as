@@ -2,8 +2,11 @@ package airlib.view.core {
 
 	import feathers.controls.IScreen;
 
-	import ru.airlib.fla_parser.view.ParserFeathersMovieClip;
-	import ru.swfReader.descriptors.DisplayObjectDescriptor;
+	import ru.flaswf.parsers.feathers.view.ParserFeathersMovieClip;
+	import ru.flaswf.reader.descriptors.DisplayObjectDescriptor;
+
+	import starling.display.DisplayObject;
+	import starling.events.Event;
 
 	/**
 	 * @author              Obi
@@ -49,6 +52,18 @@ package airlib.view.core {
 
 		public function set owner(value:Object):void {
 			this._owner = value;
+		}
+
+		public function bindEvent(target:DisplayObject, eventName:String, dispatch:String, data:Object = null):void {
+			target.addEventListener(eventName, function(event:Event):void {
+				dispatchEventWith(dispatch, false, data);
+			});
+		}
+
+		public function bindEventBubble(target:DisplayObject, eventName:String, dispatch:String, data:Object = null):void {
+			target.addEventListener(eventName, function(event:Event):void {
+				dispatchEventWith(dispatch, true, data);
+			});
 		}
 	}
 }

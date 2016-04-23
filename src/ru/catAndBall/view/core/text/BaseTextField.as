@@ -6,7 +6,12 @@
 package ru.catAndBall.view.core.text {
 	
 	import feathers.controls.text.BitmapFontTextRenderer;
+	import feathers.controls.text.TextFieldTextRenderer;
 	import feathers.text.BitmapFontTextFormat;
+
+	import flash.filters.DropShadowFilter;
+
+	import flash.text.TextFormat;
 	
 	import flash.text.TextFormatAlign;
 	
@@ -17,7 +22,7 @@ package ru.catAndBall.view.core.text {
 	 * @langversion            3.0
 	 * @date                16.08.14 22:40
 	 */
-	public class BaseTextField extends BitmapFontTextRenderer {
+	public class BaseTextField extends TextFieldTextRenderer {
 
 		//--------------------------------------------------------------------------
 		//
@@ -31,9 +36,11 @@ package ru.catAndBall.view.core.text {
 		//
 		//---------------------------------------------------------
 
-		public function BaseTextField(fontId:String, align:String = TextFormatAlign.LEFT) {
+		public function BaseTextField(color:uint, size:Number) {
 			super();
-			super.textFormat = new BitmapFontTextFormat(fontId, NaN, 0xffffff, align);
+			super.embedFonts = true;
+			super.textFormat = new TextFormat('RotondaC Bold', size, color);
+			super.nativeFilters = [new DropShadowFilter(1, 90)]
 		}
 
 	}

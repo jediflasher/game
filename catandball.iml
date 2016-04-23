@@ -17,12 +17,25 @@
             <entry module-name="reader" build-configuration-name="reader">
               <dependency linkage="Merged" />
             </entry>
+            <entry module-name="feathers_parser" build-configuration-name="feathers_parser">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="air19_sdk_win" />
         </dependencies>
-        <compiler-options />
+        <compiler-options>
+          <map>
+            <entry key="compiler.debug.swf" value="true" />
+          </map>
+        </compiler-options>
         <packaging-air-desktop />
-        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/CatAndBall-app.xml" package-file-name="catandball" />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/CatAndBall-app.xml" package-file-name="catandball">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/bin/assets" path-in-package="assets" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/bin/dict.json" path-in-package="dict.json" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/bin/en_US.json" path-in-package="en_US.json" />
+          </files-to-package>
+        </packaging-android>
         <packaging-ios package-file-name="catandball" />
       </configuration>
     </configurations>
@@ -39,5 +52,6 @@
     <orderEntry type="library" exported="" name="Starling" level="application" />
     <orderEntry type="library" exported="" name="GreenSock-AS3" level="application" />
     <orderEntry type="module" module-name="reader" exported="" />
+    <orderEntry type="module" module-name="feathers_parser" exported="" />
   </component>
 </module>

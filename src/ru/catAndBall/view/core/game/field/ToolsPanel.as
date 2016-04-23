@@ -11,8 +11,8 @@ package ru.catAndBall.view.core.game.field {
 	
 	import ru.catAndBall.AppProperties;
 	import ru.catAndBall.data.GameData;
-	import ru.catAndBall.data.dict.CommodeShelfDict;
-	import ru.catAndBall.data.dict.tools.ToolDict;
+	import ru.catAndBall.data.proto.CommodeShelfProto;
+	import ru.catAndBall.data.proto.tools.ToolProto;
 	import ru.catAndBall.data.game.field.GridData;
 	import ru.catAndBall.view.assets.AssetList;
 	import ru.catAndBall.view.assets.Assets;
@@ -110,17 +110,17 @@ package ru.catAndBall.view.core.game.field {
 			_iconContainer.height = 400;
 			addChild(_iconContainer);
 
-			var targetShelf:CommodeShelfDict;
+			var targetShelf:CommodeShelfProto;
 			if (_data === GameData.player.ballsField) {
-				targetShelf = GameData.player.constructions.commode1.proto as CommodeShelfDict;
+				targetShelf = GameData.player.constructions.shelf1.proto as CommodeShelfProto;
 			} else if (_data === GameData.player.rugField) {
-				targetShelf = GameData.player.constructions.commode2.proto as CommodeShelfDict;
+				targetShelf = GameData.player.constructions.shelf2.proto as CommodeShelfProto;
 			} else if (_data === GameData.player.windowField) {
-				targetShelf = GameData.player.constructions.commode3.proto as CommodeShelfDict;
+				targetShelf = GameData.player.constructions.shelf3.proto as CommodeShelfProto;
 			}
 
-			var tools:Vector.<ToolDict> = targetShelf.tools;
-			for each (var tool:ToolDict in tools) {
+			var tools:Vector.<ToolProto> = targetShelf.tools;
+			for each (var tool:ToolProto in tools) {
 				var icon:ApplyToolIcon = new ApplyToolIcon(tool);
 				_iconContainer.addChild(icon);
 				_toolIcons.push(icon);

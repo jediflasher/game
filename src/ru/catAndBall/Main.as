@@ -5,6 +5,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall {
 	
+	import airlib.util.localization.Localization;
+
 	import com.greensock.TweenNano;
 	
 	import flash.display.DisplayObject;
@@ -14,13 +16,18 @@ package ru.catAndBall {
 	import flash.display3D.Context3DProfile;
 	import flash.display3D.Context3DRenderMode;
 	import flash.events.Event;
+	import flash.filesystem.File;
 	import flash.geom.Rectangle;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.system.Capabilities;
 	import flash.utils.getDefinitionByName;
 	
+	import ru.catAndBall.view.assets.AssetList;
+	
 	import ru.catAndBall.view.assets.Assets;
+	import ru.flaswf.parsers.feathers.ObjectBuilder;
+	import ru.flaswf.reader.descriptors.SwfDescriptor;
 	
 	import starling.core.Starling;
 	import starling.utils.AssetManager;
@@ -67,8 +74,6 @@ package ru.catAndBall {
 		private var _starling:Starling;
 
 		private var _url:String;
-
-		private var _assetlistLoaded:Boolean = false;
 
 		private var _rootCreated:Boolean = false;
 
@@ -127,19 +132,11 @@ package ru.catAndBall {
 			bg.height = AppProperties.starlingRect.height;
 			addChild(bg);
 
-			if (AppProperties.isWeb) {
-				var folderName:String = AppProperties.isHD ? 'hd' : 'ld';
-				var urlLoader:URLLoader = new URLLoader();
-				urlLoader.addEventListener(Event.COMPLETE, handler_loadAssetListComplete);
-				urlLoader.load(new URLRequest(_url + '/game/assets/' + folderName));
-			} else {
-				_assetlistLoaded = true;
-				initAssets();
-			}
+			initAssets();
 		}
 
-		private function initAssets(assets:Array = null):void {
-			var folderName:String = AppProperties.isHD ? 'hd' : 'ld';
+		private function initAssets():void {
+			var folderName:String = AppProperties.isHD ? 'hd' : 'md';
 
 			_assetManager = new AssetManager();
 			_assetManager.verbose = Capabilities.isDebugger;
@@ -149,14 +146,21 @@ package ru.catAndBall {
 				var file:Class = getDefinitionByName('flash.filesystem.File') as Class;
 				var appDir:Object = file['applicationDirectory'];
 				_assetManager.enqueue(
-						appDir['resolvePath']("audio"),
-						appDir['resolvePath']("graphics/" + folderName)
+						appDir['resolvePath']("assets/audio"),
+						appDir['resolvePath']("assets/graphics/" + folderName),
+						appDir['resolvePath']("assets/fon_nabrosok.png"),
+						appDir['resolvePath']("assets/roomBg.png"),
+						appDir['resolvePath']("dict.json"),
+						appDir['resolvePath']("assets/base.animation"),
+						appDir['resolvePath']("en_US.json")
 				);
-			} else {
-				_assetManager.enqueue(assets);
+			} else {/* TODO
+				_assetManager.enqueue([
+
+				]);
+				*/
 			}
 
-			_assetManager.enqueueWithName('/dict.json', 'dict.json');
 			tryLoadResources();
 		}
 
@@ -173,31 +177,20 @@ package ru.catAndBall {
 		}
 
 		private function progress(progress:Number):void {
+			if (progress == 1) {
+				Library.init(_assetManager.getByteArray('base'));
+				Localization.init(_assetManager.getObject('en_US'));
+			}
 			_controller.progress(progress);
 
 			if (progress == 1) {
-				TweenNano.delayedCall(1, function ():void {
-					while (numChildren) removeChildAt(0);
-				})
+				TweenNano.delayedCall(1, removeChildren);
 			}
 		}
 
 		private function tryLoadResources():void {
-			if (!_rootCreated || !_assetlistLoaded) return;
+			if (!_rootCreated) return;
 			_assetManager.loadQueue(progress);
-		}
-
-		//--------------------------------------------------------------------------
-		//
-		//  Event handlers
-		//
-		//--------------------------------------------------------------------------
-
-		private function handler_loadAssetListComplete(event:Event):void {
-			var loader:URLLoader = event.target as URLLoader;
-			var json:Object = JSON.parse(loader.data);
-			_assetlistLoaded = true;
-			initAssets(json as Array);
 		}
 	}
 }

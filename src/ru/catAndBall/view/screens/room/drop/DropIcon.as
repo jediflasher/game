@@ -59,7 +59,7 @@ package ru.catAndBall.view.screens.room.drop {
 		private static function fromType(type:String):Texture {
 			switch (type) {
 				case ResourceSet.EXPERIENCE:
-					return Assets.getTexture(AssetList.header_header_lvlIcon);
+					return Assets.getTexture('header_lvlIcon');
 				default:
 					return Math.random() > 0.5 ? Assets.DUMMY_TEXTURE_2 : Assets.DUMMY_TEXTURE;
 			}

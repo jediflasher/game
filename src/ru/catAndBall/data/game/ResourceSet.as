@@ -19,9 +19,7 @@ package ru.catAndBall.data.game {
 		//
 		//--------------------------------------------------------------------------
 
-		public static const EXP:String = 'exp';
-
-		public static const EXPERIENCE:String = 'experience';
+		public static const EXPERIENCE:String = 'exp';
 
 		public static const MONEY:String = 'money';
 
@@ -127,10 +125,10 @@ package ru.catAndBall.data.game {
 		}
 
 		public static function isResource(resourceType:String):Boolean {
-			if (!(resourceType in _hashIsResouce)) {
-				_hashIsResouce[resourceType] = resourceType == EXPERIENCE || resourceType == MONEY;
+			if (!(resourceType in _hashIsResource)) {
+				_hashIsResource[resourceType] = resourceType == EXPERIENCE || resourceType == MONEY;
 			}
-			return _hashIsResouce[resourceType];
+			return _hashIsResource[resourceType];
 		}
 
 		//--------------------------------------------------------------------------
@@ -143,7 +141,7 @@ package ru.catAndBall.data.game {
 
 		private static const _hashIsComponent:Object = {};
 
-		private static const _hashIsResouce:Object = {};
+		private static const _hashIsResource:Object = {};
 
 		//--------------------------------------------------------------------------
 		//
@@ -261,9 +259,10 @@ package ru.catAndBall.data.game {
 			super.deserialize(value);
 
 			for each (var key:String in TYPES) {
-				if (key == EXP) key = EXPERIENCE;
+				if (key == 'exp') key = EXPERIENCE;
+				var val:Number = value[(key == 'exp' ? 'exp' : key)];
 
-				set(key, value[key] || 0);
+				set(key, val || 0);
 			}
 		}
 

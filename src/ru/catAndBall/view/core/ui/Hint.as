@@ -86,11 +86,11 @@ package ru.catAndBall.view.core.ui {
 		public function Hint() {
 			super();
 
-			var s9t:Scale9Textures = new Scale9Textures(Assets.getTexture(AssetList.hint_hintBg), RECT);
+			var s9t:Scale9Textures = new Scale9Textures(Assets.getTexture('hintBg'), RECT);
 			_bg = new Scale9Image(s9t);
 			addChild(_bg);
 
-			_tail = Assets.getImage(AssetList.hint_angle);
+			_tail = Assets.getImage('angle');
 			addChild(_tail);
 		}
 

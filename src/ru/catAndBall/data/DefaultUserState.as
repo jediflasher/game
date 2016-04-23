@@ -29,7 +29,7 @@ package ru.catAndBall.data {
 			this["player"] = {
 				constructions: [
 					{
-						id: "catHouse",
+						id: "cathouse",
 						level: 1,
 						startBuildingTime: 0,
 						lastBonusTime: TimeUtil.now

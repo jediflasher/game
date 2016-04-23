@@ -5,18 +5,14 @@
 //////////////////////////////////////////////////////////////////////////////////
 package ru.catAndBall.view.screens.mainMenu {
 	
-	import airlib.view.core.BaseScreen;
+	import airlib.util.localization.loc;
+	import airlib.view.core.BaseParserScreen;
 
-	import feathers.controls.Button;
-	
-	import ru.catAndBall.AppProperties;
-	import ru.catAndBall.data.game.screens.BaseScreenData;
-	import ru.catAndBall.view.core.ui.MediumGreenButton;
-	import ru.catAndBall.view.core.utils.L;
 	import ru.catAndBall.view.screens.ScreenType;
-	
+	import ru.flaswf.parsers.feathers.view.ParserFeathersButton;
+
 	import starling.events.Event;
-	
+
 	/**
 	 * @author                Obi
 	 * @version                1.0
@@ -24,7 +20,7 @@ package ru.catAndBall.view.screens.mainMenu {
 	 * @langversion            3.0
 	 * @date                07.06.14 19:14
 	 */
-	public class ScreenMenu extends BaseScreen {
+	public class ScreenMenu extends BaseParserScreen {
 
 		//--------------------------------------------------------------------------
 		//
@@ -34,8 +30,6 @@ package ru.catAndBall.view.screens.mainMenu {
 
 		public static const EVENT_GAME_CLICK:String = 'continueClick';
 
-		public static const EVENT_SETTINGS_CLICK:String = 'exitClick';
-
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
@@ -43,7 +37,7 @@ package ru.catAndBall.view.screens.mainMenu {
 		//--------------------------------------------------------------------------
 
 		public function ScreenMenu() {
-			super(ScreenType.MAIN_MENU);
+			super(ScreenType.MAIN_MENU, Library.get('ScreenMainMenu'));
 		}
 
 		//--------------------------------------------------------------------------
@@ -52,7 +46,7 @@ package ru.catAndBall.view.screens.mainMenu {
 		//
 		//--------------------------------------------------------------------------
 
-		private var _buttonStart:Button;
+		public var _startBtn:ParserFeathersButton;
 
 		//--------------------------------------------------------------------------
 		//
@@ -62,28 +56,10 @@ package ru.catAndBall.view.screens.mainMenu {
 
 		protected override function initialize():void {
 			super.initialize();
+			autoAssign();
 
-			_buttonStart = new MediumGreenButton(L.get("Start game"));
-			_buttonStart.addEventListener(Event.TRIGGERED, handler_startClick);
-
-			addChild(_buttonStart);
-		}
-
-		protected override function draw():void {
-			super.draw();
-
-			_buttonStart.x = AppProperties.baseWidth / 2 - _buttonStart.width / 2;
-			_buttonStart.y = AppProperties.baseHeight * 0.7;
-		}
-
-//--------------------------------------------------------------------------
-		//
-		//  Event handlers
-		//
-		//--------------------------------------------------------------------------
-
-		private function handler_startClick(event:Event):void {
-			dispatchEventWith(EVENT_GAME_CLICK);
+			_startBtn.label = loc('screen.menu.start_button.label');
+			bindEvent(_startBtn, Event.TRIGGERED, EVENT_GAME_CLICK);
 		}
 	}
 }

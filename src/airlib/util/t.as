@@ -1,6 +1,6 @@
 package airlib.util {
-
-	import ru.airlib.AppProperties;
+	
+	import airlib.AppProperties;
 
 	/**
 	 * @author              Obi

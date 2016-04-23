@@ -2,6 +2,7 @@ package ru.catAndBall.view.popups {
 	
 	import feathers.controls.ToggleButton;
 	import feathers.controls.text.BitmapFontTextRenderer;
+	import feathers.controls.text.TextFieldTextRenderer;
 	import feathers.core.FeathersControl;
 	
 	import ru.catAndBall.data.GameData;
@@ -111,7 +112,7 @@ package ru.catAndBall.view.popups {
 			_w = _bg.texture.width;
 			_h = _bg.texture.height;
 
-			_title = new BaseTextField(AssetList.font_large_white_shadow);
+			_title = new BaseTextField(0, 30);
 			_title.x = Layout.inventory.titlePos.x;
 			_title.y = Layout.inventory.titlePos.y;
 			_title.text = L.get('inventory.title');
@@ -221,8 +222,8 @@ package ru.catAndBall.view.popups {
 			_tab1.y = sel ? SELECTED_Y : DEFAULT_Y;
 		}
 
-		private function labelFactory():BitmapFontTextRenderer {
-			return new BaseTextField(AssetList.font_small_white);
+		private function labelFactory():TextFieldTextRenderer {
+			return new BaseTextField(0, 30);
 		}
 
 		//--------------------------------------------------------------------------
